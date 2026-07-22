@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Trouble — Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --orange:#FF6B2B;
+  --green:#22ff88;
+  --blue:#3b9eff;
+  --purple:#a855f7;
+  --gold:#ffd700;
+}
+
+body{
+  background:#060608;
+  color:#F5F0E8;
+  font-family:'Barlow',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,107,43,0.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,107,43,0.06) 1px,transparent 1px);
+  background-size:52px 52px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* AMBIENT GLOWS */
+.glow-tl{position:fixed;top:-300px;left:-200px;width:700px;height:700px;background:radial-gradient(ellipse,rgba(168,85,247,0.12) 0%,transparent 65%);pointer-events:none;z-index:0}
+.glow-tr{position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(ellipse,rgba(59,158,255,0.1) 0%,transparent 65%);pointer-events:none;z-index:0}
+.glow-b{position:fixed;bottom:-300px;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(255,107,43,0.08) 0%,transparent 65%);pointer-events:none;z-index:0}
+
+header{
+  position:sticky;top:0;z-index:100;
+  padding:1.1rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(255,107,43,0.15);
+  background:rgba(6,6,8,0.85);
+  backdrop-filter:blur(20px);
+}
+.brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:26px;letter-spacing:4px;
+  background:linear-gradient(135deg,#FF6B2B 0%,#ffb347 50%,#FF6B2B 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 3s linear infinite;
+}
+@keyframes shimmer{to{background-position:200% center}}
+
+.status-pill{
+  display:flex;align-items:center;gap:7px;
+  font-size:10px;color:rgba(34,255,136,0.7);
+  text-transform:uppercase;letter-spacing:2px;
+  background:rgba(34,255,136,0.06);
+  border:1px solid rgba(34,255,136,0.25);
+  padding:6px 14px;border-radius:20px;
+  box-shadow:0 0 20px rgba(34,255,136,0.08);
+}
+.status-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#22ff88;
+  box-shadow:0 0 8px #22ff88,0 0 16px rgba(34,255,136,0.5);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+
+.container{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:2rem 2.5rem}
+
+/* GOAL */
+.goal-card{
+  position:relative;
+  background:linear-gradient(135deg,rgba(255,215,0,0.07) 0%,rgba(255,107,43,0.05) 50%,rgba(168,85,247,0.05) 100%);
+  border:1px solid rgba(255,215,0,0.25);
+  border-radius:20px;
+  padding:2rem 2.25rem;
+  margin-bottom:2.5rem;
+  display:flex;align-items:flex-start;gap:1.75rem;
+  overflow:hidden;
+  box-shadow:0 0 60px rgba(255,215,0,0.06),inset 0 1px 0 rgba(255,215,0,0.2);
+}
+.goal-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,#ffd700,#FF6B2B,#a855f7,transparent);
+  animation:borderflow 3s linear infinite;
+  background-size:200% auto;
+}
+@keyframes borderflow{to{background-position:200% center}}
+
+.trophy-wrap{
+  display:flex;align-items:center;justify-content:center;
+  width:72px;height:72px;flex-shrink:0;
+  background:radial-gradient(circle,rgba(255,215,0,0.15),transparent 70%);
+}
+.trophy{
+  font-size:3rem;line-height:1;
+  animation:trophySpin 6s ease-in-out infinite;
+  filter:drop-shadow(0 0 12px rgba(255,215,0,0.8)) drop-shadow(0 0 30px rgba(255,107,43,0.5));
+}
+@keyframes trophySpin{
+  0%{transform:rotateY(0deg) scale(1)}
+  25%{transform:rotateY(20deg) scale(1.08)}
+  50%{transform:rotateY(0deg) scale(1)}
+  75%{transform:rotateY(-20deg) scale(1.08)}
+  100%{transform:rotateY(0deg) scale(1)}
+}
+
+.goal-body{flex:1}
+.goal-label{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:rgba(255,215,0,0.6);margin-bottom:6px}
+.goal-text{
+  font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:1px;line-height:1;
+  background:linear-gradient(135deg,#fff 0%,#ffd700 60%,#FF6B2B 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:1.25rem;
+}
+.obj-label{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:rgba(245,240,232,0.3);margin-bottom:8px}
+.obj-item{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(245,240,232,0.7);margin-bottom:6px}
+.obj-circle{
+  width:16px;height:16px;border-radius:50%;
+  border:1.5px solid rgba(255,215,0,0.4);
+  flex-shrink:0;
+  box-shadow:0 0 6px rgba(255,215,0,0.2);
+}
+.goal-deadline{text-align:right;flex-shrink:0}
+.deadline-val{
+  font-family:'Bebas Neue',sans-serif;font-size:24px;
+  background:linear-gradient(135deg,#FF6B2B,#ffd700);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:1px;
+}
+.deadline-date{font-size:11px;color:rgba(245,240,232,0.25);margin-top:4px}
+
+/* SECTION TITLES */
+.section-block{margin-bottom:1.5rem}
+.section-hdr{display:flex;align-items:center;gap:14px;margin-bottom:1.25rem}
+.section-icon{font-size:22px;line-height:1;filter:drop-shadow(0 0 8px currentColor)}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:32px;letter-spacing:3px;
+  text-transform:uppercase;
+  line-height:1;
+}
+.section-title.orange{
+  background:linear-gradient(135deg,#FF6B2B,#ffb347);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-shadow:none;
+  filter:drop-shadow(0 0 20px rgba(255,107,43,0.4));
+}
+.section-title.green{
+  background:linear-gradient(135deg,#22ff88,#00d4aa);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 20px rgba(34,255,136,0.4));
+}
+.section-title.blue{
+  background:linear-gradient(135deg,#3b9eff,#a855f7);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 20px rgba(59,158,255,0.4));
+}
+.section-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,107,43,0.3),transparent)}
+
+/* LEGEND */
+.legend{display:flex;gap:1rem;margin-bottom:0.75rem;flex-wrap:wrap;align-items:center}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:10px;color:rgba(245,240,232,0.4);text-transform:uppercase;letter-spacing:1px}
+.leg-pip{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.leg-pip.sq{border-radius:2px}
+
+/* ADD ROW */
+.add-row{display:flex;gap:8px;margin-bottom:1rem;align-items:center}
+.add-row input,.add-row select{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,107,43,0.15);
+  border-radius:10px;
+  color:#F5F0E8;font-family:'Barlow',sans-serif;font-size:13px;
+  padding:10px 14px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;
+}
+.add-row input{flex:1}
+.add-row input:focus{border-color:rgba(255,107,43,0.5);box-shadow:0 0 16px rgba(255,107,43,0.1)}
+.add-row select{flex:0 0 140px;cursor:pointer}
+.add-row select.status-sel{flex:0 0 130px}
+.add-task-btn{
+  background:linear-gradient(135deg,#FF6B2B,#ff9a5c);
+  border:none;color:#060608;
+  font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;
+  padding:10px 22px;border-radius:10px;cursor:pointer;flex-shrink:0;
+  transition:all 0.2s;
+  box-shadow:0 0 20px rgba(255,107,43,0.3);
+}
+.add-task-btn:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(255,107,43,0.5)}
+
+/* PANELS */
+.biz-panel{
+  background:linear-gradient(135deg,rgba(59,158,255,0.06),rgba(168,85,247,0.06));
+  border:1px solid rgba(59,158,255,0.2);
+  border-radius:14px;overflow:hidden;margin-bottom:1rem;
+  box-shadow:0 0 40px rgba(59,158,255,0.05);
+}
+.market-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+
+.col-wrap{}
+.col-label{
+  font-size:10px;text-transform:uppercase;letter-spacing:2.5px;
+  color:rgba(245,240,232,0.35);margin-bottom:6px;padding-left:2px;
+  font-family:'Bebas Neue',sans-serif;font-size:13px;
+}
+
+.tampa-panel-wrap{
+  background:linear-gradient(135deg,rgba(255,107,43,0.07),rgba(255,183,77,0.04));
+  border:1px solid rgba(255,107,43,0.2);
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 0 30px rgba(255,107,43,0.06);
+}
+.miami-panel-wrap{
+  background:linear-gradient(135deg,rgba(34,255,136,0.06),rgba(0,212,170,0.04));
+  border:1px solid rgba(34,255,136,0.18);
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 0 30px rgba(34,255,136,0.05);
+}
+
+.task-row{
+  display:flex;align-items:center;gap:8px;
+  padding:0.42rem 0.9rem;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  transition:background 0.15s;position:relative;
+}
+.task-row:last-child{border-bottom:none}
+.task-row:hover{background:rgba(255,255,255,0.04)}
+.task-row.done-row .task-text{text-decoration:line-through;color:rgba(245,240,232,0.25)}
+
+.pip-btn{
+  width:10px;height:10px;border-radius:50%;border:none;cursor:pointer;
+  flex-shrink:0;padding:0;transition:transform 0.15s,box-shadow 0.2s;
+}
+.pip-btn:hover{transform:scale(1.4)}
+.pip-btn.inprog{background:#22ff88;box-shadow:0 0 8px rgba(34,255,136,0.8),0 0 16px rgba(34,255,136,0.4)}
+.pip-btn.pending{background:rgba(245,240,232,0.15);border:1px solid rgba(245,240,232,0.2)}
+.pip-btn.done{background:#b8860b;box-shadow:0 0 6px rgba(184,134,11,0.6)}
+.pip-btn.delayed{background:#FF6B2B;box-shadow:0 0 8px rgba(255,107,43,0.8),0 0 16px rgba(255,107,43,0.4)}
+.pip-btn.cancelled{background:#ef4444;border-radius:2px;box-shadow:0 0 8px rgba(239,68,68,0.6)}
+
+.task-text{flex:1;font-size:12px;color:rgba(245,240,232,0.82);line-height:1.3}
+
+.done-check{
+  width:15px;height:15px;border-radius:4px;
+  border:1px solid rgba(245,240,232,0.1);
+  background:transparent;cursor:pointer;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:transparent;transition:all 0.15s;user-select:none;
+}
+.done-check:hover{border-color:rgba(184,134,11,0.6);color:rgba(184,134,11,0.5)}
+.task-row.done-row .done-check{background:rgba(184,134,11,0.15);border-color:rgba(184,134,11,0.5);color:#b8860b}
+
+/* STATUS MENU */
+.pip-menu{
+  display:none;position:fixed;
+  background:#111114;
+  border:1px solid rgba(255,107,43,0.25);
+  border-radius:12px;padding:6px;z-index:1000;min-width:155px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.8),0 0 30px rgba(255,107,43,0.08);
+}
+.pip-menu.open{display:block}
+.pip-option{
+  display:flex;align-items:center;gap:9px;
+  padding:8px 10px;border-radius:7px;cursor:pointer;
+  font-size:12px;color:rgba(245,240,232,0.75);
+  white-space:nowrap;transition:background 0.1s;
+}
+.pip-option:hover{background:rgba(255,255,255,0.07)}
+.pip-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.pip-dot.sq{border-radius:2px}
+
+/* SYNC NOTE */
+.sync-note{font-size:11px;color:rgba(245,240,232,0.18);text-align:right;margin-bottom:2rem;letter-spacing:0.5px}
+
+/* COMPLETED */
+.done-panel-wrap{
+  background:linear-gradient(135deg,rgba(168,85,247,0.05),rgba(59,158,255,0.04));
+  border:1px solid rgba(168,85,247,0.15);
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 0 30px rgba(168,85,247,0.05);
+}
+.done-row{
+  display:flex;align-items:center;gap:10px;
+  padding:0.55rem 1.1rem;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  transition:background 0.1s;
+}
+.done-row:last-child{border-bottom:none}
+.done-row:hover{background:rgba(255,255,255,0.02)}
+.done-pip{width:7px;height:7px;border-radius:50%;background:#b8860b;flex-shrink:0;opacity:0.7}
+.done-row .task-text{font-size:12px;color:rgba(245,240,232,0.28);text-decoration:line-through;flex:1}
+.done-market-tag{font-size:9px;color:rgba(168,85,247,0.7);text-transform:uppercase;letter-spacing:1.5px;flex-shrink:0;background:rgba(168,85,247,0.1);border:0.5px solid rgba(168,85,247,0.2);padding:2px 8px;border-radius:4px}
+.done-market-tag.tampa{color:rgba(255,107,43,0.7);background:rgba(255,107,43,0.08);border-color:rgba(255,107,43,0.2)}
+.done-market-tag.miami{color:rgba(34,255,136,0.7);background:rgba(34,255,136,0.07);border-color:rgba(34,255,136,0.2)}
+.done-date{font-size:11px;color:rgba(245,240,232,0.18);flex-shrink:0;margin-left:4px}
+.hidden-done{display:none}
+.done-panel-wrap.expanded .hidden-done{display:flex}
+.expand-done-btn{
+  font-size:11px;letter-spacing:0.5px;
+  color:rgba(168,85,247,0.6);background:transparent;border:none;cursor:pointer;
+  font-family:'Barlow',sans-serif;margin-top:7px;transition:color 0.2s;
+}
+.expand-done-btn:hover{color:rgba(168,85,247,1)}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,43,0.2),rgba(168,85,247,0.2),transparent);margin:2.5rem 0}
+
+/* TOOLS */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-top:1rem}
+.tool-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(245,240,232,0.07);
+  border-radius:14px;padding:1.15rem;cursor:pointer;
+  transition:all 0.25s;text-decoration:none;display:block;
+  position:relative;overflow:hidden;
+}
+.tool-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(59,158,255,0.06),rgba(168,85,247,0.06));
+  opacity:0;transition:opacity 0.25s;
+}
+.tool-card:hover{border-color:rgba(59,158,255,0.3);transform:translateY(-3px);box-shadow:0 8px 30px rgba(59,158,255,0.1)}
+.tool-card:hover::after{opacity:1}
+.tool-icon{font-size:22px;margin-bottom:8px;line-height:1;position:relative;z-index:1}
+.tool-name{font-size:13px;font-weight:500;color:rgba(245,240,232,0.85);margin-bottom:2px;position:relative;z-index:1}
+.tool-desc{font-size:11px;color:rgba(245,240,232,0.3);position:relative;z-index:1}
+.tool-badge{
+  display:inline-block;font-size:9px;text-transform:uppercase;letter-spacing:1px;
+  background:rgba(59,158,255,0.08);color:rgba(59,158,255,0.5);
+  padding:2px 7px;border-radius:4px;margin-top:6px;
+  border:0.5px solid rgba(59,158,255,0.15);position:relative;z-index:1;
+}
+
+/* ═══════════════ MOBILE ═══════════════ */
+@media(max-width:640px){
+  header{padding:0.85rem 1.1rem}
+  header img{height:38px}
+  .status-pill{font-size:9px;padding:5px 10px}
+
+  .container{padding:1.25rem 1rem}
+
+  /* Goal card — stack vertically */
+  .goal-card{flex-direction:column;gap:1rem;padding:1.25rem 1.1rem;margin-bottom:1.75rem}
+  .goal-deadline{text-align:left}
+  .goal-text{font-size:28px}
+  .trophy{font-size:2.2rem}
+  .trophy-wrap{width:52px;height:52px}
+
+  /* Add row — wrap */
+  .add-row{flex-wrap:wrap}
+  .add-row input{flex:1 1 100%}
+  .add-row select{flex:1 1 calc(50% - 4px)}
+  .add-row select.status-sel{flex:1 1 calc(50% - 4px)}
+  .add-task-btn{flex:1 1 100%;text-align:center}
+
+  /* Market cols — stack */
+  .market-cols{grid-template-columns:1fr}
+
+  /* Section titles */
+  .section-title{font-size:24px}
+
+  /* Tools grid — 2 col on mobile */
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* Status menu — anchor to bottom of screen on mobile */
+  .pip-menu{
+    position:fixed !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+    bottom:1.5rem !important;
+    top:auto !important;
+    min-width:200px;
+    width:calc(100% - 2rem);
+    max-width:280px;
+  }
+
+  /* Done row — handle overflow */
+  .done-row{flex-wrap:wrap;gap:6px}
+  .done-market-tag{margin-left:auto}
+
+  /* Task text sizing */
+  .task-text{font-size:13px}
+}
+</style>
+</head>
+<body>
+<div class="glow-tl"></div>
+<div class="glow-tr"></div>
+<div class="glow-b"></div>
+
+<header>
+  <img src="https://goodtroubleglobal.com/logo2.png" alt="Good Trouble" style="height:52px;width:auto;object-fit:contain;mix-blend-mode:screen">
+  <div class="status-pill"><div class="status-dot"></div>Healthy</div>
+</header>
+
+<div class="container">
+
+  <!-- GOAL -->
+  <div class="goal-card">
+    <div class="trophy-wrap"><div class="trophy">🏆</div></div>
+    <div class="goal-body">
+      <div class="goal-label">Main Goal</div>
+      <div class="goal-text">Sign First Client</div>
+      <div class="obj-label">Objectives</div>
+      <div class="obj-item"><div class="obj-circle"></div>Meet with 10 spa owners</div>
+    </div>
+    <div class="goal-deadline">
+      <div class="deadline-val">End of Week</div>
+      <div class="deadline-date">Jun 28, 2026</div>
+    </div>
+  </div>
+
+  <!-- TASKS -->
+  <div class="section-block">
+    <div class="section-hdr">
+      <span class="section-icon">⚡</span>
+      <div class="section-title orange">Tasks</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="legend">
+      <div class="leg-item"><div class="leg-pip" style="background:#22ff88;box-shadow:0 0 6px rgba(34,255,136,0.6)"></div>In progress</div>
+      <div class="leg-item"><div class="leg-pip" style="background:rgba(245,240,232,0.2)"></div>Pending</div>
+      <div class="leg-item"><div class="leg-pip" style="background:#b8860b;box-shadow:0 0 5px rgba(184,134,11,0.5)"></div>Done</div>
+      <div class="leg-item"><div class="leg-pip" style="background:#FF6B2B;box-shadow:0 0 6px rgba(255,107,43,0.6)"></div>Delayed</div>
+      <div class="leg-item"><div class="leg-pip sq" style="background:#ef4444;box-shadow:0 0 5px rgba(239,68,68,0.5)"></div>Fuck this</div>
+    </div>
+
+    <div class="add-row">
+      <input type="text" id="new-task" placeholder="New task..." />
+      <select id="new-col">
+        <option value="biz">General</option>
+        <option value="tampa">Tampa</option>
+        <option value="miami">Miami</option>
+      </select>
+      <select id="new-status" class="status-sel">
+        <option value="inprog">In progress</option>
+        <option value="pending" selected>Pending</option>
+      </select>
+      <button class="add-task-btn" onclick="addTask()">Add</button>
+    </div>
+
+    <!-- BUSINESS / GENERAL -->
+    <div class="col-label" style="background:linear-gradient(135deg,#3b9eff,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px rgba(59,158,255,0.5));margin-bottom:8px">⬡ General</div>
+    <div class="biz-panel" id="biz-panel">
+      <div class="task-row" id="b1"><button class="pip-btn done" onclick="openMenu(event,'b1','biz')"></button><span class="task-text">LLC Creation</span><div class="done-check" onclick="markDone('b1','biz')">✓</div></div>
+      <div class="task-row" id="b2"><button class="pip-btn done" onclick="openMenu(event,'b2','biz')"></button><span class="task-text">Contract Creation</span><div class="done-check" onclick="markDone('b2','biz')">✓</div></div>
+      <div class="task-row" id="b3"><button class="pip-btn inprog" onclick="openMenu(event,'b3','biz')"></button><span class="task-text">Brand Image</span><div class="done-check" onclick="markDone('b3','biz')">✓</div></div>
+      <div class="task-row" id="b4"><button class="pip-btn pending" onclick="openMenu(event,'b4','biz')"></button><span class="task-text">Website — full launch</span><div class="done-check" onclick="markDone('b4','biz')">✓</div></div>
+      <div class="task-row" id="b5"><button class="pip-btn inprog" onclick="openMenu(event,'b5','biz')"></button><span class="task-text">Internal hub deployment</span><div class="done-check" onclick="markDone('b5','biz')">✓</div></div>
+    </div>
+
+    <!-- MARKET COLS -->
+    <div class="market-cols">
+      <div class="col-wrap">
+        <div class="col-label" style="background:linear-gradient(135deg,#FF6B2B,#ffb347);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px rgba(255,107,43,0.6))">⬡ Tampa — Alex</div>
+        <div class="tampa-panel-wrap" id="tampa-panel">
+          <div class="task-row" id="t1"><button class="pip-btn inprog" onclick="openMenu(event,'t1','tampa')"></button><span class="task-text">Cold outreach follow-ups — top 10</span><div class="done-check" onclick="markDone('t1','tampa')">✓</div></div>
+          <div class="task-row" id="t2"><button class="pip-btn inprog" onclick="openMenu(event,'t2','tampa')"></button><span class="task-text">Demo app creator — hub integration</span><div class="done-check" onclick="markDone('t2','tampa')">✓</div></div>
+          <div class="task-row" id="t3"><button class="pip-btn pending" onclick="openMenu(event,'t3','tampa')"></button><span class="task-text">Book first client audit</span><div class="done-check" onclick="markDone('t3','tampa')">✓</div></div>
+          <div class="task-row" id="t4"><button class="pip-btn pending" onclick="openMenu(event,'t4','tampa')"></button><span class="task-text">Field walk-ins — Tampa med spas</span><div class="done-check" onclick="markDone('t4','tampa')">✓</div></div>
+        </div>
+      </div>
+      <div class="col-wrap">
+        <div class="col-label" style="background:linear-gradient(135deg,#22ff88,#00d4aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px rgba(34,255,136,0.6))">⬡ Miami — Augie</div>
+        <div class="miami-panel-wrap" id="miami-panel">
+          <div class="task-row" id="m1"><button class="pip-btn inprog" onclick="openMenu(event,'m1','miami')"></button><span class="task-text">Miami prospect research — build pipeline</span><div class="done-check" onclick="markDone('m1','miami')">✓</div></div>
+          <div class="task-row" id="m2"><button class="pip-btn pending" onclick="openMenu(event,'m2','miami')"></button><span class="task-text">Field walk-ins — Miami med spas</span><div class="done-check" onclick="markDone('m2','miami')">✓</div></div>
+          <div class="task-row" id="m3"><button class="pip-btn pending" onclick="openMenu(event,'m3','miami')"></button><span class="task-text">Review demo app for Miami prospects</span><div class="done-check" onclick="markDone('m3','miami')">✓</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sync-note">Auto-updated by Claude · Cleaned up daily</div>
+  </div>
+
+  <!-- STATUS MENU -->
+  <div class="pip-menu" id="pipMenu">
+    <div class="pip-option" onclick="setStatus('inprog')"><div class="pip-dot" style="background:#22ff88;box-shadow:0 0 5px #22ff88"></div>In progress</div>
+    <div class="pip-option" onclick="setStatus('pending')"><div class="pip-dot" style="background:rgba(245,240,232,0.25)"></div>Pending</div>
+    <div class="pip-option" onclick="setStatus('done')"><div class="pip-dot" style="background:#b8860b"></div>Done</div>
+    <div class="pip-option" onclick="setStatus('delayed')"><div class="pip-dot" style="background:#FF6B2B;box-shadow:0 0 5px #FF6B2B"></div>Delayed</div>
+    <div class="pip-option" onclick="setStatus('cancelled')" style="color:rgba(239,68,68,0.9)"><div class="pip-dot sq" style="background:#ef4444"></div>Burn this shit</div>
+  </div>
+
+  <!-- COMPLETED -->
+  <div class="section-block">
+    <div class="section-hdr">
+      <span class="section-icon">✅</span>
+      <div class="section-title green">Completed</div>
+      <div class="section-line" style="background:linear-gradient(90deg,rgba(34,255,136,0.3),transparent)"></div>
+      <button class="expand-done-btn" id="expand-btn" onclick="toggleDone()">Show more ↓</button>
+    </div>
+    <div class="done-panel-wrap" id="done-panel">
+      <div class="done-row"><div class="done-pip"></div><span class="task-text">Good Trouble hub built</span><span class="done-market-tag">General</span><span class="done-date">Jun 24</span></div>
+      <div class="done-row"><div class="done-pip"></div><span class="task-text">Pretty URLs enabled on Netlify</span><span class="done-market-tag">General</span><span class="done-date">Jun 24</span></div>
+      <div class="done-row"><div class="done-pip"></div><span class="task-text">10 personalized cold outreach drafts sent</span><span class="done-market-tag tampa">Tampa</span><span class="done-date">Jun 23</span></div>
+      <div class="done-row"><div class="done-pip"></div><span class="task-text">Top 10 Tampa demo apps built + deployed</span><span class="done-market-tag tampa">Tampa</span><span class="done-date">Jun 22</span></div>
+      <div class="done-row"><div class="done-pip"></div><span class="task-text">Miami market scoped — prospect list started</span><span class="done-market-tag miami">Miami</span><span class="done-date">Jun 22</span></div>
+      <div class="done-row"><div class="done-pip"></div><span class="task-text">goodtroubleglobal.com deployed</span><span class="done-market-tag">General</span><span class="done-date">Jun 21</span></div>
+      <div class="done-row hidden-done"><div class="done-pip"></div><span class="task-text">Client contracts written + attorney reviewed</span><span class="done-market-tag">General</span><span class="done-date">Jun 21</span></div>
+      <div class="done-row hidden-done"><div class="done-pip"></div><span class="task-text">EIN + business bank account opened</span><span class="done-market-tag">General</span><span class="done-date">Jun 20</span></div>
+      <div class="done-row hidden-done"><div class="done-pip"></div><span class="task-text">LLC filed + approved</span><span class="done-market-tag">General</span><span class="done-date">Jun 20</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TOOLS -->
+  <div class="section-block">
+    <div class="section-hdr">
+      <span class="section-icon">🛠</span>
+      <div class="section-title blue">Tools</div>
+      <div class="section-line" style="background:linear-gradient(90deg,rgba(59,158,255,0.3),transparent)"></div>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tool-icon">📅</div><div class="tool-name">Calendar</div><div class="tool-desc">Visits, audits, calls</div><div class="tool-badge">Coming soon</div></div>
+      <div class="tool-card"><div class="tool-icon">🎨</div><div class="tool-name">Branded Assets</div><div class="tool-desc">Drive links, logos, templates</div><div class="tool-badge">Coming soon</div></div>
+      <div class="tool-card"><div class="tool-icon">✉️</div><div class="tool-name">Cold Outreach</div><div class="tool-desc">Prospect list, drafts, status</div><div class="tool-badge">Coming soon</div></div>
+      <div class="tool-card"><div class="tool-icon">🏥</div><div class="tool-name">Potential Clients</div><div class="tool-desc">Tampa + Miami pipeline</div><div class="tool-badge">Coming soon</div></div>
+      <div class="tool-card"><div class="tool-icon">📱</div><div class="tool-name">Demo App Creator</div><div class="tool-desc">Build personalized demos</div><div class="tool-badge">Coming soon</div></div>
+      <div class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Analytics</div><div class="tool-desc">GA4 · site + demo performance</div><div class="tool-badge">Coming soon</div></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNyr3TiRKCIfaxPv3bMZeRVKODoAVVbxoVyjf8D83ntYZu-dflg3J9w5BxXON5CBOjBQ/exec';
+let activeRowId=null, activeMarket=null, doneExpanded=false, taskCounter=1000;
+
+// ── SHEETS API ──────────────────────────────────────────────
+async function sheetGet() {
+  try {
+    const r = await fetch(SCRIPT_URL);
+    const d = await r.json();
+    return d.tasks || [];
+  } catch(e) { console.error('sheetGet failed', e); return []; }
+}
+
+async function sheetPost(payload) {
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'text/plain' } // avoids CORS preflight
+    });
+  } catch(e) { console.error('sheetPost failed', e); }
+}
+
+// ── RENDER A TASK ROW ────────────────────────────────────────
+function makeRow(id, text, col, status) {
+  const row = document.createElement('div');
+  row.className = 'task-row' + (status === 'done' ? ' done-row' : '');
+  row.id = id;
+  row.innerHTML = `<button class="pip-btn ${status}" onclick="openMenu(event,'${id}','${col}')"></button><span class="task-text">${text}</span><div class="done-check" onclick="markDone('${id}','${col}')">✓</div>`;
+  return row;
+}
+
+// ── LOAD FROM SHEET ON PAGE OPEN ────────────────────────────
+async function loadTasks() {
+  const tasks = await sheetGet();
+  if (!tasks.length) return;
+  // Clear dynamic tasks from panels (keep hardcoded ones with static IDs b1-b5 etc)
+  // We'll append sheet tasks that don't already exist in DOM
+  tasks.forEach(t => {
+    if (document.getElementById(t.id)) {
+      // Update status on existing hardcoded row
+      const btn = document.getElementById(t.id).querySelector('.pip-btn');
+      if (btn) btn.className = 'pip-btn ' + t.status;
+      return;
+    }
+    const panelId = t.column + '-panel';
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    panel.appendChild(makeRow(t.id, t.text, t.column, t.status));
+  });
+}
+
+// ── OPEN STATUS MENU ────────────────────────────────────────
+function openMenu(e, rowId, market) {
+  e.stopPropagation();
+  const menu = document.getElementById('pipMenu');
+  const rect = e.currentTarget.getBoundingClientRect();
+  if (activeRowId === rowId && menu.classList.contains('open')) {
+    menu.classList.remove('open'); activeRowId = null; return;
+  }
+  activeRowId = rowId; activeMarket = market;
+  // Mobile: center bottom. Desktop: near button.
+  if (window.innerWidth <= 640) {
+    menu.style.left = ''; menu.style.top = '';
+  } else {
+    menu.style.left = Math.min(rect.left, window.innerWidth - 180) + 'px';
+    menu.style.top = (rect.bottom + 6) + 'px';
+  }
+  menu.classList.add('open');
+}
+
+// ── SET STATUS ───────────────────────────────────────────────
+async function setStatus(status) {
+  if (!activeRowId) return;
+  const row = document.getElementById(activeRowId);
+  if (!row) return;
+  document.getElementById('pipMenu').classList.remove('open');
+
+  if (status === 'cancelled') {
+    row.style.transition = 'opacity 0.3s,transform 0.3s';
+    row.style.opacity = '0'; row.style.transform = 'translateX(-10px)';
+    setTimeout(() => row.remove(), 320);
+    await sheetPost({ action: 'delete', task: { id: activeRowId } });
+    activeRowId = null; return;
+  }
+
+  row.querySelector('.pip-btn').className = 'pip-btn ' + status;
+  if (status === 'done') row.classList.add('done-row');
+  else row.classList.remove('done-row');
+
+  await sheetPost({ action: 'update', task: { id: activeRowId, status } });
+  activeRowId = null;
+}
+
+// ── MARK DONE CHECKBOX ───────────────────────────────────────
+async function markDone(rowId, market) {
+  const row = document.getElementById(rowId);
+  if (!row) return;
+  const text = row.querySelector('.task-text').textContent;
+  const isDone = row.classList.contains('done-row');
+  const newStatus = isDone ? 'pending' : 'done';
+
+  if (isDone) {
+    row.classList.remove('done-row');
+    row.querySelector('.pip-btn').className = 'pip-btn pending';
+  } else {
+    row.classList.add('done-row');
+    row.querySelector('.pip-btn').className = 'pip-btn done';
+    const panel = document.getElementById('done-panel');
+    const label = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const marketLabels = { biz: 'General', tampa: 'Tampa', miami: 'Miami' };
+    const mClass = { biz: '', tampa: 'tampa', miami: 'miami' }[market] || '';
+    const newRow = document.createElement('div');
+    newRow.className = 'done-row';
+    newRow.innerHTML = `<div class="done-pip"></div><span class="task-text">${text}</span><span class="done-market-tag ${mClass}">${marketLabels[market] || market}</span><span class="done-date">${label}</span>`;
+    panel.insertBefore(newRow, panel.firstChild);
+  }
+
+  await sheetPost({ action: 'update', task: { id: rowId, status: newStatus } });
+}
+
+// ── ADD TASK ─────────────────────────────────────────────────
+async function addTask() {
+  const input = document.getElementById('new-task');
+  const text = input.value.trim();
+  const col = document.getElementById('new-col').value;
+  const status = document.getElementById('new-status').value;
+  if (!text) return;
+
+  taskCounter++;
+  const id = col[0] + taskCounter;
+  const panel = document.getElementById(col + '-panel');
+  if (!panel) return;
+
+  // Optimistic UI
+  panel.appendChild(makeRow(id, text, col, status));
+  input.value = '';
+
+  const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  await sheetPost({ action: 'add', task: { id, text, column: col, status, date } });
+}
+
+// ── TOGGLE DONE PANEL ────────────────────────────────────────
+function toggleDone() {
+  doneExpanded = !doneExpanded;
+  document.getElementById('done-panel').classList.toggle('expanded', doneExpanded);
+  document.getElementById('expand-btn').textContent = doneExpanded ? 'Show less ↑' : 'Show more ↓';
+}
+
+// ── EVENT LISTENERS ──────────────────────────────────────────
+document.getElementById('new-task').addEventListener('keydown', e => { if (e.key === 'Enter') addTask(); });
+document.addEventListener('click', e => {
+  const menu = document.getElementById('pipMenu');
+  if (!menu.contains(e.target) && !e.target.classList.contains('pip-btn')) {
+    menu.classList.remove('open'); activeRowId = null;
+  }
+});
+
+// ── INIT ─────────────────────────────────────────────────────
+loadTasks();
+</script>
+</body>
+</html>

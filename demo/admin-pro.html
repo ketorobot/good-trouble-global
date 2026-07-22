@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0C">
+<title>Admin Pro — Tampa Med Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0A0A0C;--surface:#15131A;--surface-2:#1E1B25;--surface-3:#2A2533;
+  --border:rgba(255,107,43,0.22);--border-dim:rgba(245,238,240,0.09);
+  --orange:#FF6B2B;--orange-light:#FFB07A;--orange-glow:rgba(255,107,43,0.28);
+  --pink:#FF2D78;--gold:#E0B25C;--green:#22D58A;--amber:#FFC53D;--blue:#5BA8FF;--red:#FF5247;--purple:#A98BFF;
+  --text:#FBF7F4;--text-2:#D8CEC8;--text-muted:#9E9088;--text-dim:#5A4E48;
+  --radius:14px;--radius-lg:18px;
+  --font-d:"Playfair Display",Georgia,serif;--font-b:"Barlow",sans-serif;--font-l:"Barlow Condensed",sans-serif;--font-m:"JetBrains Mono",monospace;
+  --tr:0.22s cubic-bezier(.2,.7,.3,1);
+}
+html{background:var(--bg)}
+html,body{height:100%;color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+  radial-gradient(ellipse 90% 60% at 85% -10%,rgba(255,107,43,0.10),transparent 60%),
+  radial-gradient(ellipse 70% 55% at 0% 105%,rgba(255,60,20,0.08),transparent 60%),
+  radial-gradient(ellipse 55% 45% at 100% 70%,rgba(122,92,255,0.06),transparent 65%),
+  linear-gradient(160deg,#0D0A11 0%,#0A0A0C 45%,#0C080A 100%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='194' viewBox='0 0 112 194'%3E%3Cg fill='none' stroke='%23FF6B2B' stroke-opacity='0.06' stroke-width='1'%3E%3Cpath d='M56 1 L110 32 L110 96 L56 129 L2 96 L2 32 Z'/%3E%3Cpath d='M0 98 L56 129 L56 193'/%3E%3Cpath d='M112 98 L56 129'/%3E%3C/g%3E%3C/svg%3E")}
+.sec{display:flex;align-items:center;gap:11px;margin:24px 2px 12px}
+.sec-t{font-family:var(--font-l);font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--orange-light);white-space:nowrap}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.sec-r{font-family:var(--font-m);font-size:11px;color:var(--text-dim);white-space:nowrap}
+.ai-note{color:var(--green);font-size:12px;font-weight:600}
+.offer-ta{width:100%;background:var(--surface);border:1px solid var(--border-dim);border-radius:10px;padding:12px;color:var(--text);font-family:var(--font-b);font-size:14px;line-height:1.5;min-height:104px;resize:vertical}
+.app{max-width:760px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding-bottom:92px}
+/* ---------- header ---------- */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 10px}
+.hdr-brand{display:flex;align-items:center;gap:10px}
+.hdr-logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(140deg,var(--orange),#E8420A);display:flex;align-items:center;justify-content:center;font-family:var(--font-l);font-weight:700;font-size:17px;color:#fff;letter-spacing:0.02em;box-shadow:0 4px 18px var(--orange-glow)}
+.hdr-name{font-family:var(--font-l);font-size:19px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+.hdr-sub{font-size:11.5px;color:var(--text-muted);letter-spacing:0.04em;margin-top:-2px}
+.hdr-live{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border-dim);border-radius:99px;padding:7px 13px;font-family:var(--font-l);font-size:11.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+/* ---------- views ---------- */
+.view{display:none;flex:1;padding:6px 18px 24px;animation:fadein .3s ease}
+.view.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.greet{font-family:var(--font-d);font-size:29px;font-weight:600;margin:14px 2px 2px}
+.greet-sub{color:var(--text-muted);font-size:15px;margin:0 2px 18px}
+/* ---------- big KPIs ---------- */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:18px 14px;text-align:center;position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.03),transparent 40%);pointer-events:none}
+.kpi-num{font-family:var(--font-m);font-size:clamp(24px,6.4vw,34px);font-weight:500;letter-spacing:-0.02em}
+.kpi-lbl{font-family:var(--font-l);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-top:6px}
+.kpi-trend{font-size:12px;margin-top:4px;font-weight:600}
+.up{color:var(--green)}.dn{color:var(--red)}
+/* ---------- cards ---------- */
+.card{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}
+.card-title{font-family:var(--font-l);font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.night-row{display:flex;align-items:flex-start;gap:13px;padding:11px 0;border-bottom:1px solid var(--border-dim)}
+.night-row:last-child{border-bottom:0;padding-bottom:0}
+.night-ic{width:38px;height:38px;flex:none;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;background:var(--surface-2)}
+.night-t{font-size:15.5px;font-weight:600}
+.night-d{font-size:13.5px;color:var(--text-muted);margin-top:1px}
+.night-val{margin-left:auto;font-family:var(--font-m);font-size:15px;color:var(--green);white-space:nowrap;padding-top:8px}
+/* smart suggestion */
+.suggest{background:linear-gradient(135deg,rgba(255,107,43,0.13),rgba(255,45,120,0.07));border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}
+.suggest-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-l);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange-light);margin-bottom:8px}
+.suggest-txt{font-size:16.5px;line-height:1.45}
+.suggest-txt b{color:var(--orange-light)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-l);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:0;border-radius:12px;cursor:pointer;transition:var(--tr)}
+.btn-primary{background:linear-gradient(140deg,var(--orange),#E8420A);color:#fff;font-size:15px;padding:14px 22px;box-shadow:0 6px 22px var(--orange-glow);margin-top:14px;width:100%}
+.btn-primary:active{transform:scale(0.97)}
+.btn-ghost{background:var(--surface-2);color:var(--text-2);font-size:13px;padding:10px 16px;border:1px solid var(--border-dim)}
+/* schedule preview */
+.appt{display:flex;align-items:center;gap:13px;padding:12px 0;border-bottom:1px solid var(--border-dim)}
+.appt:last-child{border-bottom:0}
+.appt-time{font-family:var(--font-m);font-size:13.5px;color:var(--orange-light);width:74px;flex:none}
+.appt-ava{width:40px;height:40px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-l);font-weight:700;font-size:14px;color:#fff}
+.appt-n{font-size:15.5px;font-weight:600}
+.appt-s{font-size:13px;color:var(--text-muted)}
+.appt-tag{margin-left:auto;font-family:var(--font-l);font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:99px;white-space:nowrap}
+.tag-ai{background:rgba(34,213,138,0.12);color:var(--green);border:1px solid rgba(34,213,138,0.3)}
+.tag-conf{background:var(--surface-2);color:var(--text-muted);border:1px solid var(--border-dim)}
+.tag-new{background:rgba(255,107,43,0.14);color:var(--orange-light);border:1px solid var(--border)}
+/* ---------- assistant view ---------- */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin:8px 0 14px}
+.day{background:var(--surface);border:1px solid var(--border-dim);border-radius:12px;padding:10px 4px;text-align:center;cursor:pointer;transition:var(--tr)}
+.day.sel{border-color:var(--orange);background:rgba(255,107,43,0.10);box-shadow:0 0 0 1px var(--orange) inset}
+.day-dow{font-family:var(--font-l);font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)}
+.day.sel .day-dow{color:var(--orange-light)}
+.day-num{font-family:var(--font-m);font-size:17px;margin-top:3px}
+.day-load{display:flex;justify-content:center;gap:2.5px;margin-top:6px;height:5px}
+.day-load i{width:5px;height:5px;border-radius:50%;background:var(--surface-3)}
+.day-load i.on{background:var(--orange)}
+.sched-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px}
+.sched-day{font-family:var(--font-d);font-size:20px;font-weight:600}
+.sched-count{font-family:var(--font-m);font-size:12.5px;color:var(--text-muted)}
+#day-list .appt{animation:fadein .25s ease}
+.appt.flash{animation:bookflash 1.6s ease}
+@keyframes bookflash{0%{background:rgba(34,213,138,0.22);border-radius:12px}100%{background:transparent}}
+/* chat */
+.chat{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;margin-top:16px}
+.chat-hd{display:flex;align-items:center;gap:11px;padding:14px 16px;border-bottom:1px solid var(--border-dim);background:var(--surface-2)}
+.chat-ava{width:36px;height:36px;border-radius:50%;background:linear-gradient(140deg,var(--orange),var(--pink));display:flex;align-items:center;justify-content:center;font-size:16px}
+.chat-hd-n{font-size:15px;font-weight:700}
+.chat-hd-s{font-size:12px;color:var(--green);display:flex;align-items:center;gap:5px}
+.chat-msgs{padding:16px;display:flex;flex-direction:column;gap:10px;min-height:170px;max-height:340px;overflow-y:auto}
+.msg{max-width:82%;padding:11px 14px;border-radius:16px;font-size:14.5px;line-height:1.42;animation:fadein .25s ease}
+.msg.cl{align-self:flex-start;background:var(--surface-2);border-bottom-left-radius:5px}
+.msg.ai{align-self:flex-end;background:linear-gradient(140deg,rgba(255,107,43,0.20),rgba(255,45,120,0.12));border:1px solid var(--border);border-bottom-right-radius:5px}
+.msg.sys{align-self:center;max-width:95%;background:rgba(34,213,138,0.10);border:1px solid rgba(34,213,138,0.28);color:var(--green);font-size:13px;font-family:var(--font-m);text-align:center;border-radius:10px}
+.msg-who{font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:3px}
+.typing{align-self:flex-end;display:flex;gap:4px;padding:12px 16px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--orange-light);animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,100%{opacity:0.25}50%{opacity:1}}
+.chips{display:flex;flex-wrap:wrap;gap:9px;padding:14px 16px;border-top:1px solid var(--border-dim);background:var(--surface-2)}
+.chip{background:var(--surface-3);border:1px solid var(--border-dim);color:var(--text-2);border-radius:99px;padding:11px 16px;font-size:13.5px;font-weight:600;cursor:pointer;transition:var(--tr)}
+.chip:hover{border-color:var(--orange);color:var(--orange-light)}
+.chip:disabled{opacity:0.35;cursor:default}
+.chips-lbl{width:100%;font-family:var(--font-l);font-size:10.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim)}
+/* ---------- bottom nav ---------- */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;padding:10px 14px calc(12px + env(safe-area-inset-bottom))}
+.nav-inner{display:flex;gap:8px;background:rgba(21,19,26,0.92);backdrop-filter:blur(14px);border:1px solid var(--border-dim);border-radius:20px;padding:8px;width:100%;max-width:520px;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:transparent;border:0;border-radius:14px;padding:11px 6px;cursor:pointer;color:var(--text-muted);font-family:var(--font-l);font-size:12.5px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;transition:var(--tr)}
+.nav-btn .ic{font-size:21px}
+.nav-btn.active{background:linear-gradient(140deg,rgba(255,107,43,0.18),rgba(255,45,120,0.10));color:var(--orange-light);border:1px solid var(--border)}
+/* footer strip */
+.foot{padding:8px 18px 20px;text-align:center;font-size:12px;color:var(--text-dim)}
+.foot a{color:var(--orange-light);text-decoration:none;font-weight:600}
+@media(min-width:640px){.kpi-num{font-size:34px}.view{padding:6px 24px 24px}}
+
+/* MODULES SECTION */
+.mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:8px}
+.mod{background:linear-gradient(165deg,var(--surface-2),var(--surface));border:1px solid var(--border-dim);border-radius:14px;padding:14px 12px;cursor:pointer;position:relative;overflow:hidden;transition:all 0.2s;text-align:left}
+.mod::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:0;transition:opacity 0.2s}
+.mod:hover{border-color:var(--border);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,0.4),0 0 18px var(--orange-glow)}
+.mod:hover::before{opacity:1}
+.mod-ic{font-size:22px;line-height:1;margin-bottom:8px}
+.mod-n{font-family:var(--font-l);font-size:13px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--text)}
+.mod-d{font-size:11px;color:var(--text-muted);margin-top:4px;line-height:1.45}
+.mod-tag{position:absolute;top:10px;right:10px;font-family:var(--font-l);font-size:8px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:2px 7px;border-radius:10px;background:rgba(34,213,138,0.12);border:1px solid rgba(34,213,138,0.3);color:var(--green)}
+/* MODAL */
+.mmask{position:fixed;inset:0;z-index:500;background:rgba(6,6,8,0.78);backdrop-filter:blur(8px);display:none;align-items:flex-end;justify-content:center}
+.mmask.open{display:flex}
+.mbox{width:100%;max-width:560px;max-height:82vh;overflow-y:auto;background:linear-gradient(170deg,var(--surface-2),var(--surface));border:1px solid var(--border);border-radius:20px 20px 0 0;padding:20px 18px calc(20px + env(safe-area-inset-bottom));animation:mup 0.25s cubic-bezier(.2,.7,.3,1)}
+@keyframes mup{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.mbox-hd{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.mbox-ic{font-size:26px}
+.mbox-t{font-family:var(--font-l);font-size:17px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text);flex:1}
+.mbox-x{background:var(--surface-3);border:1px solid var(--border-dim);color:var(--text-muted);width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:14px}
+.mbox-sub{font-size:12px;color:var(--text-muted);margin-bottom:14px;line-height:1.5}
+.mfeed{display:flex;flex-direction:column;gap:8px;min-height:150px}
+.mline{background:var(--surface-3);border:1px solid var(--border-dim);border-left:3px solid var(--orange);border-radius:10px;padding:10px 12px;font-size:12px;color:var(--text-2);line-height:1.5;opacity:0;transform:translateY(6px);animation:lin 0.3s ease forwards}
+.mline b{color:var(--text)}
+.mline.win{border-left-color:var(--green)}
+.mline.win .mres{color:var(--green);font-family:var(--font-m);font-size:11px;font-weight:700;margin-top:3px;display:block}
+@keyframes lin{to{opacity:1;transform:none}}
+.mrun{margin-top:14px;width:100%;background:linear-gradient(140deg,var(--orange),#E85A1F);border:none;color:#fff;font-family:var(--font-l);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:13px;border-radius:11px;cursor:pointer;transition:all 0.2s}
+.mrun:disabled{opacity:0.85;cursor:default}
+
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="hdr">
+    <div class="hdr-brand">
+      <div class="hdr-logo">S</div>
+      <div>
+        <div class="hdr-name">Tampa Med Spa</div>
+        <div class="hdr-sub">Hyde Park · Tampa — powered by Good&nbsp;Trouble</div>
+      </div>
+    </div>
+    <div class="hdr-live"><span class="dot"></span>Live</div>
+  </div>
+
+  <!-- ============ HOME / BUSINESS HUB ============ -->
+  <div class="view active" id="v-hub">
+    <div class="greet">Good morning ☀️</div>
+    <div class="greet-sub">Here's your business at a glance. Everything below happened automatically.</div>
+
+    <div class="sec"><div class="sec-t">📊 Snapshot</div><div class="sec-line"></div><div class="sec-r">today</div></div>
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-num" style="color:var(--green)">$4,270</div>
+        <div class="kpi-lbl">Booked Today</div>
+        <div class="kpi-trend up">▲ 18% vs avg</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num" style="color:var(--blue)">12</div>
+        <div class="kpi-lbl">Appointments</div>
+        <div class="kpi-trend up">2 open slots</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num" style="color:var(--orange-light)">9</div>
+        <div class="kpi-lbl">New Bookings<br>This Week</div>
+        <div class="kpi-trend up">▲ 6 by AI</div>
+      </div>
+    </div>
+
+    <div class="sec"><div class="sec-t">📰 Latest Updates</div><div class="sec-line"></div><div class="sec-r">overnight</div></div>
+    <div class="card">
+      <div class="night-row">
+        <div class="night-ic">💬</div>
+        <div><div class="night-t">Answered 11 client messages</div><div class="night-d">Pricing, prep instructions, parking — all handled instantly</div></div>
+      </div>
+      <div class="night-row">
+        <div class="night-ic">📅</div>
+        <div><div class="night-t">Booked 3 new appointments</div><div class="night-d">Camila R. (Botox), Denise W. (HydraFacial), Priya S. (Consult)</div></div>
+        <div class="night-val">+$1,140</div>
+      </div>
+      <div class="night-row">
+        <div class="night-ic">🔁</div>
+        <div><div class="night-t">Filled a last-minute cancellation</div><div class="night-d">10:30 slot re-booked from the waitlist in 14 minutes</div></div>
+        <div class="night-val">+$385</div>
+      </div>
+    </div>
+
+    <div class="sec"><div class="sec-t">💡 Suggestions</div><div class="sec-line"></div></div>
+    <div class="suggest">
+      <div class="suggest-txt">Thursday 2:00–4:30 is wide open. I can reach out to the <b>14 clients</b> who usually book weekday afternoons with a <b>10% offer</b> — if you'd like.</div>
+      <button class="btn btn-primary" id="fill-btn" onclick="openOfferReview()">Yes — bring me to review</button>
+      <div id="offer-review" style="display:none;margin-top:14px">
+        <div style="font-family:var(--font-l);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Review the offer before it goes out — edit anything</div>
+        <textarea class="offer-ta" id="offer-text">Hi {first name} — we've missed you at Tampa Med Spa! Dr. Vega has a few openings this Thursday afternoon, and we'd love to treat you to 10% off any service. Want me to hold a spot for you?</textarea>
+        <button class="btn btn-primary" id="send-offer-btn" onclick="sendOffer()">Looks good — send to 14 clients</button>
+      </div>
+    </div>
+
+    <div class="sec"><div class="sec-t">📅 Upcoming</div><div class="sec-line"></div><div class="sec-r">next 3</div></div>
+    <div class="card">
+      <div class="appt">
+        <div class="appt-time">11:00 AM</div>
+        <div class="appt-ava" style="background:linear-gradient(140deg,#5BA8FF,#3D7BD8)">IM</div>
+        <div><div class="appt-n">Isabela Marques</div><div class="appt-s">Dermal Filler · Room 2</div></div>
+        <div class="appt-tag tag-conf">Confirmed</div>
+      </div>
+      <div class="appt">
+        <div class="appt-time">11:45 AM</div>
+        <div class="appt-ava" style="background:linear-gradient(140deg,#A98BFF,#7A5CFF)">DW</div>
+        <div><div class="appt-n">Denise Whitfield <span class="ai-note">(booked by AI)</span></div><div class="appt-s">HydraFacial · Room 1</div></div>
+        <div class="appt-tag tag-conf">Confirmed</div>
+      </div>
+      <div class="appt">
+        <div class="appt-time">1:15 PM</div>
+        <div class="appt-ava" style="background:linear-gradient(140deg,#FF2D78,#C2185B)">CR</div>
+        <div><div class="appt-n">Camila Reyes <span class="ai-note">(booked by AI)</span></div><div class="appt-s">Botox — 40 units · Room 2</div></div>
+        <div class="appt-tag tag-conf">Confirmed</div>
+      </div>
+      <button class="btn btn-primary" style="background:var(--surface-2);box-shadow:none;border:1px solid var(--border-dim);color:var(--text-2)" onclick="goTab('asst')">Open full schedule →</button>
+    </div>
+  </div>
+
+  <!-- ============ ASSISTANT (SCHEDULER + CHAT) ============ -->
+  <div class="view" id="v-asst">
+    <div class="greet" style="font-size:24px">Your week</div>
+    <div class="greet-sub">Tap a day. The assistant below books straight into this calendar.</div>
+
+    <div class="sec"><div class="sec-t">🗓 Schedule</div><div class="sec-line"></div><div class="sec-r">Jul 13–19</div></div>
+    <div class="week" id="week"></div>
+
+    <div class="card" style="margin-bottom:0">
+      <div class="sched-hdr">
+        <div class="sched-day" id="sched-day">Tuesday</div>
+        <div class="sched-count" id="sched-count"></div>
+      </div>
+      <div id="day-list"></div>
+    </div>
+
+    <div class="sec"><div class="sec-t">💬 AI Chat Agent</div><div class="sec-line"></div><div class="sec-r">live 24/7</div></div>
+    <div class="chat" style="margin-top:0">
+      <div class="chat-hd">
+        <div class="chat-ava">🤖</div>
+        <div>
+          <div class="chat-hd-n">Tampa Med Spa Assistant</div>
+          <div class="chat-hd-s"><span class="dot"></span>Answering clients 24/7</div>
+        </div>
+      </div>
+      <div class="chat-msgs" id="chat-msgs">
+        <div class="msg ai"><div class="msg-who">Assistant</div>This is a live view of my chat with your clients. Pick a scenario below and watch me handle it — anything I book lands on your calendar above, instantly.</div>
+      </div>
+      <div class="chips" id="chips">
+        <div class="chips-lbl">Try a real scenario</div>
+        <button class="chip" onclick="playScenario('book',this)">💉 Client wants to book Botox</button>
+        <button class="chip" onclick="playScenario('resched',this)">🔄 Client needs to reschedule</button>
+        <button class="chip" onclick="playScenario('night',this)">🌙 Question at 11:48 PM</button>
+      </div>
+    </div>
+  </div>
+
+  
+    <div class="sec"><div class="sec-t">🧩 Other Modules We Offer, Made to Order</div><div class="sec-line"></div><div class="sec-r">click for a demo</div></div>
+    <div class="greet-sub" style="margin:-2px 0 12px">Each one built into your platform on request. Click any module for a live demonstration.</div>
+    <div class="mods">
+      <button class="mod" onclick="openMod('frontdesk')"><div class="mod-ic">💬</div><div class="mod-n">Front Desk AI</div><div class="mod-d">Inquiries, confirmations &amp; follow-ups, 24/7</div></button>
+      <button class="mod" onclick="openMod('campaign')"><div class="mod-ic">🚀</div><div class="mod-n">Campaign Launcher</div><div class="mod-d">Targeted promos, built &amp; sent in minutes</div></button>
+      <button class="mod" onclick="openMod('reviews')"><div class="mod-ic">⭐</div><div class="mod-n">Review Engine</div><div class="mod-d">Happy clients go public, issues stay private</div></button>
+      <button class="mod" onclick="openMod('reactivation')"><div class="mod-ic">🔄</div><div class="mod-n">Reactivation</div><div class="mod-d">Win-backs timed to your service cycles</div></button>
+      <button class="mod" onclick="openMod('membership')"><div class="mod-ic">💳</div><div class="mod-n">Membership</div><div class="mod-d">Recurring revenue on autopilot</div></button>
+      <button class="mod" onclick="openMod('postvisit')"><div class="mod-ic">💌</div><div class="mod-n">Post-Visit</div><div class="mod-d">Aftercare &amp; rebooking, automatically</div></button>
+      <button class="mod" onclick="openMod('marketing')"><div class="mod-ic">📈</div><div class="mod-n">Marketing Intelligence</div><div class="mod-d">Know which clients will book next</div></button>
+      <button class="mod" onclick="openMod('social')"><div class="mod-ic">📱</div><div class="mod-n">Social Media</div><div class="mod-d">Content planned, drafted &amp; scheduled</div></button>
+      <button class="mod" onclick="openMod('consultiq')"><div class="mod-ic">🧠</div><div class="mod-n">ConsultIQ</div><div class="mod-d">Turn consults into closed treatments</div></button>
+      <button class="mod" onclick="openMod('inventory')"><div class="mod-ic">📦</div><div class="mod-n">Inventory</div><div class="mod-d">Never run out mid-week again</div></button>
+      <button class="mod" onclick="openMod('competitor')"><div class="mod-ic">🎯</div><div class="mod-n">Competitor Analysis</div><div class="mod-d">See your local market clearly</div></button>
+      <button class="mod" onclick="openMod('radar')"><div class="mod-ic">📡</div><div class="mod-n">Trends &amp; Tech</div><div class="mod-d">What's next in aesthetics, surfaced early</div></button>
+      <button class="mod" onclick="openMod('dashboard')"><div class="mod-ic">📊</div><div class="mod-n">Full Dashboard</div><div class="mod-d">Your whole business on one screen</div></button>
+      <button class="mod" onclick="openMod('custom')"><div class="mod-ic">🛠</div><div class="mod-n">Customize</div><div class="mod-d">The platform reshapes around your priorities</div></button>
+    </div>
+
+  <div class="foot">Live demo · <b>Admin Pro</b> by <a href="https://goodtroubleglobal.com">Good Trouble</a> · (305) 290-1420</div>
+</div>
+
+<!-- bottom nav -->
+<div class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" id="nb-hub" onclick="goTab('hub')"><span class="ic">🏠</span>Business Hub</button>
+    <button class="nav-btn" id="nb-asst" onclick="goTab('asst')"><span class="ic">🗓️</span>Assistant</button>
+  </div>
+</div>
+
+<script>
+/* ---------------- tabs ---------------- */
+function goTab(t){
+  document.getElementById('v-hub').classList.toggle('active',t==='hub');
+  document.getElementById('v-asst').classList.toggle('active',t==='asst');
+  document.getElementById('nb-hub').classList.toggle('active',t==='hub');
+  document.getElementById('nb-asst').classList.toggle('active',t==='asst');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------------- schedule data ---------------- */
+const AV=[['IM','#5BA8FF,#3D7BD8'],['DW','#A98BFF,#7A5CFF'],['CR','#FF2D78,#C2185B'],['LP','#22D58A,#0FA968'],['TB','#FFC53D,#E09B12'],['NG','#FF6B2B,#E8420A'],['SO','#5BA8FF,#7A5CFF'],['KH','#E0B25C,#B98A2E']];
+const schedule={
+  0:[["9:00 AM","Lena Park","Chemical Peel","conf"],["10:15 AM","Tom Boyd","Consult — Laser","conf"],["1:00 PM","Nadia Gomez","Lip Filler","ai"],["3:30 PM","Sofia Ortiz","Microneedling","conf"]],
+  1:[["9:30 AM","Kayla Hunt","IV Therapy","conf"],["11:00 AM","Isabela Marques","Dermal Filler","conf"],["11:45 AM","Denise Whitfield","HydraFacial","ai"],["1:15 PM","Camila Reyes","Botox — 40 units","ai"],["3:00 PM","Tom Boyd","Laser Hair — Session 2","conf"],["4:30 PM","Priya Shah","New-client Consult","ai"]],
+  2:[["9:00 AM","Sofia Ortiz","Botox Touch-up","conf"],["10:30 AM","Lena Park","HydraFacial","conf"],["2:00 PM","Nadia Gomez","Consult — Sculptra","ai"]],
+  3:[["9:15 AM","Kayla Hunt","Microneedling","conf"],["10:45 AM","Denise Whitfield","Dermaplaning","conf"]],
+  4:[["9:00 AM","Isabela Marques","Filler Follow-up","conf"],["10:00 AM","Camila Reyes","B12 Shot","conf"],["11:30 AM","Tom Boyd","Laser Hair — Session 3","conf"],["1:00 PM","Priya Shah","Botox — First visit","ai"],["2:30 PM","Lena Park","PDO Threads Consult","conf"]],
+  5:[["10:00 AM","Sofia Ortiz","HydraFacial Deluxe","conf"],["11:30 AM","Nadia Gomez","Lip Filler Top-up","ai"],["1:00 PM","Kayla Hunt","Glow Facial","conf"],["2:15 PM","Denise Whitfield","LED Therapy","conf"]],
+  6:[]
+};
+const days=[["Mon",13],["Tue",14],["Wed",15],["Thu",16],["Fri",17],["Sat",18],["Sun",19]];
+let selDay=1;
+
+function avatarFor(name){
+  const ini=name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  const hit=AV.find(a=>a[0]===ini);
+  const grad=hit?hit[1]:'#FF6B2B,#E8420A';
+  return `<div class="appt-ava" style="background:linear-gradient(140deg,${grad})">${ini}</div>`;
+}
+function renderWeek(){
+  const w=document.getElementById('week');
+  w.innerHTML=days.map((d,i)=>{
+    const n=(schedule[i]||[]).length;
+    const dots=[0,1,2].map(k=>`<i class="${n>k*2?'on':''}"></i>`).join('');
+    return `<div class="day ${i===selDay?'sel':''}" onclick="pickDay(${i})"><div class="day-dow">${d[0]}</div><div class="day-num">${d[1]}</div><div class="day-load">${dots}</div></div>`;
+  }).join('');
+}
+function renderDay(flashIdx=-1){
+  const list=schedule[selDay]||[];
+  const names=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+  document.getElementById('sched-day').textContent=names[selDay]+", Jul "+days[selDay][1];
+  document.getElementById('sched-count').textContent=list.length?list.length+" appointments":"No appointments";
+  document.getElementById('day-list').innerHTML=list.length?list.map((a,i)=>`
+    <div class="appt ${i===flashIdx?'flash':''}">
+      <div class="appt-time">${a[0]}</div>${avatarFor(a[1])}
+      <div><div class="appt-n">${a[1]}${a[3]==='ai'||a[3]==='new'?' <span class="ai-note">(booked by AI)</span>':''}</div><div class="appt-s">${a[2]}</div></div>
+      <div class="appt-tag ${a[3]==='new'?'tag-new':'tag-conf'}">${a[3]==='new'?'Just booked':'Confirmed'}</div>
+    </div>`).join(''):
+    `<div style="padding:18px 0;color:var(--text-dim);font-size:14px">Closed — enjoy the day off 🌴</div>`;
+}
+function pickDay(i){selDay=i;renderWeek();renderDay();}
+renderWeek();renderDay();
+
+/* ---------------- chat engine ---------------- */
+const msgs=document.getElementById('chat-msgs');
+function push(cls,who,text){
+  const d=document.createElement('div');d.className='msg '+cls;
+  d.innerHTML=(who?`<div class="msg-who">${who}</div>`:'')+text;
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+function typing(on){
+  let t=document.getElementById('typ');
+  if(on&&!t){t=document.createElement('div');t.id='typ';t.className='typing';t.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;}
+  if(!on&&t)t.remove();
+}
+function seq(steps){
+  let delay=0;
+  steps.forEach(s=>{
+    delay+=s.wait||900;
+    setTimeout(()=>{typing(false);
+      if(s.type==='typing'){typing(true);return;}
+      if(s.type==='book'){bookInto(s.day,s.entry);push('sys','',s.text);return;}
+      push(s.cls,s.who,s.text);
+    },delay);
+  });
+  return delay;
+}
+function bookInto(dayIdx,entry){
+  const list=schedule[dayIdx];
+  list.push(entry);
+  list.sort((a,b)=>toMin(a[0])-toMin(b[0]));
+  selDay=dayIdx;renderWeek();renderDay(list.indexOf(entry));
+}
+function toMin(t){const[a,b]=t.split(' ');let[h,m]=a.split(':').map(Number);if(b==='PM'&&h!==12)h+=12;if(b==='AM'&&h===12)h=0;return h*60+m;}
+
+const scenarios={
+  book:[
+    {cls:'cl',who:'Client · Ana T.',text:"Hi! Do you guys do Botox? What does it run and when could I get in?",wait:400},
+    {type:'typing',wait:700},
+    {cls:'ai',who:'Assistant',text:"Hi Ana! We do — Botox at Tampa Med Spa is $12/unit with Dr. Vega, and most first-time foreheads run 20–30 units. Have you had Botox before, or would this be your first time?",wait:1500},
+    {cls:'cl',who:'Client · Ana T.',text:"First time! Kind of nervous lol",wait:1600},
+    {type:'typing',wait:700},
+    {cls:'ai',who:'Assistant',text:"Totally normal 💛 First visits start with a free 10-min consult so Dr. Vega can walk you through everything — no needles until you're comfortable. I have <b>Wednesday 2:00 PM</b> or <b>Friday 1:00 PM</b> open. Which works better?",wait:1700},
+    {cls:'cl',who:'Client · Ana T.',text:"Wednesday 2pm works!",wait:1500},
+    {type:'typing',wait:600},
+    {cls:'ai',who:'Assistant',text:"You're all set, Ana — Wednesday, July 15 at 2:00 PM with Dr. Vega. I've texted you a confirmation, directions to our Hyde Park studio, and a quick prep note (skip alcohol 24 hrs before). See you then! ✨",wait:1400},
+    {type:'book',day:2,entry:["2:00 PM","Ana Torres","Botox — First visit + consult","new"],text:"✓ Appointment added to Wednesday — check the calendar above",wait:900}
+  ],
+  resched:[
+    {cls:'cl',who:'Client · Tom B.',text:"Hey, I have laser at 3 today but I'm stuck at work. Any way to move it?",wait:400},
+    {type:'typing',wait:700},
+    {cls:'ai',who:'Assistant',text:"No problem, Tom — happens to everyone. I can move your Laser Hair (Session 2) to <b>today 4:30 PM</b>, or <b>Friday 11:30 AM</b> right before your Session 3 spot frees up. Preference?",wait:1600},
+    {cls:'cl',who:'Client · Tom B.',text:"Friday 11:30 is perfect actually",wait:1500},
+    {type:'typing',wait:600},
+    {cls:'ai',who:'Assistant',text:"Done — moved to Friday, July 17 at 11:30 AM. I've also offered your old 3:00 PM slot to the waitlist so it doesn't go empty. Have a good one! 👍",wait:1300},
+    {type:'book',day:4,entry:["11:35 AM","Tom Boyd","Laser Hair — Session 2 (moved)","new"],text:"✓ Rescheduled to Friday + old slot offered to 6 waitlist clients",wait:900}
+  ],
+  night:[
+    {cls:'sys',who:'',text:"11:48 PM — front desk closed 6 hours ago",wait:300},
+    {cls:'cl',who:'Client · Priya S.',text:"Hi, random question — I have a consult booked but I'm on blood thinners, is that an issue for filler??",wait:900},
+    {type:'typing',wait:700},
+    {cls:'ai',who:'Assistant',text:"Great question, Priya — and good timing to ask before your visit. Blood thinners don't rule out filler, but they do raise bruising risk, so Dr. Vega will want to review your medication list first. I've added a note to your chart so she's prepared for your consult Friday at 1:00 PM.",wait:1900},
+    {cls:'cl',who:'Client · Priya S.',text:"Oh amazing, thank you!! Wasn't expecting a reply tonight 😄",wait:1700},
+    {type:'typing',wait:600},
+    {cls:'ai',who:'Assistant',text:"Anytime — literally 🙂 If you think of anything else before Friday, I'm here 24/7.",wait:1200},
+    {type:'book',day:4,entry:["1:05 PM","Priya Shah","⚕ Chart note: medication review","new"],text:"✓ Chart note added for Dr. Vega — no morning catch-up needed",wait:900}
+  ]
+};
+function playScenario(key,btn){
+  document.querySelectorAll('.chip').forEach(c=>c.disabled=true);
+  const total=seq(scenarios[key]);
+  setTimeout(()=>{document.querySelectorAll('.chip').forEach(c=>c.disabled=false);if(btn)btn.style.opacity=0.45;},total+1000);
+}
+
+/* ---------------- suggestion → offer review → send ---------------- */
+function openOfferReview(){
+  document.getElementById('fill-btn').style.display='none';
+  document.getElementById('offer-review').style.display='block';
+}
+function sendOffer(){
+  const b=document.getElementById('send-offer-btn');
+  b.disabled=true;b.textContent='Sending your offer to 14 clients…';
+  setTimeout(()=>{b.textContent='2 replies already — booking…';},1600);
+  setTimeout(()=>{
+    bookInto(3,["2:00 PM","Sofia Ortiz","Botox Follow-up (10% offer)","new"]);
+    bookInto(3,["3:15 PM","Nadia Gomez","HydraFacial (10% offer)","new"]);
+    b.textContent='✓ Thursday filled — 2 booked, +$690';
+    b.style.background='linear-gradient(140deg,var(--green),#0FA968)';
+    goTab('asst');
+  },3200);
+}
+</script>
+
+<div class="mmask" id="mmask" onclick="if(event.target===this)closeMod()">
+  <div class="mbox">
+    <div class="mbox-hd"><div class="mbox-ic" id="mb-ic"></div><div class="mbox-t" id="mb-t"></div><button class="mbox-x" onclick="closeMod()">✕</button></div>
+    <div class="mbox-sub" id="mb-sub"></div>
+    <div class="mfeed" id="mb-feed"></div>
+    <button class="mrun" id="mb-run" onclick="runMod()">▶ Run Demonstration</button>
+  </div>
+</div>
+<script>
+const MODS={
+ frontdesk:{ic:'💬',t:'Front Desk AI',sub:'A new client messages at 9:42 PM. Watch what happens while your team is home.',steps:[
+  ['<b>Client (9:42 PM):</b> "Hi! Do you have anything Thursday for lip filler?"'],
+  ['<b>Front Desk AI:</b> "We do! Thursday has 2:00 or 4:30 open with Dana. Want me to hold one?"'],
+  ['<b>Client:</b> "4:30 please!"'],
+  ['<b>Booked, confirmed, reminder scheduled.</b> Zero staff time used.<span class="mres">+1 appointment · $650 · 11 seconds</span>','win']]},
+ campaign:{ic:'🚀',t:'Campaign Launcher',sub:'Thursday looks slow. Launch a same-week promo in three taps.',steps:[
+  ['Audience built: <b>38 clients</b> due for a visit, none booked this week.'],
+  ['Offer drafted: <b>10% off Thursday HydraFacials</b> — your brand voice, your approval.'],
+  ['Sent 9:00 AM. <b>5 replies</b> by 9:20.'],
+  ['<b>Thursday filled.</b><span class="mres">4 bookings · +$1,180 from one tap</span>','win']]},
+ reviews:{ic:'⭐',t:'Review Engine',sub:'Every client gets a feedback prompt first. Where it routes them is the smart part.',steps:[
+  ['<b>Maria (loved it):</b> tapped 5 stars → routed straight to your Google review page.'],
+  ['<b>Google review posted:</b> "Best facial I\'ve ever had. Ask for Dana!"'],
+  ['<b>Alex (unhappy about wait time):</b> routed to a private message to you — never public.'],
+  ['You resolve it quietly. Your rating only moves up.<span class="mres">+3 public reviews this week · 1 issue caught privately</span>','win']]},
+ reactivation:{ic:'🔄',t:'Reactivation',sub:'Clients quietly drift. The platform notices before you do.',steps:[
+  ['Found <b>27 clients</b> past their usual rebook window.'],
+  ['Personalized win-back sent — timed to each client\'s service cycle.'],
+  ['<b>Jasmine:</b> "Omg I\'ve been meaning to come back — book me!"'],
+  ['<b>6 clients rebooked</b> in 48 hours.<span class="mres">+$2,340 recovered revenue</span>','win']]},
+ membership:{ic:'💳',t:'Membership',sub:'Recurring revenue without the spreadsheet.',steps:[
+  ['<b>Glow Club</b> members billed automatically — 61 active.'],
+  ['<b>Renewal saved:</b> card expiring → client nudged → updated before lapse.'],
+  ['<b>Upgrade path:</b> 8 members flagged as ideal for the annual tier.'],
+  ['Monthly recurring revenue, predictable.<span class="mres">$7,930 MRR · churn down 22%</span>','win']]},
+ postvisit:{ic:'💌',t:'Post-Visit',sub:'The visit ends. The relationship doesn\'t.',steps:[
+  ['<b>2 hours after:</b> aftercare instructions sent for today\'s chemical peel.'],
+  ['<b>Day 3:</b> "How\'s your skin feeling?" — client replies with a 😍 selfie.'],
+  ['<b>Day 21:</b> rebooking prompt lands exactly when results peak.'],
+  ['Client rebooks without ever being chased.<span class="mres">Rebook rate up 31%</span>','win']]},
+ marketing:{ic:'📈',t:'Marketing Intelligence',sub:'Not reports. Predictions.',steps:[
+  ['<b>14 clients</b> flagged as most likely to book in the next 10 days.'],
+  ['<b>Botox demand</b> trending +19% in your zip code this month.'],
+  ['Suggested move: shift Thursday promo budget to filler consults.'],
+  ['You act on tomorrow, not last month.<span class="mres">Every insight, one tap to act</span>','win']]},
+ social:{ic:'📱',t:'Social Media Manager',sub:'A month of content, planned while you slept.',steps:[
+  ['<b>Content calendar drafted:</b> 12 posts matched to your top services.'],
+  ['Captions written in your voice — before/after, education, promo mix.'],
+  ['You approve 11, tweak 1. Total time: <b>4 minutes</b>.'],
+  ['Scheduled and posting all month.<span class="mres">Consistent presence · zero agency fees</span>','win']]},
+ consultiq:{ic:'🧠',t:'ConsultIQ',sub:'Consults are where revenue leaks. Plug it.',steps:[
+  ['<b>Sofia\'s consult ends</b> — she says she "needs to think about it."'],
+  ['Day 2: her questions answered with a tailored treatment explainer.'],
+  ['Day 5: financing options surfaced — that was the real hesitation.'],
+  ['Sofia books the full package.<span class="mres">Consult-to-treatment up 24%</span>','win']]},
+ inventory:{ic:'📦',t:'Inventory',sub:'Running out of product mid-week costs real money.',steps:[
+  ['<b>Alert:</b> Botox on pace to run out Thursday at current booking rate.'],
+  ['Reorder drafted with your usual distributor — one tap to approve.'],
+  ['<b>Approved.</b> Delivery lands Wednesday.'],
+  ['No cancelled appointments. No emergency calls.<span class="mres">$0 lost to stockouts this quarter</span>','win']]},
+ competitor:{ic:'🎯',t:'Competitor Analysis',sub:'Know your market without stalking it yourself.',steps:[
+  ['<b>Local scan:</b> 2 nearby spas raised HydraFacial prices this month.'],
+  ['A third dropped weekend hours — their clients are searching.'],
+  ['Suggested: highlight your Saturday availability in this week\'s campaign.'],
+  ['You move first.<span class="mres">Your market, mapped monthly</span>','win']]},
+ radar:{ic:'📡',t:'Trends & Tech',sub:'What\'s next in aesthetics — before your clients ask for it.',steps:[
+  ['<b>Rising:</b> polynucleotide skin boosters — searches up 340% in 6 months.'],
+  ['<b>3 clients</b> asked about them last month. Flagged and tracked.'],
+  ['Training + supplier options surfaced for your review.'],
+  ['You\'re the first spa in town offering it.<span class="mres">First-mover, every time</span>','win']]},
+ dashboard:{ic:'📊',t:'Full Dashboard',sub:'Everything above, on one screen you check with coffee.',steps:[
+  ['<b>Revenue, bookings, capacity, campaigns</b> — live, in one view.'],
+  ['Every module reports here. No logins to five different tools.'],
+  ['<b>7 AM digest</b> hits your inbox: what happened, what\'s next, what needs you.'],
+  ['You run the business. It runs the back office.<span class="mres">One platform · whole picture</span>','win']]},
+ custom:{ic:'🛠',t:'Customize',sub:'This isn\'t software you adapt to. It adapts to you.',steps:[
+  ['You care most about <b>memberships and reviews</b>? They move front and center.'],
+  ['New priority next quarter? The platform reshapes around it.'],
+  ['<b>We keep building</b> — new modules appear as they ship. You never chase updates.'],
+  ['Your platform, shaped by your priorities.<span class="mres">Built around you · always current</span>','win']]}
+};
+let curMod=null;
+function openMod(k){curMod=k;const m=MODS[k];document.getElementById('mb-ic').textContent=m.ic;document.getElementById('mb-t').textContent=m.t;document.getElementById('mb-sub').textContent=m.sub;document.getElementById('mb-feed').innerHTML='';const b=document.getElementById('mb-run');b.disabled=false;b.textContent='▶ Run Demonstration';b.style.background='';document.getElementById('mmask').classList.add('open');}
+function closeMod(){document.getElementById('mmask').classList.remove('open');}
+function runMod(){const m=MODS[curMod];const feed=document.getElementById('mb-feed');const b=document.getElementById('mb-run');b.disabled=true;b.textContent='Running…';feed.innerHTML='';m.steps.forEach((s,i)=>{setTimeout(()=>{const d=document.createElement('div');d.className='mline'+(s[1]?' '+s[1]:'');d.innerHTML=s[0];feed.appendChild(d);d.scrollIntoView({behavior:'smooth',block:'nearest'});if(i===m.steps.length-1){b.textContent='✓ That\'s '+m.t;b.style.background='linear-gradient(140deg,var(--green),#0FA968)';}},600+i*1100);});}
+</script>
+
+</body>
+</html>

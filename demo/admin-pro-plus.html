@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0C">
+<title>Admin Pro — Live Demo | Good Trouble</title>
+<meta name="description" content="Admin Pro by Good Trouble — an AI admin that runs your front desk, reviews, and client base. This is a live interactive demo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0A0A0C;--surface:#15131A;--surface-2:#1E1B25;--surface-3:#2A2533;
+  --border:rgba(255,107,43,0.22);--border-dim:rgba(245,238,240,0.09);
+  --orange:#FF6B2B;--orange-light:#FFB07A;--orange-glow:rgba(255,107,43,0.28);
+  --pink:#FF2D78;--gold:#E0B25C;--green:#22D58A;--amber:#FFC53D;--blue:#5BA8FF;--red:#FF5247;--purple:#A98BFF;
+  --text:#FBF7F4;--text-2:#D8CEC8;--text-muted:#9E9088;--text-dim:#5A4E48;
+  --radius:14px;--radius-lg:18px;
+  --font-d:"Playfair Display",Georgia,serif;--font-b:"Barlow",sans-serif;--font-l:"Barlow Condensed",sans-serif;--font-m:"JetBrains Mono",monospace;
+  --tr:0.22s cubic-bezier(.2,.7,.3,1);
+}
+html{background:var(--bg)}
+html,body{height:100%;color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+  radial-gradient(ellipse 90% 60% at 85% -10%,rgba(255,107,43,0.10),transparent 60%),
+  radial-gradient(ellipse 70% 55% at 0% 105%,rgba(255,60,20,0.08),transparent 60%),
+  radial-gradient(ellipse 55% 45% at 100% 70%,rgba(122,92,255,0.06),transparent 65%),
+  linear-gradient(160deg,#0D0A11 0%,#0A0A0C 45%,#0C080A 100%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='194' viewBox='0 0 112 194'%3E%3Cg fill='none' stroke='%23FF6B2B' stroke-opacity='0.06' stroke-width='1'%3E%3Cpath d='M56 1 L110 32 L110 96 L56 129 L2 96 L2 32 Z'/%3E%3Cpath d='M0 98 L56 129 L56 193'/%3E%3Cpath d='M112 98 L56 129'/%3E%3C/g%3E%3C/svg%3E")}
+.sec{display:flex;align-items:center;gap:11px;margin:24px 2px 12px}
+.sec-t{font-family:var(--font-l);font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--orange-light);white-space:nowrap}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.sec-r{font-family:var(--font-m);font-size:11px;color:var(--text-dim);white-space:nowrap}
+.ai-note{color:var(--green);font-size:12px;font-weight:600}
+/* landing strip */
+.strip{position:sticky;top:0;z-index:60;background:linear-gradient(90deg,rgba(255,107,43,0.16),rgba(255,45,120,0.10));backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:9px 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center}
+.strip b{font-family:var(--font-l);letter-spacing:0.08em;text-transform:uppercase;font-size:12.5px;color:var(--orange-light)}
+.strip span{font-size:13px;color:var(--text-2)}
+.strip a{font-family:var(--font-l);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:linear-gradient(140deg,var(--orange),#E8420A);padding:6px 14px;border-radius:99px;text-decoration:none;white-space:nowrap}
+.app{max-width:820px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding-bottom:96px}
+/* header */
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 10px}
+.hdr-brand{display:flex;align-items:center;gap:10px}
+.hdr-logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(140deg,var(--orange),#E8420A);display:flex;align-items:center;justify-content:center;font-family:var(--font-l);font-weight:700;font-size:17px;color:#fff;box-shadow:0 4px 18px var(--orange-glow)}
+.hdr-name{font-family:var(--font-l);font-size:19px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+.hdr-sub{font-size:11.5px;color:var(--text-muted);letter-spacing:0.04em;margin-top:-2px}
+.hdr-live{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border-dim);border-radius:99px;padding:7px 13px;font-family:var(--font-l);font-size:11.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+/* views */
+.view{display:none;flex:1;padding:6px 18px 24px;animation:fadein .3s ease}
+.view.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.greet{font-family:var(--font-d);font-size:28px;font-weight:600;margin:14px 2px 2px}
+.greet-sub{color:var(--text-muted);font-size:15px;margin:0 2px 18px}
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:18px 12px;text-align:center;position:relative;overflow:hidden;cursor:pointer;transition:var(--tr)}
+.kpi:hover{border-color:var(--border)}
+.kpi::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.03),transparent 40%);pointer-events:none}
+.kpi-num{font-family:var(--font-m);font-size:clamp(22px,5.8vw,32px);font-weight:500;letter-spacing:-0.02em}
+.kpi-lbl{font-family:var(--font-l);font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--text-muted);margin-top:6px}
+.kpi-trend{font-size:12px;margin-top:4px;font-weight:600}
+.up{color:var(--green)}.dn{color:var(--red)}
+/* cards */
+.card{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}
+.card-title{font-family:var(--font-l);font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.card-title .right{margin-left:auto;font-size:11px;color:var(--text-dim);letter-spacing:0.06em}
+.night-row{display:flex;align-items:flex-start;gap:13px;padding:11px 0;border-bottom:1px solid var(--border-dim)}
+.night-row:last-child{border-bottom:0;padding-bottom:0}
+.night-ic{width:38px;height:38px;flex:none;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;background:var(--surface-2)}
+.night-t{font-size:15.5px;font-weight:600}
+.night-d{font-size:13.5px;color:var(--text-muted);margin-top:1px}
+.night-val{margin-left:auto;font-family:var(--font-m);font-size:15px;color:var(--green);white-space:nowrap;padding-top:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-l);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:0;border-radius:12px;cursor:pointer;transition:var(--tr)}
+.btn-primary{background:linear-gradient(140deg,var(--orange),#E8420A);color:#fff;font-size:15px;padding:14px 22px;box-shadow:0 6px 22px var(--orange-glow);margin-top:14px;width:100%}
+.btn-primary:active{transform:scale(0.97)}
+.btn-primary:disabled{opacity:0.8;cursor:default}
+/* appts */
+.appt{display:flex;align-items:center;gap:13px;padding:12px 0;border-bottom:1px solid var(--border-dim)}
+.appt:last-child{border-bottom:0}
+.appt-time{font-family:var(--font-m);font-size:13.5px;color:var(--orange-light);width:74px;flex:none}
+.appt-ava{width:40px;height:40px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-l);font-weight:700;font-size:14px;color:#fff}
+.appt-n{font-size:15.5px;font-weight:600}
+.appt-s{font-size:13px;color:var(--text-muted)}
+.appt-tag{margin-left:auto;font-family:var(--font-l);font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:99px;white-space:nowrap}
+.tag-ai{background:rgba(34,213,138,0.12);color:var(--green);border:1px solid rgba(34,213,138,0.3)}
+.tag-conf{background:var(--surface-2);color:var(--text-muted);border:1px solid var(--border-dim)}
+.tag-new{background:rgba(255,107,43,0.14);color:var(--orange-light);border:1px solid var(--border)}
+/* assistant view */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin:8px 0 14px}
+.day{background:var(--surface);border:1px solid var(--border-dim);border-radius:12px;padding:10px 4px;text-align:center;cursor:pointer;transition:var(--tr)}
+.day.sel{border-color:var(--orange);background:rgba(255,107,43,0.10);box-shadow:0 0 0 1px var(--orange) inset}
+.day-dow{font-family:var(--font-l);font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)}
+.day.sel .day-dow{color:var(--orange-light)}
+.day-num{font-family:var(--font-m);font-size:17px;margin-top:3px}
+.day-load{display:flex;justify-content:center;gap:2.5px;margin-top:6px;height:5px}
+.day-load i{width:5px;height:5px;border-radius:50%;background:var(--surface-3)}
+.day-load i.on{background:var(--orange)}
+.sched-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px}
+.sched-day{font-family:var(--font-d);font-size:20px;font-weight:600}
+.sched-count{font-family:var(--font-m);font-size:12.5px;color:var(--text-muted)}
+.appt.flash{animation:bookflash 1.6s ease}
+@keyframes bookflash{0%{background:rgba(34,213,138,0.22);border-radius:12px}100%{background:transparent}}
+/* chat */
+.chat{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;margin-top:16px}
+.chat-hd{display:flex;align-items:center;gap:11px;padding:14px 16px;border-bottom:1px solid var(--border-dim);background:var(--surface-2)}
+.chat-ava{width:36px;height:36px;border-radius:50%;background:linear-gradient(140deg,var(--orange),var(--pink));display:flex;align-items:center;justify-content:center;font-size:16px}
+.chat-hd-n{font-size:15px;font-weight:700}
+.chat-hd-s{font-size:12px;color:var(--green);display:flex;align-items:center;gap:5px}
+.chat-msgs{padding:16px;display:flex;flex-direction:column;gap:10px;min-height:170px;max-height:340px;overflow-y:auto}
+.msg{max-width:82%;padding:11px 14px;border-radius:16px;font-size:14.5px;line-height:1.42;animation:fadein .25s ease}
+.msg.cl{align-self:flex-start;background:var(--surface-2);border-bottom-left-radius:5px}
+.msg.ai{align-self:flex-end;background:linear-gradient(140deg,rgba(255,107,43,0.20),rgba(255,45,120,0.12));border:1px solid var(--border);border-bottom-right-radius:5px}
+.msg.sys{align-self:center;max-width:95%;background:rgba(34,213,138,0.10);border:1px solid rgba(34,213,138,0.28);color:var(--green);font-size:13px;font-family:var(--font-m);text-align:center;border-radius:10px}
+.msg-who{font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:3px}
+.typing{align-self:flex-end;display:flex;gap:4px;padding:12px 16px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--orange-light);animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,100%{opacity:0.25}50%{opacity:1}}
+.chips{display:flex;flex-wrap:wrap;gap:9px;padding:14px 16px;border-top:1px solid var(--border-dim);background:var(--surface-2)}
+.chip{background:var(--surface-3);border:1px solid var(--border-dim);color:var(--text-2);border-radius:99px;padding:11px 16px;font-size:13.5px;font-weight:600;cursor:pointer;transition:var(--tr)}
+.chip:hover{border-color:var(--orange);color:var(--orange-light)}
+.chip:disabled{opacity:0.35;cursor:default}
+.chips-lbl{width:100%;font-family:var(--font-l);font-size:10.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim)}
+/* ---------- reviews ---------- */
+.rev-top{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;margin-bottom:16px}
+.rev-score{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:20px 24px;text-align:center}
+.rev-big{font-family:var(--font-m);font-size:44px;color:var(--amber);line-height:1}
+.rev-stars{color:var(--amber);letter-spacing:2px;font-size:15px;margin:6px 0 2px}
+.rev-n{font-size:12.5px;color:var(--text-muted)}
+.rev-bars{display:flex;flex-direction:column;gap:7px}
+.rb{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--text-muted)}
+.rb-track{flex:1;height:7px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.rb-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--amber),var(--orange))}
+.rb-num{font-family:var(--font-m);width:34px;text-align:right;font-size:12px}
+.route-item{border:1px solid var(--border-dim);border-radius:var(--radius);padding:15px;margin-bottom:12px;background:var(--surface-2)}
+.route-hd{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.route-n{font-weight:700;font-size:15px}
+.route-meta{font-size:12px;color:var(--text-dim);margin-left:auto;font-family:var(--font-m)}
+.route-fb{font-size:14px;color:var(--text-2);font-style:italic;margin-bottom:11px}
+.sent-line{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;margin-top:10px}
+.route-btns{display:flex;gap:9px}
+.rbtn{flex:1;font-family:var(--font-l);font-weight:700;font-size:12.5px;letter-spacing:0.07em;text-transform:uppercase;padding:11px;border-radius:10px;border:1px solid var(--border-dim);background:var(--surface-3);color:var(--text-2);cursor:pointer;transition:var(--tr)}
+.rbtn.go{border-color:rgba(34,213,138,0.4);color:var(--green)}
+.rbtn.res{border-color:rgba(255,197,61,0.4);color:var(--amber)}
+.rev-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--border-dim)}
+.rev-item:last-child{border-bottom:0}
+.rev-body{flex:1}
+.rev-line1{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.rev-nm{font-weight:700;font-size:14.5px}
+.rev-st{color:var(--amber);font-size:12px;letter-spacing:1px}
+.rev-ago{font-size:11.5px;color:var(--text-dim);margin-left:auto;font-family:var(--font-m)}
+.rev-tx{font-size:13.5px;color:var(--text-2);margin-top:3px}
+.rev-reply{margin-top:8px;padding:9px 12px;border-left:2px solid var(--orange);background:rgba(255,107,43,0.06);border-radius:0 9px 9px 0;font-size:13px;color:var(--text-muted)}
+.rev-reply b{color:var(--orange-light);font-family:var(--font-l);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:2px}
+/* ---------- CRM ---------- */
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.seg-c{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius);padding:14px 8px;text-align:center}
+.seg-num{font-family:var(--font-m);font-size:23px}
+.seg-lbl{font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;color:var(--text-muted);margin-top:4px}
+.crm-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border-dim)}
+.crm-row:last-child{border-bottom:0}
+.crm-info{flex:1;min-width:0}
+.crm-n{font-size:14.5px;font-weight:600}
+.crm-d{font-size:12.5px;color:var(--text-muted)}
+.crm-ltv{font-family:var(--font-m);font-size:13.5px;color:var(--text-2);white-space:nowrap}
+.crm-stat{font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;padding:4px 9px;border-radius:99px;white-space:nowrap}
+.st-dorm{background:rgba(255,82,71,0.12);color:var(--red);border:1px solid rgba(255,82,71,0.3)}
+.st-cool{background:rgba(255,197,61,0.10);color:var(--amber);border:1px solid rgba(255,197,61,0.28)}
+.st-won{background:rgba(34,213,138,0.12);color:var(--green);border:1px solid rgba(34,213,138,0.3)}
+.recov{display:flex;align-items:baseline;gap:10px;margin:2px 0 6px}
+.recov-num{font-family:var(--font-m);font-size:38px;color:var(--green)}
+.recov-lbl{font-size:13px;color:var(--text-muted)}
+.mini-chart{display:flex;align-items:flex-end;gap:5px;height:56px;margin:12px 0 4px}
+.mini-chart span{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--green),rgba(34,213,138,0.25));min-height:6px}
+.mini-lbls{display:flex;gap:5px;font-family:var(--font-m);font-size:9.5px;color:var(--text-dim)}
+.mini-lbls span{flex:1;text-align:center}
+/* expansion */
+.grow{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.grow-c{background:var(--surface-2);border:1px dashed var(--border-dim);border-radius:var(--radius);padding:14px;position:relative;cursor:pointer;transition:var(--tr)}
+.grow-c:hover,.grow-c:active{border-color:var(--border);border-style:solid;background:var(--surface-3);transform:translateY(-1px)}
+.grow-tap{font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange-light);margin-top:8px}
+.grow-ic{font-size:20px;margin-bottom:6px;filter:grayscale(0.4)}
+.grow-n{font-family:var(--font-l);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-2)}
+.grow-d{font-size:11.5px;color:var(--text-dim);margin-top:2px}
+.grow-tag{position:absolute;top:10px;right:10px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange-light);background:rgba(255,107,43,0.12);border:1px solid var(--border);border-radius:99px;padding:3px 8px}
+/* expand modal */
+.gt-modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(5,4,6,0.82);backdrop-filter:blur(6px);display:none;align-items:flex-end;justify-content:center}
+.gt-modal-overlay.show{display:flex}
+.gt-modal{position:relative;width:100%;max-width:820px;height:92vh;background:var(--bg);border-radius:20px 20px 0 0;overflow:hidden;box-shadow:0 -10px 50px rgba(0,0,0,0.5);animation:gtModalUp .32s cubic-bezier(.2,.7,.3,1)}
+@keyframes gtModalUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.gt-modal-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:linear-gradient(90deg,rgba(255,107,43,0.16),rgba(255,45,120,0.10));border-bottom:1px solid var(--border)}
+.gt-modal-label{font-family:var(--font-l);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange-light)}
+.gt-modal-close{background:var(--surface-2);border:1px solid var(--border-dim);color:var(--text);width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none}
+.gt-modal-frame-wrap{position:relative;height:calc(100% - 49px);background:var(--bg)}
+.gt-modal-frame-wrap iframe{width:100%;height:100%;border:0;opacity:0;transition:opacity .25s ease}
+.gt-modal-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-l);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)}
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;padding:10px 14px calc(12px + env(safe-area-inset-bottom))}
+.nav-inner{display:flex;gap:6px;background:rgba(21,19,26,0.92);backdrop-filter:blur(14px);border:1px solid var(--border-dim);border-radius:20px;padding:7px;width:100%;max-width:600px;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:transparent;border:1px solid transparent;border-radius:14px;padding:10px 4px;cursor:pointer;color:var(--text-muted);font-family:var(--font-l);font-size:11.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;transition:var(--tr)}
+.nav-btn .ic{font-size:19px}
+.nav-btn.active{background:linear-gradient(140deg,rgba(255,107,43,0.18),rgba(255,45,120,0.10));color:var(--orange-light);border-color:var(--border)}
+.foot{padding:8px 18px 20px;text-align:center;font-size:12px;color:var(--text-dim)}
+.foot a{color:var(--orange-light);text-decoration:none;font-weight:600}
+@media(min-width:640px){.view{padding:6px 24px 24px}}
+@media(max-width:430px){.rev-top{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <b>Live demo</b>
+  <span>You're inside <b style="color:var(--text)">Admin Pro</b> — the AI admin we'd build for your spa. Click anything.</span>
+  <a href="mailto:alex@goodtroubleglobal.com?subject=Admin%20Pro%20demo">I want this →</a>
+</div>
+
+<div class="app">
+  <div class="hdr">
+    <div class="hdr-brand">
+      <div class="hdr-logo">M</div>
+      <div>
+        <div class="hdr-name">Tampa Med Spa</div>
+        <div class="hdr-sub">Sample Med Spa · Tampa — powered by Good&nbsp;Trouble</div>
+      </div>
+    </div>
+    <div class="hdr-live"><span class="dot"></span>Live</div>
+  </div>
+
+  <!-- ============ HUB ============ -->
+  <div class="view active" id="v-hub">
+    <div class="greet">Good morning, Dana ☀️</div>
+    <div class="greet-sub">This is a sample Tampa med spa. Every number, message, and review below is Admin Pro doing its job, live.</div>
+
+    <div class="sec"><div class="sec-t">📊 Snapshot</div><div class="sec-line"></div><div class="sec-r">today</div></div>
+    <div class="kpis">
+      <div class="kpi" onclick="goTab('asst')">
+        <div class="kpi-num" style="color:var(--green)">$5,840</div>
+        <div class="kpi-lbl">Booked Today</div>
+        <div class="kpi-trend up">▲ 22% vs avg</div>
+      </div>
+      <div class="kpi" onclick="goTab('rev')">
+        <div class="kpi-num" style="color:var(--amber)">4.8★</div>
+        <div class="kpi-lbl">Google Rating</div>
+        <div class="kpi-trend up">▲ from 4.3 in 90 days</div>
+      </div>
+      <div class="kpi" onclick="goTab('crm')">
+        <div class="kpi-num" style="color:var(--orange-light)">$18.4k</div>
+        <div class="kpi-lbl">Revenue<br>Recovered</div>
+        <div class="kpi-trend up">47 clients won back</div>
+      </div>
+    </div>
+
+    <div class="sec"><div class="sec-t">📰 Latest Updates</div><div class="sec-line"></div><div class="sec-r">last 14 hrs</div></div>
+    <div class="card">
+      <div class="night-row">
+        <div class="night-ic">💬</div>
+        <div><div class="night-t">Answered 17 client messages</div><div class="night-d">Pricing, prep, insurance questions, directions — zero waiting until morning</div></div>
+      </div>
+      <div class="night-row">
+        <div class="night-ic">📅</div>
+        <div><div class="night-t">Booked 4 new appointments</div><div class="night-d">2 new clients, 2 returning — all confirmed and reminded automatically</div></div>
+        <div class="night-val">+$1,610</div>
+      </div>
+      <div class="night-row">
+        <div class="night-ic">⭐</div>
+        <div><div class="night-t">Collected 2 five-star reviews</div><div class="night-d">Happy clients routed straight to Google after checkout</div></div>
+      </div>
+      <div class="night-row">
+        <div class="night-ic">🔁</div>
+        <div><div class="night-t">Won back a dormant client</div><div class="night-d">Jess T. — last visit 9 months ago, booked a HydraFacial for Friday</div></div>
+        <div class="night-val">+$225</div>
+      </div>
+    </div>
+
+    <div class="sec"><div class="sec-t">🧩 Expand Anytime</div><div class="sec-line"></div><div class="sec-r">6 of 12+ modules</div></div>
+    <div class="card">
+      <div style="font-size:13.5px;color:var(--text-2);margin-bottom:14px;line-height:1.5">Admin Pro is one module. This is what's already built and running inside the same platform — tap any one to open it live.</div>
+      <div class="grow">
+        <div class="grow-c" onclick="openExpand('marketing','Marketing Engine')"><div class="grow-tag">Live</div><div class="grow-ic">📣</div><div class="grow-n">Marketing Engine</div><div class="grow-d">Campaigns, ads &amp; landing pages</div><div class="grow-tap">▸ tap to open</div></div>
+        <div class="grow-c" onclick="openExpand('frontdesk','Front Desk Voice')"><div class="grow-tag">Live</div><div class="grow-ic">📞</div><div class="grow-n">Front Desk Voice</div><div class="grow-d">AI answers your phone line</div><div class="grow-tap">▸ tap to open</div></div>
+        <div class="grow-c" onclick="openExpand('membership','Memberships')"><div class="grow-tag">Live</div><div class="grow-ic">💎</div><div class="grow-n">Memberships</div><div class="grow-d">Recurring revenue on autopilot</div><div class="grow-tap">▸ tap to open</div></div>
+        <div class="grow-c" onclick="openExpand('inventory','Inventory')"><div class="grow-tag">Live</div><div class="grow-ic">📦</div><div class="grow-n">Inventory</div><div class="grow-d">Auto-reorder before you run out</div><div class="grow-tap">▸ tap to open</div></div>
+        <div class="grow-c" onclick="openExpand('social','Social Manager')"><div class="grow-tag">Live</div><div class="grow-ic">📱</div><div class="grow-n">Social Manager</div><div class="grow-d">Posts written &amp; scheduled for you</div><div class="grow-tap">▸ tap to open</div></div>
+        <div class="grow-c" onclick="openExpand('competitor','Competitor Radar')"><div class="grow-tag">Live</div><div class="grow-ic">📊</div><div class="grow-n">Competitor Radar</div><div class="grow-d">Know what rivals charge &amp; run</div><div class="grow-tap">▸ tap to open</div></div>
+      </div>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:13px">Admin Pro is the tip of the iceberg — the platform reshapes around <i>your</i> priorities. Start focused, add modules when you're ready. Nothing to rip out, nothing to migrate.</div>
+    </div>
+  </div>
+
+  <!-- ============ ASSISTANT ============ -->
+  <div class="view" id="v-asst">
+    <div class="greet" style="font-size:24px">Your week</div>
+    <div class="greet-sub">Tap a day. The assistant below books straight into this calendar — try it.</div>
+    <div class="sec"><div class="sec-t">🗓 Schedule</div><div class="sec-line"></div><div class="sec-r">Jul 13–19</div></div>
+    <div class="week" id="week"></div>
+    <div class="card" style="margin-bottom:0">
+      <div class="sched-hdr">
+        <div class="sched-day" id="sched-day">Tuesday</div>
+        <div class="sched-count" id="sched-count"></div>
+      </div>
+      <div id="day-list"></div>
+    </div>
+    <div class="sec"><div class="sec-t">💬 AI Chat Agent</div><div class="sec-line"></div><div class="sec-r">live 24/7</div></div>
+    <div class="chat" style="margin-top:0">
+      <div class="chat-hd">
+        <div class="chat-ava">🤖</div>
+        <div>
+          <div class="chat-hd-n">AI Assistant</div>
+          <div class="chat-hd-s"><span class="dot"></span>Answering clients 24/7</div>
+        </div>
+      </div>
+      <div class="chat-msgs" id="chat-msgs">
+        <div class="msg ai"><div class="msg-who">Assistant</div>This is live chat, handling real client conversations for a Tampa med spa. Pick a scenario and watch me handle it — anything I book appears on the calendar above in real time.</div>
+      </div>
+      <div class="chips" id="chips">
+        <div class="chips-lbl">Try a real scenario</div>
+        <button class="chip" onclick="playScenario('book',this)">💉 New client wants Botox</button>
+        <button class="chip" onclick="playScenario('resched',this)">🔄 Reschedule request</button>
+        <button class="chip" onclick="playScenario('night',this)">🌙 Question at midnight</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ REVIEWS ============ -->
+  <div class="view" id="v-rev">
+    <div class="greet" style="font-size:24px">Review Engine</div>
+    <div class="greet-sub">Every client gets asked how their visit went. Happy ones go to Google. Unhappy ones come to you privately — before they post anything.</div>
+
+    <div class="rev-top">
+      <div class="rev-score">
+        <div class="rev-big">4.8</div>
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-n">412 Google reviews</div>
+        <div class="rev-n up" style="margin-top:4px;font-weight:600">▲ 4.3 → 4.8 in 90 days</div>
+      </div>
+      <div class="rev-bars">
+        <div class="rb">5★ <div class="rb-track"><div class="rb-fill" style="width:84%"></div></div><span class="rb-num">346</span></div>
+        <div class="rb">4★ <div class="rb-track"><div class="rb-fill" style="width:10%"></div></div><span class="rb-num">41</span></div>
+        <div class="rb">3★ <div class="rb-track"><div class="rb-fill" style="width:3%"></div></div><span class="rb-num">13</span></div>
+        <div class="rb">2★ <div class="rb-track"><div class="rb-fill" style="width:1.5%"></div></div><span class="rb-num">7</span></div>
+        <div class="rb">1★ <div class="rb-track"><div class="rb-fill" style="width:1%"></div></div><span class="rb-num">5</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚡ Smart routing — you decide, or let it run on auto</div>
+      <div style="font-size:13.5px;color:var(--text-muted);margin:-6px 0 14px">Two feedback replies just came in from today's checkouts. Route them:</div>
+
+      <div class="route-item" id="route-happy">
+        <div class="route-hd">
+          <div class="appt-ava" style="background:linear-gradient(140deg,#22D58A,#0FA968);width:34px;height:34px;font-size:12px">MK</div>
+          <div class="route-n">Melissa K. <span style="color:var(--green);font-size:12px;font-weight:600">· rated her visit 5/5</span></div>
+          <div class="route-meta">2 min ago</div>
+        </div>
+        <div class="route-fb">"Obsessed with my results!! Vanessa is the best injector in Tampa hands down 😍"</div>
+        <div class="route-btns" id="happy-btns">
+          <button class="rbtn go" onclick="routeHappy()">→ Send Google review link</button>
+        </div>
+      </div>
+
+      <div class="route-item" id="route-sad">
+        <div class="route-hd">
+          <div class="appt-ava" style="background:linear-gradient(140deg,#FF5247,#C2185B);width:34px;height:34px;font-size:12px">RD</div>
+          <div class="route-n">Rachel D. <span style="color:var(--amber);font-size:12px;font-weight:600">· rated her visit 2/5</span></div>
+          <div class="route-meta">11 min ago</div>
+        </div>
+        <div class="route-fb">"Waited 35 minutes past my appointment time and nobody said anything. Results were fine but honestly considering going elsewhere."</div>
+        <div class="route-btns" id="sad-btns">
+          <button class="rbtn res" onclick="routeSad()">→ Intercept &amp; resolve privately</button>
+        </div>
+      </div>
+      <div style="font-size:12.5px;color:var(--text-dim);margin-top:4px">Rachel never gets a public review link. That 2-star stays off Google — and she gets a reason to come back.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⭐ Latest reviews collected <span class="right">auto-replied by Admin Pro</span></div>
+      <div class="rev-item">
+        <div class="appt-ava" style="background:linear-gradient(140deg,#5BA8FF,#3D7BD8);width:36px;height:36px;font-size:12px">JT</div>
+        <div class="rev-body">
+          <div class="rev-line1"><span class="rev-nm">Jasmine T.</span><span class="rev-st">★★★★★</span><span class="rev-ago">2h ago</span></div>
+          <div class="rev-tx">"First time getting a HydraFacial and the whole experience was seamless. Booked through the chat at like 10pm, got reminders, zero friction."</div>
+          <div class="rev-reply"><b>↳ Reply posted by Admin Pro</b>Thank you Jasmine! So glad the late-night booking worked for you — see you at your next glow-up. 🧡 — The Team</div>
+        </div>
+      </div>
+      <div class="rev-item">
+        <div class="appt-ava" style="background:linear-gradient(140deg,#A98BFF,#7A5CFF);width:36px;height:36px;font-size:12px">CB</div>
+        <div class="rev-body">
+          <div class="rev-line1"><span class="rev-nm">Carlos B.</span><span class="rev-st">★★★★★</span><span class="rev-ago">1d ago</span></div>
+          <div class="rev-tx">"Laser hair removal, session 4. They text me the day before every time, moved me once with zero hassle. Most organized med spa I've been to."</div>
+          <div class="rev-reply"><b>↳ Reply posted by Admin Pro</b>Appreciate you, Carlos — consistency is the whole point. Two sessions to go! — The Team</div>
+        </div>
+      </div>
+      <div class="rev-item">
+        <div class="appt-ava" style="background:linear-gradient(140deg,#FFC53D,#E09B12);width:36px;height:36px;font-size:12px">AP</div>
+        <div class="rev-body">
+          <div class="rev-line1"><span class="rev-nm">Amara P.</span><span class="rev-st">★★★★★</span><span class="rev-ago">2d ago</span></div>
+          <div class="rev-tx">"I asked a question about filler aftercare at midnight and got a real, helpful answer instantly. Then they flagged it for my provider. Wild."</div>
+          <div class="rev-reply"><b>↳ Reply posted by Admin Pro</b>That's exactly what we're here for, Amara — day or night. Thanks for trusting us! — The Team</div>
+        </div>
+      </div>
+      <div class="rev-item">
+        <div class="appt-ava" style="background:linear-gradient(140deg,#22D58A,#0FA968);width:36px;height:36px;font-size:12px">SL</div>
+        <div class="rev-body">
+          <div class="rev-line1"><span class="rev-nm">Sarah L.</span><span class="rev-st">★★★★☆</span><span class="rev-ago">4d ago</span></div>
+          <div class="rev-tx">"Great results and easy booking. Only wish parking were easier downtown — not their fault though!"</div>
+          <div class="rev-reply"><b>↳ Reply posted by Admin Pro</b>Thanks Sarah! Pro tip: the Azeele St garage validates for our clients — we'll text you the code before your next visit. — The Team</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CRM ============ -->
+  <div class="view" id="v-crm">
+    <div class="greet" style="font-size:24px">CRM Management</div>
+    <div class="greet-sub">Admin Pro watches your entire client base and moves people back onto your calendar before they drift away for good.</div>
+
+    <div class="seg">
+      <div class="seg-c"><div class="seg-num" style="color:var(--green)">318</div><div class="seg-lbl">Active</div></div>
+      <div class="seg-c"><div class="seg-num" style="color:var(--amber)">64</div><div class="seg-lbl">Cooling</div></div>
+      <div class="seg-c"><div class="seg-num" style="color:var(--red)">92</div><div class="seg-lbl">Dormant</div></div>
+      <div class="seg-c"><div class="seg-num" style="color:var(--orange-light)">47</div><div class="seg-lbl">Won Back</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">💰 Revenue recovered <span class="right">last 90 days</span></div>
+      <div class="recov"><div class="recov-num" id="recov-num">$18,430</div><div class="recov-lbl">from 47 reactivated clients</div></div>
+      <div class="mini-chart">
+        <span style="height:18%"></span><span style="height:24%"></span><span style="height:21%"></span><span style="height:33%"></span><span style="height:41%"></span><span style="height:38%"></span><span style="height:52%"></span><span style="height:61%"></span><span style="height:58%"></span><span style="height:72%"></span><span style="height:84%"></span><span style="height:100%"></span>
+      </div>
+      <div class="mini-lbls"><span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>W7</span><span>W8</span><span>W9</span><span>W10</span><span>W11</span><span>W12</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔥 Highest-value dormant clients <span class="right">sorted by lifetime value</span></div>
+      <div class="crm-row"><div class="appt-ava" style="background:linear-gradient(140deg,#FF2D78,#C2185B);width:36px;height:36px;font-size:12px">VM</div><div class="crm-info"><div class="crm-n">Victoria Moss</div><div class="crm-d">Last visit 7 mo ago · Botox + filler regular · prefers Sat AM</div></div><div class="crm-ltv">$4,120</div><div class="crm-stat st-dorm">Dormant</div></div>
+      <div class="crm-row"><div class="appt-ava" style="background:linear-gradient(140deg,#5BA8FF,#3D7BD8);width:36px;height:36px;font-size:12px">GH</div><div class="crm-info"><div class="crm-n">Grace Huang</div><div class="crm-d">Last visit 8 mo ago · laser package unfinished (2 sessions left)</div></div><div class="crm-ltv">$3,485</div><div class="crm-stat st-dorm">Dormant</div></div>
+      <div class="crm-row"><div class="appt-ava" style="background:linear-gradient(140deg,#E0B25C,#B98A2E);width:36px;height:36px;font-size:12px">OB</div><div class="crm-info"><div class="crm-n">Olivia Bennett</div><div class="crm-d">Last visit 6 mo ago · HydraFacial monthly, stopped after move</div></div><div class="crm-ltv">$2,960</div><div class="crm-stat st-dorm">Dormant</div></div>
+      <div class="crm-row"><div class="appt-ava" style="background:linear-gradient(140deg,#A98BFF,#7A5CFF);width:36px;height:36px;font-size:12px">DK</div><div class="crm-info"><div class="crm-n">Derek Kim</div><div class="crm-d">Last visit 5 mo ago · usually books after gym season</div></div><div class="crm-ltv">$2,240</div><div class="crm-stat st-cool">Cooling</div></div>
+      <div class="crm-row"><div class="appt-ava" style="background:linear-gradient(140deg,#22D58A,#0FA968);width:36px;height:36px;font-size:12px">NF</div><div class="crm-info"><div class="crm-n">Nina Flores</div><div class="crm-d">Last visit 4.5 mo ago · birthday next month (loves a treat-yourself)</div></div><div class="crm-ltv">$1,875</div><div class="crm-stat st-cool">Cooling</div></div>
+      <div class="crm-row" id="wonback-row" style="display:none"><div class="appt-ava" style="background:linear-gradient(140deg,#FF6B2B,#E8420A);width:36px;height:36px;font-size:12px">VM</div><div class="crm-info"><div class="crm-n">Victoria Moss</div><div class="crm-d">Replied in 22 min — booked Botox for Saturday 9:30 AM</div></div><div class="crm-ltv" style="color:var(--green)">+$460</div><div class="crm-stat st-won">Won Back</div></div>
+      <button class="btn btn-primary" id="winback-btn" onclick="runWinback()">Run win-back on these 5 →</button>
+      <div style="font-size:12.5px;color:var(--text-dim);margin-top:11px">Each message is personal — it knows Grace has 2 laser sessions paid for, and that Nina's birthday is coming. No blast emails. Ever.</div>
+    </div>
+  </div>
+
+  <div class="foot">Live demo · <b>Admin Pro</b> by <a href="https://goodtroubleglobal.com">Good Trouble</a> · alex@goodtroubleglobal.com · (305) 290-1420</div>
+</div>
+
+<!-- expand modal: pulls real modules live from the main platform demo -->
+<div class="gt-modal-overlay" id="gt-modal" onclick="if(event.target===this)closeExpand()">
+  <div class="gt-modal">
+    <div class="gt-modal-bar">
+      <div class="gt-modal-label" id="gt-modal-label">Module</div>
+      <button class="gt-modal-close" onclick="closeExpand()" aria-label="Close">✕</button>
+    </div>
+    <div class="gt-modal-frame-wrap">
+      <div class="gt-modal-loading" id="gt-modal-loading">Loading live module…</div>
+      <iframe id="gt-modal-iframe" title="Live module preview"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<div class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" id="nb-hub" onclick="goTab('hub')"><span class="ic">🏠</span>Hub</button>
+    <button class="nav-btn" id="nb-asst" onclick="goTab('asst')"><span class="ic">🗓️</span>Assistant</button>
+    <button class="nav-btn" id="nb-rev" onclick="goTab('rev')"><span class="ic">⭐</span>Reviews</button>
+    <button class="nav-btn" id="nb-crm" onclick="goTab('crm')"><span class="ic">🔁</span>CRM</button>
+  </div>
+</div>
+
+<script>
+/* ---------------- tabs ---------------- */
+const TABS=['hub','asst','rev','crm'];
+function goTab(t){
+  TABS.forEach(x=>{
+    document.getElementById('v-'+x).classList.toggle('active',x===t);
+    document.getElementById('nb-'+x).classList.toggle('active',x===t);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------------- expand modal (pulls real modules from the live platform demo) ---------------- */
+function openExpand(id,name){
+  document.getElementById('gt-modal-label').textContent=name;
+  var f=document.getElementById('gt-modal-iframe');
+  var l=document.getElementById('gt-modal-loading');
+  l.style.display='flex';
+  f.style.opacity='0';
+  f.onload=function(){l.style.display='none';f.style.opacity='1';};
+  f.src='/demo/medspa.html?open='+encodeURIComponent(id);
+  document.getElementById('gt-modal').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeExpand(){
+  document.getElementById('gt-modal').classList.remove('show');
+  document.body.style.overflow='';
+  setTimeout(function(){document.getElementById('gt-modal-iframe').src='about:blank';},300);
+}
+
+/* ---------------- schedule ---------------- */
+const AV=[['IM','#5BA8FF,#3D7BD8'],['DW','#A98BFF,#7A5CFF'],['CR','#FF2D78,#C2185B'],['LP','#22D58A,#0FA968'],['TB','#FFC53D,#E09B12'],['NG','#FF6B2B,#E8420A'],['SO','#5BA8FF,#7A5CFF'],['KH','#E0B25C,#B98A2E']];
+const schedule={
+  0:[["9:00 AM","Lena Park","Chemical Peel","conf"],["10:15 AM","Tom Boyd","Consult — Laser","conf"],["1:00 PM","Nadia Gomez","Lip Filler","ai"],["3:30 PM","Sofia Ortiz","Microneedling","conf"]],
+  1:[["9:30 AM","Kayla Hunt","IV Therapy","conf"],["11:00 AM","Isabela Marques","Dermal Filler","conf"],["11:45 AM","Denise Whitfield","HydraFacial","ai"],["1:15 PM","Camila Reyes","Botox — 40 units","ai"],["3:00 PM","Tom Boyd","Laser Hair — Session 2","conf"],["4:30 PM","Priya Shah","New-client Consult","ai"]],
+  2:[["9:00 AM","Sofia Ortiz","Botox Touch-up","conf"],["10:30 AM","Lena Park","HydraFacial","conf"],["2:00 PM","Nadia Gomez","Consult — Sculptra","ai"]],
+  3:[["9:15 AM","Kayla Hunt","Microneedling","conf"],["10:45 AM","Denise Whitfield","Dermaplaning","conf"],["1:30 PM","Jess Turner","HydraFacial (won back)","ai"]],
+  4:[["9:00 AM","Isabela Marques","Filler Follow-up","conf"],["10:00 AM","Camila Reyes","B12 Shot","conf"],["11:30 AM","Tom Boyd","Laser Hair — Session 3","conf"],["1:00 PM","Priya Shah","Botox — First visit","ai"],["2:30 PM","Lena Park","PDO Threads Consult","conf"]],
+  5:[["10:00 AM","Sofia Ortiz","HydraFacial Deluxe","conf"],["11:30 AM","Nadia Gomez","Lip Filler Top-up","ai"],["1:00 PM","Kayla Hunt","Glow Facial","conf"],["2:15 PM","Denise Whitfield","LED Therapy","conf"]],
+  6:[]
+};
+const days=[["Mon",13],["Tue",14],["Wed",15],["Thu",16],["Fri",17],["Sat",18],["Sun",19]];
+let selDay=1;
+function avatarFor(name){
+  const ini=name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  const hit=AV.find(a=>a[0]===ini);
+  const grad=hit?hit[1]:'#FF6B2B,#E8420A';
+  return `<div class="appt-ava" style="background:linear-gradient(140deg,${grad})">${ini}</div>`;
+}
+function renderWeek(){
+  document.getElementById('week').innerHTML=days.map((d,i)=>{
+    const n=(schedule[i]||[]).length;
+    const dots=[0,1,2].map(k=>`<i class="${n>k*2?'on':''}"></i>`).join('');
+    return `<div class="day ${i===selDay?'sel':''}" onclick="pickDay(${i})"><div class="day-dow">${d[0]}</div><div class="day-num">${d[1]}</div><div class="day-load">${dots}</div></div>`;
+  }).join('');
+}
+function renderDay(flashIdx=-1){
+  const list=schedule[selDay]||[];
+  const names=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+  document.getElementById('sched-day').textContent=names[selDay]+", Jul "+days[selDay][1];
+  document.getElementById('sched-count').textContent=list.length?list.length+" appointments":"No appointments";
+  document.getElementById('day-list').innerHTML=list.length?list.map((a,i)=>`
+    <div class="appt ${i===flashIdx?'flash':''}">
+      <div class="appt-time">${a[0]}</div>${avatarFor(a[1])}
+      <div><div class="appt-n">${a[1]}${a[3]==='ai'||a[3]==='new'?' <span class="ai-note">(booked by AI)</span>':''}</div><div class="appt-s">${a[2]}</div></div>
+      <div class="appt-tag ${a[3]==='new'?'tag-new':'tag-conf'}">${a[3]==='new'?'Just booked':'Confirmed'}</div>
+    </div>`).join(''):
+    `<div style="padding:18px 0;color:var(--text-dim);font-size:14px">Closed — enjoy the day off 🌴</div>`;
+}
+function pickDay(i){selDay=i;renderWeek();renderDay();}
+renderWeek();renderDay();
+
+/* ---------------- chat engine ---------------- */
+const msgs=document.getElementById('chat-msgs');
+function push(cls,who,text){
+  const d=document.createElement('div');d.className='msg '+cls;
+  d.innerHTML=(who?`<div class="msg-who">${who}</div>`:'')+text;
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+function typing(on){
+  let t=document.getElementById('typ');
+  if(on&&!t){t=document.createElement('div');t.id='typ';t.className='typing';t.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;}
+  if(!on&&t)t.remove();
+}
+function seq(steps){
+  let delay=0;
+  steps.forEach(s=>{
+    delay+=s.wait||900;
+    setTimeout(()=>{typing(false);
+      if(s.type==='typing'){typing(true);return;}
+      if(s.type==='book'){bookInto(s.day,s.entry);push('sys','',s.text);return;}
+      push(s.cls,s.who,s.text);
+    },delay);
+  });
+  return delay;
+}
+function bookInto(dayIdx,entry){
+  const list=schedule[dayIdx];
+  list.push(entry);
+  list.sort((a,b)=>toMin(a[0])-toMin(b[0]));
+  selDay=dayIdx;renderWeek();renderDay(list.indexOf(entry));
+}
+function toMin(t){const[a,b]=t.split(' ');let[h,m]=a.split(':').map(Number);if(b==='PM'&&h!==12)h+=12;if(b==='AM'&&h===12)h=0;return h*60+m;}
+
+const scenarios={
+  book:[
+    {cls:'cl',who:'Client · Ana T.',text:"Hi! Do you guys do Botox? What does it run and when could I get in?",wait:400},
+    {type:'typing',wait:700},
+    {cls:'ai',who:'Assistant',text:"Hi Ana! We do — Botox here is $12/unit with Vanessa, and most first-time foreheads run 20–30 units. Have you had Botox before, or would this be your first time?",wait:1500},
+    {cls:'cl',who:'Client · Ana T.',text:"First time! Kind of nervous lol",wait:1600},
+    {type:'typing',wait:700},
+    {cls:'ai',who:'Assistant',text:"Totally normal 💛 First visits start with a free 10-min consult so Vanessa can walk you through everything — no needles until you're comfortable. I have <b>Wednesday 2:00 PM</b> or <b>Friday 1:00 PM</b> open. Which works better?",wait:1700},
+    {cls:'cl',who:'Client · Ana T.',text:"Wednesday 2pm works!",wait:1500},
+    {type:'typing',wait:600},
+    {cls:'ai',who:'Assistant',text:"You're all set, Ana — Wednesday, July 15 at 2:00 PM. I've texted your confirmation, directions, and a quick prep note (skip alcohol 24 hrs before). See you then! ✨",wait:1400},
+    {type:'book',day:2,entry:["2:00 PM","Ana Torres","Botox — First visit + consult","new"],text:"✓ Appointment added to Wednesday — check the calendar above",wait:900}
+  ],
+  resched:[
+    {cls:'cl',who:'Client · Tom B.',text:"Hey, I have laser at 3 today but I'm stuck at work. Any way to move it?",wait:400},
+    {type:'typing',wait:700},
+    {cls:'ai',who:'Assistant',text:"No problem, Tom — happens to everyone. I can move your Laser Hair (Session 2) to <b>today 4:30 PM</b>, or <b>Friday 11:30 AM</b> right before your Session 3 spot. Preference?",wait:1600},
+    {cls:'cl',who:'Client · Tom B.',text:"Friday 11:30 is perfect actually",wait:1500},
+    {type:'typing',wait:600},
+    {cls:'ai',who:'Assistant',text:"Done — moved to Friday, July 17 at 11:30 AM. I've also offered your old 3:00 PM slot to the waitlist so it doesn't go empty. Have a good one! 👍",wait:1300},
+    {type:'book',day:4,entry:["11:35 AM","Tom Boyd","Laser Hair — Session 2 (moved)","new"],text:"✓ Rescheduled to Friday + old slot offered to 6 waitlist clients",wait:900}
+  ],
+  night:[
+    {cls:'sys',who:'',text:"12:04 AM — front desk closed 7 hours ago",wait:300},
+    {cls:'cl',who:'Client · Priya S.',text:"Hi, random question — I have a consult booked but I'm on blood thinners, is that an issue for filler??",wait:900},
+    {type:'typing',wait:700},
+    {cls:'ai',who:'Assistant',text:"Great question, Priya — and good timing to ask before your visit. Blood thinners don't rule out filler, but they do raise bruising risk, so your provider will want to review your medication list first. I've added a note to your chart so she's prepared for your Friday 1:00 PM consult.",wait:1900},
+    {cls:'cl',who:'Client · Priya S.',text:"Oh amazing, thank you!! Wasn't expecting a reply tonight 😄",wait:1700},
+    {type:'typing',wait:600},
+    {cls:'ai',who:'Assistant',text:"Anytime — literally 🙂 If you think of anything else before Friday, I'm here 24/7.",wait:1200},
+    {type:'book',day:4,entry:["1:05 PM","Priya Shah","⚕ Chart note: medication review","new"],text:"✓ Chart note added for the provider — no morning catch-up needed",wait:900}
+  ]
+};
+function playScenario(key,btn){
+  document.querySelectorAll('.chip').forEach(c=>c.disabled=true);
+  const total=seq(scenarios[key]);
+  setTimeout(()=>{document.querySelectorAll('.chip').forEach(c=>c.disabled=false);if(btn)btn.style.opacity=0.45;},total+1000);
+}
+
+/* ---------------- review routing ---------------- */
+function routeHappy(){
+  document.getElementById('happy-btns').innerHTML='<div class="sent-line" style="color:var(--green)">✓ Google review link sent to Melissa — 5-star posted 8 min later (avg. conversion: 41%)</div>';
+}
+function routeSad(){
+  document.getElementById('sad-btns').innerHTML='<div class="sent-line" style="color:var(--amber)">✓ Private resolution opened — Rachel got a personal apology + priority rebooking with no wait. Nothing hit Google.</div>';
+}
+
+/* ---------------- CRM win-back ---------------- */
+function runWinback(){
+  const b=document.getElementById('winback-btn');
+  b.disabled=true;b.textContent='Writing 5 personal messages…';
+  setTimeout(()=>{b.textContent='Sent. Watching for replies…';},1500);
+  setTimeout(()=>{
+    document.getElementById('wonback-row').style.display='flex';
+    b.textContent='✓ Victoria replied — booked Saturday (+$460)';
+    b.style.background='linear-gradient(140deg,var(--green),#0FA968)';
+    const r=document.getElementById('recov-num');r.textContent='$18,890';
+  },3400);
+}
+</script>
+</body>
+</html>

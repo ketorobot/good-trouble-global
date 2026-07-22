@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Book a free AI audit call with Good Trouble. We review your med spa's revenue leaks before we talk — you leave the call with answers, not a pitch.">
+<title>Book a Free Audit Call — Good Trouble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF6B2B;
+  --orange-dim:rgba(255,107,43,0.12);
+  --orange-b:rgba(255,107,43,0.30);
+  --bg:#020202;
+  --bg1:#0e0e0e;
+  --bg2:#161616;
+  --hi:#F5F0E8;
+  --mid:#8A8580;
+  --dim:rgba(245,240,232,0.55);
+  --dim2:rgba(245,240,232,0.28);
+  --border:rgba(255,107,43,0.18);
+  --line:rgba(255,107,43,0.08);
+  --font-head:'Bebas Neue',sans-serif;
+  --font-body:'Barlow',sans-serif;
+  --max:1100px;
+  --rad:2px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--hi);font-family:var(--font-body);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.45;mix-blend-mode:overlay;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,3rem);height:62px;background:rgba(2,2,2,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+.nav-logo img{height:32px;width:auto;display:block;opacity:0.85;transition:opacity .2s}
+.nav-logo img:hover{opacity:1}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--font-body);font-weight:600;font-size:0.78rem;color:var(--dim);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--hi)}
+.nav-cta{background:var(--orange)!important;color:#fff!important;padding:0.45rem 1.1rem!important;border-radius:2px;letter-spacing:0.08em!important;transition:opacity .2s!important;}
+.nav-cta:hover{opacity:0.88!important}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--hi);transition:.3s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:90;background:rgba(2,2,2,0.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--font-head);font-size:2.4rem;color:var(--hi);text-decoration:none;letter-spacing:0.06em;transition:color .2s;}
+.mobile-menu a:hover{color:var(--orange)}
+.page-wrap{max-width:var(--max);margin:0 auto;padding:clamp(7rem,12vw,9rem) clamp(1.5rem,4vw,3rem) clamp(4rem,8vw,6rem);}
+.page-header{margin-bottom:clamp(2.5rem,5vw,3.5rem);max-width:640px;}
+.sec-label{font-family:var(--font-body);font-weight:700;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:0.85rem;display:block;}
+.page-h1{font-family:var(--font-head);font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.05;letter-spacing:0.02em;color:var(--hi);margin-bottom:1rem;}
+.page-h1 span{color:var(--orange)}
+.page-intro{font-size:clamp(0.95rem,1.3vw,1.05rem);color:var(--dim);line-height:1.7;max-width:540px;}
+.form-wrap{background:var(--bg1);border:1px solid var(--line);border-radius:var(--rad);padding:clamp(2rem,4vw,2.5rem);max-width:680px;}
+.form-group{margin-bottom:1.5rem}
+.form-group label{display:block;font-family:var(--font-body);font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--dim);margin-bottom:0.5rem;}
+.form-group input,.form-group textarea{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:var(--rad);padding:0.8rem 1rem;color:var(--hi);font-family:var(--font-body);font-weight:400;font-size:0.95rem;line-height:1.5;transition:border-color .2s;outline:none;-webkit-appearance:none;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--dim2)}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--orange-b)}
+.form-group textarea{resize:vertical;min-height:130px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{width:100%;background:var(--orange);color:#fff;font-family:var(--font-body);font-weight:700;font-size:0.88rem;letter-spacing:0.1em;text-transform:uppercase;padding:1rem 2rem;border-radius:var(--rad);border:none;cursor:pointer;transition:opacity .2s,transform .2s;margin-top:0.5rem;}
+.btn-submit:hover{opacity:0.88;transform:translateY(-1px)}
+footer{background:var(--bg1);border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,3.5rem) clamp(1.5rem,4vw,3rem);margin-top:6rem;}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.footer-brand{display:flex;align-items:center;gap:0.75rem}
+.footer-brand img{height:26px;width:auto;opacity:0.7}
+.footer-brand-name{font-family:var(--font-head);font-size:1rem;letter-spacing:0.06em;color:var(--dim);}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:0.8rem;color:var(--dim2);text-decoration:none;transition:color .2s;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;}
+.footer-links a:hover{color:var(--orange)}
+.footer-copy{font-size:0.76rem;color:var(--dim2);}
+@media(max-width:640px){.nav-links{display:none}.nav-burger{display:flex}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;align-items:flex-start;gap:1.25rem}}
+@media(min-width:641px){.nav-burger{display:none}}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a class="nav-logo" href="/"><img src="/logo.png" alt="Good Trouble"></a>
+  <div class="nav-links">
+    <a href="/services">Services</a>
+    
+    <a href="/about">About</a>
+    <a class="nav-cta" href="/contact">Get Free Audit</a>
+  </div>
+  <button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/services">Services</a>
+  
+  <a href="/about">About</a>
+  <a href="/contact">Get a Free Audit →</a>
+</div>
+
+<div class="page-wrap">
+  <div class="page-header">
+    <span class="sec-label">Free Audit</span>
+    <h1 class="page-h1">Get your<br><span>free audit</span></h1>
+    <p class="page-intro">Fill this out. We'll review your setup before we talk — so we show up with findings, not questions.</p>
+  </div>
+
+  <div class="form-wrap">
+    <form action='/contact' method='POST' name='contact' netlify netlify-honeypot='bot-field'><input type='hidden' name='form-name' value='contact' /><input type='hidden' name='bot-field' style='display:none'>
+      <div class="form-group">
+        <label for="medspa_name">Med Spa Name</label>
+        <input type="text" id="medspa_name" name="medspa_name" placeholder="Your practice name" required>
+      </div>
+      <div class="form-group">
+        <label for="contact_name">Contact Name</label>
+        <input type="text" id="contact_name" name="contact_name" placeholder="First and last name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Contact Email</label>
+        <input type="email" id="email" name="email" placeholder="you@yourpractice.com" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Contact Phone <span style="font-weight:400;opacity:0.55;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+      </div>
+      <div class="form-group">
+        <label for="notes">Comments / Notes <span style="font-weight:400;opacity:0.55;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <textarea id="notes" name="notes" placeholder="Anything you'd like us to know before the call."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Submit →</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/logo.png" alt="Good Trouble">
+      <span class="footer-brand-name">Good Trouble</span>
+    </div>
+    <div class="footer-links">
+      <a href="/services">Services</a>
+      
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+    <span class="footer-copy">&copy; 2025 Good Trouble</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger=document.getElementById('nav-burger');
+  var mobileMenu=document.getElementById('mobile-menu');
+  burger.addEventListener('click',function(){
+    var open=mobileMenu.classList.toggle('open');
+    burger.classList.toggle('open',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      mobileMenu.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+})();
+</script>
+</body>
+</html>

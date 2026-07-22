@@ -1,0 +1,24 @@
+{
+  "name": "Good Trouble",
+  "short_name": "Good Trouble",
+  "description": "Med Spa AI Command Center",
+  "start_url": "/demo/medspa.html",
+  "display": "standalone",
+  "background_color": "#0C0809",
+  "theme_color": "#0C0809",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

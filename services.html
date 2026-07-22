@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Good Trouble — AI platform for med spas. Campaign Launcher, smart review routing, retention sequences, AI front desk, workflow automation, and content engine.">
+<title>Services — Good Trouble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--orange:#FF6B2B;--bg:#020202;--bg1:#0d0d0d;--bg2:#141414;--hi:#F5F0E8;--mid:#8A8580;--dim:rgba(245,240,232,0.55);--dim2:rgba(245,240,232,0.28);--line:rgba(255,107,43,0.08);--border:rgba(255,107,43,0.18);--font-head:'Bebas Neue',sans-serif;--font-body:'Barlow',sans-serif;--max:1060px;--rad:2px;}
+html,body{background:var(--bg);color:var(--hi);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+body{min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.45;mix-blend-mode:overlay;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,3rem);height:62px;background:rgba(2,2,2,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+.nav-logo img{height:32px;width:auto;display:block;opacity:0.85;transition:opacity .2s}
+.nav-logo img:hover{opacity:1}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--font-body);font-weight:600;font-size:0.78rem;color:var(--dim2);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--hi)}
+.nav-cta{background:var(--orange)!important;color:#fff!important;padding:0.45rem 1.1rem!important;border-radius:2px;letter-spacing:0.08em!important;transition:opacity .2s!important;}
+.nav-cta:hover{opacity:0.88!important}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--hi);transition:.3s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:90;background:rgba(2,2,2,0.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--font-head);font-size:2.4rem;color:var(--hi);text-decoration:none;letter-spacing:0.06em;transition:color .2s;}
+.mobile-menu a:hover{color:var(--orange)}
+.page-wrap{max-width:var(--max);margin:0 auto;padding:clamp(7rem,12vw,9rem) clamp(1.5rem,4vw,3rem) clamp(4rem,8vw,6rem);}
+.page-header{margin-bottom:clamp(3rem,6vw,4.5rem);max-width:680px;}
+.sec-label{font-family:var(--font-body);font-weight:700;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:0.85rem;display:block;}
+.page-h1{font-family:var(--font-head);font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.02;letter-spacing:0.02em;color:var(--hi);margin-bottom:1.1rem;}
+.page-h1 span{color:var(--orange)}
+.page-intro{font-size:clamp(0.95rem,1.3vw,1.05rem);color:var(--dim);line-height:1.72;max-width:600px;}
+.how-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;margin-bottom:clamp(3rem,6vw,5rem);}
+.how-cell{background:var(--bg1);padding:2rem;border-right:1px solid var(--line);}
+.how-cell:last-child{border-right:none}
+.how-cell-num{font-family:var(--font-head);font-size:2rem;color:var(--orange);opacity:0.3;line-height:1;margin-bottom:0.85rem;}
+.how-cell h3{font-family:var(--font-head);font-size:1rem;letter-spacing:0.04em;color:var(--hi);margin-bottom:0.5rem;}
+.how-cell p{font-size:0.85rem;line-height:1.68;color:var(--mid);}
+.svc-list{display:flex;flex-direction:column;gap:1px;border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;margin-bottom:clamp(3rem,6vw,5rem);}
+.svc-item{background:var(--bg1);padding:2.25rem 2.5rem;display:grid;grid-template-columns:1fr auto;align-items:start;gap:2rem;border-bottom:1px solid var(--line);position:relative;}
+.svc-item:last-child{border-bottom:none}
+.svc-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .2s;}
+.svc-item:hover::before{background:var(--orange)}
+.svc-item:hover{background:var(--bg2)}
+.svc-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:0.7rem;}
+.svc-name{font-family:var(--font-head);font-size:1.2rem;letter-spacing:0.03em;color:var(--hi);}
+.svc-body{font-size:0.92rem;line-height:1.72;color:var(--dim);margin-bottom:0.85rem;}
+.svc-detail{font-size:0.85rem;line-height:1.65;color:var(--mid);border-top:1px solid var(--line);padding-top:0.8rem;}
+.svc-tag{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);border:1px solid var(--border);padding:0.22rem 0.6rem;border-radius:1px;white-space:nowrap;align-self:start;margin-top:0.2rem;flex-shrink:0;}
+.why-block{background:var(--bg1);border:1px solid var(--line);border-radius:var(--rad);padding:clamp(2rem,4vw,3rem);margin-bottom:clamp(3rem,6vw,5rem);}
+.why-block h2{font-family:var(--font-head);font-size:clamp(1.5rem,3vw,2rem);letter-spacing:0.02em;color:var(--hi);margin-bottom:1.5rem;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 3rem;}
+.why-item{display:flex;gap:0.75rem;font-size:0.9rem;line-height:1.65;color:var(--dim);}
+.why-item::before{content:'▸';color:var(--orange);font-size:0.7rem;flex-shrink:0;margin-top:0.25rem;}
+.cta-block{background:var(--bg1);border:1px solid var(--line);border-radius:var(--rad);padding:clamp(2rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.cta-block-text h3{font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.7rem);letter-spacing:0.02em;color:var(--hi);margin-bottom:0.5rem;}
+.cta-block-text p{font-size:0.92rem;color:var(--dim);line-height:1.65;max-width:480px;}
+.btn-primary{background:var(--orange);color:#fff;font-family:var(--font-body);font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.9rem 2rem;border-radius:var(--rad);transition:opacity .2s,transform .2s;white-space:nowrap;display:inline-block;}
+.btn-primary:hover{opacity:0.88;transform:translateY(-1px)}
+footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,3.5rem) clamp(1.5rem,4vw,3rem);margin-top:2rem;}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.footer-brand{display:flex;align-items:center;gap:0.75rem}
+.footer-brand img{height:26px;width:auto;opacity:0.7}
+.footer-brand-name{font-family:var(--font-head);font-size:1rem;letter-spacing:0.06em;color:var(--dim);}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:0.78rem;color:var(--dim2);text-decoration:none;transition:color .2s;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;}
+.footer-links a:hover{color:var(--orange)}
+.footer-copy{font-size:0.74rem;color:var(--dim2);}
+@media(max-width:760px){.nav-links{display:none}.nav-burger{display:flex}.how-strip{grid-template-columns:1fr}.how-cell{border-right:none;border-bottom:1px solid var(--line)}.how-cell:last-child{border-bottom:none}.svc-item{grid-template-columns:1fr}.svc-tag{display:none}.why-grid{grid-template-columns:1fr}.cta-block{flex-direction:column;align-items:flex-start}.footer-inner{flex-direction:column;align-items:flex-start;gap:1.25rem}}
+@media(min-width:761px){.nav-burger{display:none}}
+</style>
+</head>
+<body>
+<nav id="main-nav">
+  <a href="/" class="nav-logo"><img src="/logo.png" alt="Good Trouble"></a>
+  <div class="nav-links">
+    <a href="/services" class="active">Services</a>
+    <a href="/about">About</a>
+    <a class="nav-cta" href="/contact">Get Free Audit</a>
+  </div>
+  <button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/services">Services</a>
+  <a href="/about">About</a>
+  <a href="/contact">Get a Free Audit →</a>
+</div>
+
+<div class="page-wrap">
+
+  <div class="page-header">
+    <span class="sec-label">The Platform</span>
+    <h1 class="page-h1">We run your back end.<br><span>You run your business.</span></h1>
+    <p class="page-intro">Ten years inside the med spa industry taught us exactly where revenue disappears. The platform we built plugs those holes — and we manage it for you on a recurring basis, not a one-time handoff.</p>
+  </div>
+
+  <div class="how-strip">
+    <div class="how-cell">
+      <div class="how-cell-num">01</div>
+      <h3>Audit call</h3>
+      <p>Free, 30 minutes. We come in with specifics already pulled from your operation. You don't prep.</p>
+    </div>
+    <div class="how-cell">
+      <div class="how-cell-num">02</div>
+      <h3>We build to your gaps</h3>
+      <p>What we deploy first is whatever has the fastest path to a number that matters — not a standard package.</p>
+    </div>
+    <div class="how-cell">
+      <div class="how-cell-num">03</div>
+      <h3>We run it monthly</h3>
+      <p>Subscription access, not a tool handoff. We manage, monitor, and adjust as your business changes.</p>
+    </div>
+  </div>
+
+  <div class="svc-list">
+
+    <div class="svc-item">
+      <div>
+        <div class="svc-head"><span class="svc-name">Campaign Launcher</span></div>
+        <p class="svc-body">Targeted outreach to your client list — reactivation, seasonal promotions, event-driven campaigns. We build the list segment, write the sequence, and run it. You see the bookings come in.</p>
+        <p class="svc-detail">Most med spas have $40,000–$80,000 worth of lapsed clients sitting in their CRM that nobody is contacting. A properly executed campaign converts 8–15% of that segment within 30 days. This is typically the first thing we deploy because it pays back fastest.</p>
+      </div>
+      <span class="svc-tag">Campaigns</span>
+    </div>
+
+    <div class="svc-item">
+      <div>
+        <div class="svc-head"><span class="svc-name">Smart Review Routing</span></div>
+        <p class="svc-body">Happy clients go to Google. Unhappy clients come to you. No more sending a blanket "leave us a 5-star review" link to someone who just had a bad experience — something that's happened to nearly every practice we've talked to.</p>
+        <p class="svc-detail">Sentiment is assessed before anyone gets routed anywhere. Clients who are likely to leave a negative review get a private channel to share feedback with you directly. Everyone else gets the Google link.</p>
+      </div>
+      <span class="svc-tag">Reputation</span>
+    </div>
+
+    <div class="svc-item">
+      <div>
+        <div class="svc-head"><span class="svc-name">Retention Sequences</span></div>
+        <p class="svc-body">Follow-up that triggers on what clients actually do — not a static calendar. Rebooking windows, post-visit check-ins, lapse alerts, loyalty nudges. All of it running in the background without your staff touching it.</p>
+        <p class="svc-detail">Connects to Mindbody, Boulevard, Jane App, and Vagaro. Behavior-triggered sequences consistently outperform blast campaigns because the timing is based on the individual, not a broadcast schedule.</p>
+      </div>
+      <span class="svc-tag">Retention</span>
+    </div>
+
+    <div class="svc-item">
+      <div>
+        <div class="svc-head"><span class="svc-name">AI Front Desk</span></div>
+        <p class="svc-body">An AI agent trained on your services, pricing, staff, and policies — deployed on your website and booking page. Answers questions, handles after-hours inquiries, captures contact information, and routes complex requests to the right person.</p>
+        <p class="svc-detail">Not a generic chatbot template. It knows your menu. It knows your prices. It knows what you offer and what you don't. Practices that deploy it report 30–40% fewer missed inquiries and a measurable uptick in after-hours bookings within 60 days.</p>
+      </div>
+      <span class="svc-tag">Front Desk</span>
+    </div>
+
+    <div class="svc-item">
+      <div>
+        <div class="svc-head"><span class="svc-name">Workflow Automation</span></div>
+        <p class="svc-body">The admin your staff does manually every day — intake processing, appointment confirmations, consent form routing, new client onboarding, internal handoffs — mapped and automated so your team's time goes to patients, not paperwork.</p>
+        <p class="svc-detail">Built on tools you already pay for wherever possible. No vendor lock-in. The average med spa team spends 12–18 hours a week on tasks that don't require a human. That's what we're targeting.</p>
+      </div>
+      <span class="svc-tag">Automation</span>
+    </div>
+
+    <div class="svc-item">
+      <div>
+        <div class="svc-head"><span class="svc-name">Content Engine</span></div>
+        <p class="svc-body">Brand-consistent social posts, promotional assets, treatment campaign creative, and email content — produced on demand, in your voice, with your palette. No freelancer coordination, no agency retainer, no two-week turnaround.</p>
+        <p class="svc-detail">Practices using this cut content production time by 60–80% and post more consistently as a result. Consistency compounds — it's one of the few things in marketing where showing up repeatedly is the entire strategy.</p>
+      </div>
+      <span class="svc-tag">Content</span>
+    </div>
+
+  </div>
+
+  <div class="why-block">
+    <h2>Why this is different from buying automation tools</h2>
+    <div class="why-grid">
+      <div class="why-item">Tools require someone to run them. We are that someone — included.</div>
+      <div class="why-item">We adapt to each spa's priorities. Static tools do the same thing for everyone.</div>
+      <div class="why-item">Ten years inside this industry means we know what the actual problems are — not a generic playbook.</div>
+      <div class="why-item">Subscription model means we stay accountable to results every month, not just at launch.</div>
+      <div class="why-item">Everything is built to your services, your data, your booking platform. Nothing generic.</div>
+      <div class="why-item">We're two people. You work with the people who built it, not an account manager who didn't.</div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-block-text">
+      <h3>Not sure where to start?</h3>
+      <p>The audit call is free. We come in with specifics already pulled from your operation — you don't prep. We tell you exactly what applies to your situation and what order makes sense.</p>
+    </div>
+    <a href="/contact" class="btn-primary">Book a Free Audit Call →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/logo.png" alt="Good Trouble">
+      <span class="footer-brand-name">Good Trouble</span>
+    </div>
+    <div class="footer-links">
+      <a href="/services">Services</a>
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+    <span class="footer-copy">&copy; 2025 Good Trouble</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger=document.getElementById('nav-burger');
+  var mobileMenu=document.getElementById('mobile-menu');
+  burger.addEventListener('click',function(){var open=mobileMenu.classList.toggle('open');burger.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';});
+  mobileMenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mobileMenu.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';});});
+})();
+</script>
+</body>
+</html>

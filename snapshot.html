@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Good Trouble — Weekly Snapshot</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;min-height:100vh;overflow-x:hidden}
+body{
+  background:#0A0A0A;
+  font-family:'Barlow','Segoe UI',sans-serif;
+  color:#F5F0E8;
+  padding:2.5rem 1.5rem;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(255,107,43,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(255,107,43,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(26,26,46,0.6) 0%, transparent 70%);
+  pointer-events:none;
+  z-index:0;
+}
+.container{max-width:860px;margin:0 auto;position:relative;z-index:1}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:3rem}
+.brand{font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:#FF6B2B;margin-bottom:.6rem}
+.title{font-size:42px;font-weight:700;letter-spacing:-.02em;margin-bottom:.4rem}
+.subtitle{font-size:13px;color:#555;letter-spacing:.06em}
+
+/* GOALS */
+.goals{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:3rem}
+.goal-card{background:rgba(255,107,43,0.06);border:1px solid rgba(255,107,43,0.3);border-radius:16px;padding:2rem;position:relative;overflow:hidden}
+.goal-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,43,0.04),transparent);pointer-events:none}
+.goal-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#FF6B2B;margin-bottom:.5rem}
+.goal-text{font-size:22px;font-weight:700;line-height:1.2}
+.goal-deadline{font-size:11px;color:#555;margin-top:.5rem}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem}
+.stat{background:rgba(255,255,255,0.03);border:1px solid #1e1e1e;border-radius:12px;padding:1.2rem;text-align:center}
+.stat-n{font-size:36px;font-weight:700;color:#FF6B2B;line-height:1}
+.stat-l{font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.1em;margin-top:.4rem}
+
+/* SECTIONS */
+.sections{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem}
+.section{background:rgba(255,255,255,0.03);border:1px solid #1e1e1e;border-radius:12px;padding:1.2rem}
+.section-head{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF6B2B;margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+.item{display:flex;gap:8px;padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.item:last-child{border-bottom:none}
+.pip{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.pip-doing{background:#00C8FF;box-shadow:0 0 6px #00C8FF}
+.pip-todo{background:#FF6B2B;box-shadow:0 0 6px #FF6B2B}
+.pip-done{background:#00FF85;box-shadow:0 0 6px #00FF85}
+.item-text{font-size:12px;color:#C8C4BC;line-height:1.4}
+.empty{font-size:12px;color:#444;font-style:italic}
+
+/* TIMELINE */
+.timeline-wrap{margin-bottom:2.5rem}
+.tl-head{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF6B2B;margin-bottom:1rem}
+.days{display:flex;flex-direction:column;gap:.6rem}
+.day{display:grid;grid-template-columns:100px 1fr;gap:.8rem;align-items:start}
+.day-label{font-size:12px;font-weight:700;padding:.5rem 0}
+.day-label.is-today{color:#00C8FF}
+.day-label.is-past{color:#00FF85}
+.day-label.is-future{color:#444}
+.day-box{background:rgba(255,255,255,0.03);border:1px solid #1a1a1a;border-radius:8px;padding:.7rem 1rem;font-size:12px;color:#555;font-style:italic}
+.day-box.is-today{border-color:#00C8FF;background:rgba(0,200,255,0.04);color:#C8C4BC;font-style:normal}
+.day-box.is-past{border-color:#00FF85;background:rgba(0,255,133,0.04);color:#C8C4BC;font-style:normal}
+
+/* ACTIONS */
+.actions{display:flex;gap:.8rem;padding-top:1.5rem;border-top:1px solid #1a1a1a}
+button{padding:.7rem 1.2rem;border-radius:8px;border:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-o{background:#FF6B2B;color:#0A0A0A}
+.btn-o:hover{background:#ff7d47;box-shadow:0 0 20px rgba(255,107,43,.4)}
+.btn-g{background:rgba(255,255,255,.06);border:1px solid #333;color:#C8C4BC}
+.btn-g:hover{background:rgba(255,255,255,.1)}
+
+@media(max-width:640px){
+  .goals,.sections,.stats{grid-template-columns:1fr}
+  .title{font-size:28px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="brand">Good Trouble</div>
+    <div class="title">Weekly Snapshot</div>
+    <div class="subtitle">June 22 – 28, 2026</div>
+  </div>
+
+  <div class="goals">
+    <div class="goal-card">
+      <div class="goal-label">Weekly Goal</div>
+      <div class="goal-text">VISIT MED SPAS</div>
+      <div class="goal-deadline">By end of week — Jun 28</div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-label">Monthly Goal</div>
+      <div class="goal-text">1 REAL CLIENT IN TALKS</div>
+      <div class="goal-deadline">By end of month — Jun 30</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n" id="s-visits">0</div><div class="stat-l">Visits This Week</div></div>
+    <div class="stat"><div class="stat-n" id="s-calls">0</div><div class="stat-l">Discovery Calls</div></div>
+    <div class="stat"><div class="stat-n" id="s-talks">0</div><div class="stat-l">In Talks</div></div>
+  </div>
+
+  <div class="sections">
+    <div class="section">
+      <div class="section-head">▶ Being Done</div>
+      <div id="doing">
+        <div class="empty">Nothing in flight yet</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-head">→ To Do</div>
+      <div id="todo">
+        <div class="empty">Tasks will appear here</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-head">✓ Accomplished</div>
+      <div id="done">
+        <div class="empty">Wins logged here</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline-wrap">
+    <div class="tl-head">Daily Progress — Week of Jun 22</div>
+    <div class="days">
+      <div class="day">
+        <div class="day-label is-today">Sun Jun 22</div>
+        <div class="day-box is-today">Set up weekly snapshot. Planning target med spas for the week.</div>
+      </div>
+      <div class="day">
+        <div class="day-label is-future">Mon Jun 23</div>
+        <div class="day-box">—</div>
+      </div>
+      <div class="day">
+        <div class="day-label is-future">Tue Jun 24</div>
+        <div class="day-box">—</div>
+      </div>
+      <div class="day">
+        <div class="day-label is-future">Wed Jun 25</div>
+        <div class="day-box">—</div>
+      </div>
+      <div class="day">
+        <div class="day-label is-future">Thu Jun 26</div>
+        <div class="day-box">—</div>
+      </div>
+      <div class="day">
+        <div class="day-label is-future">Fri Jun 27</div>
+        <div class="day-box">—</div>
+      </div>
+      <div class="day">
+        <div class="day-label is-future">Sat Jun 28</div>
+        <div class="day-box">Week closes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-g" onclick="copySnap()">Copy Snapshot</button>
+    <button class="btn-o" onclick="navigator.clipboard.writeText(window.location.href).then(()=>{event.target.textContent='Copied!';setTimeout(()=>event.target.textContent='Share Link',2000)})">Share Link</button>
+  </div>
+
+</div>
+<script>
+function copySnap(){
+  const lines=[
+    'GOOD TROUBLE — WEEKLY SNAPSHOT',
+    'June 22–28, 2026\n',
+    '📍 WEEKLY: VISIT MED SPAS (by Jun 28)',
+    '🎯 MONTHLY: 1 Real Client In Talks (by Jun 30)\n',
+    'Visits: '+document.getElementById('s-visits').textContent,
+    'Discovery Calls: '+document.getElementById('s-calls').textContent,
+    'In Talks: '+document.getElementById('s-talks').textContent,
+  ];
+  navigator.clipboard.writeText(lines.join('\n')).then(()=>{
+    event.target.textContent='Copied!';
+    setTimeout(()=>event.target.textContent='Copy Snapshot',2000);
+  });
+}
+</script>
+</body>
+</html>

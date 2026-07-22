@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Good Trouble — Status Report &amp; Trajectory</title>
+<meta name="description" content="Status report and 30-day trajectory.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CX7EDP4Z0N"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-CX7EDP4Z0N');
+</script>
+<style>
+:root{
+  --orange:#FF6B2B;
+  --ink:#0A0A0A;
+  --bone:#F5F0E8;
+  --red:#D6423A;
+  --blue:#5B7BEB;
+  --panel:rgba(245,240,232,.04);
+  --line:rgba(245,240,232,.10);
+  --line-strong:rgba(245,240,232,.18);
+  --orange-dim:rgba(255,107,43,.14);
+  --mute:rgba(245,240,232,.65);
+  --box:rgba(10,10,10,.88);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--bone);
+  font-family:'Barlow',sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+#circuit,#pulse{position:fixed;inset:0;z-index:0;pointer-events:none}
+#circuit{animation:flagBreathe 7s ease-in-out infinite}
+@keyframes flagBreathe{0%,100%{opacity:.82}50%{opacity:1}}
+#fw{position:fixed;inset:0;z-index:45;pointer-events:none}
+.grain{
+  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+.wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 28px}
+h1,h2,h3,.bebas{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.03em}
+
+/* SALUTE OVERLAY */
+#salute{
+  position:fixed;inset:0;z-index:60;pointer-events:none;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;opacity:0;text-align:center;padding:0 20px
+}
+#salute .s-eyebrow{font-weight:700;font-size:.85rem;letter-spacing:.32em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+#salute .s-main{
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,11vw,8.5rem);line-height:.95;color:var(--bone);letter-spacing:.04em;
+  text-shadow:0 0 28px rgba(255,107,43,.85),0 0 60px rgba(91,123,235,.55),0 0 90px rgba(214,66,58,.55)
+}
+#salute.show{animation:salute 2.6s ease forwards}
+@keyframes salute{
+  0%{opacity:0;transform:scale(.75);filter:blur(8px)}
+  16%{opacity:1;transform:scale(1.04);filter:blur(0)}
+  24%{transform:scale(1)}
+  72%{opacity:1}
+  100%{opacity:0;transform:scale(1.02)}
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(10,10,10,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-brand{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;letter-spacing:.08em;color:var(--bone);text-decoration:none;white-space:nowrap}
+.nav-brand span{color:var(--orange)}
+.nav-links{display:flex;gap:22px;flex-wrap:wrap}
+.nav-links a{color:var(--mute);text-decoration:none;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600;transition:color .2s}
+.nav-links a:hover{color:var(--orange)}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* HERO */
+.hero{padding:150px 0 14px}
+.hero-box{background:var(--box);border:1px solid var(--line);border-radius:6px;padding:46px 48px;max-width:100%}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.22em;color:var(--orange);
+  border:1px solid rgba(255,107,43,.35);padding:8px 16px;border-radius:2px;background:var(--orange-dim);
+}
+.eyebrow::before{content:"";width:7px;height:7px;background:var(--orange);border-radius:50%;box-shadow:0 0 12px var(--orange)}
+.hero h1{font-size:clamp(3.1rem,8.4vw,6.6rem);line-height:.94;margin-top:24px;color:var(--bone)}
+.hero h1 em{font-style:normal;color:var(--orange)}
+@media(max-width:700px){.hero-box{padding:34px 24px}}
+
+/* SECTIONS AS LEGIBILITY BOXES */
+main section{
+  background:var(--box);border:1px solid var(--line);border-radius:6px;
+  padding:62px 48px;margin:26px 0
+}
+@media(max-width:700px){main section{padding:42px 22px}}
+.sec-head{margin-bottom:44px}
+.sec-eyebrow{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.24em;color:var(--orange);margin-bottom:12px}
+.sec-head h2{font-size:clamp(2.3rem,5.4vw,3.9rem);line-height:1;color:var(--bone)}
+.sec-head p{margin-top:14px;color:var(--mute);max-width:760px;font-size:1.05rem}
+
+/* SNAPSHOT */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.stat{border:1px solid var(--line);background:var(--panel);padding:26px 22px;border-radius:3px;position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--orange);opacity:.9}
+.stat .num{font-family:'Bebas Neue',sans-serif;font-size:2.9rem;line-height:1;color:var(--bone)}
+.stat .lbl{font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;color:var(--mute);font-weight:600;margin-top:8px}
+.stat.zero{border-color:rgba(255,107,43,.5);background:linear-gradient(160deg,rgba(255,107,43,.10),rgba(255,107,43,.02))}
+.stat.zero .num{color:var(--orange)}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--orange),var(--line))}
+.t-item{position:relative;margin-bottom:34px}
+.t-item::before{
+  content:"";position:absolute;left:-31px;top:8px;width:11px;height:11px;border-radius:50%;
+  background:var(--ink);border:2px solid var(--orange);box-shadow:0 0 10px rgba(255,107,43,.5)
+}
+.t-item.hurdle::before{background:var(--orange);border-color:var(--ink);box-shadow:0 0 14px rgba(255,107,43,.85)}
+.badge{
+  display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;
+  padding:5px 12px;border-radius:2px;margin-bottom:10px
+}
+.badge.win{background:var(--orange);color:var(--ink)}
+.badge.hurdle{background:transparent;color:var(--orange);border:1px solid var(--orange)}
+.t-item h3{font-size:1.7rem;color:var(--bone);margin-bottom:8px}
+.t-item p{color:var(--mute);max-width:820px}
+
+/* ASSETS */
+.assets{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.asset{border:1px solid var(--line);background:var(--panel);padding:24px;border-radius:3px}
+.asset h3{font-size:1.35rem;color:var(--orange);margin-bottom:6px}
+.asset p{font-size:.93rem;color:var(--mute)}
+
+/* PLAN / TRACKS */
+.goal-banner{
+  border:1px solid rgba(255,107,43,.5);background:linear-gradient(140deg,rgba(255,107,43,.14),rgba(255,107,43,.03));
+  padding:38px 34px;border-radius:4px;margin-bottom:40px
+}
+.goal-banner .g-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.24em;color:var(--orange);margin-bottom:10px}
+.goal-banner h3{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.02;color:var(--bone)}
+.goal-banner p{margin-top:12px;color:var(--mute);max-width:780px}
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.track{border:1px solid var(--line);background:var(--panel);padding:28px;border-radius:3px;border-top:3px solid var(--line-strong)}
+.track.a{border-top-color:var(--orange)}
+.track.b{border-top-color:var(--bone)}
+.track .t-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--orange);margin-bottom:8px}
+.track h3{font-size:1.75rem;color:var(--bone);margin-bottom:8px}
+.track p{font-size:.95rem;color:var(--mute)}
+
+/* WEEK CARDS */
+.week{border:1px solid var(--line);background:var(--panel);border-radius:4px;margin-bottom:22px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,107,43,.08) inset}
+.w-head{
+  padding:24px 30px;border-bottom:1px solid var(--line);background:rgba(255,107,43,.05)
+}
+.w-head .w-title{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.w-head h3{font-size:2.1rem;color:var(--bone)}
+.w-head .w-date{font-size:.82rem;text-transform:uppercase;letter-spacing:.16em;color:var(--orange);font-weight:700}
+.w-goals{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:700px){.w-goals{grid-template-columns:1fr}}
+.w-goal{padding:14px 16px;border-radius:3px;border:1px solid var(--line)}
+.w-goal .g-label{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.w-goal .g-label::before{content:"";width:9px;height:9px;border-radius:2px}
+.w-goal .g-val{font-size:.9rem;font-weight:600;color:var(--bone);line-height:1.35}
+.w-goal.a{background:rgba(255,107,43,.11);border-color:rgba(255,107,43,.30)}
+.w-goal.a .g-label{color:var(--orange)}.w-goal.a .g-label::before{background:var(--orange)}
+.w-goal.b{background:rgba(245,240,232,.05);border-color:rgba(245,240,232,.18)}
+.w-goal.b .g-label{color:var(--bone)}.w-goal.b .g-label::before{background:var(--bone)}
+.w-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.w-col{padding:26px 30px;border-right:1px solid var(--line)}
+.w-col:last-child{border-right:none}
+@media(max-width:960px){.w-col{border-right:none;border-bottom:1px solid var(--line)}.w-col:last-child{border-bottom:none}}
+.w-col .c-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.w-col .c-tag::before{content:"";width:10px;height:10px;border-radius:2px}
+.w-col.a .c-tag{color:var(--orange)}.w-col.a .c-tag::before{background:var(--orange)}
+.w-col.b .c-tag{color:var(--bone)}.w-col.b .c-tag::before{background:var(--bone)}
+.w-col ul{list-style:none}
+.w-col li{
+  position:relative;padding:7px 0 7px 22px;font-size:.93rem;color:var(--mute);border-bottom:1px dashed rgba(245,240,232,.07)
+}
+.w-col li:last-child{border-bottom:none}
+.w-col li::before{content:"▸";position:absolute;left:0;color:var(--orange);font-size:.8rem;top:9px}
+
+/* EXAMPLE WEEK (footer of calendar) */
+.rhythm{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px}
+.r-day{border:1px solid var(--line);background:var(--panel);padding:18px 16px;border-radius:3px;text-align:center}
+.r-day .d{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--orange);letter-spacing:.08em}
+.r-day p{font-size:.8rem;color:var(--mute);margin-top:6px;line-height:1.45}
+
+/* NUMBERS */
+.numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.n-group{grid-column:1/-1;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.24em;color:var(--orange);margin-top:14px}
+.n-group:first-child{margin-top:0}
+.n-card{border:1px solid var(--line);background:var(--panel);padding:24px 20px;border-radius:3px;text-align:center}
+.n-card .num{font-family:'Bebas Neue',sans-serif;font-size:2.7rem;line-height:1;color:var(--bone)}
+.n-card .num.hot{color:var(--orange)}
+.n-card .lbl{font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);font-weight:600;margin-top:8px}
+
+/* JOB MAP */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:34px}
+.tier{border:1px solid var(--line);background:var(--panel);padding:30px 28px;border-radius:3px}
+.tier .t-lab{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--orange);margin-bottom:8px}
+.tier h3{font-size:1.6rem;color:var(--bone);margin-bottom:14px}
+.tier ul{list-style:none}
+.tier li{padding:8px 0 8px 22px;position:relative;font-size:.93rem;color:var(--mute);border-bottom:1px dashed rgba(245,240,232,.07)}
+.tier li:last-child{border-bottom:none}
+.tier li::before{content:"▸";position:absolute;left:0;color:var(--orange);font-size:.8rem}
+.tier li b{color:var(--bone)}
+.roles{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.role{border:1px solid var(--line-strong);background:var(--panel);padding:9px 16px;border-radius:2px;font-size:.82rem;font-weight:600;letter-spacing:.04em;color:var(--bone)}
+.avenues{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.avenue{border:1px solid var(--line);background:var(--panel);padding:22px;border-radius:3px}
+.avenue h4{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:var(--orange);letter-spacing:.05em;margin-bottom:6px}
+.avenue p{font-size:.9rem;color:var(--mute)}
+.cadence{margin-top:34px;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.cadence table{width:100%;border-collapse:collapse}
+.cadence th,.cadence td{padding:14px 20px;text-align:left;font-size:.92rem;border-bottom:1px solid var(--line)}
+.cadence th{background:rgba(255,107,43,.07);color:var(--orange);font-size:.72rem;text-transform:uppercase;letter-spacing:.16em}
+.cadence td{color:var(--mute)}
+.cadence td b{color:var(--bone)}
+.cadence tr:last-child td{border-bottom:none;background:var(--orange-dim);color:var(--bone);font-weight:600}
+
+footer{
+  position:relative;z-index:2;max-width:1180px;margin:0 auto 44px;padding:26px 48px;
+  background:var(--box);border:1px solid var(--line);border-radius:6px;
+  color:var(--mute);font-size:.82rem;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap
+}
+footer .f-brand{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.08em;color:var(--bone)}
+footer .f-brand span{color:var(--orange)}
+@media(max-width:1236px){footer{margin-left:28px;margin-right:28px}}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<canvas id="circuit"></canvas>
+<canvas id="pulse"></canvas>
+<div class="grain"></div>
+<canvas id="fw"></canvas>
+
+<div id="salute">
+  <div class="s-eyebrow">Est. 1776 · Happy 4th</div>
+  <div class="s-main">250 YEARS OF<br>BEING THE BEST</div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="https://goodtroubleglobal.com">GOOD <span>TROUBLE</span></a>
+    <div class="nav-links">
+      <a href="#state">Snapshot</a>
+      <a href="#retro">Last 30 Days</a>
+      <a href="#plan">Income Plan</a>
+      <a href="#calendar">Schedule</a>
+      <a href="#jobmap">Employment</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="hero-box">
+    <span class="eyebrow">Good Trouble · July 2026</span>
+    <h1>STATUS REPORT<br><em>AND TRAJECTORY</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============ SNAPSHOT ============ -->
+<section id="state">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">01 · Snapshot</div>
+    <h2>WHERE THINGS STAND</h2>
+    <p>Quick numbers before the story. The zero is what the plan below is for.</p>
+  </div>
+  <div class="stats reveal">
+    <div class="stat zero"><div class="num">$0</div><div class="lbl">Revenue So Far</div></div>
+    <div class="stat"><div class="num">100%</div><div class="lbl">Infrastructure Built</div></div>
+    <div class="stat"><div class="num">10 + 10</div><div class="lbl">Demos Live + Staged</div></div>
+    <div class="stat"><div class="num">44</div><div class="lbl">Tampa Prospects</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl">Case Studies Live</div></div>
+  </div>
+</section>
+
+<!-- ============ LAST 30 DAYS ============ -->
+<section id="retro">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">02 · Retrospective</div>
+    <h2>LAST 30 DAYS</h2>
+    <p>Good Trouble went from paperwork to a real operating company — live site, full infrastructure, business cards, flyers, pipeline — in about thirty days.</p>
+  </div>
+  <div class="timeline">
+    <div class="t-item reveal"><span class="badge win">Win</span>
+      <h3>Company Setup</h3>
+      <p>LLC, EIN, business banking, Google Workspace, dedicated phone lines, brand system, business cards, flyers. The full corporate setup.</p>
+    </div>
+    <div class="t-item reveal"><span class="badge win">Win</span>
+      <h3>The Tech Stack Build</h3>
+      <p>Getting goodtroubleglobal.com live meant standing up the entire stack: domain acquisition and DNS zone configuration, SSL, a CDN-backed deploy pipeline with digest-based file manifests, a version-controlled repository with branch protection, SPF/DKIM/DMARC email authentication, GA4 analytics, a multi-model AI content pipeline wired across four provider APIs, and automated scripts running daily status reports.</p>
+    </div>
+    <div class="t-item reveal"><span class="badge win">Win</span>
+      <h3>The Platform Demo</h3>
+      <p>The flagship interactive demo is live — a working walkthrough of the platform running a med spa's back end: campaigns, front desk coverage, client follow-up, reviews, memberships, content. Client-specific versions built for warm targets.</p>
+    </div>
+    <div class="t-item hurdle reveal"><span class="badge hurdle">Hurdle</span>
+      <h3>The Manifest Wipe</h3>
+      <p>The deploy pipeline deletes any page not included in the file manifest it's handed. One incomplete manifest went out and live pages disappeared from production. Cost a couple days. A hard deploy checklist is in place now.</p>
+    </div>
+    <div class="t-item hurdle reveal"><span class="badge hurdle">Hurdle</span>
+      <h3>Bad Timing on the First Outreach</h3>
+      <p>The first ten personalized emails went to our ten best Tampa prospects right when the site was down. They clicked, nothing loaded. All ten are marked REVISIT — re-engaging them is week one of the plan. Pre-send site checks are now mandatory.</p>
+    </div>
+    <div class="t-item reveal"><span class="badge win">Win</span>
+      <h3>Ten Personalized Demo Sites</h3>
+      <p>Each of the top ten Tampa prospects got their own demo — their logo, their brand, their own URL, the platform running their business. Ten more are built and staged for the next batch.</p>
+    </div>
+    <div class="t-item reveal"><span class="badge win">Win</span>
+      <h3>Walk-Ins Started</h3>
+      <p>Started walking into Tampa med spas with the demo on a tablet. Quick chats at the front desk, a few real conversations with owners. The language they use fed straight back into the outreach copy.</p>
+    </div>
+    <div class="t-item reveal"><span class="badge win">Win</span>
+      <h3>Three Case Studies</h3>
+      <p>Three branded case studies live on the site — conservative modeled numbers with clear disclaimers, built so real client data drops straight in.</p>
+    </div>
+    <div class="t-item hurdle reveal"><span class="badge hurdle">Hurdle</span>
+      <h3>A Thousand Small Fires</h3>
+      <p>The repo drifted out of sync with the live site, logo scrapers failed silently mid-build, an API endpoint 404'd mid-run. Nothing fatal, just lost hours. Most of it is written protocol now.</p>
+    </div>
+    <div class="t-item reveal"><span class="badge win">Win</span>
+      <h3>The Outreach Arsenal</h3>
+      <p>A 44-prospect enriched Tampa database, six cold email angles developed across two rounds, and Miami market research done on Augie's end.</p>
+    </div>
+    <div class="t-item reveal"><span class="badge win">Win</span>
+      <h3>The Operating System</h3>
+      <p>Internal founders' hub with automated daily 7am status emails to both of us, deploy rules, edit protocols, verification checklists.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASSETS ============ -->
+<section id="assets">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">03 · Assets</div>
+    <h2>WHAT WE'VE GOT</h2>
+  </div>
+  <div class="assets">
+    <div class="asset reveal"><h3>Live Platform Demo</h3><p>Interactive, prospect-facing, and central to every pitch — plus client-specific versions already built for warm targets.</p></div>
+    <div class="asset reveal"><h3>20 Personalized Microsites</h3><p>Ten live, ten staged. Each prospect sees the platform wearing their own brand.</p></div>
+    <div class="asset reveal"><h3>44-Prospect Pipeline</h3><p>Enriched Tampa database with contacts, demo slugs, and outreach status. Miami researched and queued behind it.</p></div>
+    <div class="asset reveal"><h3>6 Outreach Angles</h3><p>Two full rounds of cold email development, with language from the in-person conversations baked in.</p></div>
+    <div class="asset reveal"><h3>3 Case Studies</h3><p>Conservative, clearly disclaimed, and structured to swap in real client data the moment we have it.</p></div>
+    <div class="asset reveal"><h3>Operating Doctrine</h3><p>Deploy rules, edit protocol, health checks, daily automated status emails.</p></div>
+    <div class="asset reveal"><h3>Two Markets</h3><p>Tampa and Miami running in parallel, each with its own strategy.</p></div>
+    <div class="asset reveal"><h3>Field Intelligence</h3><p>Real language from real spa owners, gathered face to face.</p></div>
+  </div>
+</section>
+
+<!-- ============ INCOME PLAN ============ -->
+<section id="plan">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">04 · The Next 30 Days</div>
+    <h2>GENERATING SOURCE OF INCOME</h2>
+    <p>Two tracks of attack.</p>
+  </div>
+
+  <div class="goal-banner reveal">
+    <div class="g-label">The Monthly Goal</div>
+    <h3>FIRST PAYING CLIENT SIGNED BY AUGUST 2.</h3>
+    <p>Stretch: two signed — one in each market — with interviews moving on the hedge track. Every week below ladders into this.</p>
+  </div>
+
+  <div class="tracks">
+    <div class="track a reveal">
+      <div class="t-tag">Track A · Primary</div>
+      <h3>GOOD TROUBLE REVENUE</h3>
+      <p>The all-out push: re-engaging the original ten, a second Tampa wave with live personalized demos, steady in-person walk-ins, discovery calls, and a founding-client pilot offer built to close. Miami runs the same play in parallel.</p>
+    </div>
+    <div class="track b reveal">
+      <div class="t-tag">Track B · Hedge</div>
+      <h3>AI EMPLOYMENT — TAMPA</h3>
+      <p>A researched job campaign across Tampa's AI market: ~27 targeted applications, three recruiter relationships, in-person networking, and direct hiring-manager outreach. A hedge, not a retreat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCHEDULE ============ -->
+<section id="calendar">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">05 · The Calendar</div>
+    <h2>ORGANIZATION AND SCHEDULE</h2>
+    <p>Four weeks, each with a job. Relaunch. Saturate. Convert. Close.</p>
+  </div>
+
+  <!-- WEEK 1 -->
+  <div class="week reveal">
+    <div class="w-head">
+      <div class="w-title"><h3>WEEK 1</h3><span class="w-date">Jul 6 – 12</span></div>
+      <div class="w-goals">
+        <div class="w-goal a"><div class="g-label">Track A · Revenue Goal</div><div class="g-val">20 quality touches + 2 discovery calls booked</div></div>
+        <div class="w-goal b"><div class="g-label">Track B · Employment Goal</div><div class="g-val">5 tailored applications submitted</div></div>
+      </div>
+    </div>
+    <div class="w-body">
+      <div class="w-col a">
+        <div class="c-tag">Track A · Revenue</div>
+        <ul>
+          <li>Deploy the next 10 personalized Tampa demo pages — 20 live prospect assets total</li>
+          <li>Re-engage all 10 REVISIT prospects with their live personal demos</li>
+          <li>10 in-person walk-ins, tablet demo in hand</li>
+          <li>Day-3 / day-7 follow-up cadence on every send</li>
+        </ul>
+      </div>
+      <div class="w-col b">
+        <div class="c-tag">Track B · Employment</div>
+        <ul>
+          <li>Resume + LinkedIn rebuilt around AI implementation and automation delivery</li>
+          <li>25-company Tampa target list finalized across three tiers</li>
+          <li>5 applications — quality-first, tailored to each posting</li>
+          <li>Intro outreach to 3 recruiters: Kforce, Robert Half Technology, Harnham</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week reveal">
+    <div class="w-head">
+      <div class="w-title"><h3>WEEK 2</h3><span class="w-date">Jul 13 – 19</span></div>
+      <div class="w-goals">
+        <div class="w-goal a"><div class="g-label">Track A · Revenue Goal</div><div class="g-val">4 discovery calls booked + 10 new prospects contacted</div></div>
+        <div class="w-goal b"><div class="g-label">Track B · Employment Goal</div><div class="g-val">8 applications + first recruiter call</div></div>
+      </div>
+    </div>
+    <div class="w-body">
+      <div class="w-col a">
+        <div class="c-tag">Track A · Revenue</div>
+        <ul>
+          <li>Second Tampa wave: 10 new prospects emailed, each with a live personalized demo</li>
+          <li>10 more walk-ins, second passes on Week-1 warmth first</li>
+          <li>Follow-up calls to every opener — goal: 4 discovery calls booked</li>
+          <li>Referral ask in every positive conversation</li>
+        </ul>
+      </div>
+      <div class="w-col b">
+        <div class="c-tag">Track B · Employment</div>
+        <ul>
+          <li>8 applications across Tier 1–2 targets</li>
+          <li>First recruiter call completed; contract and contract-to-hire lanes opened</li>
+          <li>1 in-person event (Tampa Bay Tech / Tampa Devs / Embarc Collective)</li>
+          <li>5 direct messages to hiring managers at target companies — not just portals</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="week reveal">
+    <div class="w-head">
+      <div class="w-title"><h3>WEEK 3</h3><span class="w-date">Jul 20 – 26</span></div>
+      <div class="w-goals">
+        <div class="w-goal a"><div class="g-label">Track A · Revenue Goal</div><div class="g-val">2–3 proposals delivered + pilot offer presented</div></div>
+        <div class="w-goal b"><div class="g-label">Track B · Employment Goal</div><div class="g-val">8 applications + 2 interviews in motion</div></div>
+      </div>
+    </div>
+    <div class="w-body">
+      <div class="w-col a">
+        <div class="c-tag">Track A · Revenue</div>
+        <ul>
+          <li>Live platform walkthroughs for every warm prospect — screen-share or in person</li>
+          <li>Founding-client pilot offer presented on calls</li>
+          <li>2–3 written proposals delivered with onboarding plans attached</li>
+          <li>Walk-in second passes on interested locations + 10 fresh doors</li>
+        </ul>
+      </div>
+      <div class="w-col b">
+        <div class="c-tag">Track B · Employment</div>
+        <ul>
+          <li>8 applications; full follow-up sweep on Weeks 1–2 submissions</li>
+          <li>2 informational interviews booked through network and event contacts</li>
+          <li>Second in-person event (meetup or startup-community open night)</li>
+          <li>Fractional/contract AI consulting lane scoped — bridge income that also feeds the pipeline</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div class="week reveal">
+    <div class="w-head">
+      <div class="w-title"><h3>WEEK 4</h3><span class="w-date">Jul 27 – Aug 2</span></div>
+      <div class="w-goals">
+        <div class="w-goal a"><div class="g-label">Track A · Revenue Goal</div><div class="g-val">FIRST SIGNED CLIENT</div></div>
+        <div class="w-goal b"><div class="g-label">Track B · Employment Goal</div><div class="g-val">6 applications + 2+ interviews scheduled</div></div>
+      </div>
+    </div>
+    <div class="w-body">
+      <div class="w-col a">
+        <div class="c-tag">Track A · Revenue</div>
+        <ul>
+          <li>Close week: a contract in front of at least one spa, onboarding plan ready same day</li>
+          <li>Objection-handling passes on every open proposal; founder available on demand</li>
+          <li>Goal: first signed client. Stretch: second signature or verbal</li>
+          <li>August plan drafted from live pipeline data</li>
+        </ul>
+      </div>
+      <div class="w-col b">
+        <div class="c-tag">Track B · Employment</div>
+        <ul>
+          <li>6 applications + complete follow-up sweep across all 27</li>
+          <li>Target: 2+ interviews scheduled or in active scheduling</li>
+          <li>Recruiter check-ins; contract-role shortlist maintained as the fastest path to income</li>
+          <li>Month-end review: convert learnings into the August search cadence</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-eyebrow reveal" style="margin-top:40px">Example Week Schedule</div>
+  <div class="rhythm reveal">
+    <div class="r-day"><div class="d">MON</div><p>Outreach batch + follow-ups AM<br>Applications PM</p></div>
+    <div class="r-day"><div class="d">TUE</div><p>Field day —<br>in-person walk-ins</p></div>
+    <div class="r-day"><div class="d">WED</div><p>Discovery calls + demos<br>Recruiter / networking PM</p></div>
+    <div class="r-day"><div class="d">THU</div><p>Walk-ins +<br>follow-up calls</p></div>
+    <div class="r-day"><div class="d">FRI</div><p>Proposals, pipeline hygiene<br>Applications PM</p></div>
+    <div class="r-day"><div class="d">SAT</div><p>Build day — demo polish,<br>content, case studies</p></div>
+  </div>
+</section>
+
+<!-- ============ COMMITTED GOALS ============ -->
+<section id="numbers">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">06 · The Numbers</div>
+    <h2>COMMITTED GOALS</h2>
+  </div>
+  <div class="numbers reveal">
+    <div class="n-group">Revenue Track</div>
+    <div class="n-card"><div class="num">60+</div><div class="lbl">Cold Emails w/ Personal Demos</div></div>
+    <div class="n-card"><div class="num">30+</div><div class="lbl">In-Person Walk-Ins</div></div>
+    <div class="n-card"><div class="num">12+</div><div class="lbl">Discovery Calls</div></div>
+    <div class="n-card"><div class="num">4–6</div><div class="lbl">Proposals Delivered</div></div>
+    <div class="n-card"><div class="num hot">1</div><div class="lbl">Signed Client (Goal)</div></div>
+    <div class="n-card"><div class="num hot">2</div><div class="lbl">Signed Clients (Stretch)</div></div>
+    <div class="n-group">Employment Track</div>
+    <div class="n-card"><div class="num">27</div><div class="lbl">Targeted Applications</div></div>
+    <div class="n-card"><div class="num">3</div><div class="lbl">Recruiter Relationships</div></div>
+    <div class="n-card"><div class="num">3+</div><div class="lbl">In-Person Events</div></div>
+    <div class="n-card"><div class="num">10+</div><div class="lbl">Direct Networking Touches</div></div>
+    <div class="n-card"><div class="num hot">2+</div><div class="lbl">Interviews in Motion</div></div>
+  </div>
+</section>
+
+<!-- ============ EMPLOYMENT MAP ============ -->
+<section id="jobmap">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">07 · Employment Research</div>
+    <h2>TAMPA EMPLOYMENT MAP</h2>
+  </div>
+  <div class="tiers">
+    <div class="tier reveal">
+      <div class="t-lab">Tier 1 · AI-Native &amp; Product Companies</div>
+      <h3>WHERE AI IS THE BUSINESS</h3>
+      <ul>
+        <li><b>ReliaQuest</b> — Tampa HQ, agentic AI cybersecurity, $3.4B valuation, actively hiring</li>
+        <li><b>KnowBe4</b> — Clearwater, AI-driven security training at massive scale</li>
+        <li><b>OPSWAT</b> — Tampa, critical-infrastructure security</li>
+        <li><b>ConnectWise</b> — Tampa, AI features across its IT platform</li>
+        <li><b>RevStar</b> — Tampa AWS partner building AI/data solutions</li>
+      </ul>
+    </div>
+    <div class="tier reveal">
+      <div class="t-lab">Tier 2 · Enterprise AI Teams</div>
+      <h3>BIG BUILDERS, TAMPA SEATS</h3>
+      <ul>
+        <li><b>Citi Tampa</b> — actively recruiting Agentic AI Engineers (agentic flow + prompt design)</li>
+        <li><b>JPMorgan Chase Tampa</b> — AI in fraud, risk, and operations</li>
+        <li><b>Jabil</b> — St. Pete, AI in global manufacturing</li>
+        <li><b>Raymond James</b> — St. Pete, fintech AI and data science</li>
+        <li><b>TD SYNNEX / DTCC</b> — enterprise-scale data and AI operations</li>
+      </ul>
+    </div>
+    <div class="tier reveal">
+      <div class="t-lab">Tier 3 · Consulting &amp; Services</div>
+      <h3>AI DELIVERY FOR CLIENTS</h3>
+      <ul>
+        <li><b>Deloitte Tampa</b> — GenAI engineering, agentic AI platform, and GenAI enablement consulting roles open now</li>
+        <li><b>PwC Tampa</b> — data &amp; analytics engineering practice</li>
+        <li><b>Accenture / Slalom</b> — Tampa AI transformation work</li>
+        <li><b>Contract lanes</b> — 6–12 month AI app developer contracts appearing regularly in-market</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec-eyebrow reveal">Best-Fit Roles</div>
+  <div class="roles reveal">
+    <span class="role">AI Solutions Engineer</span>
+    <span class="role">GenAI / Automation Consultant</span>
+    <span class="role">Agentic AI Engineer</span>
+    <span class="role">AI Implementation Specialist</span>
+    <span class="role">Forward-Deployed AI Engineer</span>
+    <span class="role">Prompt / LLM Engineer</span>
+    <span class="role">AI Product Roles</span>
+  </div>
+
+  <div class="sec-eyebrow reveal">Beyond the Job Boards</div>
+  <div class="avenues">
+    <div class="avenue reveal"><h4>Specialist Recruiters</h4><p>Kforce (headquartered in Tampa), Robert Half Technology, and Harnham — a dedicated data &amp; AI recruiting firm active in the Tampa market. Three relationships opened in Week 1.</p></div>
+    <div class="avenue reveal"><h4>The Startup Ecosystem</h4><p>Embarc Collective, Tampa Bay Wave, and Tampa Bay Tech — open events, job boards, and warm intros to AI-hiring startups.</p></div>
+    <div class="avenue reveal"><h4>Meetups &amp; Community</h4><p>Tampa Devs, Tech Talk Tampa, and local AI meetups — three in-person appearances committed this month.</p></div>
+    <div class="avenue reveal"><h4>Direct Outreach</h4><p>LinkedIn messages straight to hiring managers and team leads at target companies — ten committed touches.</p></div>
+    <div class="avenue reveal"><h4>Contract &amp; Fractional</h4><p>Contract-to-hire and fractional AI consulting lanes via recruiters — the fastest realistic path to income, and every engagement doubles as Good Trouble pipeline.</p></div>
+    <div class="avenue reveal"><h4>University Network</h4><p>USF's AI and cybersecurity ecosystem — alumni channels and career events used for warm referrals into Tier 1–2 targets.</p></div>
+  </div>
+
+  <div class="cadence reveal">
+    <table>
+      <tr><th>Week</th><th>Applications</th><th>Focus</th></tr>
+      <tr><td><b>Week 1</b> · Jul 6–12</td><td><b>5</b></td><td>Foundation: resume/LinkedIn rebuild, target list, recruiter intros, quality-first submissions</td></tr>
+      <tr><td><b>Week 2</b> · Jul 13–19</td><td><b>8</b></td><td>Volume + presence: Tier 1–2 applications, first recruiter call, first in-person event, direct DMs</td></tr>
+      <tr><td><b>Week 3</b> · Jul 20–26</td><td><b>8</b></td><td>Depth: informational interviews, second event, full follow-up sweep, fractional lane scoped</td></tr>
+      <tr><td><b>Week 4</b> · Jul 27–Aug 2</td><td><b>6</b></td><td>Conversion: interviews scheduled, recruiter check-ins, August cadence set</td></tr>
+      <tr><td>30-Day Total</td><td>27 applications</td><td>+ 3 recruiters · 3+ events · 10+ direct touches · 2+ interviews in motion</td></tr>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="f-brand">GOOD <span>TROUBLE</span></div>
+  <div>Prepared July 3, 2026 · Targets are commitments of effort, not guarantees of outcome.</div>
+</footer>
+
+<script>
+/* ================= CIRCUIT-BOARD AMERICAN FLAG BACKGROUND ================= */
+var stripeLines=[];
+var starNodes=[];
+(function(){
+  const c=document.getElementById('circuit'),x=c.getContext('2d');
+  function draw(){
+    const w=c.width=window.innerWidth,h=c.height=window.innerHeight;
+    x.clearRect(0,0,w,h);
+    stripeLines=[];
+    starNodes=[];
+    const sh=h/13, cw=w*0.42, ch=sh*7;
+
+    // Stripe washes — makes the flag read immediately
+    for(let i=0;i<13;i++){
+      x.fillStyle=(i%2===0)?'rgba(214,66,58,0.10)':'rgba(245,240,232,0.045)';
+      x.fillRect(0,i*sh,w,sh);
+    }
+
+    // Circuit traces on each stripe
+    for(let i=0;i<13;i++){
+      const top=i*sh, red=i%2===0;
+      const col=red?'rgba(232,86,76,':'rgba(245,240,232,';
+      for(let k=0;k<3;k++){
+        const y=Math.round(top+sh*(0.22+0.28*k));
+        const x0=(i<7)?cw+14:0;
+        const a=red?0.16:0.11;
+        x.strokeStyle=col+a+')';x.fillStyle=x.strokeStyle;x.lineWidth=1;
+        x.beginPath();x.moveTo(x0,y);x.lineTo(w,y);x.stroke();
+        for(let nx=x0+60+Math.random()*120;nx<w-20;nx+=190+Math.random()*170){
+          x.beginPath();x.arc(nx,y,2,0,7);x.fill();
+          if(Math.random()<.4){
+            const d=Math.random()<.5?-1:1, by=y+d*10;
+            x.beginPath();x.moveTo(nx,y);x.lineTo(nx+10,by);x.lineTo(nx+30,by);x.stroke();
+            x.beginPath();x.arc(nx+30,by,1.8,0,7);x.fill();
+          }
+        }
+        stripeLines.push({y:y,x0:x0,x1:w,red:red});
+      }
+    }
+
+    // Canton: blue field + circuit grid
+    x.fillStyle='rgba(58,86,205,0.20)';
+    x.fillRect(0,0,cw,ch);
+    x.strokeStyle='rgba(122,150,255,0.10)';x.lineWidth=1;
+    for(let gx=0;gx<=cw;gx+=26){x.beginPath();x.moveTo(gx,0);x.lineTo(gx,ch);x.stroke();}
+    for(let gy=0;gy<=ch;gy+=26){x.beginPath();x.moveTo(0,gy);x.lineTo(cw,gy);x.stroke();}
+    x.strokeStyle='rgba(122,150,255,0.30)';
+    x.strokeRect(0.5,0.5,cw,ch);
+
+    // 50 star nodes: 9 rows alternating 6 / 5
+    for(let r=0;r<9;r++){
+      const n=(r%2===0)?6:5, off=(r%2===0)?1:1.5;
+      for(let s=0;s<n;s++){
+        const sx=cw*((s+off)/7), sy=ch*((r+1)/10);
+        starNodes.push({x:sx,y:sy});
+        const g=x.createRadialGradient(sx,sy,0,sx,sy,8);
+        g.addColorStop(0,'rgba(245,240,232,0.95)');
+        g.addColorStop(0.35,'rgba(245,240,232,0.32)');
+        g.addColorStop(1,'rgba(245,240,232,0)');
+        x.fillStyle=g;x.beginPath();x.arc(sx,sy,8,0,7);x.fill();
+        x.fillStyle='rgba(255,255,255,0.98)';x.beginPath();x.arc(sx,sy,1.8,0,7);x.fill();
+      }
+    }
+  }
+  draw();
+  let t;window.addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(draw,200)});
+})();
+
+/* Flag shimmer handled by CSS #circuit flagBreathe. Stars pulse slow + subtle here. */
+(function(){
+  const c=document.getElementById('pulse'),x=c.getContext('2d');
+  function size(){c.width=window.innerWidth;c.height=window.innerHeight}
+  size();window.addEventListener('resize',size);
+  function frame(now){
+    x.clearRect(0,0,c.width,c.height);
+    const pulse=(Math.sin(now*0.00035)+1)/2; // ~9s cycle
+    const a=0.10+pulse*0.40;
+    for(const s of starNodes){
+      const g=x.createRadialGradient(s.x,s.y,0,s.x,s.y,7);
+      g.addColorStop(0,`rgba(255,255,255,${a})`);
+      g.addColorStop(0.4,`rgba(245,240,232,${a*0.35})`);
+      g.addColorStop(1,'rgba(245,240,232,0)');
+      x.fillStyle=g;x.beginPath();x.arc(s.x,s.y,7,0,7);x.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* ================= FIREWORKS (fast intro + click) ================= */
+var launchFirework;
+(function(){
+  const c=document.getElementById('fw'),x=c.getContext('2d');
+  function size(){c.width=window.innerWidth;c.height=window.innerHeight}
+  size();window.addEventListener('resize',size);
+  const COLORS=['#FF6B2B','#F5F0E8','#D6423A','#5B7BEB','#FFD27A'];
+  const rockets=[],parts=[];
+  launchFirework=function(tx,ty){
+    tx=Math.max(40,Math.min(c.width-40,tx));
+    ty=Math.max(60,Math.min(c.height*0.75,ty));
+    rockets.push({x:tx+(Math.random()*40-20),y:c.height+12,tx:tx,ty:ty,v:60+Math.random()*14,c:COLORS[Math.floor(Math.random()*COLORS.length)]});
+  };
+  function explode(rx,ry,col){
+    const n=240+Math.floor(Math.random()*80);
+    for(let i=0;i<n;i++){
+      const a=Math.random()*Math.PI*2,s=5+Math.random()*15;
+      parts.push({x:rx,y:ry,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:22+Math.random()*16,max:38,
+        c:Math.random()<.72?col:COLORS[Math.floor(Math.random()*COLORS.length)]});
+    }
+  }
+  function frame(){
+    x.clearRect(0,0,c.width,c.height);
+    for(let i=rockets.length-1;i>=0;i--){
+      const r=rockets[i];
+      r.x+=(r.tx-r.x)*0.12;r.y-=r.v;
+      x.fillStyle=r.c;x.beginPath();x.arc(r.x,r.y,3.2,0,7);x.fill();
+      parts.push({x:r.x,y:r.y+5,vx:(Math.random()-.5)*.7,vy:1.4+Math.random()*1.4,life:11,max:11,c:'#FFB36B'});
+      if(r.y<=r.ty){explode(r.x,r.y,r.c);rockets.splice(i,1)}
+    }
+    for(let i=parts.length-1;i>=0;i--){
+      const p=parts[i];
+      p.x+=p.vx;p.y+=p.vy;p.vy+=0.07;p.vx*=0.986;p.vy*=0.986;p.life--;
+      if(p.life<=0){parts.splice(i,1);continue}
+      const a=(p.life/p.max)*(Math.random()<.12?0.4:1);
+      x.globalAlpha=Math.max(0,a);
+      x.fillStyle=p.c;x.beginPath();x.arc(p.x,p.y,2.4,0,7);x.fill();
+      x.globalAlpha=1;
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  // Intro: 2 huge fast rockets converge on the title center and explode INTO it, then done
+  window.addEventListener('load',()=>{
+    const W=window.innerWidth,H=window.innerHeight;
+    const cx=W*0.5, cy=H*0.42;
+    launchFirework(cx-W*0.06,cy);
+    setTimeout(()=>launchFirework(cx+W*0.06,cy),90);
+    setTimeout(()=>{document.getElementById('salute').classList.add('show')},260);
+    setTimeout(()=>{document.getElementById('salute').style.display='none'},2900);
+  });
+
+  // Click fireworks
+  document.addEventListener('click',e=>{launchFirework(e.clientX,e.clientY)});
+})();
+
+/* ================= SCROLL REVEAL ================= */
+(function(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

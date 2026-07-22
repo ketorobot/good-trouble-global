@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Good Trouble — Explained Simply</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:#0A0A0A;color:#F5F0E8;font-family:'Barlow',sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased}
+.bg{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bg::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,107,43,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,43,.045) 1px,transparent 1px);background-size:52px 52px;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%)}
+.bg::after{content:'';position:absolute;width:90vw;height:90vw;left:50%;top:-45vw;transform:translateX(-50%);background:radial-gradient(circle,rgba(255,107,43,.12),transparent 62%)}
+.deck{position:relative;z-index:1;height:100%}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8vh 7vw 16vh;opacity:0;visibility:hidden;transform:translateY(26px);transition:opacity .5s ease,transform .5s ease,visibility 0s linear .5s}
+.slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .55s ease,transform .55s ease}
+.slide>*{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.slide.active>*{opacity:1;transform:none}
+.slide.active>*:nth-child(1){transition-delay:.12s}
+.slide.active>*:nth-child(2){transition-delay:.26s}
+.slide.active>*:nth-child(3){transition-delay:.42s}
+.slide.active>*:nth-child(4){transition-delay:.58s}
+.slide.active>*:nth-child(5){transition-delay:.72s}
+.kicker{font-family:'Bebas Neue',sans-serif;color:#FF6B2B;letter-spacing:.4em;text-indent:.4em;font-size:clamp(13px,1.5vw,17px);margin-bottom:16px}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7.5vw,100px);line-height:.97;letter-spacing:.015em;max-width:1000px}
+h1 span{color:#FF6B2B}
+.lead{max-width:700px;font-size:clamp(16px,2vw,22px);line-height:1.6;color:rgba(245,240,232,.86);margin-top:22px}
+.sub{max-width:620px;font-size:clamp(14px,1.6vw,17px);line-height:1.55;color:rgba(245,240,232,.55);margin-top:16px;font-style:italic}
+.cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));max-width:900px;width:100%;margin-top:28px}
+.card{border:1px solid rgba(255,107,43,.28);background:rgba(255,107,43,.06);padding:16px 18px;border-radius:10px;text-align:left}
+.card h3{font-family:'Bebas Neue',sans-serif;color:#FF6B2B;font-size:clamp(18px,2vw,22px);letter-spacing:.06em;margin-bottom:5px}
+.card p{font-size:clamp(13px,1.4vw,15px);line-height:1.45;color:rgba(245,240,232,.78)}
+.sig{margin-top:26px;font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.4vw,28px);letter-spacing:.12em;color:#FF6B2B}
+.ui{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:center;gap:18px;padding:0 20px calc(22px + env(safe-area-inset-bottom))}
+.dots{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(245,240,232,.22);cursor:pointer;transition:.3s}
+.dot.on{background:#FF6B2B;transform:scale(1.35)}
+.arrow{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,107,43,.5);background:rgba(10,10,10,.6);color:#FF6B2B;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s;user-select:none;flex:none}
+.arrow:hover{background:#FF6B2B;color:#0A0A0A}
+.count{position:fixed;top:calc(18px + env(safe-area-inset-top));right:22px;z-index:5;font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:15px;color:rgba(245,240,232,.45)}
+.brand{position:fixed;top:calc(18px + env(safe-area-inset-top));left:22px;z-index:5;font-family:'Bebas Neue',sans-serif;letter-spacing:.25em;font-size:15px;color:#FF6B2B}
+.hint{position:fixed;bottom:calc(70px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.35);z-index:4;transition:opacity .5s}
+.hint.gone{opacity:0}
+@media (max-width:640px){.slide{padding:10vh 6vw 19vh}.cards{grid-template-columns:1fr 1fr;gap:9px}.card{padding:12px 13px}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="brand">GOOD TROUBLE</div>
+<div class="count" id="count">1 / 10</div>
+<div class="deck" id="deck">
+<section class="slide">
+<div class="kicker">GOOD TROUBLE</div>
+<h1>WHAT WE <span>ACTUALLY DO</span></h1>
+<p class="lead">The plain-English version of our company. No tech talk — promise.</p>
+</section>
+
+<section class="slide">
+<div class="kicker">FIRST THINGS FIRST</div>
+<h1>WHAT'S A <span>MED SPA?</span></h1>
+<p class="lead">A business that does skin treatments — Botox, facials, laser work. Picture a doctor's office crossed with a beauty salon. Visits run $200 to $800, and good customers come back every few months.</p>
+</section>
+
+<section class="slide">
+<div class="kicker">THEIR PROBLEM</div>
+<h1>NOBODY'S MINDING <span>THE OFFICE</span></h1>
+<p class="lead">The owner is usually busy doing the treatments themselves. So phone messages go unanswered, regulars quietly drift away, and money slips out the door — not because the business is bad, but because nobody has time for the paperwork side.</p>
+</section>
+
+<section class="slide">
+<div class="kicker">OUR PRODUCT</div>
+<h1>A TIRELESS <span>OFFICE ASSISTANT</span></h1>
+<p class="lead">We build a smart computer assistant for these businesses. It quietly handles the boring office work — day and night, weekends included, without ever being asked twice.</p>
+<p class="sub">Think of the best front-desk employee you've ever met. Now imagine they never sleep, never forget a name, and never call in sick.</p>
+</section>
+
+<section class="slide">
+<div class="kicker">EXAMPLE ONE</div>
+<h1>BRINGING CUSTOMERS <span>BACK</span></h1>
+<p class="lead">The assistant reads the appointment book, spots people who haven't visited in months, and sends a friendly "we'd love to see you again" note. Some of them book. Every one who does is real money the spa would have missed.</p>
+</section>
+
+<section class="slide">
+<div class="kicker">EXAMPLE TWO</div>
+<h1>ANSWERING AT <span>MIDNIGHT</span></h1>
+<p class="lead">Someone texts the spa at 11pm: "How much is Botox?" Instead of waiting until morning — and maybe texting a competitor instead — they get an instant, friendly answer and an offer to book. The owner wakes up to a fuller calendar.</p>
+</section>
+
+<section class="slide">
+<div class="kicker">EXAMPLE THREE</div>
+<h1>COLLECTING <span>GOLD STARS</span></h1>
+<p class="lead">After a good visit, the assistant politely asks the customer to leave a Google review. More five-star reviews means more new people find the spa when they search. It adds up fast.</p>
+</section>
+
+<section class="slide">
+<div class="kicker">THE MENU</div>
+<h1>PICK WHAT <span>YOU WANT</span></h1>
+<p class="lead">It works like a menu — every job is its own tool, and owners pick only what they need.</p>
+<div class="cards">
+<div class="card"><h3>WIN CUSTOMERS BACK</h3><p>Friendly notes to people who drifted away.</p></div>
+<div class="card"><h3>ANSWER EVERY MESSAGE</h3><p>Instant replies, any hour of the day.</p></div>
+<div class="card"><h3>COLLECT REVIEWS</h3><p>Happy customers, asked at the right moment.</p></div>
+<div class="card"><h3>RUN THE SPECIALS</h3><p>Writes and sends the promotions.</p></div>
+<div class="card"><h3>WATCH THE SHELVES</h3><p>Flags supplies before they run out.</p></div>
+<div class="card"><h3>PREP THE OWNER</h3><p>Notes on each client before their visit.</p></div>
+</div>
+</section>
+
+<section class="slide">
+<div class="kicker">THE BUSINESS PART</div>
+<h1>HOW WE <span>GET PAID</span></h1>
+<p class="lead">Spas pay us a monthly fee, like a subscription. We set everything up and keep it running. They get back hours of their week — plus customers they would have lost. Everybody wins.</p>
+</section>
+
+<section class="slide">
+<div class="kicker">THAT'S THE WHOLE THING</div>
+<h1>BUSY OWNERS + BORING WORK + <span>A TIRELESS ASSISTANT</span></h1>
+<p class="lead">That's Good Trouble. We build the assistant. The spas get to do what they're actually great at.</p>
+<div class="sig">— BRADDOCK &amp; AUGIE</div>
+</section>
+
+</div>
+<div class="hint" id="hint">Tap anywhere to continue</div>
+<div class="ui">
+<div class="arrow" id="prev">&#8592;</div>
+<div class="dots" id="dots"></div>
+<div class="arrow" id="next">&#8594;</div>
+</div>
+<script>
+(function(){
+var slides=[].slice.call(document.querySelectorAll('.slide'));
+var dotsEl=document.getElementById('dots'),countEl=document.getElementById('count'),hint=document.getElementById('hint');
+var i=0,n=slides.length,dots=[];
+for(var k=0;k<n;k++){(function(k){var d=document.createElement('div');d.className='dot';d.addEventListener('click',function(e){e.stopPropagation();go(k)});dotsEl.appendChild(d);dots.push(d)})(k)}
+function go(x){if(x<0||x>=n||x===i)return;slides[i].classList.remove('active');dots[i].classList.remove('on');i=x;slides[i].classList.add('active');dots[i].classList.add('on');countEl.textContent=(i+1)+' / '+n;if(i>0)hint.classList.add('gone')}
+document.getElementById('next').addEventListener('click',function(e){e.stopPropagation();go(i+1)});
+document.getElementById('prev').addEventListener('click',function(e){e.stopPropagation();go(i-1)});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter')go(i+1);if(e.key==='ArrowLeft')go(i-1)});
+document.getElementById('deck').addEventListener('click',function(){go(i+1)});
+var tx=null;
+document.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;if(dx<-50)go(i+1);else if(dx>50)go(i-1);tx=null},{passive:true});
+slides[0].classList.add('active');dots[0].classList.add('on');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage — Good Trouble</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#FF5500; --orange-dark:#CC4400; --black:#080808; --cream:#F5F0E8;
+    --panel:#121212; --panel-2:#161616;
+    --border:rgba(255,85,0,0.22); --border-soft:rgba(245,240,232,0.1);
+    --muted:rgba(245,240,232,0.55);
+    --crit:#E23636; --high:#FF5500; --med:#E0A800; --low:#3EA36F; --none:#7a7a7a;
+    --gold:#FFD700; --green:#3EA36F; --blue:#3E7BD6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Barlow',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--black);color:var(--cream);min-height:100vh;}
+  .wrap{max-width:980px;margin:0 auto;padding:1.5rem 1.5rem 4rem;}
+  header.top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:1rem;margin-bottom:1.25rem;flex-wrap:wrap;gap:.75rem;}
+  .brand{display:flex;align-items:center;gap:.75rem;}
+  .brand img{height:30px;width:auto;display:block;}
+  .brand-text{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;color:var(--cream);}
+  .brand-text span{color:var(--orange);}
+  h1.page-title{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:1px;}
+  .top-actions{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;}
+  .btn{font-family:'Barlow',sans-serif;font-weight:600;font-size:13px;letter-spacing:.3px;border:1px solid var(--border);background:transparent;color:var(--cream);padding:.5rem .9rem;border-radius:6px;cursor:pointer;transition:.15s ease;}
+  .btn:hover{border-color:var(--orange);background:rgba(255,85,0,.08);}
+  .btn-primary{background:var(--orange);border-color:var(--orange);color:#fff;}
+  .btn-primary:hover{background:var(--orange-dark);border-color:var(--orange-dark);}
+  .btn-danger{border-color:rgba(226,54,54,.5);color:#ff8b8b;}
+  .btn-danger:hover{background:rgba(226,54,54,.12);border-color:#E23636;}
+  .btn.active{background:var(--orange);border-color:var(--orange);color:#fff;}
+  a.btn{display:inline-flex;align-items:center;text-decoration:none;}
+  .btn-sheet{border-color:rgba(52,168,83,.4);color:#8fd6ac;}
+  .btn-sheet:hover{background:rgba(52,168,83,.12);border-color:#34A853;color:#b8ecc9;}
+  .tabs{display:flex;gap:.35rem;background:var(--panel);border:1px solid var(--border-soft);border-radius:8px;padding:.25rem;}
+  .tab{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1.5px;padding:.45rem 1.1rem;border-radius:6px;color:var(--muted);text-decoration:none;transition:.15s;}
+  .tab.active{background:var(--orange);color:#fff;}
+  .tab:not(.active):hover{color:var(--cream);}
+
+  /* ===== QUICK LOG (the whole point) ===== */
+  .quicklog{background:var(--panel);border:1px solid var(--border-soft);border-radius:12px;padding:1rem 1.1rem;margin-bottom:1rem;}
+  .ql-kinds{display:flex;gap:.4rem;margin-bottom:.7rem;flex-wrap:wrap;}
+  .ql-kind{font-size:12.5px;font-weight:700;padding:.4rem .85rem;border-radius:16px;cursor:pointer;border:1px solid var(--border-soft);color:var(--muted);transition:.12s;user-select:none;background:transparent;font-family:'Barlow',sans-serif;}
+  .ql-kind.k-done.on{background:rgba(62,163,111,.18);border-color:var(--green);color:#8fd6ac;}
+  .ql-kind.k-doing.on{background:rgba(46,224,110,.15);border-color:#2EE06E;color:#9af0bd;}
+  .ql-row{display:flex;gap:.6rem;align-items:center;}
+  #qlInput{flex:1;background:var(--black);color:var(--cream);border:1px solid var(--border-soft);padding:.75rem .9rem;border-radius:8px;font-family:'Barlow',sans-serif;font-size:15px;}
+  #qlInput:focus{outline:none;border-color:var(--orange);}
+  #qlOwner{background:var(--black);color:var(--cream);border:1px solid var(--border-soft);padding:.72rem .6rem;border-radius:8px;font-family:'Barlow',sans-serif;font-size:13.5px;}
+  #qlOwner:focus{outline:none;border-color:var(--orange);}
+  #qlGo{padding:.72rem 1.2rem;font-size:14px;}
+  .ql-hint{font-size:11px;color:var(--muted);margin-top:.55rem;}
+  .ql-hint b{color:var(--cream);font-weight:600;}
+
+  /* Slim goal strip */
+  .goal-strip{display:flex;align-items:center;gap:.75rem;background:linear-gradient(90deg,#181300,#101010 70%);border:1px solid rgba(255,215,0,.35);border-radius:10px;padding:.65rem 1rem;margin-bottom:1.25rem;flex-wrap:wrap;font-size:13.5px;}
+  .gs-ico{font-size:1.05rem;}
+  .gs-text{flex:1;min-width:160px;font-weight:600;}
+  .gs-meta{color:var(--muted);font-size:11.5px;white-space:nowrap;}
+  .gs-shelf{font-size:1rem;letter-spacing:2px;}
+  .gs-btn{font-size:11px;padding:.3rem .7rem;border-radius:12px;}
+  .btn-gold{background:var(--gold);border-color:var(--gold);color:#080808;font-weight:700;}
+  .btn-gold:hover{background:#e6c200;border-color:#e6c200;}
+  .gs-form{display:flex;gap:.5rem;flex:1;min-width:220px;}
+  .gs-form input{flex:1;background:var(--black);color:var(--cream);border:1px solid var(--border-soft);padding:.4rem .6rem;border-radius:6px;font-family:'Barlow',sans-serif;font-size:13px;}
+  .gs-form input:focus{outline:none;border-color:var(--gold);}
+  .gs-form select{background:var(--black);color:var(--cream);border:1px solid var(--border-soft);border-radius:6px;font-size:12px;padding:.35rem;}
+  .gs-history{width:100%;display:none;flex-direction:column;gap:.35rem;padding-top:.5rem;}
+  .gs-history.open{display:flex;}
+  .gsh-row{display:flex;gap:.6rem;align-items:center;font-size:12.5px;padding:.4rem .6rem;background:rgba(255,255,255,.03);border-radius:6px;}
+  .gsh-row .d{color:var(--muted);font-size:11px;margin-left:auto;white-space:nowrap;}
+  .gs-toggle{color:var(--gold);font-size:11px;cursor:pointer;text-decoration:underline;white-space:nowrap;}
+
+  .toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:1.25rem;}
+  .view-toggle{display:flex;gap:.35rem;background:var(--panel);border:1px solid var(--border-soft);border-radius:8px;padding:.25rem;}
+  .filters{display:flex;gap:.5rem;flex-wrap:wrap;}
+  select{background:var(--panel);color:var(--cream);border:1px solid var(--border-soft);padding:.45rem .6rem;border-radius:6px;font-family:'Barlow',sans-serif;font-size:12.5px;}
+  select:focus{outline:none;border-color:var(--orange);}
+  #banner{display:none;background:rgba(226,54,54,.12);border:1px solid rgba(226,54,54,.4);color:#ff9d9d;padding:.8rem 1rem;border-radius:6px;margin-bottom:1rem;font-size:13px;}
+  #banner code{background:rgba(0,0,0,.3);padding:1px 5px;border-radius:3px;}
+
+  /* ===== FEED (default view) ===== */
+  .feed{display:flex;flex-direction:column;gap:1.1rem;}
+  .ondeck{background:var(--panel);border:1px solid var(--border-soft);border-radius:10px;padding:.9rem 1rem;}
+  .ondeck-title{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1.5px;color:#8fb8ee;margin-bottom:.5rem;}
+  .day-card{background:var(--panel);border:1px solid var(--border-soft);border-radius:10px;padding:.9rem 1rem;}
+  .day-title{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:var(--orange);margin-bottom:.15rem;}
+  .day-sub{font-size:11px;color:var(--muted);margin-bottom:.55rem;}
+  .feed-row{display:flex;align-items:flex-start;gap:.6rem;padding:.42rem .1rem;cursor:pointer;border-radius:6px;transition:.12s;}
+  .feed-row:hover{background:rgba(255,255,255,.04);}
+  .fr-ico{width:18px;text-align:center;flex-shrink:0;font-weight:800;margin-top:1px;}
+  .fr-ico.done{color:#7a9a86;}
+  .fr-ico.doing{color:#2EE06E;}
+  .fr-ico.blocked{color:var(--crit);}
+  .fr-ico.up{color:var(--orange);}
+  .fr-text{flex:1;font-size:14px;line-height:1.4;}
+  .fr-text .who{color:var(--muted);font-size:11px;margin-left:.4rem;text-transform:uppercase;letter-spacing:.4px;}
+  .fr-text .when{color:var(--muted);font-size:11px;margin-left:.4rem;}
+  .feed-empty{color:var(--muted);font-size:12.5px;padding:.3rem 0;}
+
+  /* List */
+  .list-wrap{display:none;flex-direction:column;gap:.5rem;}
+  .list-group-label{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;color:var(--orange);margin:1rem 0 .45rem;}
+  .list-group-label:first-child{margin-top:0;}
+  .task-row{background:var(--panel);border:1px solid var(--border-soft);border-left:4px solid var(--none);border-radius:8px;padding:.7rem .9rem;display:flex;align-items:center;gap:.9rem;cursor:pointer;transition:.15s;flex-wrap:wrap;}
+  .task-row:hover{border-color:var(--border);background:var(--panel-2);}
+  .task-row.p-crit{border-left-color:var(--crit);}
+  .task-row.p-high{border-left-color:var(--high);}
+  .task-row.p-med{border-left-color:var(--med);}
+  .task-row.p-low{border-left-color:var(--low);}
+  .task-row.p-none{border-left-color:var(--none);}
+  .task-row.done{opacity:.5;}
+  .task-row .t-owner{font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);min-width:48px;}
+  .task-row .t-task{flex:1;min-width:160px;font-size:14px;font-weight:500;}
+  .task-row.done .t-task{text-decoration:line-through;}
+  .task-row .t-cat{font-size:11px;color:var(--muted);}
+  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.3px;text-transform:uppercase;}
+  .badge-crit{background:var(--crit);color:#fff;}
+  .badge-high{background:var(--high);color:#fff;}
+  .badge-med{background:var(--med);color:#1a1200;}
+  .badge-low{background:var(--low);color:#08210f;}
+  .badge-none{background:#333;color:#aaa;}
+  .status-pill{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;border:1px solid var(--border-soft);color:var(--muted);}
+  .status-pill.s-progress{color:#2EE06E;border-color:rgba(46,224,110,.65);background:rgba(46,224,110,.1);font-weight:800;}
+  .status-pill.s-blocked{color:#ff9d9d;border-color:rgba(226,54,54,.5);}
+  .status-pill.s-done{color:#7a9a86;border-color:rgba(122,154,134,.4);}
+  .empty-state{color:var(--muted);font-size:13px;padding:1.75rem;text-align:center;border:1px dashed var(--border-soft);border-radius:8px;}
+
+  /* Team */
+  .team-view{display:none;gap:1.1rem;align-items:flex-start;}
+  .team-col{flex:1;min-width:0;background:var(--panel);border:1px solid var(--border-soft);border-radius:10px;padding:1rem 1.1rem 1.2rem;}
+  .team-col-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.2rem;flex-wrap:wrap;gap:.4rem;}
+  .team-col-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;}
+  .team-col-count{font-size:11px;color:var(--muted);}
+  .team-stats{display:flex;gap:.45rem;margin:.5rem 0 .9rem;flex-wrap:wrap;}
+  .team-stat-pill{font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;letter-spacing:.3px;text-transform:uppercase;background:rgba(255,255,255,.05);color:var(--muted);}
+  .team-stat-pill.warn{background:rgba(226,54,54,.15);color:#ff9d9d;}
+  .team-stat-pill.crit{background:rgba(255,85,0,.15);color:#ffb27a;}
+  .team-task-row{display:flex;align-items:flex-start;gap:.55rem;padding:.55rem .1rem;border-bottom:1px solid var(--border-soft);cursor:pointer;transition:.15s;}
+  .team-task-row:last-child{border-bottom:none;}
+  .team-task-row:hover{background:rgba(255,255,255,.03);}
+  .team-task-row.done{opacity:.42;}
+  .team-task-dot{width:8px;height:8px;border-radius:50%;margin-top:.38rem;flex-shrink:0;background:var(--none);}
+  .team-task-dot.p-crit{background:var(--crit);}
+  .team-task-dot.p-high{background:var(--high);}
+  .team-task-dot.p-med{background:var(--med);}
+  .team-task-dot.p-low{background:var(--low);}
+  .team-task-dot.p-none{background:var(--none);}
+  .team-task-body{flex:1;min-width:0;}
+  .team-task-text{font-size:13px;font-weight:500;line-height:1.35;}
+  .team-task-row.done .team-task-text{text-decoration:line-through;}
+  .team-task-meta{display:flex;gap:.45rem;align-items:center;margin-top:.22rem;flex-wrap:wrap;}
+  .team-task-meta span{font-size:10px;color:var(--muted);}
+  .team-task-meta .tt-date.overdue{color:#ff9d9d;font-weight:700;}
+  .badge-both{background:rgba(255,215,0,.15);color:var(--gold);font-size:9px;font-weight:700;padding:1px 6px;border-radius:8px;letter-spacing:.3px;text-transform:uppercase;}
+  @media(max-width:820px){.team-view{flex-direction:column;}}
+
+  /* Modal */
+  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:50;align-items:center;justify-content:center;padding:1.25rem;}
+  .overlay.open{display:flex;}
+  .modal{background:var(--panel);border:1px solid var(--border);border-radius:10px;width:100%;max-width:440px;padding:1.35rem;max-height:90vh;overflow-y:auto;position:relative;}
+  .modal h2{font-family:'Bebas Neue',sans-serif;font-size:19px;color:var(--orange);margin-bottom:1rem;}
+  .field{margin-bottom:.8rem;}
+  .field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:.3rem;}
+  .field input[type=text],.field input[type=date],.field textarea,.field select{width:100%;background:var(--black);color:var(--cream);border:1px solid var(--border-soft);padding:.55rem .65rem;border-radius:6px;font-family:'Barlow',sans-serif;font-size:13.5px;}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--orange);}
+  .field textarea{resize:vertical;min-height:56px;}
+  .field-row{display:flex;gap:.6rem;}
+  .field-row .field{flex:1;}
+  .modal-actions{display:flex;justify-content:space-between;align-items:center;margin-top:1.1rem;gap:.5rem;}
+  .modal-actions .right{display:flex;gap:.45rem;}
+  .close-x{position:absolute;top:.9rem;right:1.1rem;cursor:pointer;color:var(--muted);font-size:19px;line-height:1;}
+
+  .toast{position:fixed;bottom:1.4rem;right:1.4rem;background:var(--panel);border:1px solid var(--orange);color:var(--cream);padding:.75rem 1.1rem;border-radius:8px;font-size:13px;z-index:60;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;}
+  .toast.show{opacity:1;transform:translateY(0);}
+  .toast.err{border-color:var(--crit);}
+
+  @media(max-width:700px){
+    .wrap{padding:1rem .9rem 3rem;}
+    .ql-row{flex-wrap:wrap;}
+    #qlInput{min-width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <div class="brand">
+        <img src="/logo.png" alt="Good Trouble" onerror="this.style.display='none'">
+        <span class="brand-text">GOOD <span>TROUBLE</span></span>
+      </div>
+      <h1 class="page-title">Manage</h1>
+    </div>
+    <nav class="tabs">
+      <a class="tab" href="/status">Board</a>
+      <a class="tab active" href="/status-manage">Manage</a>
+    </nav>
+    <div class="top-actions">
+      <a href="https://docs.google.com/spreadsheets/d/1ykfJf7ik5jVdDZe2mcO_wYP5j_fIC7VPd4Y4owJF7VA/edit" target="_blank" rel="noopener" class="btn btn-sheet">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>Sheet
+      </a>
+      <button class="btn" id="refreshBtn">Refresh</button>
+      <button class="btn btn-primary" id="addTaskBtn">+ Full Task</button>
+    </div>
+  </header>
+
+  <div id="banner"></div>
+
+  <!-- QUICK LOG -->
+  <div class="quicklog">
+    <div class="ql-kinds">
+      <button class="ql-kind k-doing on" data-kind="doing">→ Active</button>
+      <button class="ql-kind k-done" data-kind="done">✓ Did this</button>
+    </div>
+    <div class="ql-row">
+      <input type="text" id="qlInput" placeholder="What are you working on?" autocomplete="off">
+      <select id="qlOwner"></select>
+      <button class="btn btn-primary" id="qlGo">Log it</button>
+    </div>
+    <div class="ql-hint">Hit <b>Enter</b> to log &amp; keep typing. Rapid-fire: did this, did this, did this — done.</div>
+  </div>
+
+  <!-- SLIM GOAL STRIP -->
+  <div class="goal-strip" id="goalStrip"></div>
+
+  <div class="toolbar">
+    <div class="view-toggle">
+      <button class="btn active" id="viewFeedBtn">Today</button>
+      <button class="btn" id="viewListBtn">List</button>
+      <button class="btn" id="viewTeamBtn">Team</button>
+    </div>
+    <div class="filters">
+      <select id="fOwner"><option value="">All Owners</option></select>
+      <select id="fCategory"><option value="">All Categories</option></select>
+      <select id="fPriority"><option value="">All Priorities</option></select>
+      <select id="fStatus"><option value="">All Statuses</option><option value="__open">Open (not Done)</option></select>
+    </div>
+  </div>
+
+  <div class="feed" id="feedView"></div>
+
+  <div class="list-wrap" id="listView"></div>
+  <div class="team-view" id="teamView"></div>
+
+</div>
+
+<!-- Add/Edit modal -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <span class="close-x" id="closeModal">&times;</span>
+    <h2 id="modalTitle">Add Task</h2>
+    <input type="hidden" id="taskId">
+    <div class="field"><label>Task</label><input type="text" id="fTask" placeholder="What needs to happen?"></div>
+    <div class="field-row">
+      <div class="field"><label>Owner</label><select id="fOwnerInput"></select></div>
+      <div class="field"><label>Priority</label><select id="fPriorityInput"></select></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Category</label><select id="fCategoryInput"></select></div>
+      <div class="field"><label>Expected Delivery Date</label><input type="date" id="fDateInput"></div>
+    </div>
+    <div class="field"><label>Status</label><select id="fStatusInput"></select></div>
+    <div class="field"><label>Notes</label><textarea id="fNotesInput" placeholder="Optional"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-danger" id="deleteBtn" style="display:none;">Delete</button>
+      <div class="right">
+        <button class="btn" id="cancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="saveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script>
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxIDEtxmss_wbTIOLwyMoMwtb8WIbTYF9XmicYLT7HuqCHG1B7yquxSLADel3E16EYq/exec';
+
+const FALLBACK = {
+  owners: ['Alex','Augie','Both'],
+  categories: ['Sales & Outreach','Demo Build','Website / Dev','Content & Copy','Client Delivery','Admin & Ops','Product / Automation','Design & Brand','Finance & Legal','Miami Expansion','Miscellaneous','Request'],
+  priorities: ['None','Low','Medium','High','Critical'],
+  statuses: ['In Progress','Blocked','Done']
+};
+
+let TASKS=[], META=FALLBACK, VIEW='feed', EDITING_ID=null;
+let CURRENT_GOAL=null, WEEKLY_GOALS=[], HISTORY_OPEN=false, QL_KIND='doing';
+
+const $ = id => document.getElementById(id);
+const todayStr = () => { const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+
+function priorityClass(p){ return {Critical:'crit',High:'high',Medium:'med',Low:'low',None:'none'}[p]||'none'; }
+function statusClass(s){ return {'In Progress':'progress','Blocked':'blocked','Done':'done'}[s]||'progress'; }
+function statusLabel(s){ return (s==='In Progress'||s==='Not Started'||!s)?'Active':s; }
+function fmtDate(d){ if(!d)return''; const dt=new Date(d.slice(0,10)+'T00:00:00'); return isNaN(dt)?d:dt.toLocaleDateString('en-US',{month:'short',day:'numeric'}); }
+function fmtTime(d){ if(!d)return''; const dt=new Date(d.replace(' ','T')); return isNaN(dt)?'':dt.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}); }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function isConfigured(){ return APPS_SCRIPT_URL.indexOf('REPLACE_WITH')===-1; }
+function showBanner(m){ const b=$('banner'); b.innerHTML=m; b.style.display='block'; }
+function toast(m,e){ const t=$('toast'); t.textContent=m; t.className='toast show'+(e?' err':''); setTimeout(()=>{t.className='toast';},2400); }
+
+/* ===== DATA ===== */
+async function loadTasks(){
+  if(!isConfigured()){ showBanner('Apps Script URL not configured.'); populateFilterOptions(); render(); return; }
+  try{
+    const res = await fetch(APPS_SCRIPT_URL);
+    const data = await res.json();
+    if(!data.ok) throw new Error(data.error||'Unknown error');
+    TASKS = data.tasks||[];
+    if(data.meta) META = data.meta;
+    if(META.categories && META.categories.indexOf('Request')===-1) META.categories.push('Request');
+    META.statuses = ['In Progress','Blocked','Done'];
+    CURRENT_GOAL = data.currentGoal||null;
+    WEEKLY_GOALS = data.weeklyGoals||[];
+    $('banner').style.display='none';
+    populateFilterOptions();
+    renderGoalStrip();
+    render();
+  }catch(err){
+    showBanner('Could not load — '+err.message);
+    populateFilterOptions(); render();
+  }
+}
+async function api(payload){
+  const res = await fetch(APPS_SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+  const data = await res.json();
+  if(!data.ok) throw new Error(data.error||'Save failed');
+  return data;
+}
+
+/* ===== QUICK LOG ===== */
+const KIND_MSG = {done:'✓ Logged', doing:'→ On the board'};
+async function quickLog(){
+  const text = $('qlInput').value.trim();
+  if(!text) return;
+  const owner = $('qlOwner').value;
+  try{ localStorage.setItem('gt_owner', owner); }catch(e){}
+  $('qlInput').value='';
+  $('qlInput').focus();
+  // optimistic insert
+  const tempId = 'temp-'+Date.now();
+  const nowIso = new Date().toISOString().slice(0,16).replace('T',' ');
+  TASKS.unshift({id:tempId, owner:owner, task:text, category:'Miscellaneous',
+    dueDate:todayStr(), priority:'None',
+    status: QL_KIND==='done'?'Done':'In Progress',
+    createdAt:nowIso, notes:'', completedAt: QL_KIND==='done'?nowIso:''});
+  render();
+  try{
+    await api({action:'quickLog', kind:QL_KIND, text:text, owner:owner});
+    toast(KIND_MSG[QL_KIND]);
+    loadTasks();
+  }catch(err){
+    TASKS = TASKS.filter(t=>t.id!==tempId);
+    render();
+    $('qlInput').value = text;
+    toast('Failed: '+err.message, true);
+  }
+}
+
+/* ===== FILTERS ===== */
+function populateFilterOptions(){
+  fillSelect($('fOwner'),META.owners,true,'All Owners');
+  fillSelect($('fCategory'),META.categories,true,'All Categories');
+  fillSelect($('fPriority'),META.priorities,true,'All Priorities');
+  fillSelect($('fOwnerInput'),META.owners,false);
+  fillSelect($('fCategoryInput'),META.categories,false);
+  fillSelect($('fPriorityInput'),META.priorities,false);
+  fillSelect($('fStatusInput'),META.statuses,false);
+  fillSelect($('qlOwner'),META.owners.filter(o=>o!=='Both').concat(['Both']),false);
+  try{ const saved=localStorage.getItem('gt_owner'); if(saved && META.owners.indexOf(saved)>-1) $('qlOwner').value=saved; }catch(e){}
+}
+function fillSelect(sel,items,keepFirst,firstLabel){
+  const v=sel.value; sel.innerHTML='';
+  if(keepFirst){
+    const o=document.createElement('option'); o.value=''; o.textContent=firstLabel; sel.appendChild(o);
+    if(sel.id==='fStatus'){ const oo=document.createElement('option'); oo.value='__open'; oo.textContent='Open (not Done)'; sel.appendChild(oo); }
+  }
+  const isStatusSel = sel.id==='fStatus'||sel.id==='fStatusInput';
+  items.forEach(i=>{ const o=document.createElement('option'); o.value=i; o.textContent=isStatusSel?statusLabel(i):i; sel.appendChild(o); });
+  if(v) sel.value=v;
+}
+function filteredTasks(){
+  const f={owner:$('fOwner').value,category:$('fCategory').value,priority:$('fPriority').value,status:$('fStatus').value};
+  return TASKS.filter(t=>{
+    if(f.owner && t.owner!==f.owner) return false;
+    if(f.category && t.category!==f.category) return false;
+    if(f.priority && t.priority!==f.priority) return false;
+    if(f.status==='__open' && t.status==='Done') return false;
+    if(f.status && f.status!=='__open' && t.status!==f.status) return false;
+    return true;
+  });
+}
+
+/* ===== ROUTER ===== */
+function render(){
+  $('feedView').style.display='none';
+  $('listView').style.display='none';
+  $('teamView').style.display='none';
+  if(VIEW==='feed'){ $('feedView').style.display='flex'; renderFeed(); }
+  else if(VIEW==='list'){ $('listView').style.display='flex'; renderList(); }
+  else{ $('teamView').style.display='flex'; renderTeam(); }
+}
+
+/* ===== FEED (iDoneThis style) ===== */
+function dayLabel(key){
+  const t=todayStr();
+  const y=(()=>{const d=new Date();d.setDate(d.getDate()-1);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');})();
+  if(key===t) return 'Today';
+  if(key===y) return 'Yesterday';
+  const dt=new Date(key+'T00:00:00');
+  return dt.toLocaleDateString('en-US',{weekday:'long', month:'short', day:'numeric'});
+}
+function renderFeed(){
+  const all = filteredTasks();
+  const today = todayStr();
+
+  // On deck: active / blocked
+  const doing = all.filter(t=>t.status!=='Done');
+
+  let html = '<div class="ondeck"><div class="ondeck-title">ACTIVE</div>';
+  if(doing.length){
+    html += doing.map(t=>frRow(t, t.status==='Blocked'?'blocked':'doing', t.status==='Blocked'?'⛔':'→', '')).join('');
+  }else{
+    html += '<div class="feed-empty">Nothing in motion. Log something above.</div>';
+  }
+  html += '</div>';
+
+  // Done feed grouped by completion day
+  const dones = all.filter(t=>t.status==='Done' && t.completedAt);
+  const byDay = {};
+  dones.forEach(t=>{ const k=t.completedAt.slice(0,10); (byDay[k]=byDay[k]||[]).push(t); });
+  const days = Object.keys(byDay).sort().reverse().slice(0,14);
+
+  if(!byDay[today]) html += '<div class="day-card"><div class="day-title">Today</div><div class="feed-empty">Nothing logged yet — what did you get done?</div></div>';
+
+  days.forEach(k=>{
+    const items = byDay[k].slice().sort((a,b)=>(a.completedAt<b.completedAt?1:-1));
+    html += '<div class="day-card"><div class="day-title">'+esc(dayLabel(k))+'</div>'+
+      '<div class="day-sub">'+items.length+' done</div>'+
+      items.map(t=>frRow(t,'done','✓',' <span class="when">'+esc(fmtTime(t.completedAt))+'</span>')).join('')+
+      '</div>';
+  });
+
+  $('feedView').innerHTML = html;
+}
+function frRow(t, icoClass, ico, extra){
+  return '<div class="feed-row" data-id="'+t.id+'">'+
+    '<span class="fr-ico '+icoClass+'">'+ico+'</span>'+
+    '<span class="fr-text">'+esc(t.task)+'<span class="who">'+esc(t.owner)+'</span>'+extra+'</span>'+
+    '</div>';
+}
+
+/* ===== GOAL STRIP ===== */
+function goalIcon(s){ return {Pass:'🏆',Fail:'💀',Missed:'🚫'}[s]||'⏳'; }
+function renderGoalStrip(){
+  const el=$('goalStrip');
+  const history = WEEKLY_GOALS.filter(g=>g.status!=='Active');
+  const shelf = history.slice(0,8).map(g=>goalIcon(g.status)).join(' ');
+  let html='';
+  if(CURRENT_GOAL){
+    html = '<span class="gs-ico">🏆</span>'+
+      '<span class="gs-text">'+esc(CURRENT_GOAL.goal)+'</span>'+
+      '<span class="gs-meta">Due Sun '+esc(fmtDate(CURRENT_GOAL.weekEnding))+'</span>';
+  }else{
+    html = '<span class="gs-ico">🏆</span>'+
+      '<form class="gs-form" id="goalSetForm">'+
+      '<input type="text" id="goalTextInput" placeholder="Team goal — the one thing that has to happen this week" required>'+
+      '<button type="submit" class="btn btn-gold gs-btn">Set</button></form>';
+  }
+  if(history.length){
+    html += '<span class="gs-shelf" title="Past weeks">'+shelf+'</span>'+
+      '<span class="gs-toggle" id="historyToggle">'+(HISTORY_OPEN?'hide':'history')+'</span>'+
+      '<div class="gs-history'+(HISTORY_OPEN?' open':'')+'">'+
+      history.map(g=>'<div class="gsh-row"><span>'+goalIcon(g.status)+'</span><span>'+esc(g.goal)+'</span><span class="d">'+esc(fmtDate(g.weekEnding))+'</span></div>').join('')+
+      '</div>';
+  }
+  el.innerHTML = html;
+}
+async function handleSetGoal(e){
+  e.preventDefault();
+  const goal=$('goalTextInput').value.trim();
+  if(!goal) return;
+  try{ await api({action:'setGoal',goal:goal,owner:'Team'}); toast('Goal locked in'); loadTasks(); }
+  catch(err){ toast('Failed: '+err.message,true); }
+}
+function priOrder(p){ return {Critical:0,High:1,Medium:2,Low:3,None:4}[p]??5; }
+
+/* ===== LIST ===== */
+function renderList(){
+  const tasks=filteredTasks().slice().sort((a,b)=>{
+    const da=a.dueDate||'9999', db=b.dueDate||'9999';
+    if(da!==db) return da<db?-1:1;
+    return priOrder(a.priority)-priOrder(b.priority);
+  });
+  if(!tasks.length){ $('listView').innerHTML='<div class="empty-state">No tasks match these filters.</div>'; return; }
+  const groups={};
+  tasks.forEach(t=>{
+    const label=t.dueDate?fmtDate(t.dueDate)+' · '+new Date(t.dueDate.slice(0,10)+'T00:00:00').toLocaleDateString('en-US',{weekday:'long'}):'No date';
+    (groups[label]=groups[label]||[]).push(t);
+  });
+  let html='';
+  Object.keys(groups).forEach(label=>{
+    html+='<div class="list-group-label">'+esc(label)+'</div>';
+    groups[label].forEach(t=>{
+      html+='<div class="task-row p-'+priorityClass(t.priority)+(t.status==='Done'?' done':'')+'" data-id="'+t.id+'">'+
+        '<span class="t-owner">'+esc(t.owner)+'</span>'+
+        '<span class="t-task">'+esc(t.task)+'</span>'+
+        '<span class="t-cat">'+esc(t.category||'')+'</span>'+
+        '<span class="badge badge-'+priorityClass(t.priority)+'">'+esc(t.priority)+'</span>'+
+        '<span class="status-pill s-'+statusClass(t.status)+'">'+esc(statusLabel(t.status))+'</span>'+
+        '</div>';
+    });
+  });
+  $('listView').innerHTML=html;
+}
+
+/* ===== TEAM ===== */
+function renderTeam(){
+  const people=META.owners.filter(o=>o!=='Both');
+  const all=filteredTasks();
+  const today=todayStr();
+  const col=person=>{
+    const tasks=all.filter(t=>t.owner===person||t.owner==='Both').slice().sort((a,b)=>{
+      const da=a.dueDate||'9999',db=b.dueDate||'9999';
+      if(da!==db)return da<db?-1:1;
+      return priOrder(a.priority)-priOrder(b.priority);
+    });
+    const open=tasks.filter(t=>t.status!=='Done');
+    const overdue=open.filter(t=>t.dueDate&&t.dueDate.slice(0,10)<today);
+    const critical=open.filter(t=>t.priority==='Critical');
+    const rows=tasks.length?tasks.map(t=>{
+      const isOver=t.status!=='Done'&&t.dueDate&&t.dueDate.slice(0,10)<today;
+      return '<div class="team-task-row'+(t.status==='Done'?' done':'')+'" data-id="'+t.id+'">'+
+        '<span class="team-task-dot p-'+priorityClass(t.priority)+'"></span>'+
+        '<div class="team-task-body"><div class="team-task-text">'+esc(t.task)+(t.owner==='Both'?' <span class="badge-both">Both</span>':'')+'</div>'+
+        '<div class="team-task-meta">'+(t.category?'<span>'+esc(t.category)+'</span>':'')+
+        (t.dueDate?'<span class="tt-date'+(isOver?' overdue':'')+'">'+esc(fmtDate(t.dueDate))+'</span>':'<span>No date</span>')+
+        '<span class="status-pill s-'+statusClass(t.status)+'">'+esc(statusLabel(t.status))+'</span>'+
+        '</div></div></div>';
+    }).join(''):'<div class="empty-state">Nothing for '+esc(person)+'.</div>';
+    return '<div class="team-col">'+
+      '<div class="team-col-header"><span class="team-col-name">'+esc(person)+'</span><span class="team-col-count">'+open.length+' open</span></div>'+
+      '<div class="team-stats"><span class="team-stat-pill">'+open.length+' Open</span>'+
+      (overdue.length?'<span class="team-stat-pill warn">'+overdue.length+' Overdue</span>':'')+
+      (critical.length?'<span class="team-stat-pill crit">'+critical.length+' Critical</span>':'')+
+      '</div>'+rows+'</div>';
+  };
+  $('teamView').innerHTML=people.map(col).join('');
+}
+
+/* ===== MODAL ===== */
+function openModal(task,prefillDate){
+  EDITING_ID=task?task.id:null;
+  $('modalTitle').textContent=task?'Edit Task':'Add Task';
+  $('fTask').value=task?task.task:'';
+  $('fOwnerInput').value=task?task.owner:(META.owners[0]||'');
+  $('fPriorityInput').value=task?task.priority:'None';
+  $('fCategoryInput').value=task?task.category:'Miscellaneous';
+  $('fDateInput').value=task?(task.dueDate||'').slice(0,10):(prefillDate||todayStr());
+  $('fStatusInput').value=task?((task.status==='Not Started'||!task.status)?'In Progress':task.status):'In Progress';
+  $('fNotesInput').value=task?(task.notes||''):'';
+  $('deleteBtn').style.display=task?'inline-block':'none';
+  $('overlay').classList.add('open');
+}
+function closeModal(){ $('overlay').classList.remove('open'); EDITING_ID=null; }
+async function handleSave(){
+  const task=$('fTask').value.trim();
+  if(!task){ toast('Task required',true); return; }
+  const payload={action:EDITING_ID?'update':'add', id:EDITING_ID||undefined,
+    owner:$('fOwnerInput').value, task:task, category:$('fCategoryInput').value,
+    dueDate:$('fDateInput').value||'', priority:$('fPriorityInput').value,
+    status:$('fStatusInput').value, notes:$('fNotesInput').value};
+  try{
+    $('saveBtn').textContent='Saving…';
+    await api(payload);
+    closeModal(); toast(EDITING_ID?'Updated':'Added'); loadTasks();
+  }catch(err){ toast('Failed: '+err.message,true); }
+  finally{ $('saveBtn').textContent='Save'; }
+}
+async function handleDelete(){
+  if(!EDITING_ID||!confirm('Delete this task?'))return;
+  try{ await api({action:'delete',id:EDITING_ID}); closeModal(); toast('Deleted'); loadTasks(); }
+  catch(err){ toast('Failed: '+err.message,true); }
+}
+
+/* ===== EVENTS ===== */
+document.querySelectorAll('.ql-kind').forEach(b=>{
+  b.addEventListener('click',()=>{
+    QL_KIND=b.dataset.kind;
+    document.querySelectorAll('.ql-kind').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    $('qlInput').placeholder = QL_KIND==='done'?"What'd you get done?":"What are you working on?";
+    $('qlInput').focus();
+  });
+});
+$('qlGo').addEventListener('click',quickLog);
+$('qlInput').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); quickLog(); } });
+
+$('addTaskBtn').addEventListener('click',()=>openModal(null));
+$('closeModal').addEventListener('click',closeModal);
+$('cancelBtn').addEventListener('click',closeModal);
+$('overlay').addEventListener('click',e=>{ if(e.target.id==='overlay')closeModal(); });
+$('saveBtn').addEventListener('click',handleSave);
+$('deleteBtn').addEventListener('click',handleDelete);
+$('refreshBtn').addEventListener('click',loadTasks);
+
+$('goalStrip').addEventListener('submit',e=>{ if(e.target.id==='goalSetForm')handleSetGoal(e); });
+$('goalStrip').addEventListener('click',e=>{
+  if(e.target.id==='historyToggle'){ HISTORY_OPEN=!HISTORY_OPEN; renderGoalStrip(); }
+});
+
+const VIEW_BTNS={feed:'viewFeedBtn',list:'viewListBtn',team:'viewTeamBtn'};
+Object.keys(VIEW_BTNS).forEach(v=>{
+  $(VIEW_BTNS[v]).addEventListener('click',()=>{
+    VIEW=v;
+    Object.values(VIEW_BTNS).forEach(id=>$(id).classList.remove('active'));
+    $(VIEW_BTNS[v]).classList.add('active');
+    render();
+  });
+});
+
+['fOwner','fCategory','fPriority','fStatus'].forEach(id=>$(id).addEventListener('change',render));
+
+$('listView').addEventListener('click',e=>{
+  const r=e.target.closest('.task-row');
+  if(r){ const t=TASKS.find(x=>x.id===r.dataset.id); if(t)openModal(t); }
+});
+$('teamView').addEventListener('click',e=>{
+  const r=e.target.closest('.team-task-row');
+  if(r){ const t=TASKS.find(x=>x.id===r.dataset.id); if(t)openModal(t); }
+});
+$('feedView').addEventListener('click',e=>{
+  const r=e.target.closest('.feed-row');
+  if(r){ const t=TASKS.find(x=>x.id===r.dataset.id); if(t&&String(t.id).indexOf('temp-')!==0)openModal(t); }
+});
+
+/* ===== INIT ===== */
+populateFilterOptions();
+loadTasks();
+setInterval(loadTasks,60000);
+$('qlInput').focus();
+</script>
+</body>
+</html>

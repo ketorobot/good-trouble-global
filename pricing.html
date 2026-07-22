@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Good Trouble pricing for med spa AI automation. Starter $3,500/mo, Growth $5,500/mo, Full Service $8,000/mo. Clear deliverables, no hidden fees.">
+<title>Pricing — Good Trouble AI Automation for Med Spas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF6B00;
+  --orange-dim:rgba(255,107,0,0.15);
+  --orange-b:rgba(255,107,0,0.30);
+  --bg:#080808;
+  --bg1:#0e0e0e;
+  --bg2:#161616;
+  --bg3:#1e1e1e;
+  --hi:#F0EAD6;
+  --dim:rgba(240,234,214,0.55);
+  --dim2:rgba(240,234,214,0.28);
+  --border:rgba(255,107,0,0.18);
+  --line:rgba(255,107,0,0.08);
+  --font-head:'Syne',sans-serif;
+  --font-body:'Urbanist',sans-serif;
+  --max:1200px;
+  --rad:4px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--hi);font-family:var(--font-body);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.55;mix-blend-mode:overlay;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,3rem);height:64px;background:rgba(8,8,8,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+.nav-logo img{height:36px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--font-body);font-weight:500;font-size:0.85rem;color:var(--dim);text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--hi)}
+.nav-cta{background:var(--orange);color:#000;font-family:var(--font-body);font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:0.55rem 1.2rem;border-radius:var(--rad);transition:opacity 0.2s,transform 0.2s;}
+.nav-cta:hover{opacity:0.88;transform:translateY(-1px)}
+.page-wrap{max-width:var(--max);margin:0 auto;padding:clamp(6rem,10vw,8rem) clamp(1.5rem,4vw,3rem) clamp(4rem,8vw,6rem);}
+.page-header{margin-bottom:clamp(3rem,6vw,5rem);text-align:center;}
+.sec-label{font-family:var(--font-body);font-weight:600;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);margin-bottom:0.85rem;display:block;}
+.page-h1{font-family:var(--font-head);font-weight:800;font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.1;letter-spacing:-0.02em;color:var(--hi);margin-bottom:1rem;}
+.page-h1 span{color:var(--orange)}
+.page-intro{font-size:clamp(0.95rem,1.3vw,1.05rem);color:var(--dim);line-height:1.7;max-width:580px;margin:0 auto;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--line);border-radius:var(--rad);overflow:visible;margin-bottom:2rem;}
+.tier{background:var(--bg1);padding:2.5rem 2rem;border-right:1px solid var(--line);position:relative;display:flex;flex-direction:column;}
+.tier:last-child{border-right:none}
+.tier.featured{background:var(--bg2);border:2px solid var(--orange);border-radius:var(--rad);margin:-2px;z-index:2;position:relative;}
+.featured-label{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--orange);color:#000;font-family:var(--font-body);font-weight:700;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:2px;white-space:nowrap;}
+.tier-name{font-family:var(--font-head);font-weight:800;font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:block;}
+.tier-price{font-family:var(--font-head);font-weight:800;font-size:clamp(2.2rem,3.5vw,2.8rem);color:var(--hi);line-height:1;letter-spacing:-0.03em;margin-bottom:0.3rem;}
+.tier-period{font-size:0.82rem;color:var(--dim2);margin-bottom:0.4rem;display:block;}
+.tier-best{font-size:0.82rem;color:var(--dim);font-style:italic;margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid var(--line);line-height:1.5;}
+.tier-features{list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;margin-bottom:2rem;}
+.tier-features li{display:flex;align-items:flex-start;gap:0.65rem;font-size:0.88rem;color:var(--dim);line-height:1.5;}
+.tier-features li::before{content:'▸';color:var(--orange);font-size:0.7rem;flex-shrink:0;margin-top:0.2rem;}
+.tier-cta{display:block;text-align:center;background:transparent;color:var(--hi);font-family:var(--font-body);font-weight:700;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:0.85rem 1.5rem;border-radius:var(--rad);border:1px solid var(--border);transition:background 0.2s,border-color 0.2s,transform 0.2s;margin-top:auto;}
+.tier-cta:hover{background:var(--orange-dim);border-color:var(--orange-b);transform:translateY(-1px)}
+.tier.featured .tier-cta{background:var(--orange);color:#000;border-color:var(--orange);}
+.tier.featured .tier-cta:hover{opacity:0.88;background:var(--orange);}
+.pricing-note{background:var(--bg1);border:1px solid var(--line);border-left:3px solid var(--orange);border-radius:var(--rad);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.pricing-note p{font-size:0.92rem;color:var(--dim);line-height:1.6;}
+.pricing-note a{color:var(--orange);text-decoration:none;font-weight:600;}
+.pricing-note a:hover{text-decoration:underline}
+footer{background:var(--bg1);border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,3.5rem) clamp(1.5rem,4vw,3rem);}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.footer-brand{display:flex;align-items:center;gap:0.75rem}
+.footer-brand img{height:28px;width:auto;opacity:0.8}
+.footer-brand-name{font-family:var(--font-head);font-weight:700;font-size:0.9rem;color:var(--dim);}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:0.82rem;color:var(--dim2);text-decoration:none;transition:color 0.2s;letter-spacing:0.04em;}
+.footer-links a:hover{color:var(--orange)}
+.footer-copy{font-size:0.78rem;color:var(--dim2);white-space:nowrap}
+@media(max-width:960px){.pricing-grid{grid-template-columns:1fr;border:none;gap:1.5rem;}.tier{border:1px solid var(--line);border-radius:var(--rad);border-right:1px solid var(--line);}.tier.featured{margin:0;}.nav-links{display:none}}
+@media(max-width:600px){.footer-inner{flex-direction:column;align-items:flex-start;gap:1.25rem}.pricing-note{flex-direction:column;align-items:flex-start;gap:0.75rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class='nav-logo' href='/'><img src="../output2.png" alt="Good Trouble"></a>
+  <div class="nav-links">
+    <a href='/services'>Services</a>
+    <a href='/pricing'>Pricing</a>
+    <a href="./industries/med-spas.html">Industries</a>
+    <a href='/about'>About</a>
+    <a class='nav-cta' href='/contact'>Contact</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-header">
+    <span class="sec-label">Pricing</span>
+    <h1 class="page-h1">Flat monthly rates.<br><span>No surprises.</span></h1>
+    <p class="page-intro">Everything is included in the monthly rate. No setup fees, no per-seat charges, no upsells after you sign. The price you see is the price you pay.</p>
+  </div>
+
+  <div class="pricing-grid">
+
+    <div class="tier">
+      <span class="tier-name">Starter</span>
+      <div class="tier-price">$3,500</div>
+      <span class="tier-period">per month</span>
+      <p class="tier-best">Best for: owner-operated practices ready to start automating their biggest single problem — usually no-shows or front desk load.</p>
+      <ul class="tier-features">
+        <li>AI chatbot deployment (website + booking page)</li>
+        <li>Appointment confirmation &amp; no-show reduction sequence</li>
+        <li>New client onboarding automation</li>
+        <li>Monthly performance report (bookings captured, response rate, time saved)</li>
+        <li>30-day setup &amp; go-live</li>
+        <li>Email support, response within 24 hours</li>
+      </ul>
+      <a class='tier-cta' href='/contact'>Get Started</a>
+    </div>
+
+    <div class="tier featured">
+      <span class="featured-label">Recommended</span>
+      <span class="tier-name">Growth</span>
+      <div class="tier-price">$5,500</div>
+      <span class="tier-period">per month</span>
+      <p class="tier-best">Best for: established practices (1–3 locations) with an existing client base and clear revenue they're not recapturing from dormant or lapsed clients.</p>
+      <ul class="tier-features">
+        <li>Everything in Starter</li>
+        <li>Dormant client reactivation campaign (quarterly)</li>
+        <li>Behavior-triggered retention sequences (rebooking, post-visit, loyalty)</li>
+        <li>Workflow automation for front desk admin (intake, confirmations, handoffs)</li>
+        <li>AI social content pack — 12 posts per month, brand-specific</li>
+        <li>Bi-weekly strategy call (30 min)</li>
+      </ul>
+      <a class='tier-cta' href='/contact'>Book a Free Audit Call</a>
+    </div>
+
+    <div class="tier">
+      <span class="tier-name">Full Service</span>
+      <div class="tier-price">$8,000</div>
+      <span class="tier-period">per month</span>
+      <p class="tier-best">Best for: practices with multiple revenue streams, larger teams, or complex workflow problems that require custom builds alongside managed automation.</p>
+      <ul class="tier-features">
+        <li>Everything in Growth</li>
+        <li>One custom AI build per quarter (scoped together)</li>
+        <li>Full workflow audit &amp; automation of your top 5 manual processes</li>
+        <li>AI media production: reels, promos, and campaign creative on demand</li>
+        <li>Weekly check-in call (30 min)</li>
+        <li>Priority support, same-business-day response</li>
+      </ul>
+      <a class='tier-cta' href='/contact'>Get Started</a>
+    </div>
+
+  </div>
+
+  <div class="pricing-note">
+    <p>Not sure which tier fits your situation? <a href='/contact'>Book a free audit call</a> — we'll tell you exactly what your operation needs and which plan covers it. No pitch, just a straight answer.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="../output2.png" alt="Good Trouble">
+      <span class="footer-brand-name">Good Trouble</span>
+    </div>
+    <div class="footer-links">
+      <a href='/services'>Services</a>
+      <a href='/pricing'>Pricing</a>
+      <a href='/about'>About</a>
+      <a href="./industries/med-spas.html">Industries</a>
+      <a href='/privacy'>Privacy</a>
+      <a href='/terms'>Terms</a>
+    </div>
+    <span class="footer-copy">&copy; 2025 Good Trouble &middot; Tampa, FL</span>
+  </div>
+</footer>
+
+</body>
+</html>

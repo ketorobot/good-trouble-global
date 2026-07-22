@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SB Health & Beauty Med Spa — Good Trouble Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060608;color:#F5F0E8;font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,107,43,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,43,0.05) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(255,107,43,0.1) 0%,transparent 70%);pointer-events:none;z-index:0}
+header{position:sticky;top:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,107,43,0.15);background:rgba(6,6,8,0.9);backdrop-filter:blur(16px)}
+.logo{height:44px;width:auto;object-fit:contain;mix-blend-mode:screen}
+.spa-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;background:linear-gradient(135deg,#FF6B2B,#ffb347);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.container{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:3rem 2rem}
+.hero{text-align:center;margin-bottom:4rem}
+.hero-label{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:rgba(255,107,43,0.6);margin-bottom:1rem}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,64px);letter-spacing:2px;line-height:1;margin-bottom:1.25rem;background:linear-gradient(135deg,#fff,#F5F0E8 60%,rgba(255,107,43,0.8));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:16px;color:rgba(245,240,232,0.55);max-width:580px;margin:0 auto 2rem;line-height:1.7}
+.cta-btn{display:inline-block;background:linear-gradient(135deg,#FF6B2B,#ff9a5c);color:#060608;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;padding:14px 36px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 0 30px rgba(255,107,43,0.35);transition:all 0.2s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(255,107,43,0.55)}
+.modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:4rem}
+.module{background:rgba(255,255,255,0.02);border:1px solid rgba(255,107,43,0.15);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden;transition:all 0.25s}
+.module::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,107,43,0.5),transparent);opacity:0;transition:opacity 0.25s}
+.module:hover{background:rgba(255,107,43,0.05);border-color:rgba(255,107,43,0.3);transform:translateY(-2px)}
+.module:hover::before{opacity:1}
+.module-icon{font-size:28px;margin-bottom:12px;line-height:1}
+.module-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;margin-bottom:8px;background:linear-gradient(135deg,#FF6B2B,#ffb347);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.module-desc{font-size:13px;color:rgba(245,240,232,0.55);line-height:1.6}
+.locked{opacity:0.4}
+.lock-badge{position:absolute;top:12px;right:12px;font-size:10px;background:rgba(245,240,232,0.06);border:0.5px solid rgba(245,240,232,0.15);color:rgba(245,240,232,0.4);padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:1px}
+.insight-box{background:linear-gradient(135deg,rgba(255,107,43,0.08),rgba(168,85,247,0.06));border:1px solid rgba(255,107,43,0.2);border-radius:14px;padding:1.75rem 2rem;margin-bottom:3rem;position:relative;overflow:hidden}
+.insight-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#FF6B2B,#a855f7)}
+.insight-label{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:rgba(255,107,43,0.6);margin-bottom:8px}
+.insight-text{font-size:15px;color:rgba(245,240,232,0.8);line-height:1.7}
+.bottom-cta{text-align:center;padding:3rem 0}
+.bottom-cta p{font-size:14px;color:rgba(245,240,232,0.4);margin-bottom:1.25rem}
+footer{border-top:1px solid rgba(255,107,43,0.1);padding:1.5rem 2rem;text-align:center;font-size:11px;color:rgba(245,240,232,0.2);letter-spacing:0.5px}
+</style>
+</head>
+<body>
+<header>
+  <img src="https://goodtroubleglobal.com/logo2.png" alt="Good Trouble" class="logo">
+  <div class="spa-name">SB Health & Beauty Med Spa</div>
+</header>
+<div class="container">
+  <div class="hero">
+    <div class="hero-label">Built for SB Health & Beauty Med Spa</div>
+    <div class="hero-title">Your Back Office,<br>Running Itself</div>
+    <div class="hero-sub">One platform handling campaigns, front desk, reviews, memberships, and client follow-up — built for how your business actually runs.</div>
+    <button class="cta-btn" onclick="document.getElementById('cta-anchor').scrollIntoView({behavior:'smooth'})">See How It Works</button>
+  </div>
+  <div class="modules">
+    <div class="module"><div class="module-icon">🚀</div><div class="module-name">Campaign Launcher</div><div class="module-desc">Design and deploy targeted campaigns in minutes. Automated scheduling, audience segmentation, and performance tracking — no agency needed.</div></div>
+    <div class="module"><div class="module-icon">⭐</div><div class="module-name">Smart Reviews</div><div class="module-desc">Intelligent routing sends satisfied clients straight to Google. Unhappy clients get flagged privately before damage is done.</div></div>
+    <div class="module"><div class="module-icon">💬</div><div class="module-name">Front Desk AI</div><div class="module-desc">Handles inbound inquiries, appointment confirmations, and follow-ups around the clock. Your front desk gets breathing room.</div></div>
+    <div class="module"><div class="module-icon">💳</div><div class="module-name">Membership Engine</div><div class="module-desc">Recurring revenue programs with automated billing, renewal reminders, and personalized upgrade paths built in.</div></div>
+    <div class="module"><div class="module-icon">🔄</div><div class="module-name">Client Reactivation</div><div class="module-desc">Identifies clients who've gone quiet and deploys automated win-back sequences timed to your service cycles.</div></div>
+    <div class="module locked"><div class="lock-badge">Coming Soon</div><div class="module-icon">📊</div><div class="module-name">Marketing Intelligence</div><div class="module-desc">Predictive analytics surfacing which clients are most likely to book, upgrade, or churn — before it happens.</div></div>
+  </div>
+  <div class="bottom-cta" id="cta-anchor">
+    <p>15 minutes. We'll show you exactly what this looks like inside your business.</p>
+    <button class="cta-btn" onclick="window.location.href='mailto:alex@goodtroubleglobal.com?subject=Audit Request — SB Health & Beauty Med Spa'">Book Your Audit</button>
+  </div>
+</div>
+<footer>Good Trouble · AI-Powered Back Office for Med Spas · goodtroubleglobal.com</footer>
+</body>
+</html>

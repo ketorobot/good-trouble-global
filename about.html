@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Good Trouble — built by two people with a decade inside the med spa industry. We know the problems because we watched them happen.">
+<title>About — Good Trouble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--orange:#FF6B2B;--bg:#020202;--bg1:#0d0d0d;--bg2:#141414;--hi:#F5F0E8;--mid:#8A8580;--dim:rgba(245,240,232,0.55);--dim2:rgba(245,240,232,0.28);--line:rgba(255,107,43,0.08);--border:rgba(255,107,43,0.18);--font-head:'Bebas Neue',sans-serif;--font-body:'Barlow',sans-serif;--max:1060px;--rad:2px;}
+html,body{background:var(--bg);color:var(--hi);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
+body{min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.45;mix-blend-mode:overlay;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,3rem);height:62px;background:rgba(2,2,2,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+.nav-logo img{height:32px;width:auto;display:block;opacity:0.85;transition:opacity .2s}
+.nav-logo img:hover{opacity:1}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-family:var(--font-body);font-weight:600;font-size:0.78rem;color:var(--dim2);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--hi)}
+.nav-cta{background:var(--orange)!important;color:#fff!important;padding:0.45rem 1.1rem!important;border-radius:2px;letter-spacing:0.08em!important;transition:opacity .2s!important;}
+.nav-cta:hover{opacity:0.88!important}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--hi);transition:.3s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:90;background:rgba(2,2,2,0.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--font-head);font-size:2.4rem;color:var(--hi);text-decoration:none;letter-spacing:0.06em;transition:color .2s;}
+.mobile-menu a:hover{color:var(--orange)}
+.page-wrap{max-width:var(--max);margin:0 auto;padding:clamp(7rem,12vw,9rem) clamp(1.5rem,4vw,3rem) clamp(4rem,8vw,6rem);}
+.sec-label{font-family:var(--font-body);font-weight:700;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:0.85rem;display:block;}
+.page-h1{font-family:var(--font-head);font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.02;letter-spacing:0.02em;color:var(--hi);margin-bottom:1.25rem;}
+.page-h1 span{color:var(--orange)}
+.page-header{margin-bottom:clamp(3rem,6vw,5rem);max-width:680px;}
+.lead{font-size:clamp(0.98rem,1.4vw,1.08rem);color:var(--dim);line-height:1.72;max-width:620px;}
+.story{margin-bottom:clamp(3rem,6vw,5rem);}
+.story p{font-size:0.95rem;color:var(--dim);line-height:1.78;margin-bottom:1.15rem;max-width:680px;}
+.story p:last-child{margin-bottom:0}
+.team-section{margin-bottom:clamp(3rem,6vw,5rem);}
+.team-label{font-family:var(--font-head);font-size:clamp(1.3rem,2.5vw,1.8rem);letter-spacing:0.03em;color:var(--hi);margin-bottom:1.75rem;}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;}
+.team-card{background:var(--bg1);padding:2rem 2.25rem;}
+.team-card:first-child{border-right:1px solid var(--line);}
+.team-name{font-family:var(--font-head);font-size:1.4rem;letter-spacing:0.03em;color:var(--hi);margin-bottom:0.2rem;}
+.team-title{font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:0.9rem;}
+.team-bio{font-size:0.88rem;color:var(--dim);line-height:1.68;}
+.creds-section{margin-bottom:clamp(3rem,6vw,5rem);}
+.creds-label{font-family:var(--font-head);font-size:clamp(1.3rem,2.5vw,1.8rem);letter-spacing:0.03em;color:var(--hi);margin-bottom:1.5rem;}
+.creds-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;}
+.cred-item{background:var(--bg1);padding:1.25rem 1.75rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:0.7rem;font-size:0.88rem;color:var(--dim);line-height:1.55;}
+.cred-item:nth-child(2n){border-right:none}
+.cred-item::before{content:'▸';color:var(--orange);font-size:0.7rem;flex-shrink:0;margin-top:0.18rem;}
+.cta-block{background:var(--bg1);border:1px solid var(--line);border-radius:var(--rad);padding:clamp(2rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.cta-block-text h3{font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.7rem);letter-spacing:0.02em;color:var(--hi);margin-bottom:0.5rem;}
+.cta-block-text p{font-size:0.92rem;color:var(--dim);line-height:1.65;max-width:480px;}
+.btn-primary{background:var(--orange);color:#fff;font-family:var(--font-body);font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.9rem 2rem;border-radius:var(--rad);transition:opacity .2s,transform .2s;white-space:nowrap;display:inline-block;}
+.btn-primary:hover{opacity:0.88;transform:translateY(-1px)}
+footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,3.5rem) clamp(1.5rem,4vw,3rem);margin-top:2rem;}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.footer-brand{display:flex;align-items:center;gap:0.75rem}
+.footer-brand img{height:26px;width:auto;opacity:0.7}
+.footer-brand-name{font-family:var(--font-head);font-size:1rem;letter-spacing:0.06em;color:var(--dim);}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:0.78rem;color:var(--dim2);text-decoration:none;transition:color .2s;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;}
+.footer-links a:hover{color:var(--orange)}
+.footer-copy{font-size:0.74rem;color:var(--dim2);}
+@media(max-width:760px){.nav-links{display:none}.nav-burger{display:flex}.team-grid{grid-template-columns:1fr}.team-card:first-child{border-right:none;border-bottom:1px solid var(--line)}.creds-grid{grid-template-columns:1fr}.cred-item{border-right:none}.cta-block{flex-direction:column;align-items:flex-start}.footer-inner{flex-direction:column;align-items:flex-start;gap:1.25rem}}
+@media(min-width:761px){.nav-burger{display:none}}
+</style>
+</head>
+<body>
+<nav id="main-nav">
+  <a href="/" class="nav-logo"><img src="/logo.png" alt="Good Trouble"></a>
+  <div class="nav-links">
+    <a href="/services">Services</a>
+    <a href="/about" class="active">About</a>
+    <a class="nav-cta" href="/contact">Get Free Audit</a>
+  </div>
+  <button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/services">Services</a>
+  <a href="/about">About</a>
+  <a href="/contact">Get a Free Audit →</a>
+</div>
+
+<div class="page-wrap">
+
+  <div class="page-header">
+    <span class="sec-label">About Good Trouble</span>
+    <h1 class="page-h1">We know this industry.<br><span>We built from inside it.</span></h1>
+    <p class="lead">This isn't a software agency that pivoted to med spas last year. Alex spent a decade working directly inside the aesthetics industry before any of this existed. That's the difference.</p>
+  </div>
+
+  <div class="story">
+    <p>After ten years running digital marketing for med spas — paid search, paid social, email, and retention strategy — the pattern was impossible to ignore. Every practice had the same three problems. A front desk that couldn't keep up with volume. A CRM full of lapsed clients nobody was contacting. And no-show rates quietly bleeding 15–25% of scheduled revenue every month.</p>
+    <p>The industry wasn't short on tools. It was short on execution. Every practice already had a booking platform, an email system, some version of a CRM — and almost none of it was actually connected, automated, or producing consistent results. The money was already there. It just wasn't being captured.</p>
+    <p>Good Trouble exists to close that gap. Not with a tool handoff, not with a 90-page onboarding doc, but with a team that runs the back end for you — the same way you'd want an operations hire to run it, except we're purpose-built for this specific industry and available on a subscription.</p>
+  </div>
+
+  <div class="team-section">
+    <div class="team-label">The team</div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-name">Alex</div>
+        <span class="team-title">Founder &amp; Lead Architect</span>
+        <p class="team-bio">Ten years in digital marketing for med spas and aesthetics practices. Claude Certified Architect. Builds and implements every system personally — no outsourcing, no offshore handoffs. If something goes live under our name, he built it.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Augie</div>
+        <span class="team-title">Co-Founder · Miami</span>
+        <p class="team-bio">Background in business operations and client systems. Handles onboarding, process documentation, and the day-to-day operational side of each engagement. The person keeping implementations running after they launch.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="creds-section">
+    <div class="creds-label">Background</div>
+    <div class="creds-grid">
+      <div class="cred-item">Ten years in digital marketing for med spas and aesthetics — paid search, paid social, email, retention</div>
+      <div class="cred-item">Claude Certified Architect (Anthropic Academy)</div>
+      <div class="cred-item">Chatbot deployments across med spa, aesthetics, and B2B service businesses</div>
+      <div class="cred-item">RAG systems, multi-agent workflow architecture, LLM fine-tuning</div>
+      <div class="cred-item">Automation stacks: n8n, Make, Zapier, custom API pipelines</div>
+      <div class="cred-item">Platform integrations: Mindbody, Boulevard, Jane App, Vagaro</div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-block-text">
+      <h3>See the platform in action</h3>
+      <p>The demo is live and built on a real med spa's services. Or book a free audit call and we'll walk through your specific operation.</p>
+    </div>
+    <a class='btn-primary' href='/demo/medspa'>See the Demo →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/logo.png" alt="Good Trouble">
+      <span class="footer-brand-name">Good Trouble</span>
+    </div>
+    <div class="footer-links">
+      <a href="/services">Services</a>
+      <a href="/about">About</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+    <span class="footer-copy">&copy; 2025 Good Trouble</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger=document.getElementById('nav-burger');
+  var mobileMenu=document.getElementById('mobile-menu');
+  burger.addEventListener('click',function(){var open=mobileMenu.classList.toggle('open');burger.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';});
+  mobileMenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mobileMenu.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';});});
+})();
+</script>
+</body>
+</html>
