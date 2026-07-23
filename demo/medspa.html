@@ -650,6 +650,10 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .pt-title-row{display:flex;align-items:center;gap:9px;margin-bottom:5px}
 .pt-title{font-family:var(--font-l);font-size:20px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--text);line-height:1}
 .pt-tag{font-size:8px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px;border-radius:20px;color:#fff;position:relative;overflow:hidden}
+.pt-tag-super{background:linear-gradient(90deg,#FF5500,#FF1265,#A98BFF,#FF5500);background-size:300% 100%;animation:gtSuperShift 3.2s linear infinite}
+@keyframes gtSuperShift{0%{background-position:0% 0}100%{background-position:300% 0}}
+.pt-super{--pt-ac:#FF1265;--pt-glow:rgba(255,18,101,0.28);position:relative;border:1px solid transparent;background-clip:padding-box}
+.pt-super::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(120deg,#FF5500,#FF1265,#A98BFF,#FF5500);background-size:300% 100%;animation:gtSuperShift 3.2s linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:0}
 .pt-tag::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.5),transparent);transform:translateX(-100%);animation:ptTagShine 3s ease-in-out infinite}
 @keyframes ptTagShine{0%,70%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
 .pt-desc{font-size:12px;color:var(--text-2);line-height:1.45}
@@ -927,6 +931,15 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
       <div class="pt-body">
         <div class="pt-title-row"><div class="pt-title">Social Media Manager</div><span class="pt-tag" style="background:var(--blue)">New</span></div>
         <div class="pt-desc">One caption &rarr; Instagram, TikTok, Facebook &amp; X. Auto-scheduled at peak times.</div>
+      </div>
+      <div class="pt-arrow">&#x2197;</div>
+    </div>
+    <div class="pt-card pt-super" onclick="openModule('locked-websitebuilder','Website Builder')">
+      <div class="pt-glow-orb"></div>
+      <div class="pt-icon">&#x1F310;</div>
+      <div class="pt-body">
+        <div class="pt-title-row"><div class="pt-title">Website Builder</div><span class="pt-tag pt-tag-super">Super Tool</span></div>
+        <div class="pt-desc">Your whole website &mdash; designed, written &amp; published from inside the hub. No developer, no agency.</div>
       </div>
       <div class="pt-arrow">&#x2197;</div>
     </div>
@@ -2887,6 +2900,7 @@ function showNewCampaign() {
   alert('Campaign Builder: In the live system, this opens a 4-field form. You fill in what to sell, the deal, the theme, and the duration — and we build everything else automatically.');
 }
 var lockedModules={
+  'locked-websitebuilder':{icon:'&#x1F310;',name:'Website Builder',desc:'The next super tool in your hub. Tell it what your site should say and show \u2014 it designs the pages, writes the copy in your brand voice, and publishes without a developer. Full redesigns, new service pages, seasonal landing pages \u2014 all from this dashboard. In development \u2014 rolling out to hub subscribers first.'},
   'locked-reviews':{icon:'&#x2B50;',name:'Review Engine',desc:'Post-visit AI sequences that route happy clients to Google reviews and privately flag unhappy ones before they post publicly. Fully automated across all 4 locations.'},
   'locked-membership':{icon:'&#x1F48E;',name:'Membership Automation',desc:'Upgrade nudges when eligible, renewal reminders 7 days before expiry, rollover credit alerts, and churn prevention for members who stop booking.'},
   'locked-postvisit':{icon:'&#x1F4CB;',name:'Post-Visit Follow-Up',desc:'24-hour check-in after every service, 90-day rebooking trigger, and personalized product recommendations based on what was done.'},
