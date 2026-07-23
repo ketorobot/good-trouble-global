@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Service Section Drafts — Internal Review</title>
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF5500;--orange2:#CC4400;
+  --orange-dim:rgba(255,85,0,0.12);--orange-b:rgba(255,85,0,0.3);
+  --bg:#080808;--bg1:#0d0d0d;--bg2:#111111;--bg3:#181818;
+  --hi:#F5F2EE;--mid:#B8B4AF;
+  --dim:rgba(245,242,238,0.5);--dim2:rgba(245,242,238,0.28);
+  --border:rgba(255,85,0,0.16);--line:rgba(255,85,0,0.08);
+  --font-head:'Bebas Neue',sans-serif;--font-body:'Barlow',sans-serif;
+  --max:1100px;--rad:3px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--hi);font-family:var(--font-body);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── REVIEW CHROME ── */
+.review-bar{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(8,8,8,0.96);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:0.7rem clamp(1rem,4vw,2rem);
+  display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;
+}
+.review-tag{font-family:var(--font-head);font-size:1.15rem;letter-spacing:0.05em;color:var(--orange);white-space:nowrap}
+.tabs{display:flex;gap:0.4rem;flex:1;min-width:260px}
+.tab{
+  flex:1;text-align:center;cursor:pointer;user-select:none;
+  padding:0.55rem 0.5rem;border:1px solid var(--border);border-radius:var(--rad);
+  font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--mid);background:var(--bg1);transition:all .2s;
+}
+.tab:hover{color:var(--hi);border-color:var(--orange-b)}
+.tab.active{background:var(--orange);color:#fff;border-color:var(--orange)}
+.draft{display:none}
+.draft.active{display:block}
+.draft-note{
+  max-width:var(--max);margin:0 auto;padding:1.4rem clamp(1.25rem,4vw,2rem) 0;
+  font-size:0.82rem;color:var(--dim);
+}
+.draft-note strong{color:var(--orange)}
+
+/* ── SHARED SECTION SHELL ── */
+.svc{padding:clamp(3.5rem,8vw,6rem) clamp(1.25rem,4vw,3rem)}
+.svc-inner{max-width:var(--max);margin:0 auto}
+.eyebrow{font-weight:700;font-size:0.68rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem}
+.svc h2{font-family:var(--font-head);font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.02;letter-spacing:0.02em;color:var(--hi);margin-bottom:1rem}
+.svc-sub{font-size:clamp(0.95rem,1.6vw,1.05rem);color:var(--mid);max-width:640px;line-height:1.75}
+
+/* ═══════ DRAFT A — MORNING ═══════ */
+.tl{position:relative;margin-top:3.2rem}
+.tl::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,transparent,var(--orange-b) 8%,var(--orange-b) 92%,transparent);
+  transform:translateX(-50%);
+}
+.tl-row{
+  display:grid;grid-template-columns:1fr 74px 1fr;align-items:center;
+  gap:0;margin-bottom:2.2rem;
+  opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;
+}
+.tl-row.vis{opacity:1;transform:translateY(0)}
+.tl-time{
+  font-family:var(--font-head);font-size:1.05rem;letter-spacing:0.06em;color:var(--orange);
+  text-align:center;position:relative;z-index:2;
+}
+.tl-time::before{
+  content:'';display:block;width:9px;height:9px;border-radius:50%;
+  background:var(--orange);margin:0 auto 0.35rem;box-shadow:0 0 12px rgba(255,85,0,0.6);
+}
+.tl-cell{padding:1rem 1.15rem;border-radius:var(--rad)}
+.tl-owner{text-align:right;border:1px solid rgba(245,242,238,0.08);background:var(--bg1)}
+.tl-hub{border:1px solid var(--border);background:linear-gradient(135deg,var(--bg1),rgba(255,85,0,0.05))}
+.tl-label{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.3rem}
+.tl-owner .tl-label{color:var(--dim2)}
+.tl-hub .tl-label{color:var(--orange)}
+.tl-cell p{font-size:0.88rem;color:var(--mid);line-height:1.55}
+.tl-hub p{color:var(--hi)}
+.tl-heads{
+  display:grid;grid-template-columns:1fr 74px 1fr;margin-bottom:1.6rem;
+  font-weight:700;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;
+}
+.tl-heads .h-owner{text-align:right;color:var(--dim)}
+.tl-heads .h-hub{text-align:left;color:var(--orange)}
+.tl-finale{
+  margin-top:3rem;padding:clamp(1.6rem,4vw,2.4rem);
+  border:1px solid var(--orange-b);border-radius:var(--rad);
+  background:linear-gradient(135deg,rgba(255,85,0,0.09),var(--bg1));
+  text-align:center;
+  opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;
+}
+.tl-finale.vis{opacity:1;transform:translateY(0)}
+.tl-finale h3{font-family:var(--font-head);font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:0.03em;color:var(--hi);margin-bottom:0.6rem}
+.tl-finale p{font-size:0.95rem;color:var(--mid);max-width:560px;margin:0 auto}
+@media(max-width:680px){
+  .tl::before{left:26px}
+  .tl-row,.tl-heads{grid-template-columns:52px 1fr;grid-template-rows:auto auto}
+  .tl-heads{display:none}
+  .tl-time{grid-row:1/3;align-self:start;padding-top:0.2rem}
+  .tl-owner{text-align:left;grid-column:2;margin-bottom:0.5rem}
+  .tl-hub{grid-column:2}
+}
+
+/* ═══════ DRAFT B — MODULE TILES ═══════ */
+.mod-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:0.9rem;margin-top:3rem;
+}
+.mod{
+  position:relative;cursor:pointer;user-select:none;
+  padding:1.4rem 1.3rem;border:1px solid var(--border);border-radius:var(--rad);
+  background:var(--bg1);transition:border-color .25s,background .25s,transform .25s;
+}
+.mod:hover{border-color:var(--orange-b);background:var(--bg2);transform:translateY(-3px)}
+.mod.open{border-color:var(--orange);background:var(--bg2)}
+.mod-icon{font-size:1.4rem;margin-bottom:0.7rem;display:block}
+.mod-name{font-family:var(--font-head);font-size:1.25rem;letter-spacing:0.05em;color:var(--hi)}
+.mod-tap{font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--dim2);margin-top:0.45rem}
+.mod.open .mod-tap{color:var(--orange)}
+.mod-detail{
+  max-height:0;overflow:hidden;transition:max-height .4s ease,margin .4s ease;
+  margin-top:0;
+}
+.mod.open .mod-detail{max-height:220px;margin-top:0.8rem}
+.mod-detail p{font-size:0.85rem;color:var(--mid);line-height:1.6}
+.mod-foot{margin-top:2.4rem;font-size:0.85rem;color:var(--dim);text-align:center}
+.mod-foot strong{color:var(--hi)}
+
+/* ═══════ DRAFT C — CHAOS TO HUB ═══════ */
+.chaos-stage{
+  position:relative;height:420px;margin-top:3rem;
+  border:1px solid var(--line);border-radius:var(--rad);background:var(--bg1);
+  overflow:hidden;
+}
+.cnode{
+  position:absolute;padding:0.4rem 0.75rem;border-radius:2px;
+  font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--mid);border:1px solid rgba(245,242,238,0.14);background:var(--bg2);
+  white-space:nowrap;transition:all 1.1s cubic-bezier(.6,0,.2,1);
+  opacity:0.9;
+}
+.chub{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(0.6);
+  width:150px;height:150px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  border:2px solid var(--orange);background:radial-gradient(circle,rgba(255,85,0,0.16),var(--bg1) 70%);
+  opacity:0;transition:opacity .9s ease .8s,transform .9s ease .8s;
+  text-align:center;z-index:5;
+}
+.chaos-stage.collapsed .chub{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.chub .h-name{font-family:var(--font-head);font-size:1.5rem;letter-spacing:0.05em;color:var(--hi);line-height:1}
+.chub .h-sub{font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-top:0.3rem}
+.chaos-stage.collapsed .cnode{
+  left:50%!important;top:50%!important;transform:translate(-50%,-50%) scale(0.15);
+  opacity:0;
+}
+.chub::after{
+  content:'';position:absolute;inset:-14px;border-radius:50%;
+  border:1px solid var(--orange-b);opacity:0;
+}
+.chaos-stage.collapsed .chub::after{animation:pulse 2.4s ease-out infinite 1.6s}
+@keyframes pulse{0%{transform:scale(0.92);opacity:0.7}100%{transform:scale(1.25);opacity:0}}
+.c-stat{
+  margin-top:2.6rem;text-align:center;
+  opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;
+}
+.c-stat.vis{opacity:1;transform:translateY(0)}
+.c-stat .big{font-family:var(--font-head);font-size:clamp(3.4rem,10vw,6rem);line-height:1;color:var(--orange)}
+.c-stat p{font-size:0.95rem;color:var(--mid);max-width:520px;margin:0.6rem auto 0}
+.c-replay{
+  margin:1.8rem auto 0;display:block;cursor:pointer;
+  background:none;border:1px solid var(--border);border-radius:var(--rad);
+  color:var(--mid);font-family:var(--font-body);font-weight:700;font-size:0.68rem;
+  letter-spacing:0.16em;text-transform:uppercase;padding:0.6rem 1.3rem;transition:all .2s;
+}
+.c-replay:hover{color:var(--hi);border-color:var(--orange-b)}
+@media(max-width:600px){.chaos-stage{height:340px}.cnode{font-size:0.58rem;padding:0.32rem 0.55rem}}
+</style>
+</head>
+<body>
+
+<div class="review-bar">
+  <div class="review-tag">SERVICE SECTION — PICK ONE</div>
+  <div class="tabs">
+    <div class="tab active" data-d="a">A · Morning</div>
+    <div class="tab" data-d="b">B · Modules</div>
+    <div class="tab" data-d="c">C · Chaos→Hub</div>
+  </div>
+</div>
+
+<!-- ═══════════════ DRAFT A ═══════════════ -->
+<div class="draft active" id="draft-a">
+<p class="draft-note"><strong>Draft A — "The Morning."</strong> Parallel narrative: owner's morning on the left, what the hub handled at that exact minute on the right. Rows animate in on scroll. Ends on the finale card.</p>
+<section class="svc">
+  <div class="svc-inner">
+    <div class="eyebrow">What The Platform Does</div>
+    <h2>Your Morning. The Hub's Morning.</h2>
+    <p class="svc-sub">Same clock, two workloads. By the time you walk in, the day's first hours of front-desk work are already done.</p>
+
+    <div class="tl">
+      <div class="tl-heads"><div class="h-owner">You</div><div></div><div class="h-hub">The Hub</div></div>
+
+      <div class="tl-row">
+        <div class="tl-cell tl-owner"><div class="tl-label">You</div><p>Alarm hasn't gone off yet.</p></div>
+        <div class="tl-time">5:47</div>
+        <div class="tl-cell tl-hub"><div class="tl-label">The Hub</div><p>Overnight inquiry about lip filler pricing gets an answer, and a consult link.</p></div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-cell tl-owner"><div class="tl-label">You</div><p>First coffee.</p></div>
+        <div class="tl-time">6:32</div>
+        <div class="tl-cell tl-hub"><div class="tl-label">The Hub</div><p>Yesterday's HydraFacial clients get their 24-hour check-in. One flags irritation — routed straight to your aesthetician, privately.</p></div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-cell tl-owner"><div class="tl-label">You</div><p>Brushing your teeth.</p></div>
+        <div class="tl-time">7:05</div>
+        <div class="tl-cell tl-hub"><div class="tl-label">The Hub</div><p>Two happy clients from yesterday get routed to Google. Both leave 5 stars before you've picked a shirt.</p></div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-cell tl-owner"><div class="tl-label">You</div><p>In the car.</p></div>
+        <div class="tl-time">7:41</div>
+        <div class="tl-cell tl-hub"><div class="tl-label">The Hub</div><p>A missed call from a new number gets a text back in under a minute. She books a consult for Thursday.</p></div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-cell tl-owner"><div class="tl-label">You</div><p>Pulling into the lot.</p></div>
+        <div class="tl-time">8:12</div>
+        <div class="tl-cell tl-hub"><div class="tl-label">The Hub</div><p>Today's confirmations are out, one membership renewal reminder sent, and this week's campaign numbers are on your dashboard.</p></div>
+      </div>
+    </div>
+
+    <div class="tl-finale">
+      <h3>You Open The Door. It's Already Handled.</h3>
+      <p>Campaigns, front desk, reviews, memberships, follow-up, marketing intelligence — one hub covering every hour you can't.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════ DRAFT B ═══════════════ -->
+<div class="draft" id="draft-b">
+<p class="draft-note"><strong>Draft B — "Module Tiles."</strong> Leads with comprehensiveness. Tap any tile for the plain-English version of what it does. Eight modules, one hub.</p>
+<section class="svc">
+  <div class="svc-inner">
+    <div class="eyebrow">What The Platform Does</div>
+    <h2>One Hub. Every Job.</h2>
+    <p class="svc-sub">Each of these usually means a separate tool, a separate login, and a separate bill. Here, it's one system that reshapes around your practice — tap any module to see it in plain English.</p>
+
+    <div class="mod-grid">
+      <div class="mod"><span class="mod-icon">📣</span><div class="mod-name">Campaigns</div><div class="mod-tap">Tap for details</div>
+        <div class="mod-detail"><p>Tell it what to sell, the deal, and the timeframe. It builds the emails, texts, and landing content — and sends on schedule.</p></div></div>
+      <div class="mod"><span class="mod-icon">📞</span><div class="mod-name">Front Desk AI</div><div class="mod-tap">Tap for details</div>
+        <div class="mod-detail"><p>Missed calls answered in under a minute, after-hours coverage, and instant answers on hours, pricing, and directions — 24/7.</p></div></div>
+      <div class="mod"><span class="mod-icon">⭐</span><div class="mod-name">Review Engine</div><div class="mod-tap">Tap for details</div>
+        <div class="mod-detail"><p>Asks how the visit went first. Happy clients get routed to Google. Unhappy ones reach you privately — before they post publicly.</p></div></div>
+      <div class="mod"><span class="mod-icon">💎</span><div class="mod-name">Memberships</div><div class="mod-tap">Tap for details</div>
+        <div class="mod-detail"><p>Upgrade nudges when eligible, renewal reminders before expiry, and churn alerts for members who quietly stop booking.</p></div></div>
+      <div class="mod"><span class="mod-icon">📋</span><div class="mod-name">Follow-Up</div><div class="mod-tap">Tap for details</div>
+        <div class="mod-detail"><p>24-hour check-in after every service, 90-day rebooking triggers, and product recommendations matched to what was done.</p></div></div>
+      <div class="mod"><span class="mod-icon">📊</span><div class="mod-name">Marketing Intelligence</div><div class="mod-tap">Tap for details</div>
+        <div class="mod-detail"><p>One dashboard showing what's booking, what's converting, and where revenue is actually coming from — no spreadsheet stitching.</p></div></div>
+      <div class="mod"><span class="mod-icon">✍️</span><div class="mod-name">Content Studio</div><div class="mod-tap">Tap for details</div>
+        <div class="mod-detail"><p>Social posts, promos, and educational content generated in your voice, staged for your approval before anything goes out.</p></div></div>
+      <div class="mod"><span class="mod-icon">🛠</span><div class="mod-name">Custom Build</div><div class="mod-tap">Tap for details</div>
+        <div class="mod-detail"><p>Need something specific to your practice? We build custom modules around your priorities, workflows, and data. The platform keeps adapting.</p></div></div>
+    </div>
+
+    <div class="mod-foot">And it keeps growing — <strong>we keep building so you don't have to worry about staying current.</strong></div>
+  </div>
+</section>
+</div>
+
+<!-- ═══════════════ DRAFT C ═══════════════ -->
+<div class="draft" id="draft-c">
+<p class="draft-note"><strong>Draft C — "Chaos → Hub."</strong> Scattered tools and tasks collapse into one hub, landing on the 60% stat. Animation triggers on view; replay button included.</p>
+<section class="svc">
+  <div class="svc-inner">
+    <div class="eyebrow">What The Platform Does</div>
+    <h2>Stop Juggling. Start Consolidating.</h2>
+    <p class="svc-sub">Every one of these is something you're paying for, logging into, or losing sleep over right now. Watch what happens when they become one system.</p>
+
+    <div class="chaos-stage" id="chaosStage">
+      <div class="cnode" style="left:6%;top:12%">Email tool</div>
+      <div class="cnode" style="left:70%;top:8%">Missed calls</div>
+      <div class="cnode" style="left:38%;top:5%">Review requests</div>
+      <div class="cnode" style="left:84%;top:34%">Social posts</div>
+      <div class="cnode" style="left:4%;top:44%">SMS platform</div>
+      <div class="cnode" style="left:64%;top:58%">Membership renewals</div>
+      <div class="cnode" style="left:16%;top:70%">Follow-up calls</div>
+      <div class="cnode" style="left:44%;top:82%">Campaign builder</div>
+      <div class="cnode" style="left:78%;top:80%">Analytics</div>
+      <div class="cnode" style="left:30%;top:38%">Rebooking reminders</div>
+      <div class="chub"><div class="h-name">GOOD TROUBLE</div><div class="h-sub">One Hub</div></div>
+    </div>
+
+    <div class="c-stat" id="cStat">
+      <div class="big">60%</div>
+      <p>What med spas typically save versus the stack of separate tools this replaces — with one login and one system that actually talks to itself.</p>
+      <button class="c-replay" id="replayBtn">Replay</button>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+// Tabs
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+    document.querySelectorAll('.draft').forEach(function(d){d.classList.remove('active')});
+    t.classList.add('active');
+    document.getElementById('draft-'+t.dataset.d).classList.add('active');
+    window.scrollTo(0,0);
+    if(t.dataset.d==='a') requestAnimationFrame(observeA);
+    if(t.dataset.d==='c') setTimeout(runChaos,350);
+  });
+});
+
+// Draft A scroll reveals
+var aObserver=null;
+function observeA(){
+  if(aObserver) aObserver.disconnect();
+  aObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); aObserver.unobserve(e.target);} });
+  },{threshold:0.25});
+  document.querySelectorAll('#draft-a .tl-row, #draft-a .tl-finale').forEach(function(el){
+    el.classList.remove('vis'); aObserver.observe(el);
+  });
+}
+observeA();
+
+// Draft B tiles
+document.querySelectorAll('.mod').forEach(function(m){
+  m.addEventListener('click',function(){ m.classList.toggle('open'); });
+});
+
+// Draft C animation
+function runChaos(){
+  var st=document.getElementById('chaosStage');
+  var cs=document.getElementById('cStat');
+  st.classList.remove('collapsed'); cs.classList.remove('vis');
+  void st.offsetWidth;
+  setTimeout(function(){ st.classList.add('collapsed'); },900);
+  setTimeout(function(){ cs.classList.add('vis'); },2100);
+}
+document.getElementById('replayBtn').addEventListener('click',runChaos);
+</script>
+</body>
+</html>
