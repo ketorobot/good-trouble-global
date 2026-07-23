@@ -104,6 +104,54 @@
   .add-line input:focus{outline:none;border-color:var(--orange);}
   .add-line .btn{padding:.6rem 1.15rem;}
 
+  /* ===== DONE TODAY STRIP ===== */
+  .today-strip{
+    background:linear-gradient(135deg,rgba(46,224,110,.13),rgba(46,224,110,.04));
+    border:1.5px solid rgba(46,224,110,.45);border-radius:13px;
+    padding:.85rem 1rem .9rem;margin-bottom:1.25rem;
+    box-shadow:0 0 22px rgba(46,224,110,.1), inset 0 0 30px rgba(46,224,110,.04);
+  }
+  .today-head{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:3px;color:var(--green);text-transform:uppercase;display:flex;align-items:center;gap:.55rem;margin-bottom:.35rem;}
+  .today-head::after{content:'';flex:1;height:1px;background:var(--green);opacity:.3;}
+  .today-count{font-size:12.5px;font-weight:800;background:var(--green);color:#08210f;border-radius:12px;padding:.12rem .6rem;letter-spacing:.5px;}
+  .today-strip .trow{padding:.45rem .35rem;}
+  .today-strip .trow .ttext{text-decoration:none;color:#c8f5d8;font-weight:600;font-size:16.5px;opacity:1;}
+  .today-strip .trow{opacity:1;}
+  .today-empty{font-size:14.5px;color:var(--muted);font-style:italic;padding:.2rem .25rem 0;}
+  .tstamp{font-size:12px;color:var(--green-dull);font-weight:700;letter-spacing:.5px;white-space:nowrap;margin-left:auto;padding-left:.6rem;}
+
+  /* ===== REQUEST SECTION ADD ===== */
+  .sec-add{font-family:'Barlow',sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:.32rem .85rem;border-radius:14px;border:1.5px solid rgba(155,109,214,.55);background:transparent;color:#d3b8f7;cursor:pointer;transition:.15s;white-space:nowrap;}
+  .sec-add:hover{background:var(--purple);border-color:var(--purple);color:#fff;transform:scale(1.05);}
+  .reqrow{display:none;gap:.55rem;margin:.15rem 0 .7rem;}
+  .reqrow.open{display:flex;}
+  .reqrow input{flex:1;background:rgba(8,8,8,.85);color:var(--cream);border:1px solid rgba(155,109,214,.4);padding:.7rem .85rem;border-radius:9px;font-family:'Barlow',sans-serif;font-size:16px;}
+  .reqrow input:focus{outline:none;border-color:var(--purple);}
+  .reqrow .btn{padding:.6rem 1.15rem;background:var(--purple);border-color:var(--purple);color:#fff;}
+
+  /* ===== DONE CELEBRATION ===== */
+  .celeb-burst{position:fixed;inset:0;z-index:200;pointer-events:none;overflow:hidden;}
+  .celeb-word{
+    position:absolute;left:50%;
+    font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,11vw,8rem);
+    letter-spacing:4px;white-space:nowrap;
+    transform:translate(-50%,-50%) scale(.2) rotate(var(--tilt,0deg));
+    animation:celebpop 1.35s cubic-bezier(.18,1.4,.4,1) forwards;
+    text-shadow:0 0 40px var(--cglow,rgba(46,224,110,.8)), 0 4px 0 rgba(0,0,0,.6);
+  }
+  @keyframes celebpop{
+    0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(var(--tilt,0deg));}
+    18%{opacity:1;transform:translate(-50%,-50%) scale(1.18) rotate(var(--tilt,0deg));}
+    30%{transform:translate(-50%,-50%) scale(1) rotate(var(--tilt,0deg));}
+    78%{opacity:1;transform:translate(-50%,-52%) scale(1.02) rotate(var(--tilt,0deg));}
+    100%{opacity:0;transform:translate(-50%,-64%) scale(1.1) rotate(var(--tilt,0deg));}
+  }
+  .cf{position:absolute;top:-4vh;width:10px;height:16px;border-radius:2px;opacity:.95;animation:cfall var(--dur,1.4s) linear var(--delay,0s) forwards;transform:rotate(var(--rot,0deg));}
+  @keyframes cfall{
+    0%{transform:translateY(0) rotate(var(--rot,0deg));opacity:1;}
+    100%{transform:translateY(115vh) rotate(calc(var(--rot,0deg) + 540deg));opacity:.6;}
+  }
+
   .sec{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:3px;margin:1.35rem 0 .55rem;text-transform:uppercase;display:flex;align-items:center;gap:.55rem;}
   .sec::after{content:'';flex:1;height:1px;background:currentColor;opacity:.18;}
   .sec.now{color:var(--green);}
@@ -213,7 +261,7 @@ const FALLBACK = {
   statuses: ['In Progress','Blocked','Done']
 };
 let TASKS=[], META=FALLBACK, CURRENT_GOAL=null, WEEKLY_GOALS=[], EDITING_ID=null;
-const OPEN_ADDS={}, ADD_KINDS={};
+const OPEN_ADDS={}, OPEN_REQS={};
 const $ = id => document.getElementById(id);
 const todayStr = () => { const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -293,6 +341,17 @@ function renderCols(){
       '</div>';
   };
 
+  const dayAgo = (()=>{const d=new Date(Date.now()-86400000);
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');})();
+
+  const todayRow = t => {
+    const hm = (t.completedAt||'').slice(11,16);
+    return '<div class="trow" data-id="'+t.id+'"><span class="tdot check">✓</span>'+
+      '<div class="tbody"><div class="ttext">'+esc(t.task)+
+      (t.owner==='Both'?'<span class="badge-both">Both</span>':'')+'</div></div>'+
+      '<span class="tstamp">'+esc(hm)+'</span></div>';
+  };
+
   const col = person => {
     const mine = TASKS.filter(t=>t.owner===person||t.owner==='Both');
     const open = mine.filter(t=>t.status!=='Done');
@@ -300,27 +359,32 @@ function renderCols(){
       .sort((a,b)=>priOrder(a.priority)-priOrder(b.priority));
     const reqs = open.filter(t=>t.category==='Request')
       .sort((a,b)=>{const da=a.dueDate||'9999',db=b.dueDate||'9999';return da<db?-1:da>db?1:priOrder(a.priority)-priOrder(b.priority);});
-    const recent = mine.filter(t=>t.status==='Done'&&t.completedAt&&t.completedAt.slice(0,10)>=weekAgo)
+    const doneAll = mine.filter(t=>t.status==='Done'&&t.completedAt);
+    const doneToday = doneAll.filter(t=>t.completedAt>=dayAgo)
+      .sort((a,b)=>a.completedAt<b.completedAt?1:-1);
+    const recent = doneAll.filter(t=>t.completedAt<dayAgo&&t.completedAt.slice(0,10)>=weekAgo)
       .sort((a,b)=>a.completedAt<b.completedAt?1:-1).slice(0,10);
-    const kind = ADD_KINDS[person]||'task';
     return '<div class="col">'+
       '<div class="col-head"><span class="col-name">'+esc(person).toUpperCase()+'</span>'+
       '<span class="col-right"><span class="col-open">'+open.length+' open</span>'+
       '<button class="btn btn-primary add-toggle" data-addtoggle="'+esc(person)+'">+ Add</button></span></div>'+
       '<div class="addrow'+(OPEN_ADDS[person]?' open':'')+'" data-addrow="'+esc(person)+'">'+
-      '<div class="add-kinds">'+
-      '<button class="add-kind k-task'+(kind==='task'?' on':'')+'" data-kindbtn="task" data-person="'+esc(person)+'">Task</button>'+
-      '<button class="add-kind k-req'+(kind==='request'?' on':'')+'" data-kindbtn="request" data-person="'+esc(person)+'">Request</button>'+
-      '</div>'+
       '<div class="add-line">'+
-      '<input type="text" placeholder="'+(kind==='request'?'What do you need from '+esc(person)+'?':'What are you working on?')+'" data-addinput="'+esc(person)+'" autocomplete="off">'+
+      '<input type="text" placeholder="What are you working on?" data-addinput="'+esc(person)+'" autocomplete="off">'+
       '<button class="btn btn-primary" data-addgo="'+esc(person)+'">Go</button></div></div>'+
+      '<div class="today-strip">'+
+      '<div class="today-head">⚡ Done Today'+(doneToday.length?'<span class="today-count">'+doneToday.length+'</span>':'')+'</div>'+
+      (doneToday.length?doneToday.map(todayRow).join(''):'<div class="today-empty">No kills yet today.</div>')+
+      '</div>'+
       '<div class="sec now">Active</div>'+
       (now.length?now.map(t=>row(t,'now')).join(''):'<div class="col-empty">Nothing in motion.</div>')+
-      '<div class="sec req">Requests</div>'+
+      '<div class="sec req"><span>Requests</span><button class="sec-add" data-reqtoggle="'+esc(person)+'">+ Request</button></div>'+
+      '<div class="reqrow'+(OPEN_REQS[person]?' open':'')+'" data-reqrow="'+esc(person)+'">'+
+      '<input type="text" placeholder="What do you need from '+esc(person)+'?" data-reqinput="'+esc(person)+'" autocomplete="off">'+
+      '<button class="btn" data-reqgo="'+esc(person)+'">Ask</button></div>'+
       (reqs.length?reqs.map(t=>row(t,'req')).join(''):'<div class="col-empty">No requests waiting.</div>')+
       '<div class="sec recent">Completed</div>'+
-      (recent.length?recent.map(t=>row(t,'done')).join(''):'<div class="col-empty">Nothing this week yet.</div>')+
+      (recent.length?recent.map(t=>row(t,'done')).join(''):'<div class="col-empty">Nothing else this week.</div>')+
       '</div>';
   };
   $('cols').innerHTML = people.map(col).join('');
@@ -329,40 +393,82 @@ function renderCols(){
   });
 }
 
-/* ===== INLINE ADD (task or request) ===== */
+/* ===== INLINE ADD (task) ===== */
 async function addWorking(person){
   const inp=document.querySelector('[data-addinput="'+person+'"]');
   const text=(inp?inp.value:'').trim();
   if(!text) return;
   inp.value='';
-  const isReq = (ADD_KINDS[person]||'task')==='request';
   const tempId='temp-'+Date.now();
   const nowIso=new Date().toISOString().slice(0,16).replace('T',' ');
-  TASKS.unshift({id:tempId, owner:person, task:text, category:isReq?'Request':'Miscellaneous', dueDate:todayStr(),
+  TASKS.unshift({id:tempId, owner:person, task:text, category:'Miscellaneous', dueDate:todayStr(),
     priority:'None', status:'In Progress', createdAt:nowIso, notes:'', completedAt:''});
   renderCols();
   try{
-    if(isReq){
-      await api({action:'add', owner:person, task:text, category:'Request', dueDate:'', priority:'None', status:'In Progress', notes:''});
-      toast('→ Request filed');
-    }else{
-      await api({action:'quickLog', kind:'doing', text:text, owner:person});
-      toast('→ On the board');
-    }
+    await api({action:'quickLog', kind:'doing', text:text, owner:person});
+    toast('→ On the board');
     load();
   }
   catch(err){ TASKS=TASKS.filter(t=>t.id!==tempId); renderCols(); if(inp)inp.value=text; toast('Failed: '+err.message,true); }
 }
 
-/* ===== DONE BUTTON ===== */
+/* ===== INLINE ADD (request — lives under the Requests header) ===== */
+async function addRequest(person){
+  const inp=document.querySelector('[data-reqinput="'+person+'"]');
+  const text=(inp?inp.value:'').trim();
+  if(!text) return;
+  inp.value='';
+  const tempId='temp-'+Date.now();
+  const nowIso=new Date().toISOString().slice(0,16).replace('T',' ');
+  TASKS.unshift({id:tempId, owner:person, task:text, category:'Request', dueDate:todayStr(),
+    priority:'None', status:'In Progress', createdAt:nowIso, notes:'', completedAt:''});
+  renderCols();
+  try{
+    await api({action:'add', owner:person, task:text, category:'Request', dueDate:'', priority:'None', status:'In Progress', notes:''});
+    toast('→ Request filed for '+person);
+    // Fire-and-forget email bump to the person being asked (no-op until Apps Script has notifyRequest)
+    api({action:'notifyRequest', owner:person, task:text}).catch(()=>{});
+    load();
+  }
+  catch(err){ TASKS=TASKS.filter(t=>t.id!==tempId); renderCols(); if(inp)inp.value=text; toast('Failed: '+err.message,true); }
+}
+
+/* ===== DONE BUTTON + CELEBRATION ===== */
+const CELEB_WORDS=['FUCK YEAH.','GET IT.','ICED OUT ❄️','ANOTHER ONE.','COLD. BLOODED.','SENT.','CERTIFIED.','BAG SECURED 💰','LETHAL.','NO CRUMBS.','DEMOLISHED.','EASY MONEY.','CLEAN KILL.','MENACE BEHAVIOR.','WHO\'S NEXT?','BUILT DIFFERENT.','MISSION FUCKING DONE.','LOCKED IN 🔒','STACKS SECURED 💵','BODY COUNT UP.','DRIP CHECK ✅','ZERO TRACE.','ELITE WORK.','GHOST MODE. 👻','BAG DIFFERENT.','CASHED OUT 💸','UNTOUCHABLE.','FLAWLESS.','SMOKE CLEARED.','TOP TIER SHIT.','HANDS CLEAN.','VICTORY LAP 🏁','MURDERED IT.','NO COMPETITION.','PLOT CLOSED.','KING SHIT. 👑','NEXT.','DOMINATED.','SILENCE THE NOISE.','BOSS SHIT ONLY.','UNDEFEATED.','MIC DROP. 🎤','OUTTA HERE.','LEGENDARY EXECUTION.'];
+const CELEB_COLORS=[
+  ['#2ee06e','rgba(46,224,110,.8)'],['#FFD700','rgba(255,215,0,.8)'],
+  ['#ff5500','rgba(255,85,0,.8)'],['#9b6dd6','rgba(155,109,214,.85)'],
+  ['#4dd8ff','rgba(77,216,255,.8)'],['#ff4d88','rgba(255,77,136,.8)']
+];
+let lastCeleb=-1;
+function celebrate(){
+  let wi; do{ wi=Math.floor(Math.random()*CELEB_WORDS.length); }while(wi===lastCeleb&&CELEB_WORDS.length>1);
+  lastCeleb=wi;
+  const [color,glow]=CELEB_COLORS[Math.floor(Math.random()*CELEB_COLORS.length)];
+  const tilt=(Math.random()*10-5).toFixed(1);
+  const top=(36+Math.random()*14).toFixed(0);
+  let html='<div class="celeb-word" style="color:'+color+';--cglow:'+glow+';--tilt:'+tilt+'deg;top:'+top+'%">'+CELEB_WORDS[wi]+'</div>';
+  const palette=['#2ee06e','#FFD700','#ff5500','#9b6dd6','#4dd8ff','#ff4d88','#f5f0e8'];
+  for(let i=0;i<44;i++){
+    html+='<span class="cf" style="left:'+(Math.random()*100).toFixed(1)+'vw;background:'+palette[i%palette.length]+
+      ';--dur:'+(1.1+Math.random()*.9).toFixed(2)+'s;--delay:'+(Math.random()*.25).toFixed(2)+'s;--rot:'+Math.floor(Math.random()*360)+'deg;'+
+      'width:'+(6+Math.random()*8).toFixed(0)+'px;height:'+(10+Math.random()*10).toFixed(0)+'px"></span>';
+  }
+  const burst=document.createElement('div');
+  burst.className='celeb-burst';
+  burst.innerHTML=html;
+  document.body.appendChild(burst);
+  setTimeout(()=>{ burst.remove(); },2400);
+}
 async function markDone(id){
   const t = TASKS.find(x=>x.id===id);
   if(!t||t.status==='Done') return;
   const prevStatus=t.status;
   t.status='Done';
   t.completedAt=new Date().toISOString().slice(0,16).replace('T',' ');
+  celebrate();
   renderCols();
-  try{ await api({action:'update', id:id, status:'Done'}); toast('✓ Completed'); load(); }
+  try{ await api({action:'update', id:id, status:'Done'}); load(); }
   catch(err){ t.status=prevStatus; t.completedAt=''; renderCols(); toast('Failed: '+err.message,true); }
 }
 
@@ -405,15 +511,20 @@ async function handleDelete(){
 
 /* ===== EVENTS ===== */
 $('cols').addEventListener('click',e=>{
-  const kb=e.target.closest('[data-kindbtn]');
-  if(kb){ const p=kb.dataset.person; ADD_KINDS[p]=kb.dataset.kindbtn; renderCols(); return; }
   const tg=e.target.closest('[data-addtoggle]');
   if(tg){ const p=tg.dataset.addtoggle; OPEN_ADDS[p]=!OPEN_ADDS[p];
     const r=document.querySelector('[data-addrow="'+p+'"]'); r.classList.toggle('open',OPEN_ADDS[p]);
     if(OPEN_ADDS[p]){ const inp=document.querySelector('[data-addinput="'+p+'"]'); if(inp)inp.focus(); }
     return; }
+  const rt=e.target.closest('[data-reqtoggle]');
+  if(rt){ const p=rt.dataset.reqtoggle; OPEN_REQS[p]=!OPEN_REQS[p];
+    const r=document.querySelector('[data-reqrow="'+p+'"]'); r.classList.toggle('open',OPEN_REQS[p]);
+    if(OPEN_REQS[p]){ const inp=document.querySelector('[data-reqinput="'+p+'"]'); if(inp)inp.focus(); }
+    return; }
   const go=e.target.closest('[data-addgo]');
   if(go){ addWorking(go.dataset.addgo); return; }
+  const rg=e.target.closest('[data-reqgo]');
+  if(rg){ addRequest(rg.dataset.reqgo); return; }
   const dn=e.target.closest('[data-done]');
   if(dn){ e.stopPropagation(); markDone(dn.dataset.done); return; }
   const r=e.target.closest('.trow');
@@ -421,7 +532,9 @@ $('cols').addEventListener('click',e=>{
 });
 $('cols').addEventListener('keydown',e=>{
   const inp=e.target.closest('[data-addinput]');
-  if(inp&&e.key==='Enter'){ e.preventDefault(); addWorking(inp.dataset.addinput); }
+  if(inp&&e.key==='Enter'){ e.preventDefault(); addWorking(inp.dataset.addinput); return; }
+  const rinp=e.target.closest('[data-reqinput]');
+  if(rinp&&e.key==='Enter'){ e.preventDefault(); addRequest(rinp.dataset.reqinput); }
 });
 $('closeModal').addEventListener('click',closeModal);
 $('cancelBtn').addEventListener('click',closeModal);
