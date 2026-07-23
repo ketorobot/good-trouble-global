@@ -151,6 +151,27 @@
     0%{transform:translateY(0) rotate(var(--rot,0deg));opacity:1;}
     100%{transform:translateY(115vh) rotate(calc(var(--rot,0deg) + 540deg));opacity:.6;}
   }
+  .cm{
+    position:absolute;left:50%;top:52%;font-size:var(--sz,30px);opacity:0;
+    animation:cmboom var(--dur,1.7s) cubic-bezier(.16,.7,.35,1) var(--delay,0s) forwards;
+    filter:drop-shadow(0 0 8px rgba(255,215,0,.55));
+    will-change:transform,opacity;
+  }
+  @keyframes cmboom{
+    0%{opacity:0;transform:translate(-50%,-50%) scale(.3) rotate(0deg);}
+    8%{opacity:1;}
+    30%{opacity:1;transform:translate(calc(-50% + var(--dx,0vw)),calc(-50% + var(--dy,-20vh))) scale(1.25) rotate(var(--spin,180deg));}
+    100%{opacity:0;transform:translate(calc(-50% + var(--dx,0vw)*1.2),calc(-50% + var(--dy,-20vh) + 85vh)) scale(.95) rotate(calc(var(--spin,180deg)*2));}
+  }
+  .cm-flash{
+    position:absolute;left:50%;top:52%;width:12px;height:12px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,235,150,.95) 0%,rgba(255,215,0,.55) 40%,rgba(255,215,0,0) 70%);
+    transform:translate(-50%,-50%);animation:cmflash .55s ease-out forwards;pointer-events:none;
+  }
+  @keyframes cmflash{
+    0%{opacity:1;transform:translate(-50%,-50%) scale(1);}
+    100%{opacity:0;transform:translate(-50%,-50%) scale(38);}
+  }
 
   .sec{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:3px;margin:1.35rem 0 .55rem;text-transform:uppercase;display:flex;align-items:center;gap:.55rem;}
   .sec::after{content:'';flex:1;height:1px;background:currentColor;opacity:.18;}
@@ -434,7 +455,7 @@ async function addRequest(person){
 }
 
 /* ===== DONE BUTTON + CELEBRATION ===== */
-const CELEB_WORDS=['FUCK YEAH.','GET IT.','ICED OUT ❄️','ANOTHER ONE.','COLD. BLOODED.','SENT.','CERTIFIED.','BAG SECURED 💰','LETHAL.','NO CRUMBS.','DEMOLISHED.','EASY MONEY.','CLEAN KILL.','MENACE BEHAVIOR.','WHO\'S NEXT?','BUILT DIFFERENT.','MISSION FUCKING DONE.','LOCKED IN 🔒','STACKS SECURED 💵','BODY COUNT UP.','DRIP CHECK ✅','ZERO TRACE.','ELITE WORK.','GHOST MODE. 👻','BAG DIFFERENT.','CASHED OUT 💸','UNTOUCHABLE.','FLAWLESS.','SMOKE CLEARED.','TOP TIER SHIT.','HANDS CLEAN.','VICTORY LAP 🏁','MURDERED IT.','NO COMPETITION.','PLOT CLOSED.','KING SHIT. 👑','NEXT.','DOMINATED.','SILENCE THE NOISE.','BOSS SHIT ONLY.','UNDEFEATED.','MIC DROP. 🎤','OUTTA HERE.','LEGENDARY EXECUTION.'];
+const CELEB_WORDS=['FUCK YEAH.','GET IT.','ICED OUT ❄️','ANOTHER ONE.','COLD. BLOODED.','SENT.','CERTIFIED.','BAG SECURED 💰','LETHAL.','NO CRUMBS.','DEMOLISHED.','EASY MONEY.','CLEAN KILL.','MENACE BEHAVIOR.','WHO\'S NEXT?','BUILT DIFFERENT.','MISSION FUCKING DONE.','LOCKED IN 🔒','STACKS SECURED 💵','BODY COUNT UP.','DRIP CHECK ✅','ZERO TRACE.','ELITE WORK.','GHOST MODE. 👻','BAG DIFFERENT.','CASHED OUT 💸','UNTOUCHABLE.','FLAWLESS.','SMOKE CLEARED.','TOP TIER SHIT.','HANDS CLEAN.','VICTORY LAP 🏁','MURDERED IT.','NO COMPETITION.','PLOT CLOSED.','KING SHIT. 👑','NEXT.','DOMINATED.','SILENCE THE NOISE.','BOSS SHIT ONLY.','UNDEFEATED.','MIC DROP. 🎤','OUTTA HERE.','LEGENDARY EXECUTION.','BAGS SECURED 💰','GOLD STANDARD.','STACKS ON DECK.','WEALTH MODE.','DRIPPING IN GOLD.','RICH MOVES ONLY.','PAPER CHASE COMPLETE.','LUXURY SECURED.','STACKS NEVER SLEEP.','GOLDEN TOUCH.','MONEY TALKS.','HIGH NET WORTH.','BAG AFTER BAG.','SWAGGER LOADED.','CASH FLOWING.','RICH BLOOD.','GOLD ALL DAY.','WEALTH UNLOCKED.','LIVING LARGE.','MONEY NEVER STOPS.','PLATINUM STATUS.','BAGS HEAVY.','GOLDEN ERA.','RICH LIFE ONLY.'];
 const CELEB_COLORS=[
   ['#2ee06e','rgba(46,224,110,.8)'],['#FFD700','rgba(255,215,0,.8)'],
   ['#ff5500','rgba(255,85,0,.8)'],['#9b6dd6','rgba(155,109,214,.85)'],
@@ -448,7 +469,18 @@ function celebrate(){
   const tilt=(Math.random()*10-5).toFixed(1);
   const top=(36+Math.random()*14).toFixed(0);
   let html='<div class="celeb-word" style="color:'+color+';--cglow:'+glow+';--tilt:'+tilt+'deg;top:'+top+'%">'+CELEB_WORDS[wi]+'</div>';
-  const palette=['#2ee06e','#FFD700','#ff5500','#9b6dd6','#4dd8ff','#ff4d88','#f5f0e8'];
+  /* gold flash at detonation point */
+  html+='<div class="cm-flash"></div>';
+  /* wealth explosion — money, gold, diamonds bursting outward then raining down */
+  const RICHES=['💰','💎','🪙','💵','💸','👑','🏆','✨','💍','🥇'];
+  for(let i=0;i<30;i++){
+    const dx=(Math.random()*90-45).toFixed(1);
+    const dy=-(8+Math.random()*34).toFixed(1);
+    html+='<span class="cm" style="--dx:'+dx+'vw;--dy:'+dy+'vh;--spin:'+(Math.random()*520-260).toFixed(0)+'deg;'+
+      '--sz:'+(20+Math.random()*26).toFixed(0)+'px;--dur:'+(1.4+Math.random()*.7).toFixed(2)+'s;--delay:'+(Math.random()*.12).toFixed(2)+'s">'+
+      RICHES[i%RICHES.length]+'</span>';
+  }
+  const palette=['#FFD700','#f7c948','#ffe066','#2ee06e','#ff5500','#4dd8ff','#f5f0e8'];
   for(let i=0;i<44;i++){
     html+='<span class="cf" style="left:'+(Math.random()*100).toFixed(1)+'vw;background:'+palette[i%palette.length]+
       ';--dur:'+(1.1+Math.random()*.9).toFixed(2)+'s;--delay:'+(Math.random()*.25).toFixed(2)+'s;--rot:'+Math.floor(Math.random()*360)+'deg;'+
@@ -458,7 +490,7 @@ function celebrate(){
   burst.className='celeb-burst';
   burst.innerHTML=html;
   document.body.appendChild(burst);
-  setTimeout(()=>{ burst.remove(); },2400);
+  setTimeout(()=>{ burst.remove(); },2700);
 }
 async function markDone(id){
   const t = TASKS.find(x=>x.id===id);
