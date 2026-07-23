@@ -567,8 +567,29 @@ footer{
   section{padding:clamp(2.5rem,6vw,3.5rem) clamp(1rem,4vw,2rem)}
   .float-cta{display:none}
 }
+
+/* CONTACT FORM */
+.contact-form-section{padding:clamp(3.5rem,8vw,6rem) clamp(1.25rem,4vw,3rem);background:var(--bg1);border-top:1px solid var(--line)}
+.contact-form-section .container{max-width:760px;margin:0 auto}
+.cf-eyebrow{font-weight:700;font-size:0.68rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;text-align:center}
+.cf-head{font-family:var(--font-head);font-size:clamp(2.2rem,5.5vw,3.4rem);line-height:1.02;letter-spacing:0.02em;color:var(--hi);text-align:center;margin-bottom:0.8rem}
+.cf-sub{font-size:0.95rem;color:var(--mid);text-align:center;max-width:520px;margin:0 auto 2.4rem}
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cf-field{display:flex;flex-direction:column;gap:0.35rem}
+.cf-wide{grid-column:1/-1}
+.cf-field label{font-weight:700;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid)}
+.cf-field input,.cf-field textarea{background:var(--bg2);border:1px solid rgba(245,242,238,0.12);border-radius:var(--rad);color:var(--hi);font-family:var(--font-body);font-size:0.95rem;padding:0.75rem 0.9rem;transition:border-color .2s;width:100%}
+.cf-field input:focus,.cf-field textarea:focus{outline:none;border-color:var(--orange)}
+.cf-field textarea{resize:vertical;min-height:110px}
+.cf-hidden{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.cf-submit{margin-top:1.4rem;width:100%;cursor:pointer;background:var(--orange);border:none;border-radius:var(--rad);color:#fff;font-family:var(--font-body);font-weight:700;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;padding:1rem;transition:background .2s}
+.cf-submit:hover{background:var(--orange2)}
+.cf-submit:disabled{opacity:0.5;cursor:wait}
+.cf-msg{margin-top:1rem;text-align:center;font-size:0.92rem;line-height:1.6;display:none}
+.cf-msg.ok{display:block;color:var(--hi)}
+.cf-msg.err{display:block;color:#ff8866}
+@media(max-width:620px){.cf-grid{grid-template-columns:1fr}}
 </style>
-<script>if(/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)&&!location.search.includes("desktop")){location.replace("./index-mobile.html");}</script>
 </head>
 <body>
 
@@ -580,7 +601,7 @@ footer{
   <div class="nav-links">
     <a href='/services'>Services</a>
     <a href='/about'>About</a>
-    <a class='nav-cta' href='/contact'>Get Free Consultation</a>
+    <a class='nav-cta' href='#contact-form'>Get Free Consultation</a>
   </div>
   <button class="nav-burger" id="nav-burger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -589,7 +610,7 @@ footer{
 <div class="mobile-menu" id="mobile-menu">
   <a href='/services'>Services</a>
   <a href='/about'>About</a>
-  <a href='/contact'>Get a Free Consultation →</a>
+  <a href='#contact-form'>Get a Free Consultation →</a>
 </div>
 
 <!-- HERO -->
@@ -612,7 +633,7 @@ footer{
   </p>
 
   <div class="hero-ctas">
-    <a class='btn-primary' href='/contact'>Get a Free Consultation</a>
+    <a class='btn-primary' href='#contact-form'>Get a Free Consultation</a>
     <a class='btn-ghost' href='/demo/medspa'>See What We Build</a>
   </div>
 
@@ -633,7 +654,7 @@ footer{
     <h2 class="statement-h2 reveal">Stop Paying For <span>Chaos.</span></h2>
     <p class="statement-body reveal">We use new AI technology to build powerful smart systems. It can manage one part of your business. It could manage your entire business. The choice is up to you and what you're comfortable with. What we do NOT do is give you generic off-the-shelf software that you have to adapt to, we build a system that learns and adapts to YOU. Most clients don't believe it until they see it so let us show you. Higher quality at a lower price.</p>
     <div class="statement-cta reveal">
-      <a class='btn-primary' href='/contact'>Get a Free Consultation</a>
+      <a class='btn-primary' href='#contact-form'>Get a Free Consultation</a>
     </div>
   </div>
 </div>
@@ -683,10 +704,56 @@ footer{
   <div class="container">
     <p class="cta-pre reveal">Book a free consultation where we'll just talk like normal people and see if there's potential to help you solve a problem. It's not a sales pitch, you'll never be pressured. Our product is awesome enough to sell itself so we tend to not get in the way.</p>
     <div class="reveal">
-      <a class='btn-primary' href='/contact'>Get a Free Consultation</a>
+      <a class='btn-primary' href='#contact-form'>Get a Free Consultation</a>
     </div>
   </div>
 </section>
+
+
+<!-- CONTACT FORM -->
+<section class="contact-form-section" id="contact-form">
+  <div class="container">
+    <div class="cf-eyebrow">Contact</div>
+    <h2 class="cf-head">Let's Talk.</h2>
+    <p class="cf-sub">Name and email are all we need &mdash; the rest just helps us come prepared. Goes straight to our inbox.</p>
+    <form name="contact-home" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" id="cfForm">
+      <input type="hidden" name="form-name" value="contact-home">
+      <p class="cf-hidden"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="cf-grid">
+        <div class="cf-field"><label for="cf-name">Name *</label><input id="cf-name" name="name" type="text" required autocomplete="name"></div>
+        <div class="cf-field"><label for="cf-email">Email *</label><input id="cf-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="cf-field"><label for="cf-phone">Phone</label><input id="cf-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="cf-field cf-wide"><label for="cf-comment">Comment</label><textarea id="cf-comment" name="comment"></textarea></div>
+      </div>
+      <button type="submit" class="cf-submit" id="cfBtn">Send &rarr;</button>
+      <div class="cf-msg" id="cfMsg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+<script>
+(function(){
+  var f=document.getElementById('cfForm');if(!f)return;
+  var btn=document.getElementById('cfBtn'),msg=document.getElementById('cfMsg');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    btn.disabled=true;btn.textContent='Sending\u2026';
+    msg.className='cf-msg';msg.textContent='';
+    var body=new URLSearchParams(new FormData(f)).toString();
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+    .then(function(r){
+      if(!r.ok)throw new Error(r.status);
+      f.querySelector('.cf-grid').style.display='none';btn.style.display='none';
+      msg.className='cf-msg ok';
+      msg.textContent="Got it. We'll get back to you within one business day.";
+    })
+    .catch(function(){
+      btn.disabled=false;btn.textContent='Send \u2192';
+      msg.className='cf-msg err';
+      msg.textContent='Something went wrong on our end. Email us directly: admin@goodtroubleglobal.com';
+    });
+  });
+})();
+</script>
 
 <!-- FOOTER -->
 <footer>
@@ -707,7 +774,7 @@ footer{
 
 <!-- FLOATING CTA -->
 <div class="float-cta" id="float-cta">
-  <a href='/contact'>Get Free Consultation →</a>
+  <a href='#contact-form'>Get Free Consultation →</a>
 </div>
 
 <script>
