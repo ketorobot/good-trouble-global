@@ -3173,5 +3173,29 @@ function enterApp(){
 })();
 </script>
 
+
+<style>
+.gt-demo-note{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 14px;padding:7px 11px;border-radius:7px;background:rgba(255,85,0,0.07);border:1px solid rgba(255,85,0,0.18);font-family:Barlow,system-ui,-apple-system,sans-serif;font-size:11px;line-height:1.4;color:rgba(255,255,255,0.55)}
+.gt-demo-note b{color:#FF5500;font-weight:700;font-size:10px;letter-spacing:0.09em;text-transform:uppercase;white-space:nowrap}
+@media(max-width:520px){.gt-demo-note{font-size:10px;padding:6px 9px;gap:6px}}
+</style>
+<script>
+(function(){
+  var TXT='<b>Demo data</b><span>Sample content, shown to illustrate how each module works. Your live system runs on your own data.</span>';
+  function inject(){
+    var views=document.querySelectorAll('.view');
+    for(var i=0;i<views.length;i++){
+      var host=views[i].querySelector('.main')||views[i];
+      var first=host.firstElementChild;
+      if(first&&first.className==='gt-demo-note')continue;
+      var d=document.createElement('div');
+      d.className='gt-demo-note';d.innerHTML=TXT;
+      host.insertBefore(d,host.firstChild);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',inject);}else{inject();}
+})();
+</script>
+
 </body>
 </html>
