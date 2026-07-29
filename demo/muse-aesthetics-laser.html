@@ -3197,6 +3197,139 @@ function enterApp(){
 })();
 </script>
 
-<a href="https://goodtroubleglobal.com/#contact-form" id="gt-cta" style="position:fixed;bottom:16px;right:16px;z-index:99999;background:#FF5500;color:#fff;font-family:Barlow,system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;padding:12px 18px;border-radius:3px;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,0.45)">See What We Can Build For You &rarr;</a>
+
+<!-- ═══ Claim Free Module — CTA + modal (Good Trouble) ═══ -->
+<form name="claim-free-module" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="text" name="business" />
+  <input type="email" name="email" />
+  <input type="text" name="module" />
+  <input type="text" name="source_page" />
+  <input type="text" name="bot-field" />
+</form>
+<style>
+#gt-cta{position:fixed;bottom:16px;right:16px;z-index:99998;background:#FF5500;color:#fff;font-family:Barlow,system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:13px 20px;border:0;border-radius:3px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 0 0 rgba(255,85,0,.5);animation:gtPulse 3.4s ease-out infinite}
+@keyframes gtPulse{0%{box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 0 0 rgba(255,85,0,.45)}60%{box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 0 14px rgba(255,85,0,0)}100%{box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 0 0 rgba(255,85,0,0)}}
+#gt-cta:hover{background:#ff6a1f}
+#gt-ov{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.72);backdrop-filter:blur(5px)}
+#gt-ov.on{display:flex}
+#gt-modal{width:100%;max-width:400px;background:#111214;border:1px solid rgba(255,85,0,.28);border-radius:14px;padding:24px 22px 20px;font-family:Barlow,system-ui,sans-serif;color:#fff;box-shadow:0 24px 70px rgba(0,0,0,.7);position:relative;max-height:92vh;overflow-y:auto}
+#gt-modal h3{margin:0 0 6px;font-family:'Bebas Neue',Barlow,sans-serif;font-size:27px;letter-spacing:.03em;line-height:1.05;color:#fff;font-weight:400}
+#gt-modal .gt-sub{margin:0 0 18px;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.58)}
+#gt-x{position:absolute;top:11px;right:13px;background:none;border:0;color:rgba(255,255,255,.4);font-size:22px;line-height:1;cursor:pointer;padding:4px}
+#gt-x:hover{color:#fff}
+.gt-f{margin-bottom:11px}
+.gt-f label{display:block;font-size:9.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:5px}
+.gt-f input,.gt-f select{width:100%;box-sizing:border-box;background:#1b1c1f;border:1px solid rgba(255,255,255,.13);border-radius:7px;padding:11px 12px;font-size:14px;font-family:inherit;color:#fff;outline:none;-webkit-appearance:none;appearance:none}
+.gt-f select{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath fill='%23FF5500' d='M0 0h11L5.5 7z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
+.gt-f input:focus,.gt-f select:focus{border-color:#FF5500}
+.gt-f input::placeholder{color:rgba(255,255,255,.26)}
+#gt-submit{width:100%;margin-top:7px;background:#FF5500;color:#fff;border:0;border-radius:7px;padding:14px;font-family:inherit;font-weight:700;font-size:13.5px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer}
+#gt-submit:hover{background:#ff6a1f}
+#gt-submit:disabled{opacity:.55;cursor:default}
+#gt-fine{margin:12px 0 0;font-size:10.5px;line-height:1.45;color:rgba(255,255,255,.32);text-align:center}
+#gt-err{display:none;margin:10px 0 0;font-size:12px;color:#ff6b5e;text-align:center}
+#gt-done{display:none;text-align:center;padding:12px 0 6px}
+#gt-done .gt-check{font-size:38px;line-height:1;margin-bottom:12px}
+#gt-done h3{margin-bottom:9px}
+#gt-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+@media(max-width:520px){#gt-cta{left:14px;right:14px;bottom:14px;text-align:center;padding:14px}#gt-modal{padding:22px 18px 18px}#gt-modal h3{font-size:24px}}
+</style>
+<button id="gt-cta" type="button">Claim Your Free Module &rarr;</button>
+<div id="gt-ov" role="dialog" aria-modal="true" aria-labelledby="gt-h">
+  <div id="gt-modal">
+    <button id="gt-x" type="button" aria-label="Close">&times;</button>
+    <div id="gt-form-wrap">
+      <h3 id="gt-h">Claim Your Free Module</h3>
+      <p class="gt-sub">Pick the one you want running first. We build it into your spa, live on your real clients, at no cost. No contract, no card.</p>
+      <div class="gt-f"><label for="gt-name">Your name</label><input id="gt-name" type="text" autocomplete="name" placeholder="First and last"></div>
+      <div class="gt-f"><label for="gt-biz">Med spa name</label><input id="gt-biz" type="text" autocomplete="organization" placeholder="Your practice"></div>
+      <div class="gt-f"><label for="gt-email">Email</label><input id="gt-email" type="email" autocomplete="email" placeholder="you@yourspa.com"></div>
+      <div class="gt-f"><label for="gt-mod">Which module do you want free?</label>
+        <select id="gt-mod">
+          <option value="">Choose one&hellip;</option>
+          <option>Front Desk AI</option>
+          <option>Reactivation</option>
+          <option>Review Engine</option>
+          <option>Campaign Launcher</option>
+          <option>Membership</option>
+          <option>Post-Visit</option>
+          <option>AI Chat Agent</option>
+          <option>ConsultIQ</option>
+          <option>Marketing</option>
+          <option>Social Media Manager</option>
+          <option>Inventory</option>
+          <option>Competitor Analysis</option>
+          <option>Trends &amp; Tech</option>
+          <option>Full Dashboard</option>
+          <option>Not sure yet &mdash; help me pick</option>
+        </select>
+      </div>
+      <input id="gt-hp" type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button id="gt-submit" type="button">Claim It</button>
+      <p id="gt-err"></p>
+      <p id="gt-fine">Takes one reply to set up. We never share your details.</p>
+    </div>
+    <div id="gt-done">
+      <div class="gt-check">&#x2705;</div>
+      <h3>You&rsquo;re In</h3>
+      <p class="gt-sub" id="gt-done-msg">We&rsquo;ll email you within one business day to get it live.</p>
+      <button id="gt-close2" type="button" style="background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);border-radius:7px;padding:10px 20px;font-family:inherit;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Back to the demo</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var ov=document.getElementById('gt-ov'),cta=document.getElementById('gt-cta'),
+      wrap=document.getElementById('gt-form-wrap'),done=document.getElementById('gt-done'),
+      err=document.getElementById('gt-err'),btn=document.getElementById('gt-submit');
+  function biz(){var e=document.getElementById('hdr-title');var t=e?e.textContent.trim():'';
+    return (t&&t!=='Business Hub')?t:'';}
+  function open(){
+    var f=document.getElementById('gt-biz'); if(f&&!f.value) f.value=biz();
+    ov.classList.add('on');
+    try{if(window.gtag)gtag('event','claim_modal_open',{page:location.pathname});
+        if(window.fbq)fbq('track','InitiateCheckout');}catch(e){}
+    setTimeout(function(){var n=document.getElementById('gt-name');if(n)n.focus();},60);
+  }
+  function close(){ov.classList.remove('on');}
+  cta.addEventListener('click',open);
+  document.getElementById('gt-x').addEventListener('click',close);
+  document.getElementById('gt-close2').addEventListener('click',close);
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('on'))close();});
+  function enc(o){return Object.keys(o).map(function(k){
+    return encodeURIComponent(k)+'='+encodeURIComponent(o[k]);}).join('&');}
+  btn.addEventListener('click',function(){
+    var name=document.getElementById('gt-name').value.trim(),
+        b=document.getElementById('gt-biz').value.trim(),
+        em=document.getElementById('gt-email').value.trim(),
+        mod=document.getElementById('gt-mod').value,
+        hp=document.getElementById('gt-hp').value;
+    err.style.display='none';
+    if(!name||!b||!em||!mod){err.textContent='Please fill in all four fields.';err.style.display='block';return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){err.textContent='That email address looks off.';err.style.display='block';return;}
+    if(hp){close();return;}
+    btn.disabled=true;btn.textContent='Sending\u2026';
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:enc({'form-name':'claim-free-module',name:name,business:b,email:em,module:mod,
+                source_page:location.pathname,'bot-field':''})})
+    .then(function(r){
+      if(!r.ok)throw new Error(r.status);
+      try{if(window.gtag)gtag('event','generate_lead',{module:mod,page:location.pathname});
+          if(window.fbq)fbq('track','Lead',{content_name:mod});}catch(e){}
+      document.getElementById('gt-done-msg').textContent=
+        'We\u2019ll email '+em+' within one business day to get '+mod+' live in '+b+'.';
+      wrap.style.display='none';done.style.display='block';
+    })
+    .catch(function(){
+      btn.disabled=false;btn.textContent='Claim It';
+      err.innerHTML='Something went wrong. Email <a href="mailto:alex@goodtroubleglobal.com" style="color:#FF5500">alex@goodtroubleglobal.com</a> and we\u2019ll sort it.';
+      err.style.display='block';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
