@@ -959,7 +959,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       </div>
       <div class="pt-arrow">&#x2197;</div>
     </div>
-    <div class="pt-card pt-super" onclick="openModule('locked-websitebuilder','Website Builder')">
+    <div class="pt-card pt-super" onclick="openModule('websitebuilder','Website Builder')">
       <div class="pt-glow-orb"></div>
       <div class="pt-icon">&#x1F310;</div>
       <div class="pt-body">
@@ -2758,6 +2758,102 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 </div>
 </div>
 
+
+<!-- ─── Website Builder (Super Tool) ─── -->
+<div id="view-websitebuilder" class="view" style="display:none">
+<style>
+#view-websitebuilder .wb-grid{display:grid;grid-template-columns:1fr;gap:14px}
+#view-websitebuilder .wb-card{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius);padding:16px}
+#view-websitebuilder .wb-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+#view-websitebuilder .wb-title{font-family:var(--font-d);font-size:14px;color:var(--text)}
+#view-websitebuilder .wb-sub{font-size:11px;color:var(--text-muted)}
+#view-websitebuilder .wb-scores{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+#view-websitebuilder .wb-score{background:rgba(255,255,255,0.02);border:1px solid var(--border-dim);border-radius:10px;padding:10px;text-align:center}
+#view-websitebuilder .wb-score b{display:block;font-size:22px;font-family:var(--font-d)}
+#view-websitebuilder .wb-score span{font-size:10px;color:var(--text-muted);letter-spacing:.4px;text-transform:uppercase}
+#view-websitebuilder .wb-flag{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--text-dim);padding:7px 0;border-top:1px solid var(--border-dim)}
+#view-websitebuilder .wb-flag:first-of-type{border-top:none}
+#view-websitebuilder .wb-flag .dot{width:7px;height:7px;border-radius:50%;margin-top:4px;flex:none}
+#view-websitebuilder .wb-input{width:100%;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:13px;padding:12px;min-height:64px;resize:none;font-family:var(--font-b)}
+#view-websitebuilder .wb-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+#view-websitebuilder .wb-chip{font-size:11.5px;padding:7px 12px;border-radius:999px;border:1px solid var(--border);color:var(--text-dim);cursor:pointer;background:rgba(255,255,255,0.02);transition:all .18s}
+#view-websitebuilder .wb-chip:hover{border-color:var(--orange);color:var(--text)}
+#view-websitebuilder .wb-chip.active{background:linear-gradient(90deg,var(--orange),var(--pink));color:#fff;border-color:transparent}
+#view-websitebuilder .wb-ba{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+#view-websitebuilder .wb-mock{border:1px solid var(--border-dim);border-radius:12px;overflow:hidden;background:#0d0d0f}
+#view-websitebuilder .wb-mock-label{font-size:10px;letter-spacing:.6px;text-transform:uppercase;padding:6px 10px;color:var(--text-muted);border-bottom:1px solid var(--border-dim);display:flex;justify-content:space-between}
+#view-websitebuilder .wb-mock-body{padding:10px;min-height:150px}
+#view-websitebuilder .m-nav{height:8px;border-radius:4px;background:rgba(255,255,255,0.08);margin-bottom:8px}
+#view-websitebuilder .m-hero-old{height:44px;border-radius:6px;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--text-muted)}
+#view-websitebuilder .m-hero-new{height:44px;border-radius:6px;background:linear-gradient(120deg,rgba(255,107,43,0.55),rgba(221,42,123,0.5));display:flex;align-items:center;justify-content:center;font-size:9.5px;color:#fff;font-family:var(--font-d)}
+#view-websitebuilder .m-row{display:flex;gap:6px;margin-top:8px}
+#view-websitebuilder .m-block{flex:1;height:26px;border-radius:5px;background:rgba(255,255,255,0.05)}
+#view-websitebuilder .m-block.hi{background:rgba(255,107,43,0.22);border:1px solid rgba(255,107,43,0.4)}
+#view-websitebuilder .m-cta-old{height:14px;width:52%;border-radius:4px;background:rgba(255,255,255,0.09);margin-top:8px}
+#view-websitebuilder .m-cta-new{height:14px;width:52%;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--pink));margin-top:8px}
+#view-websitebuilder .wb-note{font-size:11px;color:var(--text-muted);margin-top:8px}
+#view-websitebuilder .wb-pubrow{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
+#view-websitebuilder .wb-pub{background:linear-gradient(90deg,var(--orange),var(--pink));border:none;color:#fff;font-family:var(--font-d);font-size:13px;padding:11px 22px;border-radius:12px;cursor:pointer}
+#view-websitebuilder .wb-pub[disabled]{opacity:.45;cursor:default}
+#view-websitebuilder .wb-status{font-size:12px;color:var(--text-dim)}
+#view-websitebuilder .wb-status.live{color:var(--green)}
+#view-websitebuilder .wb-vh{margin-top:14px;border-top:1px solid var(--border-dim);padding-top:10px;display:none}
+#view-websitebuilder .wb-v{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-dim);padding:6px 0}
+#view-websitebuilder .wb-v b{color:var(--text);font-weight:600}
+#view-websitebuilder .wb-roll{font-size:11px;color:var(--blue);cursor:pointer;background:none;border:1px solid var(--border);border-radius:8px;padding:4px 10px}
+@media(max-width:560px){#view-websitebuilder .wb-scores{grid-template-columns:repeat(2,1fr)}#view-websitebuilder .wb-ba{grid-template-columns:1fr}}
+</style>
+<div class="main">
+  <div class="wb-grid">
+
+    <div class="wb-card">
+      <div class="wb-hd">
+        <div><div class="wb-title">Site Audit &mdash; glowmedspa.com</div><div class="wb-sub">Scanned automatically every night. Last scan: today, 4:02 AM</div></div>
+      </div>
+      <div class="wb-scores">
+        <div class="wb-score"><b style="color:var(--amber)">61</b><span>Speed</span></div>
+        <div class="wb-score"><b style="color:var(--amber)">74</b><span>Mobile</span></div>
+        <div class="wb-score"><b style="color:var(--red)">58</b><span>SEO</span></div>
+        <div class="wb-score"><b style="color:var(--red)">45</b><span>Booking Path</span></div>
+      </div>
+      <div style="margin-top:12px">
+        <div class="wb-flag"><div class="dot" style="background:var(--red)"></div>Booking is 4 taps deep &mdash; every extra tap costs an estimated 12% of mobile visitors.</div>
+        <div class="wb-flag"><div class="dot" style="background:var(--red)"></div>No lip filler service page &mdash; it&rsquo;s the #2 searched treatment in your area and you don&rsquo;t rank for it.</div>
+        <div class="wb-flag"><div class="dot" style="background:var(--amber)"></div>Homepage loads in 3.9s on mobile. Under 2.5s is the standard your competitors hit.</div>
+        <div class="wb-flag"><div class="dot" style="background:var(--amber)"></div>6 pages missing meta descriptions &mdash; Google is writing your search listings for you.</div>
+      </div>
+    </div>
+
+    <div class="wb-card">
+      <div class="wb-hd"><div><div class="wb-title">Describe the change</div><div class="wb-sub">Plain English in &mdash; finished pages out. In your brand voice, on your brand kit.</div></div></div>
+      <textarea class="wb-input" id="wb-input" placeholder="e.g. Add a page for our new lip filler service with before/afters and pricing tiers&hellip;" oninput="wbTyped()"></textarea>
+      <div class="wb-chips">
+        <div class="wb-chip" id="wbc-lip" onclick="wbSelect('lip',this)">&#x1F484; Add a lip filler page</div>
+        <div class="wb-chip" id="wbc-promo" onclick="wbSelect('promo',this)">&#x2600;&#xFE0F; Summer promo landing page</div>
+        <div class="wb-chip" id="wbc-home" onclick="wbSelect('home',this)">&#x1F3E0; Refresh the homepage</div>
+      </div>
+      <div id="wb-ba-wrap" style="display:none">
+        <div class="wb-ba">
+          <div class="wb-mock"><div class="wb-mock-label"><span>Current</span><span id="wb-old-tag"></span></div><div class="wb-mock-body" id="wb-old"></div></div>
+          <div class="wb-mock" style="border-color:rgba(255,107,43,0.45)"><div class="wb-mock-label"><span style="color:var(--orange)">Generated</span><span>draft v1 &middot; 34 sec</span></div><div class="wb-mock-body" id="wb-new"></div></div>
+        </div>
+        <div class="wb-note" id="wb-note"></div>
+        <div class="wb-pubrow">
+          <button class="wb-pub" id="wb-pub" onclick="wbPublish()">Publish</button>
+          <div class="wb-status" id="wb-status">Draft &mdash; nothing goes live until you approve it.</div>
+        </div>
+        <div class="wb-vh" id="wb-vh">
+          <div class="wb-v"><span><b>v15</b> &mdash; <span id="wb-v15-label"></span></span><span style="color:var(--green)">Live now</span></div>
+          <div class="wb-v"><span><b>v14</b> &mdash; Homepage hero + reviews section</span><button class="wb-roll" onclick="wbRollback()">Roll back</button></div>
+          <div class="wb-v"><span><b>v13</b> &mdash; Spring event landing page</span><span>Jun 12</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
 <div id="view-locked" class="view" style="display:none">
 <div class="main" style="max-width:600px">
   <div style="background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:32px 20px;text-align:center">
@@ -2925,7 +3021,6 @@ function showNewCampaign() {
   alert('Campaign Builder: In the live system, this opens a 4-field form. You fill in what to sell, the deal, the theme, and the duration — and we build everything else automatically.');
 }
 var lockedModules={
-  'locked-websitebuilder':{icon:'&#x1F310;',name:'Website Builder',desc:'The next super tool in your hub. Tell it what your site should say and show \u2014 it designs the pages, writes the copy in your brand voice, and publishes without a developer. Full redesigns, new service pages, seasonal landing pages \u2014 all from this dashboard. In development \u2014 rolling out to hub subscribers first.'},
   'locked-reviews':{icon:'&#x2B50;',name:'Review Engine',desc:'Post-visit AI sequences that route happy clients to Google reviews and privately flag unhappy ones before they post publicly. Fully automated across all 4 locations.'},
   'locked-membership':{icon:'&#x1F48E;',name:'Membership Automation',desc:'Upgrade nudges when eligible, renewal reminders 7 days before expiry, rollover credit alerts, and churn prevention for members who stop booking.'},
   'locked-postvisit':{icon:'&#x1F4CB;',name:'Post-Visit Follow-Up',desc:'24-hour check-in after every service, 90-day rebooking trigger, and personalized product recommendations based on what was done.'},
@@ -2950,6 +3045,60 @@ function openModule(id,name){
   var ml=document.getElementById('mod-label');
   if(ml){ml.textContent=name||'';ml.style.display=name?'block':'none';}
   window.scrollTo(0,0);
+}
+
+
+/* ─── Website Builder (Super Tool) ─── */
+var wbMocks={
+ lip:{old:'<div class="m-nav"></div><div class="m-hero-old">glowmedspa.com/services</div><div class="m-row"><div class="m-block"></div><div class="m-block"></div></div><div class="m-row"><div class="m-block"></div><div class="m-block"></div></div><div style="font-size:9px;color:var(--text-muted);margin-top:8px">No lip filler page exists</div>',
+     nw:'<div class="m-nav"></div><div class="m-hero-new">Lip Filler at Glow &mdash; Natural, Never Overdone</div><div class="m-row"><div class="m-block hi"></div><div class="m-block hi"></div></div><div class="m-row"><div class="m-block"></div><div class="m-block hi"></div><div class="m-block"></div></div><div class="m-cta-new"></div>',
+     note:'New page: hero, before/after gallery, 3 pricing tiers, FAQ, booking CTA wired to your calendar. Copy written in your brand voice from your brand kit.', v:'Lip filler service page'},
+ promo:{old:'<div class="m-nav"></div><div class="m-hero-old">No promo page &mdash; traffic lands on homepage</div><div class="m-row"><div class="m-block"></div><div class="m-block"></div></div><div class="m-cta-old"></div>',
+     nw:'<div class="m-nav"></div><div class="m-hero-new">Summer Glow Event &mdash; This Month Only</div><div class="m-row"><div class="m-block hi"></div><div class="m-block hi"></div><div class="m-block hi"></div></div><div class="m-cta-new"></div><div style="font-size:9px;color:var(--text-muted);margin-top:6px">Countdown &middot; limited spots &middot; one-tap book</div>',
+     note:'Dedicated landing page for the Summer Glow promo: offer, countdown, social proof, single booking CTA. Your ad and email traffic finally has somewhere to land.', v:'Summer promo landing page'},
+ home:{old:'<div class="m-nav"></div><div class="m-hero-old">Welcome to Glow Med Spa&hellip;</div><div class="m-row"><div class="m-block"></div><div class="m-block"></div><div class="m-block"></div></div><div class="m-cta-old"></div>',
+     nw:'<div class="m-nav"></div><div class="m-hero-new">Tampa&rsquo;s Med Spa For Results You Can See</div><div class="m-row"><div class="m-block hi"></div><div class="m-block hi"></div></div><div class="m-row"><div class="m-block hi"></div><div class="m-block"></div></div><div class="m-cta-new"></div>',
+     note:'Homepage refresh: benefit-led hero, services reordered by what actually books, reviews pulled in automatically, booking one tap from everywhere.', v:'Homepage refresh'}
+};
+var wbCur=null;
+function wbSelect(k,el){
+  wbCur=k;
+  document.querySelectorAll('#view-websitebuilder .wb-chip').forEach(function(c){c.classList.remove('active')});
+  el.classList.add('active');
+  var m=wbMocks[k];
+  document.getElementById('wb-old').innerHTML=m.old;
+  document.getElementById('wb-new').innerHTML=m.nw;
+  document.getElementById('wb-note').textContent=m.note;
+  document.getElementById('wb-old-tag').textContent='live today';
+  document.getElementById('wb-ba-wrap').style.display='block';
+  var s=document.getElementById('wb-status');s.textContent='Draft \u2014 nothing goes live until you approve it.';s.classList.remove('live');
+  var b=document.getElementById('wb-pub');b.disabled=false;b.textContent='Publish';
+  document.getElementById('wb-vh').style.display='none';
+}
+function wbTyped(){
+  var v=document.getElementById('wb-input').value;
+  if(v.length===1&&!wbCur){/* nudge to chips on first keypress */}
+}
+function wbPublish(){
+  if(!wbCur)return;
+  var b=document.getElementById('wb-pub'),s=document.getElementById('wb-status');
+  b.disabled=true;b.textContent='Publishing\u2026';
+  s.textContent='Staging \u2014 building preview, checking links, mobile pass\u2026';s.classList.remove('live');
+  setTimeout(function(){
+    s.textContent='Staged \u2713 \u2014 final checks\u2026';
+  },900);
+  setTimeout(function(){
+    b.textContent='Published';
+    s.textContent='Live \u2713 \u2014 published to glowmedspa.com. Full version history below \u2014 one tap to roll back.';
+    s.classList.add('live');
+    document.getElementById('wb-v15-label').textContent=wbMocks[wbCur].v;
+    document.getElementById('wb-vh').style.display='block';
+  },2100);
+}
+function wbRollback(){
+  var s=document.getElementById('wb-status');
+  s.textContent='Rolled back to v14 \u2713 \u2014 the previous version is live again. Nothing is ever lost.';
+  s.classList.add('live');
 }
 
 /* ─── Social Media Manager ─── */
@@ -3213,7 +3362,7 @@ function enterApp(){
 
 
 <!-- ═══ Claim Free Module — CTA + modal (Good Trouble) ═══ -->
-<form name="claim-free-module" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<form hidden method='POST' name='claim-free-module'><input type='hidden' name='form-name' value='claim-free-module' />
   <input type="text" name="name" />
   <input type="text" name="business" />
   <input type="email" name="email" />
