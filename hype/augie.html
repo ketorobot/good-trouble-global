@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OWN THE DAY — Augie's Hype Sheet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Barlow+Condensed:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,400;0,600;0,800;1,600&family=Barlow+Condensed:wght@600;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#0a0a0c;
@@ -16,297 +16,197 @@
   --card:#131318;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
-  background:var(--ink);
-  color:var(--paper);
-  font-family:'Barlow',sans-serif;
-  overflow-x:hidden;
+  background:var(--ink);color:var(--paper);
+  font-family:'Barlow',sans-serif;overflow-x:hidden;
 }
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.wrap{max-width:880px;margin:0 auto;padding:0 28px}
+.wrap{max-width:820px;margin:0 auto;padding:0 26px}
+.page{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:60px 0;position:relative}
 
-/* ------ HERO ------ */
-.hero{
-  min-height:92vh;display:flex;flex-direction:column;justify-content:center;
-  position:relative;padding:80px 0 60px;
-}
-.hero::after{
-  content:"";position:absolute;top:-20%;right:-30%;width:80vw;height:80vw;
-  background:radial-gradient(circle,rgba(255,61,0,.22),transparent 60%);
-  pointer-events:none;
+/* ============ PAGE 1: THE MENTALITY ============ */
+.p1::after{
+  content:"";position:absolute;top:-15%;right:-25%;width:75vw;height:75vw;
+  background:radial-gradient(circle,rgba(255,61,0,.25),transparent 60%);pointer-events:none;
 }
 .kicker{
   font-family:'Barlow Condensed';font-weight:800;letter-spacing:.35em;
-  text-transform:uppercase;font-size:14px;color:var(--gold);
+  text-transform:uppercase;font-size:13px;color:var(--gold);
+  display:flex;align-items:center;gap:14px;
   animation:rise .7s ease both;
 }
+.kicker svg{flex-shrink:0}
 h1{
-  font-family:'Anton';font-size:clamp(72px,15vw,168px);line-height:.92;
-  text-transform:uppercase;margin:18px 0 8px;
-  animation:rise .7s .1s ease both;
+  font-family:'Anton';font-size:clamp(64px,14vw,150px);line-height:.92;
+  text-transform:uppercase;margin:16px 0 26px;animation:rise .7s .1s ease both;
 }
 h1 .flame{color:var(--heat);display:block}
-.hero-sub{
-  font-size:clamp(17px,2.4vw,22px);font-weight:600;max-width:520px;
-  color:var(--smoke);animation:rise .7s .2s ease both;
-}
-.hero-sub b{color:var(--paper)}
-.rule{height:3px;background:var(--heat);width:120px;margin:34px 0;animation:grow .8s .3s ease both;transform-origin:left}
 @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
-@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-/* ------ SPEECH ------ */
-.speech{
-  background:var(--paper);color:var(--ink);
-  padding:72px 0;position:relative;
-  transform:skewY(-1.5deg);margin:40px 0;
+.burst{
+  position:absolute;bottom:8%;right:4%;width:clamp(120px,22vw,220px);opacity:.9;
+  animation:spin 40s linear infinite;pointer-events:none;
 }
-.speech>.wrap{transform:skewY(1.5deg)}
-.speech h2{font-family:'Anton';font-size:clamp(30px,5vw,44px);text-transform:uppercase;margin-bottom:26px}
-.speech h2 span{color:var(--heat)}
-.speech p{
-  font-size:clamp(17px,2.2vw,20px);line-height:1.65;font-weight:600;
-  max-width:700px;margin-bottom:18px;
-}
-.speech p:last-of-type{margin-bottom:0}
-.speech .punch{color:var(--heat);font-weight:800}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* ------ SECTIONS ------ */
-section.block{padding:70px 0}
+.speech-card{
+  background:var(--paper);color:var(--ink);padding:38px clamp(24px,5vw,48px);
+  max-width:640px;position:relative;animation:rise .7s .2s ease both;
+  clip-path:polygon(0 0,100% 2%,99% 100%,1% 98%);
+}
+.speech-card p{font-size:clamp(16px,2.1vw,19px);line-height:1.6;font-weight:600;margin-bottom:14px}
+.speech-card p:last-child{margin-bottom:0}
+.speech-card .punch{color:var(--heat);font-weight:800}
+
+.creed{margin-top:36px;display:grid;gap:10px;animation:rise .7s .3s ease both}
+.creed li{
+  list-style:none;font-family:'Barlow Condensed';font-weight:800;
+  font-size:clamp(19px,2.8vw,25px);text-transform:uppercase;
+  display:flex;align-items:center;gap:14px;
+}
+.creed li svg{flex-shrink:0}
+.creed li em{font-style:normal;color:var(--gold)}
+
+/* ============ PAGE 2: THE DOOR ============ */
+.p2{border-top:3px solid var(--heat)}
+.p2::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:100%;
+  background:radial-gradient(ellipse at 10% 0%,rgba(255,179,0,.12),transparent 50%);
+  pointer-events:none;
+}
 .sec-label{
   font-family:'Barlow Condensed';font-weight:800;letter-spacing:.3em;
-  text-transform:uppercase;font-size:13px;color:var(--gold);margin-bottom:10px;
+  text-transform:uppercase;font-size:13px;color:var(--gold);margin-bottom:8px;
 }
-h3{
-  font-family:'Anton';font-size:clamp(34px,6vw,58px);text-transform:uppercase;
-  line-height:1;margin-bottom:36px;
+h2{
+  font-family:'Anton';font-size:clamp(40px,8vw,76px);text-transform:uppercase;
+  line-height:.95;margin-bottom:8px;
 }
-h3 em{font-style:normal;color:var(--heat)}
+h2 em{font-style:normal;color:var(--heat)}
+.sub{color:var(--smoke);font-weight:600;font-size:17px;margin-bottom:34px}
 
-/* ignition */
-.ignite{display:grid;gap:14px}
-.ignite li{
-  list-style:none;background:var(--card);border-left:4px solid var(--heat);
-  padding:18px 22px;font-family:'Barlow Condensed';font-weight:800;
-  font-size:clamp(20px,3vw,26px);text-transform:uppercase;letter-spacing:.02em;
-  transition:transform .18s ease,border-color .18s ease;
-}
-.ignite li:hover{transform:translateX(10px);border-color:var(--gold)}
-.ignite li span{color:var(--heat);margin-right:12px}
+.door-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,5vw,48px);align-items:start}
+@media(max-width:640px){.door-grid{grid-template-columns:1fr}.doorart{display:none}}
+.doorart{width:clamp(100px,14vw,150px)}
 
-/* laws */
-.laws{counter-reset:law;display:grid;gap:0}
-.law{
-  display:grid;grid-template-columns:90px 1fr;align-items:center;gap:20px;
-  padding:26px 0;border-bottom:1px solid rgba(245,241,232,.12);
+.ritual{counter-reset:step;display:grid;gap:12px;margin-bottom:36px}
+.step{
+  background:var(--card);border-left:4px solid var(--gold);padding:16px 20px;
+  counter-increment:step;display:flex;align-items:baseline;gap:16px;
+  transition:transform .18s ease;
 }
-.law:first-child{border-top:1px solid rgba(245,241,232,.12)}
-.law .num{
-  font-family:'Anton';font-size:56px;color:transparent;
-  -webkit-text-stroke:2px var(--heat);
+.step:hover{transform:translateX(8px)}
+.step::before{
+  content:"0" counter(step);font-family:'Anton';font-size:26px;color:var(--gold);
 }
-.law p{font-size:clamp(17px,2.2vw,20px);font-weight:600;line-height:1.5}
+.step p{font-family:'Barlow Condensed';font-weight:800;font-size:clamp(19px,2.6vw,23px);text-transform:uppercase}
+.step p span{color:var(--smoke);font-family:'Barlow';font-weight:600;font-size:14px;text-transform:none;display:block;letter-spacing:0}
 
-/* identity */
-.identity{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
-.id-card{
-  background:var(--card);padding:24px;border:1px solid rgba(245,241,232,.08);
-  font-weight:600;font-size:17px;line-height:1.5;position:relative;
-  transition:border-color .18s ease;
-}
-.id-card:hover{border-color:var(--heat)}
-.id-card::before{content:"—";color:var(--heat);font-weight:800;margin-right:10px}
-
-/* reframes */
-.reframes{display:grid;gap:16px}
+.flips{display:grid;gap:10px;margin-bottom:36px}
 .rf{
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;
-  background:var(--card);padding:20px 24px;border:1px solid rgba(245,241,232,.08);
+  display:grid;grid-template-columns:1fr auto 1.2fr;align-items:center;gap:12px;
+  background:var(--card);padding:14px 20px;border:1px solid rgba(245,241,232,.08);
 }
-.rf .fear{color:var(--smoke);font-weight:600;text-decoration:line-through;text-decoration-color:rgba(255,61,0,.6)}
-.rf .arrow{font-family:'Anton';color:var(--heat);font-size:22px}
-.rf .truth{font-weight:800;font-size:17px}
+.rf .fear{color:var(--smoke);font-weight:600;font-size:15px;text-decoration:line-through;text-decoration-color:rgba(255,61,0,.6)}
+.rf .arrow{font-family:'Anton';color:var(--heat);font-size:20px}
+.rf .truth{font-weight:800;font-size:16px}
 @media(max-width:600px){.rf{grid-template-columns:1fr}.rf .arrow{display:none}}
 
-/* ritual */
-.ritual{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;counter-reset:step}
-.step{
-  background:linear-gradient(160deg,var(--card),#1c1c24);padding:22px 18px;
-  border-top:3px solid var(--gold);counter-increment:step;
+.final{
+  text-align:center;padding-top:20px;
 }
-.step::before{
-  content:"0" counter(step);font-family:'Anton';display:block;
-  font-size:30px;color:var(--gold);margin-bottom:10px;
+.final .big{
+  font-family:'Anton';font-size:clamp(34px,7vw,64px);text-transform:uppercase;line-height:.95;
 }
-.step p{font-family:'Barlow Condensed';font-weight:800;font-size:19px;text-transform:uppercase;line-height:1.2}
-
-/* lock screen lines */
-.lock{columns:2;column-gap:18px}
-@media(max-width:640px){.lock{columns:1}}
-.lock li{
-  list-style:none;break-inside:avoid;margin-bottom:16px;
-  font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;
-  font-size:clamp(21px,3vw,27px);line-height:1.15;padding-left:18px;
-  border-left:3px solid rgba(255,179,0,.85);
-}
-.lock li:nth-child(odd){border-left-color:var(--heat)}
-
-/* debrief */
-.debrief{background:var(--card);padding:40px;border:1px solid rgba(245,241,232,.1)}
-.debrief h4{font-family:'Anton';text-transform:uppercase;font-size:24px;margin-bottom:20px;color:var(--gold)}
-.debrief li{list-style:none;font-size:18px;font-weight:600;padding:12px 0;border-bottom:1px dashed rgba(245,241,232,.15)}
-.debrief li:last-child{border:none}
-.debrief li::before{content:"▸";color:var(--heat);margin-right:12px}
-
-/* footer */
-footer{
-  text-align:center;padding:80px 0 60px;
-}
-footer .big{
-  font-family:'Anton';font-size:clamp(40px,8vw,84px);text-transform:uppercase;
-  line-height:.95;
-}
-footer .big span{color:var(--heat)}
-footer .tag{margin-top:22px;color:var(--smoke);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:12px}
+.final .big span{color:var(--heat)}
+.final .tag{margin-top:16px;color:var(--smoke);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:11px}
 
 @media print{
   body{background:#fff;color:#000}
   body::before{display:none}
-  .hero{min-height:auto}
+  .page{min-height:auto;page-break-after:always}
 }
 </style>
 </head>
 <body>
 
-<header class="hero">
+<!-- ============ PAGE 1 — THE MENTALITY ============ -->
+<section class="page p1">
+  <svg class="burst" viewBox="0 0 200 200" fill="none">
+    <g stroke="#ff3d00" stroke-width="3">
+      <line x1="100" y1="0" x2="100" y2="34"/><line x1="100" y1="166" x2="100" y2="200"/>
+      <line x1="0" y1="100" x2="34" y2="100"/><line x1="166" y1="100" x2="200" y2="100"/>
+      <line x1="29" y1="29" x2="53" y2="53"/><line x1="147" y1="147" x2="171" y2="171"/>
+      <line x1="171" y1="29" x2="147" y2="53"/><line x1="53" y1="147" x2="29" y2="171"/>
+    </g>
+    <circle cx="100" cy="100" r="46" stroke="#ffb300" stroke-width="3"/>
+    <circle cx="100" cy="100" r="22" fill="#ff3d00"/>
+  </svg>
   <div class="wrap">
-    <div class="kicker">Good Trouble // Miami // Founder Mode</div>
+    <div class="kicker">
+      <svg width="34" height="20" viewBox="0 0 34 20"><path d="M0 10 L14 10 M8 3 L15 10 L8 17" stroke="#ffb300" stroke-width="2.5" fill="none"/><path d="M17 10 L31 10 M25 3 L32 10 L25 17" stroke="#ff3d00" stroke-width="2.5" fill="none"/></svg>
+      Good Trouble // Miami // Founder Mode
+    </div>
     <h1>Own<span class="flame">The Day</span></h1>
-    <div class="rule"></div>
-    <p class="hero-sub">Augie — this sheet is yours. Read it before you walk out the door. <b>Nobody is coming to hand us the first client. You go get him.</b></p>
-  </div>
-</header>
 
-<section class="speech">
-  <div class="wrap">
-    <h2>The <span>Speech</span></h2>
-    <p>You're standing in Miami with nothing between you and the first client except pavement, phones, and your own hesitation. <span class="punch">That's the game.</span> Every door you walk through today is undecided until you decide it.</p>
-    <p>You built the thing. You know what it does. So stop treating this like outreach and start treating it like <span class="punch">ownership</span>. Posture up before you speak. Breathe like the outcome already belongs to you.</p>
-    <p>The rejections are coming — let them land and keep moving. The ones who flinch are the ones still looking for permission. <span class="punch">You don't need permission. You need reps.</span></p>
-    <p>Follow up like you said you would. The version of you that closes the first deal is already in the room. <span class="punch">Get him the leads.</span></p>
-  </div>
-</section>
+    <div class="speech-card">
+      <p>Augie — nothing stands between you and the first client except pavement, phones, and hesitation. <span class="punch">That's the game.</span> Every door today is undecided until you decide it.</p>
+      <p>You built the thing. You know what it does. This isn't outreach — it's <span class="punch">ownership</span>. Rejections are coming; let them land and keep moving. <span class="punch">You don't need permission. You need reps.</span></p>
+      <p>The version of you that closes the first deal is already in the room. <span class="punch">Get him the leads.</span></p>
+    </div>
 
-<section class="block">
-  <div class="wrap">
-    <div class="sec-label">Before you leave the house</div>
-    <h3>Morning <em>Ignition</em></h3>
-    <ul class="ignite">
-      <li><span>01</span>Walk in before your doubt catches up.</li>
-      <li><span>02</span>Stand like the outcome is already yours.</li>
-      <li><span>03</span>One more call than yesterday.</li>
-      <li><span>04</span>You sell the fix, not the favor.</li>
-      <li><span>05</span>Own this day. Make it your masterpiece.</li>
+    <ul class="creed">
+      <li><svg width="22" height="22" viewBox="0 0 22 22"><path d="M3 11 L9 17 L19 5" stroke="#ff3d00" stroke-width="3.5" fill="none"/></svg>You sell the <em>fix</em>, not the favor.</li>
+      <li><svg width="22" height="22" viewBox="0 0 22 22"><path d="M3 11 L9 17 L19 5" stroke="#ff3d00" stroke-width="3.5" fill="none"/></svg>Stand like the outcome is <em>already yours</em>.</li>
+      <li><svg width="22" height="22" viewBox="0 0 22 22"><path d="M3 11 L9 17 L19 5" stroke="#ff3d00" stroke-width="3.5" fill="none"/></svg>You don't hear "no." You hear <em>"not yet."</em></li>
+      <li><svg width="22" height="22" viewBox="0 0 22 22"><path d="M3 11 L9 17 L19 5" stroke="#ff3d00" stroke-width="3.5" fill="none"/></svg>One more call than <em>yesterday</em>.</li>
     </ul>
   </div>
 </section>
 
-<section class="block">
+<!-- ============ PAGE 2 — THE DOOR ============ -->
+<section class="page p2">
   <div class="wrap">
-    <div class="sec-label">Non-negotiable</div>
-    <h3>Laws of the <em>Selling Day</em></h3>
-    <div class="laws">
-      <div class="law"><div class="num">1</div><p>You can't close deals from the sidelines. Move your feet — always.</p></div>
-      <div class="law"><div class="num">2</div><p>Every objection is information. Listen, learn, adjust, go again.</p></div>
-      <div class="law"><div class="num">3</div><p>The product is real and it works. Say it like you mean it — because you do.</p></div>
-      <div class="law"><div class="num">4</div><p>Treat every single conversation like it's the one that changes everything.</p></div>
+    <div class="sec-label">Cheat sheet — read this on the sidewalk</div>
+    <h2>Before You <em>Walk In</em></h2>
+    <p class="sub">60 seconds. Every med spa door. No exceptions.</p>
+
+    <div class="door-grid">
+      <svg class="doorart" viewBox="0 0 120 220" fill="none">
+        <rect x="10" y="10" width="100" height="200" stroke="#f5f1e8" stroke-width="3" opacity=".5"/>
+        <rect x="24" y="24" width="72" height="172" fill="#131318" stroke="#ff3d00" stroke-width="3"/>
+        <circle cx="84" cy="112" r="6" fill="#ffb300"/>
+        <path d="M-10 112 L18 112 M6 100 L20 112 L6 124" stroke="#ff3d00" stroke-width="4" fill="none"/>
+        <g stroke="#ffb300" stroke-width="2" opacity=".8">
+          <line x1="60" y1="-4" x2="60" y2="6"/><line x1="38" y1="0" x2="42" y2="8"/><line x1="82" y1="0" x2="78" y2="8"/>
+        </g>
+      </svg>
+
+      <div>
+        <div class="ritual">
+          <div class="step"><p>Breathe. Posture up. <span>Shoulders back before the handle turns.</span></p></div>
+          <div class="step"><p>See the win first. <span>Play the good version in your head — walk into that one.</span></p></div>
+          <div class="step"><p>Remember why you built it. <span>They're drowning in no-shows and missed calls. You have the fix.</span></p></div>
+          <div class="step"><p>Walk in leading. <span>Warm, direct, zero apology in your voice.</span></p></div>
+        </div>
+
+        <div class="flips">
+          <div class="rf"><div class="fear">They might reject me</div><div class="arrow">→</div><div class="truth">Rejection is just data with volume.</div></div>
+          <div class="rf"><div class="fear">My pitch isn't perfect</div><div class="arrow">→</div><div class="truth">Conviction sells. Polish comes from reps.</div></div>
+          <div class="rf"><div class="fear">The big guys are out there</div><div class="arrow">→</div><div class="truth">Nobody else built this. Nobody cares this much.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="final">
+      <div class="big">The first client<br><span>is behind one of these doors.</span></div>
+      <div class="tag">Good Trouble — Braddock &amp; Augie — Built Different</div>
     </div>
   </div>
 </section>
-
-<section class="block">
-  <div class="wrap">
-    <div class="sec-label">Who's walking in that door</div>
-    <h3>Identity <em>Statements</em></h3>
-    <div class="identity">
-      <div class="id-card">I am the founder who owns this day.</div>
-      <div class="id-card">I don't let fear dictate my actions. I act.</div>
-      <div class="id-card">I don't hear "no." I hear "not yet."</div>
-      <div class="id-card">I am the solution Miami med spas are waiting for.</div>
-      <div class="id-card">I don't just sell. I hand businesses their time back.</div>
-      <div class="id-card">I am a master of connection and follow-through.</div>
-    </div>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <div class="sec-label">When the fear talks</div>
-    <h3>Flip the <em>Script</em></h3>
-    <div class="reframes">
-      <div class="rf"><div class="fear">They might reject me</div><div class="arrow">→</div><div class="truth">Rejection is just data with volume.</div></div>
-      <div class="rf"><div class="fear">I'm not sure my pitch is perfect</div><div class="arrow">→</div><div class="truth">Conviction sells. Polish comes from reps.</div></div>
-      <div class="rf"><div class="fear">What if I fail today</div><div class="arrow">→</div><div class="truth">Every attempt sharpens the edge.</div></div>
-      <div class="rf"><div class="fear">They're not answering</div><div class="arrow">→</div><div class="truth">Persistence wins. Follow up like you remember the last no.</div></div>
-      <div class="rf"><div class="fear">The big guys are out there</div><div class="arrow">→</div><div class="truth">Nobody else built this. Nobody else cares this much.</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <div class="sec-label">60 seconds before every conversation</div>
-    <h3>Pre-Game <em>Ritual</em></h3>
-    <div class="ritual">
-      <div class="step"><p>See the win first</p></div>
-      <div class="step"><p>Breathe. Center. Slow down.</p></div>
-      <div class="step"><p>Remember why you built it</p></div>
-      <div class="step"><p>Move — get blood pumping</p></div>
-      <div class="step"><p>Walk in leading</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <div class="sec-label">Screenshot territory</div>
-    <h3>Lock Screen <em>Lines</em></h3>
-    <ul class="lock">
-      <li>No client yet means every door still counts.</li>
-      <li>The phone only weighs heavy when you hesitate.</li>
-      <li>Own the room or leave it empty.</li>
-      <li>Today's grind pays for tomorrow's leverage.</li>
-      <li>Sweat the details they ignore.</li>
-      <li>Action cures fear. Every time.</li>
-      <li>Discomfort is the price of the story.</li>
-      <li>You don't need permission. You need reps.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="block">
-  <div class="wrap">
-    <div class="debrief">
-      <h4>End of Day — Three Questions</h4>
-      <ul>
-        <li>Where did I take control today instead of waiting?</li>
-        <li>What moved me closer to the first signed client?</li>
-        <li>Where did I flinch — and what do I do differently tomorrow?</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="big">The first client<br><span>is out there.</span></div>
-    <div class="tag">Good Trouble — Braddock &amp; Augie — Built Different</div>
-  </div>
-</footer>
 
 </body>
 </html>
