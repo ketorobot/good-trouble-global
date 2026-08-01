@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Lead Leak Calculator — Good Trouble</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --orange:#FF5500; --orange-d:#CC4400; --black:#080808; --panel:#121212; --line:#242424; --txt:#eee; --mut:#999; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--black); color:var(--txt); font-family:'Barlow',sans-serif; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:1060px; margin:0 auto; padding:48px 24px 80px; }
+.brand { font-family:'Bebas Neue'; letter-spacing:4px; color:var(--orange); font-size:15px; }
+h1 { font-family:'Bebas Neue'; font-size:clamp(42px,7vw,76px); line-height:.95; margin:14px 0 10px; letter-spacing:1px; }
+.sub { color:var(--mut); font-size:18px; max-width:640px; line-height:1.5; }
+.grid { display:grid; grid-template-columns: 1fr 1fr; gap:28px; margin-top:44px; }
+@media (max-width:820px){ .grid { grid-template-columns:1fr; } }
+.panel { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:28px; }
+.panel h2 { font-family:'Bebas Neue'; font-size:22px; letter-spacing:2px; color:#fff; margin-bottom:4px; }
+.panel .note { color:var(--mut); font-size:13px; margin-bottom:18px; }
+.field { margin:20px 0; }
+.field label { display:flex; justify-content:space-between; font-weight:600; font-size:14.5px; margin-bottom:8px; }
+.field label .val { color:var(--orange); font-weight:700; font-variant-numeric:tabular-nums; }
+input[type=range]{ width:100%; appearance:none; height:6px; border-radius:3px; background:#2a2a2a; outline:none; }
+input[type=range]::-webkit-slider-thumb { appearance:none; width:22px; height:22px; border-radius:50%; background:var(--orange); cursor:pointer; border:3px solid #080808; box-shadow:0 0 0 1px var(--orange); }
+input[type=range]::-moz-range-thumb { width:16px; height:16px; border-radius:50%; background:var(--orange); cursor:pointer; border:3px solid #080808; }
+.hint { font-size:12px; color:#6f6f6f; margin-top:6px; line-height:1.45; }
+.hint a { color:#8a8a8a; }
+.bignum { font-family:'Bebas Neue'; font-size:clamp(56px,9vw,96px); color:var(--orange); line-height:1; letter-spacing:1px; font-variant-numeric:tabular-nums; }
+.biglbl { font-size:14px; letter-spacing:2px; text-transform:uppercase; color:var(--mut); margin-top:4px; }
+.annual { margin-top:18px; font-size:20px; }
+.annual b { color:#fff; font-variant-numeric:tabular-nums; }
+.bars { margin-top:28px; }
+.bar { margin:14px 0; }
+.bar .t { display:flex; justify-content:space-between; font-size:13.5px; margin-bottom:6px; }
+.bar .t b { font-variant-numeric:tabular-nums; color:#fff; }
+.bar .track { height:10px; background:#222; border-radius:5px; overflow:hidden; }
+.bar .fill { height:100%; background:linear-gradient(90deg,var(--orange-d),var(--orange)); border-radius:5px; transition:width .35s ease; }
+.honest { margin-top:26px; border-left:4px solid var(--orange); background:#161310; padding:14px 16px; font-size:13.5px; color:#cfcabf; line-height:1.55; border-radius:0 8px 8px 0; }
+.cta { margin-top:52px; background:linear-gradient(135deg,#141414,#1a1208); border:1px solid #33220f; border-radius:16px; padding:36px; text-align:center; }
+.cta h3 { font-family:'Bebas Neue'; font-size:clamp(26px,4.5vw,40px); letter-spacing:1px; }
+.cta p { color:var(--mut); margin:10px auto 22px; max-width:520px; }
+.btn { display:inline-block; background:var(--orange); color:#080808; font-weight:700; font-size:17px; padding:15px 34px; border-radius:10px; text-decoration:none; letter-spacing:.3px; }
+.btn:hover { background:#ff6a1f; }
+.under { margin-top:12px; font-size:12.5px; color:#777; }
+.src { margin-top:56px; padding-top:22px; border-top:1px solid var(--line); font-size:11.5px; color:#666; line-height:1.7; }
+.src b { color:#888; }
+footer { margin-top:34px; font-size:12px; color:#555; }
+footer a { color:#888; }
+</style></head><body>
+<div class="wrap">
+<div class="brand">GOOD TROUBLE</div>
+<h1>How much is your<br>phone costing you?</h1>
+<p class="sub">Not a scare tactic — a math problem. Put in your spa's real numbers. We'll show our work, cite our sources, and round <i>down</i>.</p>
+
+<div class="grid">
+<div class="panel">
+<h2>YOUR NUMBERS</h2>
+<div class="note">Defaults are conservative industry figures — sources at the bottom. Your real numbers beat our defaults every time.</div>
+
+<div class="field"><label>Inbound calls + inquiries per month <span class="val" id="v_calls">250</span></label>
+<input type="range" id="calls" min="40" max="1000" step="10" value="250">
+<div class="hint">Calls, DMs, texts, form fills — everything that rings or pings.</div></div>
+
+<div class="field"><label>Average ticket per visit <span class="val" id="v_ticket">$400</span></label>
+<input type="range" id="ticket" min="100" max="1500" step="25" value="400">
+<div class="hint">Injectables and laser packages commonly land $400–600 per visit. Use yours.</div></div>
+
+<div class="field"><label>Share of inquiries that go unanswered <span class="val" id="v_missed">32%</span></label>
+<input type="range" id="missed" min="5" max="70" step="1" value="32">
+<div class="hint">32% is CallRail's healthcare-vertical benchmark. Across all small businesses it's 62% (411 Locals). Slide to what's true for you.</div></div>
+
+<div class="field"><label>Missed callers you never hear from again <span class="val" id="v_lost">50%</span></label>
+<input type="range" id="lost" min="20" max="90" step="5" value="50">
+<div class="hint">CallRail's 2025 survey: ~58% of consumers won't leave a voicemail. Vendors claim "85% never call back" — we think that's inflated, so we default lower.</div></div>
+
+<div class="field"><label>Inquiries you'd close if you actually connected <span class="val" id="v_close">30%</span></label>
+<input type="range" id="close" min="10" max="70" step="5" value="30">
+<div class="hint">Your consult-to-booking rate for people who reach a human.</div></div>
+
+<div class="field"><label>No-shows per week <span class="val" id="v_noshow">3</span></label>
+<input type="range" id="noshow" min="0" max="20" step="1" value="3">
+<div class="hint">We only count 30% of these as savable — reminders and waitlist backfill don't rescue everyone.</div></div>
+</div>
+
+<div class="panel">
+<h2>THE LEAK</h2>
+<div class="note">What walks out the door every month, at your numbers.</div>
+<div class="bignum" id="monthly">$0</div>
+<div class="biglbl">per month, leaking</div>
+<div class="annual">That's <b id="annual">$0</b> a year.</div>
+<div class="bars">
+<div class="bar"><div class="t"><span>Missed &amp; never recovered</span><b id="b1v">$0</b></div><div class="track"><div class="fill" id="b1" style="width:0%"></div></div></div>
+<div class="bar"><div class="t"><span>After-hours inquiries nobody answered</span><b id="b2v">$0</b></div><div class="track"><div class="fill" id="b2" style="width:0%"></div></div></div>
+<div class="bar"><div class="t"><span>No-shows nobody backfilled</span><b id="b3v">$0</b></div><div class="track"><div class="fill" id="b3" style="width:0%"></div></div></div>
+</div>
+<div class="honest"><b>Honesty note:</b> this is an estimate, not an invoice. We used your inputs, counted each dollar once, and skipped the sketchy multipliers other calculators love. If anything, the real number is higher — after-hours demand isn't even fully counted here.</div>
+</div>
+</div>
+
+<div class="cta">
+<h3>62 OF 89 BOOKINGS IN OUR DEMO HAPPENED OUTSIDE BUSINESS HOURS.</h3>
+<p>That's the point of the platform: it answers, follows up, and books while your team is home — and it keeps reshaping itself around your priorities. See it working right now. No form. No call. No pitch.</p>
+<a class="btn" href="https://goodtroubleglobal.com/demo/medspa.html">Click through the live demo →</a>
+<div class="under">Built by two founders in Tampa &amp; Miami. A real founder answers the inbox: alex@goodtroubleglobal.com · (305) 290-1420</div>
+</div>
+
+<div class="src">
+<b>Sources &amp; assumptions:</b> 62% of calls to small businesses go unanswered — 411 Locals study, 85 businesses across 58 industries. · 32% unanswered in healthcare — CallRail industry benchmark (2025). · ~58% of consumers don't leave a voicemail after a missed call — CallRail consumer survey, 2025. · "Respond in 5 minutes vs 30+" conversion multipliers trace to the 2011 HBR/InsideSales lead-response study — old and not med-spa-specific, so we left them out of the math entirely. · After-hours booking figure (62 of 89) is from Good Trouble's interactive demo dataset — illustrative, clearly labeled. · No-show recovery capped at 30% by our own assumption. Where the industry number was weakly sourced, we defaulted lower on purpose.
+</div>
+<footer>© 2026 Good Trouble Global · goodtroubleglobal.com · This calculator stores nothing and sends nothing — the math happens in your browser.</footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+function calc(){
+  const calls=+$('calls').value, ticket=+$('ticket').value, missed=+$('missed').value/100,
+        lost=+$('lost').value/100, close=+$('close').value/100, noshow=+$('noshow').value;
+  $('v_calls').textContent=calls; $('v_ticket').textContent=fmt(ticket);
+  $('v_missed').textContent=Math.round(missed*100)+'%'; $('v_lost').textContent=Math.round(lost*100)+'%';
+  $('v_close').textContent=Math.round(close*100)+'%'; $('v_noshow').textContent=noshow;
+  // Assume 30% of unanswered inquiries are after-hours (subset, so no double-count)
+  const missedTotal = calls*missed;
+  const afterShare = 0.30;
+  const leakCore  = missedTotal*(1-afterShare)*lost*close*ticket;
+  const leakAfter = missedTotal*afterShare*lost*close*ticket;
+  const leakNoshow= noshow*4.33*0.30*ticket;
+  const total = leakCore+leakAfter+leakNoshow;
+  $('monthly').textContent=fmt(total); $('annual').textContent=fmt(total*12);
+  const mx=Math.max(leakCore,leakAfter,leakNoshow,1);
+  $('b1v').textContent=fmt(leakCore); $('b1').style.width=(leakCore/mx*100)+'%';
+  $('b2v').textContent=fmt(leakAfter); $('b2').style.width=(leakAfter/mx*100)+'%';
+  $('b3v').textContent=fmt(leakNoshow); $('b3').style.width=(leakNoshow/mx*100)+'%';
+}
+document.querySelectorAll('input').forEach(i=>i.addEventListener('input',calc));
+calc();
+</script>
+</body></html>

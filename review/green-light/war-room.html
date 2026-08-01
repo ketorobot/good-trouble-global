@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good Trouble — First Client War Room</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --o:#FF5500; --b:#080808; --p:#121212; --l:#242424; --m:#999; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--b);color:#eee;font-family:'Barlow',sans-serif;overflow-x:hidden}
+.wrap{max-width:1100px;margin:0 auto;padding:40px 22px 70px}
+.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px}
+.brand{font-family:'Bebas Neue';letter-spacing:4px;color:var(--o);font-size:15px}
+h1{font-family:'Bebas Neue';font-size:clamp(40px,6.5vw,68px);line-height:.95;letter-spacing:1px;margin-top:8px}
+.date{color:#666;font-size:13px}
+.mission{margin-top:26px;background:linear-gradient(135deg,#1a1208,#141414);border:1px solid #33220f;border-radius:14px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.mission .t{font-family:'Bebas Neue';font-size:clamp(22px,3.5vw,32px);letter-spacing:1px}
+.mission .t small{display:block;font-family:'Barlow';font-size:13px;color:var(--m);letter-spacing:0;text-transform:none;margin-top:4px}
+.btn{background:var(--o);border:none;color:#080808;font-weight:700;font-size:16px;font-family:'Barlow';padding:14px 26px;border-radius:10px;cursor:pointer;letter-spacing:.3px}
+.btn:hover{background:#ff6a1f}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:26px}
+.card{background:var(--p);border:1px solid var(--l);border-radius:12px;padding:20px}
+.card .k{font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--m)}
+.card .n{font-family:'Bebas Neue';font-size:52px;color:var(--o);line-height:1.05}
+.card .d{font-size:13px;color:#aaa;margin-top:4px;line-height:1.45}
+.cols{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:840px){.cols{grid-template-columns:1fr}}
+.panel{background:var(--p);border:1px solid var(--l);border-radius:12px;padding:22px}
+.panel h2{font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;margin-bottom:12px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #1c1c1c;font-size:14px}
+.row:last-child{border-bottom:none}
+.row b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{font-size:10.5px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:20px;white-space:nowrap;align-self:center}
+.hot{background:#331505;color:#ff8b4d}.warm{background:#262014;color:#d8b262}.cold{background:#14202a;color:#7fb2d8}.done{background:#122414;color:#7fd88f}
+.block{padding:10px 12px;border-left:4px solid var(--o);background:#161310;margin:10px 0;font-size:13.5px;line-height:1.5;border-radius:0 8px 8px 0}
+.block b{color:#fff}
+.block .who{font-size:11px;color:#8a7a63;letter-spacing:1px;text-transform:uppercase}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+.pop{position:fixed;inset:0;background:rgba(8,8,8,.92);display:none;align-items:center;justify-content:center;z-index:40;text-align:center;padding:20px}
+.pop.on{display:flex}
+.pop h2{font-family:'Bebas Neue';font-size:clamp(50px,10vw,120px);color:var(--o);letter-spacing:2px;line-height:1}
+.pop p{font-size:22px;margin-top:14px}
+.pop small{display:block;color:var(--m);margin-top:18px;font-size:14px}
+footer{margin-top:36px;color:#555;font-size:12px;line-height:1.6}
+</style></head><body>
+<canvas id="confetti"></canvas>
+<div class="pop" id="pop"><div><h2>🍾 GOOD TROUBLE, BABY 🛥️</h2><p>First client signed. Champagne now, yachts later.</p><small>(click anywhere to get back to work — the second client won't sign itself)</small></div></div>
+<div class="wrap">
+<div class="top"><div><div class="brand">GOOD TROUBLE</div><h1>FIRST CLIENT WAR ROOM</h1></div><div class="date">Status as of Aug 1, 2026 · maintained by Claude</div></div>
+
+<div class="mission"><div class="t">MILESTONE: FIRST SIGNED CLIENT<small>Everything else is secondary. Every asset below exists to make one owner say yes.</small></div><button class="btn" onclick="signed()">🍾 WE SIGNED ONE</button></div>
+
+<div class="grid">
+<div class="card"><div class="k">Tampa pipeline</div><div class="n">50</div><div class="d">Top 10 = REVISIT (emailed while site was broken). Wave 2: 30 verified staged + 34 queued. Suppression list live.</div></div>
+<div class="card"><div class="k">Miami pipeline</div><div class="n">22</div><div class="d">Verified &amp; walkable as of today. Field Kit in Augie's hands. 1 dead seed dropped, 1 ARVIV conflict flagged.</div></div>
+<div class="card"><div class="k">Live demo pages</div><div class="n">12</div><div class="d">Flagship med spa demo + Tampa 10 personalized + client-specific builds. All monitored via UptimeRobot + Kuma.</div></div>
+<div class="card"><div class="k">Signed clients</div><div class="n" id="clients">0</div><div class="d">The only number that matters. Press the button when it changes.</div></div>
+</div>
+
+<div class="cols">
+<div class="panel"><h2>PIPELINE BOARD</h2>
+<div class="row"><span>Tampa Top 10 — personalized demos live, awaiting REVISIT re-send</span><span class="tag hot">REVISIT</span></div>
+<div class="row"><span>Tampa Wave 2 — 30 ZeroBounce-verified, send plan drafted Jul 30</span><span class="tag hot">STAGED</span></div>
+<div class="row"><span>Tampa Wave 2 remainder — 34 queued behind sends</span><span class="tag warm">QUEUED</span></div>
+<div class="row"><span>Miami 22 — verified today, walk-in ground game ready</span><span class="tag hot">GO</span></div>
+<div class="row"><span>Miami follow-up email track (post-walk) — drafted, holds until walks start</span><span class="tag warm">READY</span></div>
+<div class="row"><span>Dental vertical — demo content spec complete, page not built</span><span class="tag cold">SPEC'D</span></div>
+<div class="row"><span>PI law vertical — copy variant exists, landing page pending</span><span class="tag cold">LATER</span></div>
+</div>
+<div class="panel"><h2>BOTTLENECK BOARD</h2>
+<div class="block"><div class="who">Blocks: all deploys</div><b>GitHub PAT for Claude doesn't exist yet</b> — registry says "pending — Alex to generate." Until then nothing ships to the live site: not the 4 defect fixes, not the calculator, not new demo pages. 10 minutes of Braddock's time unblocks everything.</div>
+<div class="block"><div class="who">Blocks: scale outreach</div><b>Instantly.ai + secondary send domains</b> — payment-gated on Braddock. Small batches from goodtroubleglobal.com are fine meanwhile.</div>
+<div class="block"><div class="who">Blocks: dental outreach</div><b>No /demo/dental.html</b> — full content spec now exists (Gemini, quote-realistic). Next build in line once deploys unblock.</div>
+<div class="block"><div class="who">Blocks: brand lock</div><b>Logo direction undecided</b> — 10 concepts delivered Jul 31, waiting on a pick to build final lockups.</div>
+</div>
+</div>
+
+<div class="panel" style="margin-top:16px"><h2>THE ARMORY — READY-TO-FIRE ASSETS</h2>
+<div class="row"><span>Miami Field Kit (8pp: scripts, battlecard, 22-door map) + print leave-behind w/ QR</span><span class="tag done">NEW TODAY</span></div>
+<div class="row"><span>Lead-Leak Calculator — interactive, sourced, deploy-ready single file</span><span class="tag done">NEW TODAY</span></div>
+<div class="row"><span>Wave 2 follow-up + Top-10 REVISIT email sequences</span><span class="tag done">NEW TODAY</span></div>
+<div class="row"><span>Site defect patch pack — 4 surgical fixes, ready for the second the PAT exists</span><span class="tag done">NEW TODAY</span></div>
+<div class="row"><span>Dental demo full content spec (9 modules, alerts, SMS flow)</span><span class="tag done">NEW TODAY</span></div>
+<div class="row"><span>10 logo concepts · 10 headline candidates · 5 cold-email variants · 15 video hooks · 4 landing-page architectures · 30-article AI content pack</span><span class="tag warm">JUL 21–31</span></div>
+</div>
+
+<footer>Yachts &amp; champagne fund status: pending first signature. · This page keeps score in memory only — refresh resets it, signing a client doesn't. · Good Trouble Global, Tampa × Miami.</footer>
+</div>
+<script>
+let c=0;
+const cv=document.getElementById('confetti'),ctx=cv.getContext('2d');let ps=[],run=false;
+function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();addEventListener('resize',rs);
+function boom(){ps=[];const cols=['#FF5500','#ffd700','#ffffff','#ff8b4d','#7fd88f'];
+for(let i=0;i<260;i++)ps.push({x:Math.random()*cv.width,y:-20-Math.random()*cv.height*0.5,v:2+Math.random()*4,w:6+Math.random()*8,a:Math.random()*6.28,s:(Math.random()-0.5)*0.2,col:cols[i%cols.length]});
+if(!run){run=true;loop()}}
+function loop(){ctx.clearRect(0,0,cv.width,cv.height);let alive=false;
+ps.forEach(p=>{p.y+=p.v;p.a+=p.s;if(p.y<cv.height+30)alive=true;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.fillStyle=p.col;ctx.fillRect(-p.w/2,-p.w/4,p.w,p.w/2);ctx.restore()});
+if(alive)requestAnimationFrame(loop);else{run=false;ctx.clearRect(0,0,cv.width,cv.height)}}
+function signed(){c++;document.getElementById('clients').textContent=c;document.getElementById('pop').classList.add('on');boom()}
+document.getElementById('pop').addEventListener('click',e=>e.currentTarget.classList.remove('on'));
+</script>
+</body></html>
