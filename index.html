@@ -132,7 +132,7 @@ nav.scrolled .nav-logo img{opacity:1}
 .hero-logo-halo{
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%);
-  width:380px;height:380px;border-radius:50%;
+  width:520px;height:520px;border-radius:50%;
   background:radial-gradient(ellipse at center,rgba(255,85,0,0.3) 0%,rgba(255,85,0,0.07) 50%,transparent 75%);
   animation:haloPulse 3.5s ease-in-out infinite alternate;
   pointer-events:none;
@@ -142,19 +142,11 @@ nav.scrolled .nav-logo img{opacity:1}
   to{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
 }
 .hero-logo-img{
-  height:260px;width:auto;display:block;position:relative;z-index:1;
-  filter:drop-shadow(0 0 36px rgba(255,85,0,0.5));
+  height:360px;width:auto;display:block;position:relative;z-index:1;
+  filter:drop-shadow(0 18px 34px rgba(0,0,0,0.85)) drop-shadow(0 0 60px rgba(255,85,0,0.55)) drop-shadow(0 0 130px rgba(255,85,0,0.28));
+  animation:logoFloat 6s ease-in-out infinite alternate;
 }
-.hero-eyebrow{
-  position:relative;z-index:2;
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--font-body);font-size:11px;font-weight:700;
-  letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);
-  margin-bottom:1.25rem;
-}
-.hero-eyebrow::before,.hero-eyebrow::after{
-  content:'';width:28px;height:1px;background:var(--orange);opacity:0.55;display:block;
-}
+@keyframes logoFloat{from{transform:translateY(0)}to{transform:translateY(-10px)}}
 .hero h1{
   position:relative;z-index:2;
   font-family:var(--font-head);
@@ -214,14 +206,14 @@ nav.scrolled .nav-logo img{opacity:1}
 
 /* MARQUEE */
 .marquee-bar{
-  background:var(--orange);padding:0.65rem 0;overflow:hidden;position:relative;z-index:10;
+  background:var(--orange);padding:1.35rem 0;overflow:hidden;position:relative;z-index:10;
 }
 .marquee-track{display:flex;white-space:nowrap;animation:marqueeScroll 28s linear infinite}
 .marquee-item{
-  font-family:var(--font-body);font-weight:700;font-size:0.72rem;
-  letter-spacing:0.12em;text-transform:uppercase;color:#fff;padding:0 1.8rem;
+  font-family:var(--font-head);font-weight:400;font-size:clamp(1.15rem,2vw,1.7rem);
+  letter-spacing:0.06em;text-transform:uppercase;color:#fff;padding:0 2.2rem;
 }
-.marquee-item::after{content:'·';margin-left:1.8rem;opacity:0.5}
+.marquee-item::after{content:'·';margin-left:2.2rem;opacity:0.5}
 @keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* SECTIONS COMMON */
@@ -488,17 +480,41 @@ section{padding:clamp(3.5rem,7vw,5.5rem) clamp(1.25rem,4vw,3rem)}
 .story-link{font-family:var(--font-body);font-weight:700;font-size:0.78rem;color:var(--orange);letter-spacing:0.04em}
 .story-note{font-family:var(--font-body);font-size:0.72rem;color:var(--dim2);margin-top:1.1rem}
 @media(max-width:860px){.story-grid{grid-template-columns:1fr}}
-/* AI STATS */
-.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2.5rem}
-.stat-card{background:var(--bg1);padding:2.4rem 1.6rem 2.1rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem;transition:background .25s}
-.stat-card:hover{background:var(--bg2)}
-.stat-num{font-family:var(--font-head);font-size:clamp(2.6rem,4vw,3.6rem);line-height:1;color:var(--orange)}
-.stat-bar{width:100%;max-width:180px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden}
-.stat-bar i{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,var(--orange),var(--orange2,#ff7a2f));border-radius:2px;transform-origin:left;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.22,1,.36,1) .2s}
-.stat-card.visible .stat-bar i{transform:scaleX(1)}
-p.stat-card, .stat-card p{font-family:var(--font-body);font-size:0.84rem;color:var(--mid);line-height:1.6}
-@media(max-width:1020px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.stat-grid{grid-template-columns:1fr}}
+/* AI IMPACT CHART */
+.chart{position:relative;margin-top:3rem;padding:2.5rem 1.5rem 0;background:var(--bg1);border:1px solid var(--line);overflow:hidden}
+.chart::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(255,85,0,0.10),transparent 65%);pointer-events:none}
+.chart-grid{position:absolute;left:0;right:0;top:2.5rem;bottom:4.6rem;display:flex;flex-direction:column;justify-content:space-between}
+.chart-grid span{display:block;height:1px;background:rgba(245,242,238,0.055)}
+.chart-bars{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(0.75rem,3vw,3rem);align-items:end;height:clamp(240px,32vw,340px);padding:0 clamp(0.5rem,3vw,2.5rem)}
+.cbar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.cbar-val{font-family:var(--font-head);font-size:clamp(1.5rem,2.9vw,2.5rem);line-height:1;color:var(--hi);margin-bottom:0.7rem;white-space:nowrap;
+  opacity:0;transform:translateY(10px);transition:opacity .5s ease var(--d),transform .5s ease var(--d)}
+.cbar-col{position:relative;width:100%;max-width:96px;flex:0 0 auto;display:block;
+  height:var(--h);background:rgba(245,242,238,0.04);border-radius:3px 3px 0 0;overflow:hidden}
+.cbar-col i{position:absolute;inset:0;display:block;border-radius:3px 3px 0 0;
+  background:linear-gradient(180deg,#ff8a3d 0%,var(--orange) 55%,rgba(255,85,0,0.55) 100%);
+  box-shadow:0 0 34px rgba(255,85,0,0.45);
+  transform:scaleY(0);transform-origin:bottom;
+  transition:transform 1.2s cubic-bezier(.16,1,.3,1) var(--d)}
+.cbar-col::after{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:#fff;opacity:0;transition:opacity .5s ease calc(var(--d) + .9s)}
+.cbar.down .cbar-col i{background:linear-gradient(180deg,rgba(255,85,0,0.35) 0%,var(--orange) 45%,#ff8a3d 100%)}
+.cbar-label{font-family:var(--font-body);font-weight:700;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--dim2);margin-top:1.15rem;text-align:center;line-height:1.4}
+.chart.visible .cbar-col i{transform:scaleY(1)}
+.chart.visible .cbar-col::after{opacity:.85}
+.chart.visible .cbar-val{opacity:1;transform:translateY(0)}
+.chart-axis{position:relative;z-index:2;height:1px;background:linear-gradient(90deg,transparent,rgba(255,85,0,0.55),transparent);margin-top:0.2rem}
+.chart-legend{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:none}
+.cleg{background:var(--bg1);padding:1.4rem 1.2rem;display:flex;flex-direction:column;gap:0.35rem;text-align:center}
+.cleg b{font-family:var(--font-head);font-weight:400;font-size:1.5rem;color:var(--orange);line-height:1}
+.cleg span{font-family:var(--font-body);font-size:0.78rem;color:var(--mid);line-height:1.55}
+@media(max-width:760px){
+  .chart{padding:2rem 0.5rem 0}
+  .chart-bars{height:220px;gap:0.5rem;padding:0 0.25rem}
+  .cbar-label{font-size:0.56rem;letter-spacing:0.1em}
+  .chart-legend{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:440px){.chart-legend{grid-template-columns:1fr}}
 
 /* FOOTER */
 footer{
@@ -554,8 +570,8 @@ footer{
 @media(max-width:960px){
   .nav-links{display:none}
   .nav-burger{display:flex}
-  .hero-logo-img{height:190px}
-  .hero-logo-halo{width:280px;height:280px}
+  .hero-logo-img{height:250px}
+  .hero-logo-halo{width:360px;height:360px}
   .hero h1{font-size:clamp(2.8rem,9vw,4.5rem)}
   .hero-veil{width:100%;height:100%;border-radius:0}
   .future-cards{grid-template-columns:1fr}
@@ -566,8 +582,8 @@ footer{
   .float-cta{bottom:1.25rem;right:1.25rem}
 }
 @media(max-width:600px){
-  .hero-logo-img{height:130px}
-  .hero-logo-halo{width:200px;height:200px}
+  .hero-logo-img{height:170px}
+  .hero-logo-halo{width:250px;height:250px}
   .hero h1{font-size:clamp(2.4rem,10vw,3.2rem)}
   .hero-sub{font-size:0.95rem;margin-bottom:2rem}
   .btn-primary,.btn-ghost{font-size:0.8rem;padding:0.85rem 1.6rem}
@@ -673,12 +689,10 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     <img src="/logo.png" alt="Good Trouble" class="hero-logo-img">
   </div>
 
-  <div class="hero-eyebrow">AI Automation for Med Spas</div>
-
   <h1>Your entire practice in one connected platform.</h1>
 
   <p class="hero-sub">
-    One platform that runs your business the way you want. See it for yourself.
+    The live demo will save us a lot of explaining and you a lot of reading. Go look at it.
   </p>
 
   <div class="hero-ctas">
@@ -701,7 +715,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 <div class="statement-section" id="why-ai">
   <div class="statement-inner">
     <h2 class="statement-h2 reveal">Stop Paying For <span>Chaos.</span></h2>
-    <p class="statement-body reveal">We use new AI technology to build powerful smart systems. It can manage one part of your business. It could manage your entire business. The choice is up to you and what you're comfortable with. What we do NOT do is give you generic off-the-shelf software that you have to adapt to, we build a system that learns and adapts to YOU. Most clients don't believe it until they see it so let us show you. Higher quality at a lower price.</p>
+    <p class="statement-body reveal">Stop outsourcing. Stop paying for expensive third-party tools. Manage it all with our app.</p>
     <div class="statement-cta reveal">
       <a class='btn-primary' href='#contact-form'>Get a Free Consultation</a>
     </div>
@@ -726,28 +740,42 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div class="container">
     <span class="sec-label reveal">The Numbers</span>
     <h2 class="sec-h2 reveal">What AI Does for a <span>Business.</span></h2>
-    <p class="sec-sub reveal">Industry-wide averages for businesses running AI automation.</p>
-    <div class="stat-grid">
-      <div class="stat-card reveal">
-        <span class="stat-num" data-count="28.8" data-suffix="%" data-prefix="+">+28.8%</span>
-        <span class="stat-bar"><i style="--w:58%"></i></span>
-        <p>Average increase in sales</p>
+    <p class="sec-sub reveal">Industry averages across businesses running AI automation.</p>
+
+    <div class="chart reveal" id="ai-chart">
+      <div class="chart-grid" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
       </div>
-      <div class="stat-card reveal reveal-delay-1">
-        <span class="stat-num" data-count="75" data-suffix="%">75%</span>
-        <span class="stat-bar"><i style="--w:75%"></i></span>
-        <p>Faster marketing campaign launches &mdash; and 40% more profitable</p>
+      <div class="chart-bars">
+        <div class="cbar" style="--h:38%;--d:0s">
+          <span class="cbar-val" data-count="28.8" data-prefix="+" data-suffix="%" data-dec="1">+0%</span>
+          <span class="cbar-col"><i></i></span>
+          <span class="cbar-label">Sales</span>
+        </div>
+        <div class="cbar" style="--h:100%;--d:.12s">
+          <span class="cbar-val" data-count="75" data-suffix="%" data-dec="0">0%</span>
+          <span class="cbar-col"><i></i></span>
+          <span class="cbar-label">Campaign Speed</span>
+        </div>
+        <div class="cbar" style="--h:47%;--d:.24s">
+          <span class="cbar-val" data-count="35" data-prefix="+" data-suffix="%" data-dec="0">+0%</span>
+          <span class="cbar-col"><i></i></span>
+          <span class="cbar-label">Decision Accuracy</span>
+        </div>
+        <div class="cbar down" style="--h:39%;--d:.36s">
+          <span class="cbar-val" data-count="29.5" data-prefix="&minus;" data-suffix="%" data-dec="1">&minus;0%</span>
+          <span class="cbar-col"><i></i></span>
+          <span class="cbar-label">Operating Cost</span>
+        </div>
       </div>
-      <div class="stat-card reveal reveal-delay-2">
-        <span class="stat-num" data-count="35" data-suffix="%" data-prefix="+">+35%</span>
-        <span class="stat-bar"><i style="--w:35%"></i></span>
-        <p>More accurate decision-making</p>
-      </div>
-      <div class="stat-card reveal reveal-delay-3">
-        <span class="stat-num" data-count="29.5" data-suffix="%" data-prefix="&minus;">&minus;29.5%</span>
-        <span class="stat-bar"><i style="--w:59%"></i></span>
-        <p>Reduction in operational costs</p>
-      </div>
+      <div class="chart-axis" aria-hidden="true"></div>
+    </div>
+
+    <div class="chart-legend">
+      <div class="cleg reveal"><b>+28.8%</b><span>average lift in sales</span></div>
+      <div class="cleg reveal reveal-delay-1"><b>75%</b><span>faster campaign launches &mdash; and 40% more profitable</span></div>
+      <div class="cleg reveal reveal-delay-2"><b>+35%</b><span>more accurate decision-making</span></div>
+      <div class="cleg reveal reveal-delay-3"><b>&minus;29.5%</b><span>lower operating cost</span></div>
     </div>
   </div>
 </section>
@@ -851,10 +879,9 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   });
 
   var items=[
-    'AI Front Desk','Review Management','Memberships','Campaigns',
-    'Post-Visit Follow-Up','Marketing Intelligence','Content Engine',
-    'Client Retention','Client Reactivation','Workflow Automation',
-    'AI Media Generation','Custom AI Builds','10+ Years Med Spa Experience'
+    'AI Front Desk','Client Reactivation','Review Management',
+    'Campaigns','Memberships','Post-Visit Follow-Up',
+    'Marketing Intelligence','Workflow Automation'
   ];
   var track=document.getElementById('marquee-track');
   var doubled=[...items,...items];
@@ -888,6 +915,35 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     });
   },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  (function(){
+    var chart=document.getElementById('ai-chart');
+    if(!chart) return;
+    var vals=chart.querySelectorAll('.cbar-val');
+    function ease(t){return 1-Math.pow(1-t,3);}
+    function run(){
+      vals.forEach(function(el){
+        var target=parseFloat(el.getAttribute('data-count'))||0;
+        var dec=parseInt(el.getAttribute('data-dec'),10)||0;
+        var pre=el.getAttribute('data-prefix')||'';
+        var suf=el.getAttribute('data-suffix')||'';
+        var dur=1250,t0=null;
+        function step(ts){
+          if(!t0)t0=ts;
+          var p=Math.min((ts-t0)/dur,1);
+          el.textContent=pre+(target*ease(p)).toFixed(dec)+suf;
+          if(p<1)requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+    var cio=new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting){setTimeout(run,220);cio.unobserve(e.target);}
+      });
+    },{threshold:0.25});
+    cio.observe(chart);
+  })();
 
   (function(){
     var canvas=document.getElementById('hero-canvas');
