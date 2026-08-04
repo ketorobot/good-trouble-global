@@ -513,17 +513,20 @@ section{padding:clamp(3.5rem,7vw,5.5rem) clamp(1.25rem,4vw,3rem)}
 .chart-grid span{display:block;height:1px;background:rgba(245,242,238,0.055)}
 .chart-bars{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(0.75rem,3vw,3rem);align-items:end;height:clamp(240px,32vw,340px);padding:0 clamp(0.5rem,3vw,2.5rem)}
 .cbar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
-.cbar-val{font-family:var(--font-head);font-size:clamp(1.5rem,2.9vw,2.5rem);line-height:1;color:var(--hi);margin-bottom:0.7rem;white-space:nowrap;
-  opacity:0;transform:translateY(10px);transition:opacity .5s ease var(--d),transform .5s ease var(--d)}
+.cbar-wrap{position:relative;width:100%;max-width:96px;height:var(--h);display:block}
+.cbar-val{position:absolute;left:0;right:0;top:0.9rem;z-index:3;
+  font-family:var(--font-head);font-size:clamp(1.15rem,2.4vw,2.1rem);line-height:1;color:#fff;
+  text-align:center;white-space:nowrap;text-shadow:0 2px 14px rgba(0,0,0,0.55);
+  opacity:0;transform:translateY(8px);transition:opacity .5s ease calc(var(--d) + .55s),transform .5s ease calc(var(--d) + .55s)}
 .cbar-col{position:relative;width:100%;max-width:96px;flex:0 0 auto;display:block;
-  height:var(--h);background:rgba(245,242,238,0.04);border-radius:3px 3px 0 0;overflow:hidden}
+  height:var(--h);min-height:92px;background:rgba(245,242,238,0.04);border-radius:3px 3px 0 0;overflow:hidden}
 .cbar-col i{position:absolute;inset:0;display:block;border-radius:3px 3px 0 0;
   background:linear-gradient(180deg,#ff8a3d 0%,var(--orange) 55%,rgba(255,85,0,0.55) 100%);
   box-shadow:0 0 34px rgba(255,85,0,0.45);
   transform:scaleY(0);transform-origin:bottom;
   transition:transform 1.2s cubic-bezier(.16,1,.3,1) var(--d)}
 .cbar-col::after{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:#fff;opacity:0;transition:opacity .5s ease calc(var(--d) + .9s)}
-.cbar.down .cbar-col i{background:linear-gradient(180deg,rgba(255,85,0,0.35) 0%,var(--orange) 45%,#ff8a3d 100%)}
+.cbar.down .cbar-col i{background:linear-gradient(180deg,#c73f00 0%,var(--orange) 55%,#ff8a3d 100%)}
 .cbar-label{font-family:var(--font-body);font-weight:700;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;
   color:var(--dim2);margin-top:1.15rem;text-align:center;line-height:1.4}
 .chart.visible .cbar-col i{transform:scaleY(1)}
@@ -685,7 +688,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 <!-- NAV -->
 <nav id="main-nav">
   <a href="/" class="nav-logo" aria-label="Good Trouble">
-    <img src="/logo.png?v=2" alt="Good Trouble">
+    <img src="/logo-sm.webp" alt="Good Trouble" width="360" height="189" decoding="async">
   </a>
   <div class="nav-links">
     <a href='/services'>Services</a>
@@ -710,7 +713,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 
   <div class="hero-logo-wrap">
     <div class="hero-logo-halo"></div>
-    <img src="/logo.png?v=2" alt="Good Trouble" class="hero-logo-img">
+    <img src="/logo.webp" alt="Good Trouble" class="hero-logo-img" width="900" height="472" fetchpriority="high" decoding="async">
   </div>
 
   <h1>Your entire practice in one connected platform.</h1>
@@ -844,7 +847,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 <section class="stories" id="stats">
   <div class="container">
     <span class="sec-label reveal">The Numbers</span>
-    <h2 class="sec-h2 reveal">What AI Does for a <span>Business.</span></h2>
+    <h2 class="sec-h2 reveal">What This Does for a <span>Practice.</span></h2>
     <p class="sec-sub reveal">Industry averages across businesses running AI automation.</p>
 
     <div class="chart reveal" id="ai-chart">
@@ -853,23 +856,19 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       </div>
       <div class="chart-bars">
         <div class="cbar" style="--h:38%;--d:0s">
-          <span class="cbar-val" data-count="28.8" data-prefix="+" data-suffix="%" data-dec="1">+0%</span>
-          <span class="cbar-col"><i></i></span>
+          <span class="cbar-col"><i></i><span class="cbar-val" data-count="28.8" data-prefix="+" data-suffix="%" data-dec="1">+0%</span></span>
           <span class="cbar-label">Sales</span>
         </div>
         <div class="cbar" style="--h:100%;--d:.12s">
-          <span class="cbar-val" data-count="75" data-suffix="%" data-dec="0">0%</span>
-          <span class="cbar-col"><i></i></span>
+          <span class="cbar-col"><i></i><span class="cbar-val" data-count="75" data-suffix="%" data-dec="0">0%</span></span>
           <span class="cbar-label">Campaign Speed</span>
         </div>
         <div class="cbar" style="--h:47%;--d:.24s">
-          <span class="cbar-val" data-count="35" data-prefix="+" data-suffix="%" data-dec="0">+0%</span>
-          <span class="cbar-col"><i></i></span>
+          <span class="cbar-col"><i></i><span class="cbar-val" data-count="35" data-prefix="+" data-suffix="%" data-dec="0">+0%</span></span>
           <span class="cbar-label">Decision Accuracy</span>
         </div>
         <div class="cbar down" style="--h:39%;--d:.36s">
-          <span class="cbar-val" data-count="29.5" data-prefix="&minus;" data-suffix="%" data-dec="1">&minus;0%</span>
-          <span class="cbar-col"><i></i></span>
+          <span class="cbar-col"><i></i><span class="cbar-val" data-count="29.5" data-prefix="&minus;" data-suffix="%" data-dec="1">&minus;0%</span></span>
           <span class="cbar-label">Operating Cost</span>
         </div>
       </div>
@@ -946,7 +945,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="/logo.png?v=2" alt="Good Trouble">
+      <img src="/logo-sm.webp" alt="Good Trouble" width="360" height="189" decoding="async">
       <span class="footer-brand-name">GOOD<span>TROUBLE</span></span>
     </div>
     <div class="footer-links">
