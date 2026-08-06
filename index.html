@@ -541,6 +541,9 @@ section{padding:clamp(3.5rem,7vw,5.5rem) clamp(1.25rem,4vw,3rem)}
 .cleg{background:var(--bg1);padding:1.4rem 1.2rem;display:flex;flex-direction:column;gap:0.35rem;text-align:center}
 .cleg b{font-family:var(--font-head);font-weight:400;font-size:1.5rem;color:var(--orange);line-height:1}
 .cleg span{font-family:var(--font-body);font-size:0.78rem;color:var(--mid);line-height:1.55}
+.chart-src{font-family:var(--font-body);font-size:0.72rem;color:var(--mid);opacity:.72;text-align:center;margin-top:1.1rem;line-height:1.6}
+.chart-src a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.chart-src a:hover{color:var(--orange)}
 @media(max-width:760px){
   .chart{padding:2rem 0.5rem 0}
   .chart-bars{height:220px;gap:0.5rem;padding:0 0.25rem}
@@ -858,39 +861,40 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div class="container">
     <span class="sec-label reveal">The Numbers</span>
     <h2 class="sec-h2 reveal">What This Does for a <span>Practice.</span></h2>
-    <p class="sec-sub reveal">Industry averages across businesses running AI automation.</p>
+    <p class="sec-sub reveal">What happens to service businesses that actually run on AI.</p>
 
     <div class="chart reveal" id="ai-chart">
       <div class="chart-grid" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span>
       </div>
       <div class="chart-bars">
-        <div class="cbar" style="--h:38%;--d:0s">
-          <span class="cbar-col"><i></i><span class="cbar-val" data-count="28.8" data-prefix="+" data-suffix="%" data-dec="1">+28.8%</span></span>
-          <span class="cbar-label">Sales</span>
+        <div class="cbar" style="--h:100%;--d:0s">
+          <span class="cbar-col"><i></i><span class="cbar-val" data-count="5" data-suffix="&times;" data-dec="0">5&times;</span></span>
+          <span class="cbar-label">Revenue</span>
         </div>
-        <div class="cbar" style="--h:100%;--d:.12s">
-          <span class="cbar-col"><i></i><span class="cbar-val" data-count="75" data-suffix="%" data-dec="0">75%</span></span>
-          <span class="cbar-label">Campaign Speed</span>
+        <div class="cbar" style="--h:97%;--d:.12s">
+          <span class="cbar-col"><i></i><span class="cbar-val" data-count="97" data-suffix="%" data-dec="0">97%</span></span>
+          <span class="cbar-label">Top Earners on AI</span>
         </div>
-        <div class="cbar" style="--h:47%;--d:.24s">
-          <span class="cbar-col"><i></i><span class="cbar-val" data-count="35" data-prefix="+" data-suffix="%" data-dec="0">+35%</span></span>
-          <span class="cbar-label">Decision Accuracy</span>
+        <div class="cbar" style="--h:70%;--d:.24s">
+          <span class="cbar-col"><i></i><span class="cbar-val" data-count="70" data-suffix="%" data-dec="0">70%</span></span>
+          <span class="cbar-label">Decision Confidence</span>
         </div>
-        <div class="cbar down" style="--h:39%;--d:.36s">
-          <span class="cbar-col"><i></i><span class="cbar-val" data-count="29.5" data-prefix="&minus;" data-suffix="%" data-dec="1">&minus;29.5%</span></span>
-          <span class="cbar-label">Operating Cost</span>
+        <div class="cbar down" style="--h:36%;--d:.36s">
+          <span class="cbar-col"><i></i><span class="cbar-val" data-count="36" data-suffix="%" data-dec="0">36%</span></span>
+          <span class="cbar-label">Lost to Slow Reply</span>
         </div>
       </div>
       <div class="chart-axis" aria-hidden="true"></div>
     </div>
 
     <div class="chart-legend">
-      <div class="cleg reveal"><b>+28.8%</b><span>average lift in sales</span></div>
-      <div class="cleg reveal reveal-delay-1"><b>75%</b><span>faster campaign launches &mdash; and 40% more profitable</span></div>
-      <div class="cleg reveal reveal-delay-2"><b>+35%</b><span>more accurate decision-making</span></div>
-      <div class="cleg reveal reveal-delay-3"><b>&minus;29.5%</b><span>lower operating cost</span></div>
+      <div class="cleg reveal"><b>5&times;</b><span>Service businesses using AI post a $500K median annual revenue &mdash; against $90K for those that don't</span></div>
+      <div class="cleg reveal reveal-delay-1"><b>97%</b><span>Of the top-earning owners surveyed run AI tools and automation in the business</span></div>
+      <div class="cleg reveal reveal-delay-2"><b>70%</b><span>Of AI users report more confidence in the decisions they're making</span></div>
+      <div class="cleg reveal reveal-delay-3"><b>36%</b><span>Of customers walk away from a small business for one reason: it was hard to reach</span></div>
     </div>
+    <p class="chart-src reveal">Source: <a href="https://news.honeybook.com/news/honeybook-research-small-businesses-using-ai-earn-more-revenue" target="_blank" rel="noopener">HoneyBook &amp; The Harris Poll, 2026</a> &mdash; 503 service-based small business owners and 1,002 of their customers.</p>
   </div>
 </section>
 
