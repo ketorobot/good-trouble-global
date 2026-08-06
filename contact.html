@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Book a free AI audit call with Good Trouble. We review your med spa's revenue leaks before we talk — you leave the call with answers, not a pitch.">
 <title>Book a Free Audit Call — Good Trouble</title>
+<link rel="icon" href="/icons/icon-180.png" sizes="180x180">
+<link rel="icon" href="/logo-sm.webp" type="image/webp">
+<link rel="apple-touch-icon" href="/icons/icon-180.png">
+<meta name="theme-color" content="#0C0809">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -75,6 +79,15 @@ footer{background:var(--bg1);border-top:1px solid var(--line);padding:clamp(2.5r
 .footer-copy{font-size:0.76rem;color:var(--dim2);}
 @media(max-width:640px){.nav-links{display:none}.nav-burger{display:flex}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;align-items:flex-start;gap:1.25rem}}
 @media(min-width:641px){.nav-burger{display:none}}
+
+.footer-contact{display:flex;flex-direction:column;gap:.25rem;font-size:.8rem;opacity:.7;text-align:center}
+.footer-contact a{color:inherit;text-decoration:none}
+.footer-contact a:hover{opacity:1;text-decoration:underline}
+
+.form-msg{margin-top:1rem;font-size:.9rem;line-height:1.5;display:none}
+.form-msg.show{display:block}
+.form-msg.ok{color:#7ddba4}
+.form-msg.err{color:#ff8b6b}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CX7EDP4Z0N"></script>
@@ -110,6 +123,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     <a href="/services">Services</a>
     
     <a href="/about">About</a>
+    <a href="/contact">Contact</a>
     <a class="nav-cta" href="/contact">Get Free Audit</a>
   </div>
   <button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -129,7 +143,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   </div>
 
   <div class="form-wrap">
-    <form action='/contact' method='POST' name='contact' netlify netlify-honeypot='bot-field'><input type='hidden' name='form-name' value='contact' /><input type='hidden' name='bot-field' style='display:none'>
+    <form action='/contact' id='gtForm' method='POST' name='contact' netlify netlify-honeypot='bot-field'><input type='hidden' name='form-name' value='contact' /><input type='hidden' name='bot-field' style='display:none'>
       <div class="form-group">
         <label for="medspa_name">Med Spa Name</label>
         <input type="text" id="medspa_name" name="medspa_name" placeholder="Your practice name" required>
@@ -150,7 +164,8 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
         <label for="notes">Comments / Notes <span style="font-weight:400;opacity:0.55;text-transform:none;letter-spacing:0">(optional)</span></label>
         <textarea id="notes" name="notes" placeholder="Anything you'd like us to know before the call."></textarea>
       </div>
-      <button type="submit" class="btn-submit">Submit →</button>
+      <button type="submit" class="btn-submit" id="gtBtn">Submit →</button>
+      <div class="form-msg" id="gtMsg" role="status" aria-live="polite"></div>
     </form>
   </div>
 </div>
@@ -165,10 +180,15 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <a href="/services">Services</a>
       
       <a href="/about">About</a>
+      <a href="/contact">Contact</a>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
     </div>
-    <span class="footer-copy">&copy; 2025 Good Trouble</span>
+    <div class="footer-contact">
+      <a href="mailto:admin@goodtroubleglobal.com">admin@goodtroubleglobal.com</a>
+      <span>Tampa, FL &middot; Miami, FL</span>
+    </div>
+    <span class="footer-copy">&copy; 2026 Good Trouble LLC</span>
   </div>
 </footer>
 
@@ -186,6 +206,31 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       mobileMenu.classList.remove('open');
       burger.classList.remove('open');
       document.body.style.overflow='';
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  var f=document.getElementById('gtForm');if(!f)return;
+  var btn=document.getElementById('gtBtn'),msg=document.getElementById('gtMsg');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    btn.disabled=true;btn.textContent='Sending\u2026';
+    msg.className='form-msg';msg.textContent='';
+    var body=new URLSearchParams(new FormData(f)).toString();
+    fetch('/contact',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+    .then(function(r){
+      if(!r.ok)throw new Error(r.status);
+      f.querySelectorAll('.form-group').forEach(function(g){g.style.display='none'});
+      btn.style.display='none';
+      msg.className='form-msg show ok';
+      msg.textContent="Got it. We'll review your setup and get back to you within one business day.";
+    })
+    .catch(function(){
+      btn.disabled=false;btn.textContent='Submit \u2192';
+      msg.className='form-msg show err';
+      msg.innerHTML='Something went wrong on our end. Email us directly: <a href="mailto:admin@goodtroubleglobal.com" style="color:inherit">admin@goodtroubleglobal.com</a>';
     });
   });
 })();
