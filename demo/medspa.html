@@ -12,6 +12,22 @@
 <link rel="apple-touch-icon" href="/icons/icon-180.png">
 <title>Good Trouble — Med Spa Platform Demo</title>
 <meta name="description" content="Live demo of the Good Trouble platform: front desk AI, reactivation, campaigns, reviews, memberships, and marketing intelligence in one dashboard.">
+<link rel="canonical" href="https://goodtroubleglobal.com/demo/medspa.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Good Trouble">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Good Trouble — Med Spa Platform Demo">
+<meta property="og:description" content="Live demo of the Good Trouble platform: front desk AI, reactivation, campaigns, reviews, memberships, and marketing intelligence in one dashboard.">
+<meta property="og:url" content="https://goodtroubleglobal.com/demo/medspa.html">
+<meta property="og:image" content="https://goodtroubleglobal.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Good Trouble — your entire practice in one connected platform.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Good Trouble — Med Spa Platform Demo">
+<meta name="twitter:description" content="Live demo of the Good Trouble platform: front desk AI, reactivation, campaigns, reviews, memberships, and marketing intelligence in one dashboard.">
+<meta name="twitter:image" content="https://goodtroubleglobal.com/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -3481,6 +3497,8 @@ function enterApp(){
                 source_page:location.pathname,'bot-field':''})})
     .then(function(r){
       if(!r.ok)throw new Error(r.status);
+      try{if(window.gtag)gtag('event','generate_lead',{form:'claim-free-module',module:mod,value:1});
+          if(window.fbq)fbq('track','Lead',{content_name:'claim-free-module'});}catch(e){}
       try{if(window.gtag)gtag('event','generate_lead',{module:mod,page:location.pathname});
           if(window.fbq)fbq('track','Lead',{content_name:mod});}catch(e){}
       document.getElementById('gt-done-msg').textContent=
