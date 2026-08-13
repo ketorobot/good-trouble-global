@@ -27,7 +27,7 @@
 <meta name="theme-color" content="#0A1220">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -43,8 +43,8 @@
   --dim2:rgba(239,242,247,0.28);
   --border:rgba(212,198,161,0.18);
   --line:rgba(212,198,161,0.08);
-  --font-head:'Marcellus',sans-serif;
-  --font-body:'Outfit',sans-serif;
+  --font-head:'Cormorant Garamond',sans-serif;
+  --font-body:'Lato',sans-serif;
   --max:1100px;
   --rad:2px;
 }
@@ -55,7 +55,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-logo img{height:32px;width:auto;display:block;opacity:0.85;transition:opacity .2s}
 .nav-logo img:hover{opacity:1}
 .nav-links{display:flex;align-items:center;gap:2rem}
-.nav-links a{font-family:var(--font-body);font-weight:600;font-size:0.78rem;color:var(--dim);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color .2s;}
+.nav-links a{font-family:var(--font-body);font-weight:700;font-size:0.78rem;color:var(--dim);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color .2s;}
 .nav-links a:hover{color:var(--hi)}
 .nav-cta{background:var(--orange)!important;color:#0A1220!important;padding:0.45rem 1.1rem!important;border-radius:2px;letter-spacing:0.08em!important;transition:opacity .2s!important;}
 .nav-cta:hover{opacity:0.88!important}
@@ -66,31 +66,31 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 .mobile-menu{position:fixed;inset:0;z-index:90;background:rgba(10,18,32,0.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .25s;}
 .mobile-menu.open{opacity:1;pointer-events:all}
-.mobile-menu a{font-family:var(--font-head);font-size:2.4rem;color:var(--hi);text-decoration:none;letter-spacing:0.06em;transition:color .2s;}
+.mobile-menu a{font-family:var(--font-head);font-weight:600;font-size:2.76rem;color:var(--hi);text-decoration:none;letter-spacing:0.06em;transition:color .2s;}
 .mobile-menu a:hover{color:var(--orange)}
 .page-wrap{max-width:var(--max);margin:0 auto;padding:clamp(7rem,12vw,9rem) clamp(1.5rem,4vw,3rem) clamp(4rem,8vw,6rem);}
 .page-header{margin-bottom:clamp(2.5rem,5vw,3.5rem);max-width:640px;}
 .sec-label{font-family:var(--font-body);font-weight:700;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:0.85rem;display:block;}
-.page-h1{font-family:var(--font-head);font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.05;letter-spacing:0.02em;color:var(--hi);margin-bottom:1rem;}
+.page-h1{font-family:var(--font-head);font-weight:600;font-size:clamp(2.76rem,5.75vw,4.37rem);line-height:1.05;letter-spacing:0.02em;color:var(--hi);margin-bottom:1rem;}
 .page-h1 span{color:var(--orange)}
 .page-intro{font-size:clamp(0.95rem,1.3vw,1.05rem);color:var(--dim);line-height:1.7;max-width:540px;}
 .form-wrap{background:var(--bg1);border:1px solid var(--line);border-radius:var(--rad);padding:clamp(2rem,4vw,2.5rem);max-width:680px;}
 .form-group{margin-bottom:1.5rem}
-.form-group label{display:block;font-family:var(--font-body);font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--dim);margin-bottom:0.5rem;}
+.form-group label{display:block;font-family:var(--font-body);font-weight:700;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);margin-bottom:0.5rem;}
 .form-group input,.form-group textarea{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:var(--rad);padding:0.8rem 1rem;color:var(--hi);font-family:var(--font-body);font-weight:400;font-size:0.95rem;line-height:1.5;transition:border-color .2s;outline:none;-webkit-appearance:none;}
 .form-group input::placeholder,.form-group textarea::placeholder{color:var(--dim2)}
 .form-group input:focus,.form-group textarea:focus{border-color:var(--orange-b)}
 .form-group textarea{resize:vertical;min-height:130px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.btn-submit{width:100%;background:var(--orange);color:#0A1220;font-family:var(--font-body);font-weight:700;font-size:0.88rem;letter-spacing:0.1em;text-transform:uppercase;padding:1rem 2rem;border-radius:var(--rad);border:none;cursor:pointer;transition:opacity .2s,transform .2s;margin-top:0.5rem;}
+.btn-submit{width:100%;background:var(--orange);color:#0A1220;font-family:var(--font-body);font-weight:700;font-size:0.88rem;letter-spacing:0.12em;text-transform:uppercase;padding:1rem 2rem;border-radius:var(--rad);border:none;cursor:pointer;transition:opacity .2s,transform .2s;margin-top:0.5rem;}
 .btn-submit:hover{opacity:0.88;transform:translateY(-1px)}
 footer{background:var(--bg1);border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,3.5rem) clamp(1.5rem,4vw,3rem);margin-top:6rem;}
 .footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
 .footer-brand{display:flex;align-items:center;gap:0.75rem}
 .footer-brand img{height:26px;width:auto;opacity:0.7}
-.footer-brand-name{font-family:var(--font-head);font-size:1rem;letter-spacing:0.06em;color:var(--dim);}
+.footer-brand-name{font-family:var(--font-head);font-weight:600;font-size:1.15rem;letter-spacing:0.16em;color:var(--dim);}
 .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
-.footer-links a{font-size:0.8rem;color:var(--dim2);text-decoration:none;transition:color .2s;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;}
+.footer-links a{font-size:0.8rem;color:var(--dim2);text-decoration:none;transition:color .2s;letter-spacing:0.08em;text-transform:uppercase;font-weight:700;}
 .footer-links a:hover{color:var(--orange)}
 .footer-copy{font-size:0.76rem;color:var(--dim2);}
 @media(max-width:640px){.nav-links{display:none}.nav-burger{display:flex}.form-row{grid-template-columns:1fr}.footer-inner{flex-direction:column;align-items:flex-start;gap:1.25rem}}
@@ -104,7 +104,7 @@ footer{background:var(--bg1);border-top:1px solid var(--line);padding:clamp(2.5r
 .form-msg.show{display:block}
 .form-msg.ok{color:#7ddba4}
 .form-msg.err{color:#E4D9BC}
-h1,h2,h3{text-transform:uppercase;letter-spacing:0.03em}h1{line-height:1.08!important}h2{line-height:1.12!important}</style>
+h1,h2,h3{text-transform:uppercase;letter-spacing:0.05em}h1{line-height:1.08!important}h2{line-height:1.12!important}</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CX7EDP4Z0N"></script>
 <script>
@@ -134,7 +134,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 <body>
 
 <nav id="main-nav">
-  <a class="nav-logo" href="/"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Good Trouble" style="height:34px;width:34px;display:block"><circle cx="60" cy="60" r="46" fill="none" stroke="#D4C6A1" stroke-width="2" stroke-dasharray="255.31 33.72" stroke-dashoffset="-26.01" stroke-linecap="round" transform="rotate(-90 60 60)"/><circle cx="93" cy="33" r="2.6" fill="#D4C6A1"/><text x="60" y="64" text-anchor="middle" dominant-baseline="middle" font-family="Marcellus,serif" font-size="40" fill="#EFF2F7">GT</text></svg></a>
+  <a class="nav-logo" href="/"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Good Trouble" style="height:34px;width:34px;display:block"><circle cx="60" cy="60" r="46" fill="none" stroke="#D4C6A1" stroke-width="2" stroke-dasharray="255.31 33.72" stroke-dashoffset="-26.01" stroke-linecap="round" transform="rotate(-90 60 60)"/><circle cx="93" cy="33" r="2.6" fill="#D4C6A1"/><text x="60" y="64" text-anchor="middle" dominant-baseline="middle" font-family="Cormorant Garamond,serif" font-size="44" font-weight="600" fill="#EFF2F7">GT</text></svg></a>
   <div class="nav-links">
     <a href="/services">Services</a>
     
@@ -146,20 +146,20 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 </nav>
 <section style="min-height:62vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 1.5rem">
   <div style="max-width:560px">
-    <span style="font-family:var(--font-head);font-size:clamp(5rem,16vw,9rem);line-height:.9;color:var(--orange);display:block">404</span>
-    <h1 style="font-family:var(--font-head);font-weight:400;font-size:clamp(1.6rem,5vw,2.4rem);color:var(--hi);margin:1.2rem 0 .8rem;letter-spacing:.01em">This page doesn't exist.</h1>
+    <span style="font-family:var(--font-head);font-weight:600;font-size:clamp(5.75rem,18.4vw,10.35rem);line-height:.9;color:var(--orange);display:block">404</span>
+    <h1 style="font-family:var(--font-head);font-weight:600;font-size:clamp(1.84rem,5.75vw,2.76rem);color:var(--hi);margin:1.2rem 0 .8rem;letter-spacing:.01em">This page doesn't exist.</h1>
     <p style="font-family:var(--font-body);color:var(--mid);font-size:.95rem;line-height:1.7;margin-bottom:2.2rem">Either the link is wrong or we moved it. Here's where you probably meant to go.</p>
     <div style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center">
-      <a href="/" style="font-family:var(--font-body);font-weight:600;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;background:var(--orange);color:#0A1220;padding:.9rem 1.6rem;text-decoration:none;border-radius:var(--rad)">Home</a>
-      <a href="/services" style="font-family:var(--font-body);font-weight:600;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--border);color:var(--hi);padding:.9rem 1.6rem;text-decoration:none;border-radius:var(--rad)">Services</a>
-      <a href="/contact" style="font-family:var(--font-body);font-weight:600;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--border);color:var(--hi);padding:.9rem 1.6rem;text-decoration:none;border-radius:var(--rad)">Contact</a>
+      <a href="/" style="font-family:var(--font-body);font-weight:700;font-size:.85rem;letter-spacing:0.06em;text-transform:uppercase;background:var(--orange);color:#0A1220;padding:.9rem 1.6rem;text-decoration:none;border-radius:var(--rad)">Home</a>
+      <a href="/services" style="font-family:var(--font-body);font-weight:700;font-size:.85rem;letter-spacing:0.06em;text-transform:uppercase;border:1px solid var(--border);color:var(--hi);padding:.9rem 1.6rem;text-decoration:none;border-radius:var(--rad)">Services</a>
+      <a href="/contact" style="font-family:var(--font-body);font-weight:700;font-size:.85rem;letter-spacing:0.06em;text-transform:uppercase;border:1px solid var(--border);color:var(--hi);padding:.9rem 1.6rem;text-decoration:none;border-radius:var(--rad)">Contact</a>
     </div>
   </div>
 </section>
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Good Trouble" style="height:34px;width:34px;display:block"><circle cx="60" cy="60" r="46" fill="none" stroke="#D4C6A1" stroke-width="2" stroke-dasharray="255.31 33.72" stroke-dashoffset="-26.01" stroke-linecap="round" transform="rotate(-90 60 60)"/><circle cx="93" cy="33" r="2.6" fill="#D4C6A1"/><text x="60" y="64" text-anchor="middle" dominant-baseline="middle" font-family="Marcellus,serif" font-size="40" fill="#EFF2F7">GT</text></svg>
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Good Trouble" style="height:34px;width:34px;display:block"><circle cx="60" cy="60" r="46" fill="none" stroke="#D4C6A1" stroke-width="2" stroke-dasharray="255.31 33.72" stroke-dashoffset="-26.01" stroke-linecap="round" transform="rotate(-90 60 60)"/><circle cx="93" cy="33" r="2.6" fill="#D4C6A1"/><text x="60" y="64" text-anchor="middle" dominant-baseline="middle" font-family="Cormorant Garamond,serif" font-size="44" font-weight="600" fill="#EFF2F7">GT</text></svg>
       <span class="footer-brand-name">Good Trouble</span>
     </div>
     <div class="footer-links">

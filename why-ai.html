@@ -7,7 +7,7 @@
 <title>Why AI? — 20 Infographics for Med Spa Owners · Good Trouble</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Lato:ital,wght@0,400;0,700;1,400&family=Inter:wght@300..700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -25,9 +25,9 @@
   --dim2:rgba(239,242,247,0.28);
   --border:rgba(212,198,161,0.16);
   --line:rgba(212,198,161,0.07);
-  --font-head:'Marcellus',sans-serif;
-  --font-body:'Outfit',sans-serif;
-  --font-display:'Marcellus','Inter',sans-serif;
+  --font-head:'Cormorant Garamond',sans-serif;
+  --font-body:'Lato',sans-serif;
+  --font-display:'Cormorant Garamond','Inter',sans-serif;
   --font-mono:'Inter',sans-serif;
   --max:1180px;
   --rad:3px;
@@ -82,8 +82,8 @@ nav.hidden{transform:translateY(-100%)}
 .nav-logo img{height:36px;width:auto;display:block;opacity:1;transition:opacity .3s}
 .nav-links{display:flex;align-items:center;gap:2rem}
 .nav-links a{
-  font-family:var(--font-body);font-weight:500;font-size:0.8rem;
-  color:var(--dim);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;
+  font-family:var(--font-body);font-weight:700;font-size:0.8rem;
+  color:var(--dim);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;
   transition:color .2s;
 }
 .nav-links a:hover{color:var(--hi)}
@@ -91,7 +91,7 @@ nav.hidden{transform:translateY(-100%)}
 .nav-cta{
   background:var(--orange);color:#000;
   font-family:var(--font-body);font-weight:700;font-size:0.78rem;
-  letter-spacing:0.07em;text-transform:uppercase;text-decoration:none;
+  letter-spacing:0.09em;text-transform:uppercase;text-decoration:none;
   padding:0.5rem 1.1rem;border-radius:var(--rad);
   transition:opacity .2s,transform .2s;display:inline-block;
 }
@@ -111,12 +111,12 @@ nav.hidden{transform:translateY(-100%)}
 }
 .mobile-menu.open{display:flex}
 .mobile-menu a{
-  font-family:var(--font-head);font-weight:700;font-size:1.8rem;
+  font-family:var(--font-head);font-weight:700;font-size:2.07rem;
   color:var(--hi);text-decoration:none;letter-spacing:-0.01em;
   transition:color .2s;
 }
 .mobile-menu a:hover,.mobile-menu a:last-child{color:var(--orange)}
-.mobile-menu a:last-child{font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-body)}
+.mobile-menu a:last-child{font-size:1rem;letter-spacing:0.08em;text-transform:uppercase;font-family:var(--font-body)}
 
 /* ─── PAGE HERO ─── */
 .page-hero{
@@ -127,11 +127,11 @@ nav.hidden{transform:translateY(-100%)}
 }
 .page-eyebrow{
   font-family:var(--font-body);font-size:0.75rem;font-weight:700;
-  color:var(--orange);text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--orange);text-transform:uppercase;letter-spacing:0.16em;
   margin-bottom:1.25rem;
 }
 .page-hero h1{
-  font-family:var(--font-head);font-size:clamp(2.8rem,7vw,5.5rem);
+  font-family:var(--font-head);font-size:clamp(3.22rem,8.05vw,6.32rem);
   font-weight:800;line-height:1.0;letter-spacing:-0.03em;
   color:var(--hi);margin-bottom:1.5rem;
 }
@@ -207,7 +207,7 @@ nav.hidden{transform:translateY(-100%)}
 .icon-item { display: flex; align-items: flex-start; gap: 0.75rem; }
 .icon-item svg { flex-shrink: 0; color: var(--orange); margin-top: 2px; }
 .icon-item-text { font-size: 0.875rem; color: var(--text-muted); font-family: var(--font-mono); }
-.icon-item-title { font-weight: 600; color: var(--text); font-size: 0.875rem; font-family: var(--font-mono); }
+.icon-item-title { font-weight:700; color: var(--text); font-size: 0.875rem; font-family: var(--font-mono); }
 
 /* ─── RECEIPT ─── */
 .receipt { background: #0A0A0A; border: 1px solid var(--border2); border-radius: var(--radius-md); padding: 2rem; font-family: 'Courier New', monospace; font-size: 0.875rem; }
@@ -242,14 +242,14 @@ nav.hidden{transform:translateY(-100%)}
 .chat-area { padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; max-height: 340px; overflow-y: auto; }
 .bubble { max-width: 85%; padding: 0.5rem 0.75rem; border-radius: 16px; font-size: 0.75rem; line-height: 1.4; font-family: var(--font-mono); }
 .bubble.incoming { background: var(--surface-2); color: var(--text); border-bottom-left-radius: 4px; align-self: flex-start; }
-.bubble.outgoing { background: var(--orange); color: #000; border-bottom-right-radius: 4px; align-self: flex-end; font-weight: 500; }
+.bubble.outgoing { background: var(--orange); color: #000; border-bottom-right-radius: 4px; align-self: flex-end; font-weight:700; }
 .bubble-label { font-size: 0.6rem; color: var(--text-faint); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-mono); }
 .bubble-step { font-size: 0.6rem; color: var(--orange); font-weight: 700; text-align: right; margin-top: 2px; font-family: var(--font-mono); }
 
 /* ─── MISSED CALLS ─── */
 .missed-stack { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
 .missed-bar { background: rgba(180,0,0,0.12); border: 1px solid rgba(180,0,0,0.3); border-radius: var(--radius-sm); padding: 0.5rem 1rem; display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; font-family: var(--font-mono); }
-.missed-bar .label { color: #cc4444; font-weight: 600; }
+.missed-bar .label { color: #cc4444; font-weight:700; }
 .missed-bar .time { color: var(--text-faint); }
 .missed-x { color: #cc0000; font-size: 1.1rem; font-weight: 800; }
 
@@ -265,7 +265,7 @@ nav.hidden{transform:translateY(-100%)}
 
 /* ─── MANIFESTO ─── */
 .manifesto-wrap { text-align: center; padding: 3rem 2rem; position: relative; overflow: hidden; }
-.manifesto-headline { font-family: var(--font-head); font-size: clamp(1.8rem,4vw,3.5rem); font-weight: 800; color: #fff; line-height: 1.05; letter-spacing: -0.03em; margin-top: 2rem; }
+.manifesto-headline { font-family: var(--font-head); font-size: clamp(2.07rem,4.6vw,4.02rem); font-weight: 800; color: #fff; line-height: 1.05; letter-spacing: -0.03em; margin-top: 2rem; }
 .manifesto-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(212,198,161,0.12) 0%, transparent 65%); pointer-events: none; }
 
 /* ─── MEDIA GRID ─── */
@@ -296,7 +296,7 @@ nav.hidden{transform:translateY(-100%)}
 }
 .page-cta h2 {
   font-family: var(--font-head);
-  font-size: clamp(2rem,5vw,3.5rem);
+  font-size: clamp(2.3rem,5.75vw,4.02rem);
   font-weight: 800;
   color: var(--hi);
   letter-spacing: -0.02em;
@@ -331,7 +331,7 @@ footer{
 }
 .footer-brand{display:flex;align-items:center;gap:0.65rem}
 .footer-brand img{height:26px;width:auto;opacity:0.75}
-.footer-brand-name{font-family:var(--font-head);font-weight:700;font-size:0.88rem;color:var(--dim)}
+.footer-brand-name{font-family:var(--font-head);font-weight:700;font-size:1.01rem;color:var(--dim)}
 .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
 .footer-links a{
   font-size:0.8rem;color:var(--dim2);text-decoration:none;
@@ -357,7 +357,7 @@ footer{
   .media-grid { grid-template-columns: repeat(2,1fr); }
   .infographic-grid { gap: 1.5rem; }
 }
-h1,h2,h3{text-transform:uppercase;letter-spacing:0.03em}h1{line-height:1.08!important}h2{line-height:1.12!important}</style>
+h1,h2,h3{text-transform:uppercase;letter-spacing:0.05em}h1{line-height:1.08!important}h2{line-height:1.12!important}</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CX7EDP4Z0N"></script>
 <script>
@@ -770,7 +770,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
           </div>
           <div class="phone-app-bar">
             <div class="phone-avatar"></div>
-            <div style="font-size:0.7rem;font-weight:600;color:var(--text);">Good Trouble AI</div>
+            <div style="font-size:0.7rem;font-weight:700;color:var(--text);">Good Trouble AI</div>
             <div style="margin-left:auto;width:6px;height:6px;border-radius:50%;background:#44cc44;"></div>
           </div>
           <div class="chat-area">
@@ -804,7 +804,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
           <line x1="62" y1="26" x2="54" y2="18" stroke="#cc3333" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
         <div>
-          <div style="font-family:var(--font-head);font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;color:#cc3333;line-height:1;">62%</div>
+          <div style="font-family:var(--font-head);font-size:clamp(2.88rem,5.75vw,4.02rem);font-weight:800;color:#cc3333;line-height:1;">62%</div>
           <div style="font-size:0.875rem;color:var(--text-muted);">of callers won't<br>leave a voicemail</div>
         </div>
       </div>
@@ -1136,7 +1136,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
           <circle cx="130" cy="40" r="24" fill="#D4C6A1" fill-opacity="0.12"/>
         </svg>
         <div class="manifesto-headline">Turn it on.<br>Walk away.<br>Watch it work.</div>
-        <div style="margin-top:2rem;font-size:0.75rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;font-family:var(--font-mono);">Good Trouble — AI Systems for Med Spas</div>
+        <div style="margin-top:2rem;font-size:0.75rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;font-weight:700;font-family:var(--font-mono);">Good Trouble — AI Systems for Med Spas</div>
       </div>
     </div>
   </div>
