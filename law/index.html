@@ -5,28 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Good Trouble — The Smartest System Built for Personal Injury Firms</title>
 <meta name="description" content="An intelligent automation platform that reshapes around your PI firm's priorities — intake, follow-up, reviews, referrals, and marketing intelligence in one adaptive hub.">
-<link rel="icon" href="/logo.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='46' fill='none' stroke='%23D4C6A1' stroke-width='10' stroke-dasharray='255.31 33.72' stroke-dashoffset='-26.01' stroke-linecap='round' transform='rotate(-90 60 60)'/%3E%3Ccircle cx='93' cy='33' r='7' fill='%23D4C6A1'/%3E%3C/svg%3E" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --orange:#FF5500;
-  --orange2:#CC4400;
-  --orange-dim:rgba(255,85,0,0.12);
-  --orange-b:rgba(255,85,0,0.3);
-  --bg:#080808;
-  --bg1:#0d0d0d;
-  --bg2:#111111;
-  --bg3:#181818;
-  --hi:#F5F2EE;
-  --mid:#B8B4AF;
-  --dim:rgba(245,242,238,0.5);
-  --dim2:rgba(245,242,238,0.28);
-  --border:rgba(255,85,0,0.16);
-  --line:rgba(255,85,0,0.08);
-  --font-head:'Bebas Neue',sans-serif;
-  --font-body:'Barlow',sans-serif;
+  --orange:#D4C6A1;
+  --orange2:#B49A62;
+  --orange-dim:rgba(212,198,161,0.12);
+  --orange-b:rgba(212,198,161,0.3);
+  --bg:#0A1220;
+  --bg1:#0C1424;
+  --bg2:#0D1626;
+  --bg3:#101B30;
+  --hi:#EFF2F7;
+  --mid:#8CA0BC;
+  --dim:rgba(239,242,247,0.5);
+  --dim2:rgba(239,242,247,0.28);
+  --border:rgba(212,198,161,0.16);
+  --line:rgba(212,198,161,0.08);
+  --font-head:'Marcellus',sans-serif;
+  --font-body:'Outfit',sans-serif;
   --max:1100px;
   --rad:3px;
 }
@@ -37,23 +37,23 @@ img{max-width:100%}
 a{color:inherit;text-decoration:none}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(8,8,8,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(10,18,32,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav-logo img{height:38px;display:block}
 .nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
 .nav-links a{color:var(--mid);transition:color .2s}
 .nav-links a:hover{color:var(--hi)}
-.nav-cta{background:var(--orange);color:#080808!important;padding:10px 18px;border-radius:var(--rad);font-weight:700}
+.nav-cta{background:var(--orange);color:#0A1220!important;padding:10px 18px;border-radius:var(--rad);font-weight:700}
 .nav-cta:hover{background:var(--orange2)}
 @media(max-width:720px){.nav-links a:not(.nav-cta){display:none}}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;background:radial-gradient(ellipse at 50% 0%,rgba(255,85,0,0.08),transparent 60%)}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;background:radial-gradient(ellipse at 50% 0%,rgba(212,198,161,0.08),transparent 60%)}
 .hero-eyebrow{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);margin-bottom:22px;font-weight:600}
 .hero h1{font-family:var(--font-head);font-size:clamp(52px,8vw,96px);line-height:.98;letter-spacing:.01em;max-width:900px}
 .hero h1 span{color:var(--orange)}
 .hero-sub{margin-top:24px;font-size:clamp(16px,2.2vw,20px);color:var(--mid);max-width:640px;font-weight:300}
 .hero-ctas{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
-.btn-primary{background:var(--orange);color:#080808;font-weight:700;padding:16px 32px;border-radius:var(--rad);font-size:15px;letter-spacing:.05em;text-transform:uppercase;transition:background .2s}
+.btn-primary{background:var(--orange);color:#0A1220;font-weight:700;padding:16px 32px;border-radius:var(--rad);font-size:15px;letter-spacing:.05em;text-transform:uppercase;transition:background .2s}
 .btn-primary:hover{background:var(--orange2)}
 .btn-ghost{border:1px solid var(--orange-b);color:var(--hi);padding:16px 32px;border-radius:var(--rad);font-size:15px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;transition:border-color .2s,background .2s}
 .btn-ghost:hover{border-color:var(--orange);background:var(--orange-dim)}
@@ -86,7 +86,7 @@ section{padding:96px 24px}
 .module h3{font-family:var(--font-head);font-size:24px;letter-spacing:.03em;margin-bottom:10px}
 .module p{color:var(--mid);font-size:15px;font-weight:300}
 .badge{position:absolute;top:16px;right:16px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:4px 9px;border-radius:2px}
-.badge-new{background:var(--orange);color:#080808}
+.badge-new{background:var(--orange);color:#0A1220}
 .badge-locked{background:var(--bg3);color:var(--dim);border:1px solid var(--line)}
 .module.locked{opacity:.65}
 .module.locked:hover{transform:none;border-color:var(--border)}
@@ -119,7 +119,7 @@ section{padding:96px 24px}
 .faq-item p{padding:0 24px 22px;color:var(--mid);font-size:15px;font-weight:300}
 
 /* CTA + FORM */
-.cta-section{text-align:center;background:radial-gradient(ellipse at 50% 100%,rgba(255,85,0,0.10),transparent 65%)}
+.cta-section{text-align:center;background:radial-gradient(ellipse at 50% 100%,rgba(212,198,161,0.10),transparent 65%)}
 .contact-form-section{background:var(--bg1);border-top:1px solid var(--line)}
 .form-wrap{max-width:620px;margin:44px auto 0}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -127,7 +127,7 @@ section{padding:96px 24px}
 input,textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rad);padding:15px 16px;color:var(--hi);font-family:var(--font-body);font-size:15px;margin-bottom:14px}
 input:focus,textarea:focus{outline:none;border-color:var(--orange)}
 textarea{min-height:120px;resize:vertical}
-.form-wrap button{width:100%;background:var(--orange);color:#080808;border:0;font-weight:700;padding:17px;border-radius:var(--rad);font-size:15px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:var(--font-body);transition:background .2s}
+.form-wrap button{width:100%;background:var(--orange);color:#0A1220;border:0;font-weight:700;padding:17px;border-radius:var(--rad);font-size:15px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:var(--font-body);transition:background .2s}
 .form-wrap button:hover{background:var(--orange2)}
 
 /* FOOTER */
@@ -140,7 +140,7 @@ footer{border-top:1px solid var(--line);padding:44px 24px}
 .footer-links{display:flex;gap:22px;font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
 .footer-links a:hover{color:var(--hi)}
 .footer-copy{font-size:13px;color:var(--dim2)}
-</style>
+h1,h2,h3{text-transform:uppercase;letter-spacing:0.03em}h1{line-height:1.08!important}h2{line-height:1.12!important}</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CX7EDP4Z0N"></script>
 <script>
@@ -359,7 +359,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div class="inner" style="text-align:center">
     <div class="sec-eyebrow">Contact</div>
     <h2 class="sec-title">Tell Us About <span>Your Firm</span></h2>
-    <form class='form-wrap' method='POST' name='law-contact' data-netlify='true' netlify-honeypot='bot-field' action='/law/?sent=1' style='text-align:left'>
+    <form action='/law/?sent=1' class='form-wrap' method='POST' name='law-contact' style='text-align:left'>
       <input type="hidden" name="form-name" value="law-contact">
       <p style="display:none"><input name="bot-field"></p>
       <div class="form-row">
