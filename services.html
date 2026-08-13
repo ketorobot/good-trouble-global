@@ -21,33 +21,33 @@
 <meta name="twitter:image" content="https://goodtroubleglobal.com/og-image.png">
 
 <title>Services — Good Trouble</title>
-<link rel="icon" href="/icons/icon-180.png" sizes="180x180">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='46' fill='none' stroke='%23D4C6A1' stroke-width='10' stroke-dasharray='255.31 33.72' stroke-dashoffset='-26.01' stroke-linecap='round' transform='rotate(-90 60 60)'/%3E%3Ccircle cx='93' cy='33' r='7' fill='%23D4C6A1'/%3E%3C/svg%3E" type="image/svg+xml">
 <link rel="icon" href="/logo-sm.webp" type="image/webp">
 <link rel="apple-touch-icon" href="/icons/icon-180.png">
-<meta name="theme-color" content="#0C0809">
+<meta name="theme-color" content="#0A1220">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--orange:#FF6B2B;--bg:#020202;--bg1:#0d0d0d;--bg2:#141414;--hi:#F5F0E8;--mid:#8A8580;--dim:rgba(245,240,232,0.55);--dim2:rgba(245,240,232,0.28);--line:rgba(255,107,43,0.08);--border:rgba(255,107,43,0.18);--font-head:'Bebas Neue',sans-serif;--font-body:'Barlow',sans-serif;--max:1060px;--rad:2px;}
+:root{--orange:#D4C6A1;--bg:#0A1220;--bg1:#0C1424;--bg2:#0D1626;--hi:#EFF2F7;--mid:#8CA0BC;--dim:rgba(239,242,247,0.55);--dim2:rgba(239,242,247,0.28);--line:rgba(212,198,161,0.08);--border:rgba(212,198,161,0.18);--font-head:'Marcellus',sans-serif;--font-body:'Outfit',sans-serif;--max:1060px;--rad:2px;}
 html,body{background:var(--bg);color:var(--hi);font-family:var(--font-body);-webkit-font-smoothing:antialiased;}
 body{min-height:100vh;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.45;mix-blend-mode:overlay;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,3rem);height:62px;background:rgba(2,2,2,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,3rem);height:62px;background:rgba(10,18,32,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
 .nav-logo img{height:32px;width:auto;display:block;opacity:0.85;transition:opacity .2s}
 .nav-logo img:hover{opacity:1}
 .nav-links{display:flex;align-items:center;gap:2rem}
 .nav-links a{font-family:var(--font-body);font-weight:600;font-size:0.78rem;color:var(--dim2);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color .2s;}
 .nav-links a:hover,.nav-links a.active{color:var(--hi)}
-.nav-cta{background:var(--orange)!important;color:#fff!important;padding:0.45rem 1.1rem!important;border-radius:2px;letter-spacing:0.08em!important;transition:opacity .2s!important;}
+.nav-cta{background:var(--orange)!important;color:#0A1220!important;padding:0.45rem 1.1rem!important;border-radius:2px;letter-spacing:0.08em!important;transition:opacity .2s!important;}
 .nav-cta:hover{opacity:0.88!important}
 .nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
 .nav-burger span{display:block;width:22px;height:1.5px;background:var(--hi);transition:.3s}
 .nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0}
 .nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-menu{position:fixed;inset:0;z-index:90;background:rgba(2,2,2,0.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+.mobile-menu{position:fixed;inset:0;z-index:90;background:rgba(10,18,32,0.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .25s;}
 .mobile-menu.open{opacity:1;pointer-events:all}
 .mobile-menu a{font-family:var(--font-head);font-size:2.4rem;color:var(--hi);text-decoration:none;letter-spacing:0.06em;transition:color .2s;}
 .mobile-menu a:hover{color:var(--orange)}
@@ -82,7 +82,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .cta-block{background:var(--bg1);border:1px solid var(--line);border-radius:var(--rad);padding:clamp(2rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
 .cta-block-text h3{font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.7rem);letter-spacing:0.02em;color:var(--hi);margin-bottom:0.5rem;}
 .cta-block-text p{font-size:0.92rem;color:var(--dim);line-height:1.65;max-width:480px;}
-.btn-primary{background:var(--orange);color:#fff;font-family:var(--font-body);font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.9rem 2rem;border-radius:var(--rad);transition:opacity .2s,transform .2s;white-space:nowrap;display:inline-block;}
+.btn-primary{background:var(--orange);color:#0A1220;font-family:var(--font-body);font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.9rem 2rem;border-radius:var(--rad);transition:opacity .2s,transform .2s;white-space:nowrap;display:inline-block;}
 .btn-primary:hover{opacity:0.88;transform:translateY(-1px)}
 footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,3.5rem) clamp(1.5rem,4vw,3rem);margin-top:2rem;}
 .footer-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
@@ -99,7 +99,7 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,3.5rem) clamp(1
 .footer-contact{display:flex;flex-direction:column;gap:.25rem;font-size:.8rem;opacity:.7;text-align:center}
 .footer-contact a{color:inherit;text-decoration:none}
 .footer-contact a:hover{opacity:1;text-decoration:underline}
-</style>
+h1,h2,h3{text-transform:uppercase;letter-spacing:0.03em}h1{line-height:1.08!important}h2{line-height:1.12!important}</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CX7EDP4Z0N"></script>
 <script>
@@ -128,7 +128,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 </head>
 <body>
 <nav id="main-nav">
-  <a href="/" class="nav-logo"><img src="/logo-sm.webp" width="360" height="188" alt="Good Trouble"></a>
+  <a href="/" class="nav-logo"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Good Trouble" style="height:34px;width:34px;display:block"><circle cx="60" cy="60" r="46" fill="none" stroke="#D4C6A1" stroke-width="2" stroke-dasharray="255.31 33.72" stroke-dashoffset="-26.01" stroke-linecap="round" transform="rotate(-90 60 60)"/><circle cx="93" cy="33" r="2.6" fill="#D4C6A1"/><text x="60" y="64" text-anchor="middle" dominant-baseline="middle" font-family="Marcellus,serif" font-size="40" fill="#EFF2F7">GT</text></svg></a>
   <div class="nav-links">
     <a href="/services" class="active">Services</a>
     <a href="/about">About</a>
@@ -252,7 +252,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="/logo-sm.webp" width="360" height="188" alt="Good Trouble">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Good Trouble" style="height:34px;width:34px;display:block"><circle cx="60" cy="60" r="46" fill="none" stroke="#D4C6A1" stroke-width="2" stroke-dasharray="255.31 33.72" stroke-dashoffset="-26.01" stroke-linecap="round" transform="rotate(-90 60 60)"/><circle cx="93" cy="33" r="2.6" fill="#D4C6A1"/><text x="60" y="64" text-anchor="middle" dominant-baseline="middle" font-family="Marcellus,serif" font-size="40" fill="#EFF2F7">GT</text></svg>
       <span class="footer-brand-name">Good Trouble</span>
     </div>
     <div class="footer-links">
