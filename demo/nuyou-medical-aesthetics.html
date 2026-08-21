@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-title" content="Good Trouble">
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icons/icon-180.png">
-<title>NuYou Medical Aesthetics Command Hub</title>
+<title>NuYou Medical Aesthetics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -29,7 +29,20 @@
   --font-m:"JetBrains Mono",monospace;
   --tr:0.22s cubic-bezier(.2,.7,.3,1);
 }
-html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:15px;line-height:1.5;overflow-x:hidden;-webkit-text-size-adjust:100%}
+html{background:var(--bg)}html,body{height:100%;color:var(--text);font-family:var(--font-b);font-size:15px;line-height:1.5;overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{position:relative;background:transparent}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+  radial-gradient(ellipse 90% 60% at 85% -10%,rgba(255,107,43,0.10),transparent 60%),
+  radial-gradient(ellipse 70% 55% at 0% 105%,rgba(255,60,20,0.08),transparent 60%),
+  radial-gradient(ellipse 55% 45% at 100% 70%,rgba(122,92,255,0.06),transparent 65%),
+  linear-gradient(160deg,#0D0A11 0%,#0A0A0C 45%,#0C080A 100%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='194' viewBox='0 0 112 194'%3E%3Cg fill='none' stroke='%23FF6B2B' stroke-opacity='0.14' stroke-width='1'%3E%3Cpath d='M56 1 L110 32 L110 96 L56 129 L2 96 L2 32 Z'/%3E%3Cpath d='M0 98 L56 129 L56 193'/%3E%3Cpath d='M112 98 L56 129'/%3E%3C/g%3E%3C/svg%3E"),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='336' height='582' viewBox='0 0 336 582'%3E%3Cg fill='none' stroke-width='1.5'%3E%3Cpath d='M168 3 L330 96 L330 288 L168 387 L6 288 L6 96 Z' stroke='%23FF6B2B' stroke-opacity='0.22'/%3E%3Cpath d='M84 340 L168 387 L168 485' stroke='%237A5CFF' stroke-opacity='0.14'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:112px 194px,336px 582px;
+  background-position:0 0,40px 120px;
+  mask-image:radial-gradient(ellipse 120% 90% at 50% 0%,black 35%,rgba(0,0,0,0.55) 70%,rgba(0,0,0,0.3) 100%);
+  -webkit-mask-image:radial-gradient(ellipse 120% 90% at 50% 0%,black 35%,rgba(0,0,0,0.55) 70%,rgba(0,0,0,0.3) 100%)}
 button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .view{display:none}
 .view.active{display:block;animation:fadeIn 0.2s ease}
@@ -41,7 +54,15 @@ button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
 /* HDR */
-.hdr{position:sticky;top:0;z-index:200;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;padding:env(safe-area-inset-top) 16px 0;height:calc(64px + env(safe-area-inset-top));background:rgba(12,8,9,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-dim)}
+.hdr{position:sticky;top:0;z-index:200;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;padding:env(safe-area-inset-top) 16px 0;height:calc(64px + env(safe-area-inset-top));background:linear-gradient(180deg,#17111C 0%,#120D14 55%,rgba(16,10,12,0.96) 100%);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,107,43,0.22);position:sticky;overflow:hidden;box-shadow:0 10px 34px rgba(0,0,0,0.55),0 1px 0 rgba(255,255,255,0.03) inset}
+.hdr::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 130% at 50% -30%,rgba(255,107,43,0.16),transparent 65%),radial-gradient(ellipse 30% 100% at 8% 110%,rgba(122,92,255,0.10),transparent 70%),radial-gradient(ellipse 30% 100% at 92% 110%,rgba(29,184,126,0.07),transparent 70%)}
+.hdr::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,107,43,0.05) 20%,var(--orange) 50%,rgba(255,107,43,0.05) 80%,transparent);background-size:220% 100%;animation:hdr-line 6s ease-in-out infinite;opacity:0.9}
+@keyframes hdr-line{0%{background-position:120% 0}50%{background-position:-20% 0}100%{background-position:120% 0}}
+.hdr-center{position:relative}
+.hdr-center::before,.hdr-center::after{content:"";position:absolute;top:50%;width:34px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,43,0.55));transform:translateY(-50%)}
+.hdr-center::before{right:calc(100% + 12px)}
+.hdr-center::after{left:calc(100% + 12px);background:linear-gradient(90deg,rgba(255,107,43,0.55),transparent)}
+.hdr:has(.back-btn.show) .hdr-center::before,.hdr:has(.back-btn.show) .hdr-center::after{display:none}
 .hdr-l{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
 .logo-w{width:40px;height:40px;border-radius:8px;background:#fff;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.3)}
 .logo-w img{width:36px;height:36px;object-fit:contain}
@@ -50,7 +71,7 @@ button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .hdiv{width:1px;height:24px;background:var(--border-dim);margin:0 2px;flex-shrink:0}
 .live-p{display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:20px;background:rgba(29,184,126,0.1);border:1px solid rgba(29,184,126,0.2);font-family:var(--font-l);font-size:10px;font-weight:600;letter-spacing:0.1em;color:var(--green);text-transform:uppercase;white-space:nowrap;flex-shrink:0}
 .ldot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-g 2s ease-in-out infinite}
-.hdr-center{display:flex;align-items:center;gap:10px;justify-content:center}.brand-main{font-family:var(--font-d);font-size:22px;font-weight:600;color:var(--text);letter-spacing:0.02em;white-space:nowrap}.hdr-r{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+.hdr-center{display:flex;align-items:center;gap:10px;justify-content:center}.brand-main{font-family:var(--font-d);font-size:23px;font-weight:900;letter-spacing:0.07em;white-space:nowrap;text-transform:uppercase;-webkit-text-stroke:0.4px rgba(255,255,255,0.35);background:linear-gradient(110deg,var(--text) 0%,var(--text) 45%,rgba(255,176,122,0.85) 50%,var(--text) 55%,var(--text) 100%);background-size:300% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 12px rgba(255,107,43,0.18));animation:title-shimmer 9s ease-in-out infinite}@keyframes title-shimmer{0%,72%{background-position:110% 0}92%,100%{background-position:-40% 0}}.hdr-r{display:flex;align-items:center;gap:10px;justify-content:flex-end}
 .pn-b{display:flex;align-items:center;gap:5px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;opacity:0.65}
 .pn-txt{white-space:nowrap}
 .pn-dot{width:14px;height:14px;border-radius:3px;background:linear-gradient(135deg,#FF6B2B,#FF6B2B);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#fff;font-family:var(--font-l);flex-shrink:0}
@@ -79,6 +100,17 @@ button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .kpi-c:nth-child(1){animation-delay:.05s}.kpi-c:nth-child(2){animation-delay:.1s}.kpi-c:nth-child(3){animation-delay:.15s}.kpi-c:nth-child(4){animation-delay:.2s}
 .kpi-label{font-family:var(--font-l);font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-2);margin-bottom:10px}
 .kpi-val{font-family:var(--font-m);font-size:40px;font-weight:600;color:var(--text);letter-spacing:-0.03em;line-height:1;margin-bottom:8px}
+.kpi-viz{display:flex;align-items:center;justify-content:center;height:58px;margin-bottom:10px}
+.kpi-val-sm{font-family:var(--font-m);font-size:14px;font-weight:700;letter-spacing:-0.01em;color:var(--text)}
+.kpi-bars{display:flex;align-items:flex-end;gap:5px;height:52px;width:100%;max-width:110px;margin:0 auto}
+.kpi-bars span{flex:1;border-radius:3px 3px 1px 1px;background:rgba(91,168,255,0.28);min-height:4px}
+.kpi-roi{flex-direction:column;gap:5px;width:100%;max-width:130px;margin:0 auto}
+.kpi-roi-t{position:relative;width:100%;height:14px;border-radius:7px;background:var(--surface-3);overflow:hidden}
+.kpi-roi-f{position:absolute;left:0;top:0;bottom:0;border-radius:7px;background:linear-gradient(90deg,rgba(255,79,163,0.5),var(--pink));box-shadow:0 0 10px rgba(255,79,163,0.4)}
+.kpi-roi-tick{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12)}
+.kpi-roi-scale{display:flex;justify-content:space-between;width:100%;font-family:var(--font-l);font-size:9px;letter-spacing:0.08em;color:var(--text-muted)}
+.loc-bar{margin-top:7px;height:6px;border-radius:3px;background:rgba(255,255,255,0.06);overflow:hidden;max-width:220px}
+.loc-bar div{height:100%;border-radius:3px}
 .cmd-panel .kpi-val{font-size:30px;letter-spacing:-0.04em}
 .kpi-delta{display:inline-flex;align-items:center;gap:3px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.06em;padding:2px 6px;border-radius:4px;background:rgba(29,184,126,0.12);color:var(--green)}
 
@@ -205,6 +237,15 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .ms{font-family:var(--font-l);font-size:9px;font-weight:600;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:3px}
 .ai-lbl{color:var(--pink);font-size:9px;font-weight:700;letter-spacing:0.08em}
 .cf{padding:9px 14px;border-top:1px solid var(--border-dim);background:var(--surface-2);font-size:10px;color:var(--text-dim);font-style:italic;text-align:center}
+.cf-compose{display:flex;align-items:center;gap:8px;padding:8px 10px;border-top:1px solid var(--border-dim);background:var(--surface-2)}
+.cf-input{flex:1;background:var(--surface-3);border:1px solid var(--border-dim);border-radius:9px;padding:9px 12px;font-size:12px;color:var(--text);outline:none;font-family:inherit;min-width:0}
+.cf-input:focus{border-color:var(--orange)}
+.cf-input::placeholder{color:var(--text-dim)}
+.cf-send{flex-shrink:0;width:34px;height:34px;border-radius:9px;border:none;background:linear-gradient(135deg,var(--orange),#FF8A4C);color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--tr);box-shadow:0 3px 10px var(--orange-glow)}
+.cf-send:hover{transform:translateY(-1px)}
+.cf-send:active{transform:scale(0.94)}
+.msg.staff{align-self:flex-end;align-items:flex-end}
+.msg.staff .mb{background:rgba(91,168,255,0.14);border:1px solid rgba(91,168,255,0.25);border-radius:11px 11px 3px 11px}
 
 /* CHATBOT */
 .cb-lay{display:flex;flex-direction:column;gap:14px}
@@ -572,6 +613,13 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .cmd-panel-hd{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:14px}
 .cmd-panel-hd .dot{width:9px;height:9px;border-radius:50%;background:var(--green);animation:pulse-g 2s ease-in-out infinite}
 .cmd-panel-title{font-family:var(--font-l);font-size:18px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text)}
+.section-panel{background:linear-gradient(165deg,rgba(255,107,43,0.06),var(--surface) 60%);border:1.5px solid rgba(255,107,43,0.16);border-radius:18px;padding:16px 16px 18px;margin-bottom:22px;position:relative;overflow:hidden}
+.section-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),transparent)}
+.section-panel .pt-header{margin:0 0 14px}
+.section-panel .tiles-grid,.section-panel .pt-grid,.section-panel .shell-grid{margin-bottom:16px}
+.build-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:2px;background:linear-gradient(135deg,var(--orange),#FF8A4C);border:none;color:#fff;font-family:var(--font-l);font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px;border-radius:12px;cursor:pointer;transition:all var(--tr);box-shadow:0 6px 20px var(--orange-glow)}
+.build-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--orange-glow)}
+.build-cta:active{transform:scale(0.98)}
 
 
 /* ─── Power Tools (premium animated) ─── */
@@ -602,6 +650,10 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .pt-title-row{display:flex;align-items:center;gap:9px;margin-bottom:5px}
 .pt-title{font-family:var(--font-l);font-size:20px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--text);line-height:1}
 .pt-tag{font-size:8px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px;border-radius:20px;color:#fff;position:relative;overflow:hidden}
+.pt-tag-super{background:linear-gradient(90deg,#FF5500,#FF1265,#A98BFF,#FF5500);background-size:300% 100%;animation:gtSuperShift 3.2s linear infinite}
+@keyframes gtSuperShift{0%{background-position:0% 0}100%{background-position:300% 0}}
+.pt-super{--pt-ac:#FF1265;--pt-glow:rgba(255,18,101,0.28);position:relative;border:1px solid transparent;background-clip:padding-box}
+.pt-super::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(120deg,#FF5500,#FF1265,#A98BFF,#FF5500);background-size:300% 100%;animation:gtSuperShift 3.2s linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:0}
 .pt-tag::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.5),transparent);transform:translateX(-100%);animation:ptTagShine 3s ease-in-out infinite}
 @keyframes ptTagShine{0%,70%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
 .pt-desc{font-size:12px;color:var(--text-2);line-height:1.45}
@@ -707,12 +759,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   </div>
   <div class="hdr-center">
     
-    <div style="display:flex;align-items:center;gap:10px;justify-content:center;">
-  <div style="background:#fff;border-radius:8px;padding:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.3);">
-    <img src="http://static1.squarespace.com/static/6540846c9a348a20ed212bb7/t/66ed1dcdce9154004652740f/1726815693871/Oval+Head+Shot+Logo+1+%281%29.jpg" alt="NuYou Medical Aesthetics logo" style="width:40px;height:40px;object-fit:cover;border-radius:50%;" onerror="this.style.display='none'"/>
-  </div>
-  <div id="hdr-title" class="brand-main">NuYou Medical Aesthetics Command Hub</div>
-</div>
+    <div id="hdr-title" class="brand-main">NuYou Medical Aesthetics</div>
   </div>
   <div class="hdr-r">
   </div>
@@ -722,8 +769,8 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 <div id="view-home" class="view active">
 <div class="main">
 
+  <div class="pt-header"><div class="pt-badge"><span class="pt-spark" style="animation:none">&#x1F4CA;</span> Snapshot Overview</div><div class="pt-line"></div></div>
   <div class="cmd-panel">
-    <div class="cmd-panel-hd"><span class="cmd-panel-title">Snapshot Overview</span></div>
     <div class="period-toggle">
     <button class="period-btn" onclick="setPeriod('daily',this)">Day</button>
     <button class="period-btn active" onclick="setPeriod('weekly',this)">Week</button>
@@ -732,27 +779,33 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div class="kpi-grid">
     <div class="kpi-c tappable" style="--ac:var(--green)" onclick="openSheet('revenue')">
       <div class="kpi-label">Revenue</div>
-      <div class="kpi-val" id="kpi-revenue">$0</div>
+      <div class="kpi-viz"><svg width="100%" height="54" viewBox="0 0 120 54" preserveAspectRatio="none"><defs><linearGradient id="sgRev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1db87e" stop-opacity="0.45"/><stop offset="1" stop-color="#1db87e" stop-opacity="0"/></linearGradient></defs><path d="M0,44 L20,38 L40,41 L60,26 L80,20 L100,14 L120,6 L120,54 L0,54 Z" fill="url(#sgRev)"/><path d="M0,44 L20,38 L40,41 L60,26 L80,20 L100,14 L120,6" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="120" cy="6" r="3.5" fill="var(--green)"/></svg></div>
+      <div class="kpi-val-sm" id="kpi-revenue" style="color:var(--green)">$0</div>
     </div>
     <div class="kpi-c tappable" style="--ac:var(--blue)" onclick="openSheet('appointments')">
       <div class="kpi-label">Appointments</div>
-      <div class="kpi-val" id="kpi-appointments">0</div>
+      <div class="kpi-viz kpi-bars"><span style="height:34%"></span><span style="height:48%"></span><span style="height:42%"></span><span style="height:66%"></span><span style="height:88%;background:linear-gradient(180deg,#7EB8FF,var(--blue))"></span><span style="height:100%;background:linear-gradient(180deg,#7EB8FF,var(--blue))"></span><span style="height:58%"></span></div>
+      <div class="kpi-val-sm" id="kpi-appointments" style="color:var(--blue)">0</div>
     </div>
     <div class="kpi-c tappable" style="--ac:var(--gold)" onclick="openModule('reactivation','Reactivation')">
       <div class="kpi-label">Reactivations</div>
-      <div class="kpi-val" id="kpi-reactivations">0</div>
+      <div class="kpi-viz"><svg width="54" height="54" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--surface-3)" stroke-width="4.5"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--gold)" stroke-width="4.5" stroke-dasharray="62 100" stroke-dashoffset="25" stroke-linecap="round" opacity="0.9" id="ring-reactivations"/><text x="21" y="25" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)" font-family="inherit" id="kpi-reactivations">28</text></svg></div>
+      
     </div>
     <div class="kpi-c" style="--ac:var(--gold)">
       <div class="kpi-label">Capacity</div>
-      <div class="kpi-val" id="kpi-capacity">71%</div>
+      <div class="kpi-viz"><svg width="54" height="54" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--surface-3)" stroke-width="4.5"/><circle id="ring-capacity" cx="21" cy="21" r="15.9" fill="none" stroke="var(--gold)" stroke-width="4.5" stroke-dasharray="71 100" stroke-dashoffset="25" stroke-linecap="round"/><text x="21" y="25" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)" font-family="inherit" id="kpi-capacity">71%</text></svg></div>
+      
     </div>
     <div class="kpi-c tappable" style="--ac:var(--pink)" onclick="openModule('marketing','Marketing')">
       <div class="kpi-label">Marketing ROI</div>
-      <div class="kpi-val">6.7x</div>
+      <div class="kpi-viz kpi-roi"><div class="kpi-roi-t"><div class="kpi-roi-f" style="width:67%"></div><div class="kpi-roi-tick" style="left:10%"></div><div class="kpi-roi-tick" style="left:30%"></div><div class="kpi-roi-tick" style="left:50%"></div><div class="kpi-roi-tick" style="left:70%"></div><div class="kpi-roi-tick" style="left:90%"></div></div><div class="kpi-roi-scale"><span>1x</span><span>10x</span></div></div>
+      <div class="kpi-val-sm" style="color:var(--pink)">6.7x return</div>
     </div>
     <div class="kpi-c tappable" style="--ac:var(--blue)" onclick="openModule('consultiq','ConsultIQ')">
       <div class="kpi-label">Consult Conv. Rate</div>
-      <div class="kpi-val" id="kpi-consult">38%</div>
+      <div class="kpi-viz"><svg width="54" height="54" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--surface-3)" stroke-width="4.5"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--blue)" stroke-width="4.5" stroke-dasharray="38 100" stroke-dashoffset="25" stroke-linecap="round"/><text x="21" y="25" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)" font-family="inherit" id="kpi-consult">38%</text></svg></div>
+      
     </div>
     </div>
     <button class="dash-cta" onclick="openModule('dashboard','Full Dashboard')">&#x1F4CA; View Full Dashboard &nbsp;&rarr;</button>
@@ -840,6 +893,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
   </div>
 </div>
+  <div class="section-panel">
   <div class="pt-header"><div class="pt-badge"><span class="pt-spark" style="animation:none">🧰</span> Tools</div><div class="pt-line"></div></div>
   <div class="tiles-grid">
     <div class="tile" style="--t-ac:var(--orange);--t-glow:var(--orange-glow)" onclick="openModule('reactivation','Reactivation')">
@@ -878,8 +932,10 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="tile-name">Competitor</div>
     </div>
   </div>
+    <button class="build-cta" onclick="openModule('locked-buildyourown','Customize')">&#x1F6E0; Customize &nbsp;&rarr;</button>
+  </div>
 
-
+  <div class="section-panel">
   <div class="pt-header">
     <div class="pt-badge"><span class="pt-spark">&#x26A1;</span> Power Tools</div>
     <div class="pt-line"></div>
@@ -903,9 +959,20 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       </div>
       <div class="pt-arrow">&#x2197;</div>
     </div>
+    <div class="pt-card pt-super" onclick="openModule('websitebuilder','Website Builder')">
+      <div class="pt-glow-orb"></div>
+      <div class="pt-icon">&#x1F310;</div>
+      <div class="pt-body">
+        <div class="pt-title-row"><div class="pt-title">Website Builder</div><span class="pt-tag pt-tag-super">Super Tool</span></div>
+        <div class="pt-desc">Your whole website &mdash; designed, written &amp; published from inside the hub. No developer, no agency.</div>
+      </div>
+      <div class="pt-arrow">&#x2197;</div>
+    </div>
+  </div>
   </div>
 
-  <div class="pt-header" style="margin-top:10px"><div class="pt-badge"><span class="pt-spark" style="animation:none">🧩</span> Available Add-ons</div><div class="pt-line"></div></div>
+  <div class="section-panel">
+  <div class="pt-header"><div class="pt-badge"><span class="pt-spark" style="animation:none">🧩</span> Available Add-ons</div><div class="pt-line"></div></div>
   <div class="shell-grid">
     <div class="tile" style="--t-ac:var(--purple);--t-glow:rgba(169,139,255,0.25)" onclick="openModule('membership','Membership')">
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M9 3l3 6 3-6M12 9v12"/></svg></div>
@@ -919,6 +986,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8 7 15 15 15a2 2 0 0 0 2-2v-2.5a1 1 0 0 0-.8-1l-3-.6a1 1 0 0 0-1 .4l-1 1.3a12 12 0 0 1-5.5-5.5l1.3-1a1 1 0 0 0 .4-1l-.6-3a1 1 0 0 0-1-.8H6a2 2 0 0 0-2 2z"/></svg></div>
       <div class="tile-name">Front Desk AI</div>
     </div>
+  </div>
   </div>
 
   <!-- Collapsed alerts at bottom -->
@@ -1106,7 +1174,10 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
             <div class="msg user"><div class="ms">Maria Jimenez</div><div class="mb">1:30 please!</div></div>
             <div class="msg ai"><div class="ms"><span class="ai-lbl">&#x26A1; AI &middot; Med Spa Demo</span></div><div class="mb">&#x2705; <strong>Thursday 1:30 PM at Coral Gables</strong> is confirmed! Reminder goes out 24hrs before. See you then! &#x1F338;</div></div>
           </div>
-          <div class="cf">AI-managed &mdash; no staff needed</div>
+          <div class="cf-compose">
+            <input type="text" id="cb-input" class="cf-input" placeholder="Jump in as staff &mdash; type a message&hellip;" onkeydown="if(event.key==='Enter')sendStaffMsg()">
+            <button class="cf-send" onclick="sendStaffMsg()" aria-label="Send">&#x27A4;</button>
+          </div>
         </div>
       </div>
     </div>
@@ -2593,8 +2664,15 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <!-- Hero stat band -->
   <div style="background:linear-gradient(135deg,rgba(255,107,43,0.16) 0%,rgba(255,107,43,0.03) 60%,transparent 100%);border:1.5px solid rgba(255,107,43,0.3);border-radius:var(--radius-lg);padding:18px;margin-bottom:18px">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse-g 2s ease-in-out infinite"></div><div style="font-family:var(--font-l);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange-light)">Live &middot; All Locations</div></div>
-    <div style="font-family:var(--font-m);font-size:44px;font-weight:700;color:var(--text);letter-spacing:-0.03em;line-height:1.05">$75,360</div>
+    <div style="font-family:var(--font-m);font-size:34px;font-weight:700;color:var(--text);letter-spacing:-0.03em;line-height:1.05">$75,360</div>
     <div style="font-size:13px;color:var(--text-2);margin-top:4px">Revenue this month &middot; <span style="color:var(--green);font-weight:600">&#9650; 18% vs last month</span></div>
+    <div style="margin-top:12px">
+      <div style="position:relative;height:12px;border-radius:6px;background:rgba(255,255,255,0.06);overflow:hidden">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:84%;border-radius:6px;background:linear-gradient(90deg,rgba(255,107,43,0.55),var(--orange),var(--orange-light));box-shadow:0 0 12px var(--orange-glow)"></div>
+        <div style="position:absolute;left:75%;top:-2px;bottom:-2px;width:2px;background:rgba(255,255,255,0.35)"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px;font-family:var(--font-l);font-size:10px;letter-spacing:0.08em;color:var(--text-muted)"><span>84% OF $90K GOAL</span><span>LAST MONTH &#x2191;</span></div>
+    </div>
   </div>
 
   <!-- Revenue trend chart -->
@@ -2616,10 +2694,10 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 
   <!-- Quick metrics -->
   <div class="kpi-grid" style="margin-bottom:18px">
-    <div class="kpi-c" style="--ac:var(--green)"><div class="kpi-label">New Patients</div><div class="kpi-val" style="color:var(--green)">94</div></div>
-    <div class="kpi-c" style="--ac:var(--orange)"><div class="kpi-label">Avg Ticket</div><div class="kpi-val">$332</div></div>
-    <div class="kpi-c" style="--ac:var(--blue)"><div class="kpi-label">Rebook Rate</div><div class="kpi-val" style="color:var(--blue)">68%</div></div>
-    <div class="kpi-c" style="--ac:var(--amber)"><div class="kpi-label">No-Show Rate</div><div class="kpi-val" style="color:var(--amber)">4.8%</div></div>
+    <div class="kpi-c" style="--ac:var(--green)"><div class="kpi-label">New Patients</div><div class="kpi-viz"><svg width="100%" height="54" viewBox="0 0 120 54" preserveAspectRatio="none"><defs><linearGradient id="sgNP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1db87e" stop-opacity="0.4"/><stop offset="1" stop-color="#1db87e" stop-opacity="0"/></linearGradient></defs><path d="M0,46 L24,40 L48,34 L72,30 L96,18 L120,8 L120,54 L0,54 Z" fill="url(#sgNP)"/><path d="M0,46 L24,40 L48,34 L72,30 L96,18 L120,8" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"/><circle cx="120" cy="8" r="3.5" fill="var(--green)"/></svg></div><div class="kpi-val-sm" style="color:var(--green)">94 this month</div></div>
+    <div class="kpi-c" style="--ac:var(--orange)"><div class="kpi-label">Avg Ticket</div><div class="kpi-viz kpi-bars"><span style="height:52%;background:rgba(255,107,43,0.28)"></span><span style="height:60%;background:rgba(255,107,43,0.28)"></span><span style="height:56%;background:rgba(255,107,43,0.28)"></span><span style="height:74%;background:rgba(255,107,43,0.28)"></span><span style="height:86%;background:linear-gradient(180deg,var(--orange-light),var(--orange))"></span><span style="height:100%;background:linear-gradient(180deg,var(--orange-light),var(--orange))"></span></div><div class="kpi-val-sm" style="color:var(--orange-light)">$332 &middot; climbing</div></div>
+    <div class="kpi-c" style="--ac:var(--blue)"><div class="kpi-label">Rebook Rate</div><div class="kpi-viz"><svg width="54" height="54" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--surface-3)" stroke-width="4.5"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--blue)" stroke-width="4.5" stroke-dasharray="68 100" stroke-dashoffset="25" stroke-linecap="round"/><text x="21" y="25" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)" font-family="inherit">68%</text></svg></div><div class="kpi-val-sm" style="color:var(--text-muted)">Patients returning</div></div>
+    <div class="kpi-c" style="--ac:var(--amber)"><div class="kpi-label">No-Show Rate</div><div class="kpi-viz"><svg width="54" height="54" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--surface-3)" stroke-width="4.5"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--amber)" stroke-width="4.5" stroke-dasharray="4.8 100" stroke-dashoffset="25" stroke-linecap="round"/><text x="21" y="25" text-anchor="middle" font-size="10" font-weight="700" fill="var(--text)" font-family="inherit">4.8%</text></svg></div><div class="kpi-val-sm" style="color:var(--text-muted)">Kept low by reminders</div></div>
   </div>
 
   <!-- Revenue by service (horizontal bars) -->
@@ -2671,12 +2749,108 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <!-- Location comparison -->
   <div class="sec-hd" style="margin-bottom:10px"><div class="sec-title">Location Performance</div></div>
   <div style="background:linear-gradient(165deg,var(--surface-2),var(--surface));border:1.5px solid var(--border-dim);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:18px">
-    <div class="dash-loc"><div><div class="dash-loc-n">Midtown</div><div class="dash-loc-s">94 appts &middot; 76% capacity</div></div><div class="dash-loc-v" style="color:var(--green)">$24.1k</div></div>
-    <div class="dash-loc"><div><div class="dash-loc-n">Coral Gables</div><div class="dash-loc-s">71 appts &middot; 72% capacity</div></div><div class="dash-loc-v" style="color:var(--green)">$19.8k</div></div>
-    <div class="dash-loc"><div><div class="dash-loc-n">Doral</div><div class="dash-loc-s">38 appts &middot; 64% capacity</div></div><div class="dash-loc-v">$16.9k</div></div>
-    <div class="dash-loc" style="border-bottom:none"><div><div class="dash-loc-n">Kendall</div><div class="dash-loc-s">24 appts &middot; 58% capacity</div></div><div class="dash-loc-v" style="color:var(--amber)">$14.5k</div></div>
+    <div class="dash-loc"><div style="flex:1;min-width:0"><div class="dash-loc-n">Midtown</div><div class="dash-loc-s">94 appts &middot; 76% capacity</div><div class="loc-bar"><div style="width:100%;background:linear-gradient(90deg,var(--green),#5ee0aa)"></div></div></div><div class="dash-loc-v" style="color:var(--green)">$24.1k</div></div>
+    <div class="dash-loc"><div style="flex:1;min-width:0"><div class="dash-loc-n">Coral Gables</div><div class="dash-loc-s">71 appts &middot; 72% capacity</div><div class="loc-bar"><div style="width:82%;background:linear-gradient(90deg,var(--green),#5ee0aa)"></div></div></div><div class="dash-loc-v" style="color:var(--green)">$19.8k</div></div>
+    <div class="dash-loc"><div style="flex:1;min-width:0"><div class="dash-loc-n">Doral</div><div class="dash-loc-s">38 appts &middot; 64% capacity</div><div class="loc-bar"><div style="width:70%;background:linear-gradient(90deg,var(--orange),var(--orange-light))"></div></div></div><div class="dash-loc-v">$16.9k</div></div>
+    <div class="dash-loc" style="border-bottom:none"><div style="flex:1;min-width:0"><div class="dash-loc-n">Kendall</div><div class="dash-loc-s">24 appts &middot; 58% capacity</div><div class="loc-bar"><div style="width:60%;background:linear-gradient(90deg,var(--amber),#ffd58a)"></div></div></div><div class="dash-loc-v" style="color:var(--amber)">$14.5k</div></div>
   </div>
 
+</div>
+</div>
+
+
+<!-- ─── Website Builder (Super Tool) ─── -->
+<div id="view-websitebuilder" class="view" style="display:none">
+<style>
+#view-websitebuilder .wb-grid{display:grid;grid-template-columns:1fr;gap:14px}
+#view-websitebuilder .wb-card{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius);padding:16px}
+#view-websitebuilder .wb-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+#view-websitebuilder .wb-title{font-family:var(--font-d);font-size:14px;color:var(--text)}
+#view-websitebuilder .wb-sub{font-size:11px;color:var(--text-muted)}
+#view-websitebuilder .wb-scores{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+#view-websitebuilder .wb-score{background:rgba(255,255,255,0.02);border:1px solid var(--border-dim);border-radius:10px;padding:10px;text-align:center}
+#view-websitebuilder .wb-score b{display:block;font-size:22px;font-family:var(--font-d)}
+#view-websitebuilder .wb-score span{font-size:10px;color:var(--text-muted);letter-spacing:.4px;text-transform:uppercase}
+#view-websitebuilder .wb-flag{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--text-dim);padding:7px 0;border-top:1px solid var(--border-dim)}
+#view-websitebuilder .wb-flag:first-of-type{border-top:none}
+#view-websitebuilder .wb-flag .dot{width:7px;height:7px;border-radius:50%;margin-top:4px;flex:none}
+#view-websitebuilder .wb-input{width:100%;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:13px;padding:12px;min-height:64px;resize:none;font-family:var(--font-b)}
+#view-websitebuilder .wb-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+#view-websitebuilder .wb-chip{font-size:11.5px;padding:7px 12px;border-radius:999px;border:1px solid var(--border);color:var(--text-dim);cursor:pointer;background:rgba(255,255,255,0.02);transition:all .18s}
+#view-websitebuilder .wb-chip:hover{border-color:var(--orange);color:var(--text)}
+#view-websitebuilder .wb-chip.active{background:linear-gradient(90deg,var(--orange),var(--pink));color:#fff;border-color:transparent}
+#view-websitebuilder .wb-ba{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+#view-websitebuilder .wb-mock{border:1px solid var(--border-dim);border-radius:12px;overflow:hidden;background:#0d0d0f}
+#view-websitebuilder .wb-mock-label{font-size:10px;letter-spacing:.6px;text-transform:uppercase;padding:6px 10px;color:var(--text-muted);border-bottom:1px solid var(--border-dim);display:flex;justify-content:space-between}
+#view-websitebuilder .wb-mock-body{padding:10px;min-height:150px}
+#view-websitebuilder .m-nav{height:8px;border-radius:4px;background:rgba(255,255,255,0.08);margin-bottom:8px}
+#view-websitebuilder .m-hero-old{height:44px;border-radius:6px;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--text-muted)}
+#view-websitebuilder .m-hero-new{height:44px;border-radius:6px;background:linear-gradient(120deg,rgba(255,107,43,0.55),rgba(221,42,123,0.5));display:flex;align-items:center;justify-content:center;font-size:9.5px;color:#fff;font-family:var(--font-d)}
+#view-websitebuilder .m-row{display:flex;gap:6px;margin-top:8px}
+#view-websitebuilder .m-block{flex:1;height:26px;border-radius:5px;background:rgba(255,255,255,0.05)}
+#view-websitebuilder .m-block.hi{background:rgba(255,107,43,0.22);border:1px solid rgba(255,107,43,0.4)}
+#view-websitebuilder .m-cta-old{height:14px;width:52%;border-radius:4px;background:rgba(255,255,255,0.09);margin-top:8px}
+#view-websitebuilder .m-cta-new{height:14px;width:52%;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--pink));margin-top:8px}
+#view-websitebuilder .wb-note{font-size:11px;color:var(--text-muted);margin-top:8px}
+#view-websitebuilder .wb-pubrow{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
+#view-websitebuilder .wb-pub{background:linear-gradient(90deg,var(--orange),var(--pink));border:none;color:#fff;font-family:var(--font-d);font-size:13px;padding:11px 22px;border-radius:12px;cursor:pointer}
+#view-websitebuilder .wb-pub[disabled]{opacity:.45;cursor:default}
+#view-websitebuilder .wb-status{font-size:12px;color:var(--text-dim)}
+#view-websitebuilder .wb-status.live{color:var(--green)}
+#view-websitebuilder .wb-vh{margin-top:14px;border-top:1px solid var(--border-dim);padding-top:10px;display:none}
+#view-websitebuilder .wb-v{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-dim);padding:6px 0}
+#view-websitebuilder .wb-v b{color:var(--text);font-weight:600}
+#view-websitebuilder .wb-roll{font-size:11px;color:var(--blue);cursor:pointer;background:none;border:1px solid var(--border);border-radius:8px;padding:4px 10px}
+@media(max-width:560px){#view-websitebuilder .wb-scores{grid-template-columns:repeat(2,1fr)}#view-websitebuilder .wb-ba{grid-template-columns:1fr}}
+</style>
+<div class="main">
+  <div class="wb-grid">
+
+    <div class="wb-card">
+      <div class="wb-hd">
+        <div><div class="wb-title">Site Audit &mdash; glowmedspa.com</div><div class="wb-sub">Scanned automatically every night. Last scan: today, 4:02 AM</div></div>
+      </div>
+      <div class="wb-scores">
+        <div class="wb-score"><b style="color:var(--amber)">61</b><span>Speed</span></div>
+        <div class="wb-score"><b style="color:var(--amber)">74</b><span>Mobile</span></div>
+        <div class="wb-score"><b style="color:var(--red)">58</b><span>SEO</span></div>
+        <div class="wb-score"><b style="color:var(--red)">45</b><span>Booking Path</span></div>
+      </div>
+      <div style="margin-top:12px">
+        <div class="wb-flag"><div class="dot" style="background:var(--red)"></div>Booking is 4 taps deep &mdash; every extra tap costs an estimated 12% of mobile visitors.</div>
+        <div class="wb-flag"><div class="dot" style="background:var(--red)"></div>No lip filler service page &mdash; it&rsquo;s the #2 searched treatment in your area and you don&rsquo;t rank for it.</div>
+        <div class="wb-flag"><div class="dot" style="background:var(--amber)"></div>Homepage loads in 3.9s on mobile. Under 2.5s is the standard your competitors hit.</div>
+        <div class="wb-flag"><div class="dot" style="background:var(--amber)"></div>6 pages missing meta descriptions &mdash; Google is writing your search listings for you.</div>
+      </div>
+    </div>
+
+    <div class="wb-card">
+      <div class="wb-hd"><div><div class="wb-title">Describe the change</div><div class="wb-sub">Plain English in &mdash; finished pages out. In your brand voice, on your brand kit.</div></div></div>
+      <textarea class="wb-input" id="wb-input" placeholder="e.g. Add a page for our new lip filler service with before/afters and pricing tiers&hellip;" oninput="wbTyped()"></textarea>
+      <div class="wb-chips">
+        <div class="wb-chip" id="wbc-lip" onclick="wbSelect('lip',this)">&#x1F484; Add a lip filler page</div>
+        <div class="wb-chip" id="wbc-promo" onclick="wbSelect('promo',this)">&#x2600;&#xFE0F; Summer promo landing page</div>
+        <div class="wb-chip" id="wbc-home" onclick="wbSelect('home',this)">&#x1F3E0; Refresh the homepage</div>
+      </div>
+      <div id="wb-ba-wrap" style="display:none">
+        <div class="wb-ba">
+          <div class="wb-mock"><div class="wb-mock-label"><span>Current</span><span id="wb-old-tag"></span></div><div class="wb-mock-body" id="wb-old"></div></div>
+          <div class="wb-mock" style="border-color:rgba(255,107,43,0.45)"><div class="wb-mock-label"><span style="color:var(--orange)">Generated</span><span>draft v1 &middot; 34 sec</span></div><div class="wb-mock-body" id="wb-new"></div></div>
+        </div>
+        <div class="wb-note" id="wb-note"></div>
+        <div class="wb-pubrow">
+          <button class="wb-pub" id="wb-pub" onclick="wbPublish()">Publish</button>
+          <div class="wb-status" id="wb-status">Draft &mdash; nothing goes live until you approve it.</div>
+        </div>
+        <div class="wb-vh" id="wb-vh">
+          <div class="wb-v"><span><b>v15</b> &mdash; <span id="wb-v15-label"></span></span><span style="color:var(--green)">Live now</span></div>
+          <div class="wb-v"><span><b>v14</b> &mdash; Homepage hero + reviews section</span><button class="wb-roll" onclick="wbRollback()">Roll back</button></div>
+          <div class="wb-v"><span><b>v13</b> &mdash; Spring event landing page</span><span>Jun 12</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 </div>
 
@@ -2697,7 +2871,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 
 var periodData = {
   daily: {
-    revenue:'$2,840', appointments:'12', reactivations:'4', capacity:'68%',
+    revenue:'$2,840', appointments:'12', reactivations:'4', reactPct:30, capacity:'68%',
     revDelta:'vs yesterday', apptDelta:'vs yesterday', reactDelta:'Today',
     label:'Today\'s Overview',
     svc:['$620','$480','$390','$320','$240','$210'],
@@ -2707,7 +2881,7 @@ var periodData = {
     shPeriod:'Today — all locations'
   },
   weekly: {
-    revenue:'$18,420', appointments:'74', reactivations:'28', capacity:'71%',
+    revenue:'$18,420', appointments:'74', reactivations:'28', reactPct:62, capacity:'71%',
     revDelta:'vs last week', apptDelta:'vs last week', reactDelta:'This week',
     label:'Weekly Overview',
     svc:['$4,560','$3,670','$2,980','$2,460','$1,800','$1,620'],
@@ -2717,7 +2891,7 @@ var periodData = {
     shPeriod:'This week — all locations'
   },
   monthly: {
-    revenue:'$75,360', appointments:'227', reactivations:'138', capacity:'74%',
+    revenue:'$75,360', appointments:'227', reactivations:'138', reactPct:88, capacity:'74%',
     revDelta:'All modules', apptDelta:'This month', reactDelta:'This month',
     label:'Monthly Overview',
     svc:['$18,240','$14,680','$11,920','$9,840','$7,200','$6,480'],
@@ -2737,6 +2911,9 @@ function setPeriod(p, btn) {
   animateVal('kpi-revenue', d.revenue);
   animateVal('kpi-appointments', d.appointments);
   var capEl=document.getElementById('kpi-capacity'); if(capEl && d.capacity) capEl.textContent=d.capacity;
+  var capRing=document.getElementById('ring-capacity'); if(capRing && d.capacity) capRing.setAttribute('stroke-dasharray',parseInt(d.capacity)+' 100');
+  var reEl=document.getElementById('kpi-reactivations'); if(reEl) reEl.textContent=d.reactivations;
+  var reRing=document.getElementById('ring-reactivations'); if(reRing && d.reactPct) reRing.setAttribute('stroke-dasharray',d.reactPct+' 100');
   var rd=document.getElementById('kpi-revenue-delta'); if(rd) rd.innerHTML='&#8593; '+d.revDelta;
   var ad=document.getElementById('kpi-appointments-delta'); if(ad) ad.innerHTML='&#8593; '+d.apptDelta;
   var rcd=document.getElementById('kpi-reactivations-delta'); if(rcd) rcd.innerHTML='&#8593; '+d.reactDelta;
@@ -2847,7 +3024,8 @@ var lockedModules={
   'locked-reviews':{icon:'&#x2B50;',name:'Review Engine',desc:'Post-visit AI sequences that route happy clients to Google reviews and privately flag unhappy ones before they post publicly. Fully automated across all 4 locations.'},
   'locked-membership':{icon:'&#x1F48E;',name:'Membership Automation',desc:'Upgrade nudges when eligible, renewal reminders 7 days before expiry, rollover credit alerts, and churn prevention for members who stop booking.'},
   'locked-postvisit':{icon:'&#x1F4CB;',name:'Post-Visit Follow-Up',desc:'24-hour check-in after every service, 90-day rebooking trigger, and personalized product recommendations based on what was done.'},
-  'locked-frontdesk':{icon:'&#x1F4DE;',name:'Front Desk AI',desc:'Missed call response in 60 seconds, after-hours coverage across all 4 locations, FAQ handling for hours, pricing, and directions — 24/7.'}
+  'locked-frontdesk':{icon:'&#x1F4DE;',name:'Front Desk AI',desc:'Missed call response in 60 seconds, after-hours coverage across all 4 locations, FAQ handling for hours, pricing, and directions — 24/7.'},
+  'locked-buildyourown':{icon:'&#x1F6E0;',name:'Customize',desc:'Every tool on this dashboard adapts to your practice. Tell us what you need and we\'ll build a custom module — priorities, workflows, and data specific to your locations.'}
 };
 function openModule(id,name){
   document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active');v.style.display='none';});
@@ -2863,10 +3041,64 @@ function openModule(id,name){
     if(id==='social' && typeof smRenderPreview==='function')smRenderPreview();
   }
   document.getElementById('back-btn').classList.add('show');
-  document.getElementById('hdr-title').textContent=name||'Demonstration Command Center';
+  document.getElementById('hdr-title').textContent=name||'Business Hub';
   var ml=document.getElementById('mod-label');
   if(ml){ml.textContent=name||'';ml.style.display=name?'block':'none';}
   window.scrollTo(0,0);
+}
+
+
+/* ─── Website Builder (Super Tool) ─── */
+var wbMocks={
+ lip:{old:'<div class="m-nav"></div><div class="m-hero-old">glowmedspa.com/services</div><div class="m-row"><div class="m-block"></div><div class="m-block"></div></div><div class="m-row"><div class="m-block"></div><div class="m-block"></div></div><div style="font-size:9px;color:var(--text-muted);margin-top:8px">No lip filler page exists</div>',
+     nw:'<div class="m-nav"></div><div class="m-hero-new">Lip Filler at Glow &mdash; Natural, Never Overdone</div><div class="m-row"><div class="m-block hi"></div><div class="m-block hi"></div></div><div class="m-row"><div class="m-block"></div><div class="m-block hi"></div><div class="m-block"></div></div><div class="m-cta-new"></div>',
+     note:'New page: hero, before/after gallery, 3 pricing tiers, FAQ, booking CTA wired to your calendar. Copy written in your brand voice from your brand kit.', v:'Lip filler service page'},
+ promo:{old:'<div class="m-nav"></div><div class="m-hero-old">No promo page &mdash; traffic lands on homepage</div><div class="m-row"><div class="m-block"></div><div class="m-block"></div></div><div class="m-cta-old"></div>',
+     nw:'<div class="m-nav"></div><div class="m-hero-new">Summer Glow Event &mdash; This Month Only</div><div class="m-row"><div class="m-block hi"></div><div class="m-block hi"></div><div class="m-block hi"></div></div><div class="m-cta-new"></div><div style="font-size:9px;color:var(--text-muted);margin-top:6px">Countdown &middot; limited spots &middot; one-tap book</div>',
+     note:'Dedicated landing page for the Summer Glow promo: offer, countdown, social proof, single booking CTA. Your ad and email traffic finally has somewhere to land.', v:'Summer promo landing page'},
+ home:{old:'<div class="m-nav"></div><div class="m-hero-old">Welcome to Glow Med Spa&hellip;</div><div class="m-row"><div class="m-block"></div><div class="m-block"></div><div class="m-block"></div></div><div class="m-cta-old"></div>',
+     nw:'<div class="m-nav"></div><div class="m-hero-new">Tampa&rsquo;s Med Spa For Results You Can See</div><div class="m-row"><div class="m-block hi"></div><div class="m-block hi"></div></div><div class="m-row"><div class="m-block hi"></div><div class="m-block"></div></div><div class="m-cta-new"></div>',
+     note:'Homepage refresh: benefit-led hero, services reordered by what actually books, reviews pulled in automatically, booking one tap from everywhere.', v:'Homepage refresh'}
+};
+var wbCur=null;
+function wbSelect(k,el){
+  wbCur=k;
+  document.querySelectorAll('#view-websitebuilder .wb-chip').forEach(function(c){c.classList.remove('active')});
+  el.classList.add('active');
+  var m=wbMocks[k];
+  document.getElementById('wb-old').innerHTML=m.old;
+  document.getElementById('wb-new').innerHTML=m.nw;
+  document.getElementById('wb-note').textContent=m.note;
+  document.getElementById('wb-old-tag').textContent='live today';
+  document.getElementById('wb-ba-wrap').style.display='block';
+  var s=document.getElementById('wb-status');s.textContent='Draft \u2014 nothing goes live until you approve it.';s.classList.remove('live');
+  var b=document.getElementById('wb-pub');b.disabled=false;b.textContent='Publish';
+  document.getElementById('wb-vh').style.display='none';
+}
+function wbTyped(){
+  var v=document.getElementById('wb-input').value;
+  if(v.length===1&&!wbCur){/* nudge to chips on first keypress */}
+}
+function wbPublish(){
+  if(!wbCur)return;
+  var b=document.getElementById('wb-pub'),s=document.getElementById('wb-status');
+  b.disabled=true;b.textContent='Publishing\u2026';
+  s.textContent='Staging \u2014 building preview, checking links, mobile pass\u2026';s.classList.remove('live');
+  setTimeout(function(){
+    s.textContent='Staged \u2713 \u2014 final checks\u2026';
+  },900);
+  setTimeout(function(){
+    b.textContent='Published';
+    s.textContent='Live \u2713 \u2014 published to glowmedspa.com. Full version history below \u2014 one tap to roll back.';
+    s.classList.add('live');
+    document.getElementById('wb-v15-label').textContent=wbMocks[wbCur].v;
+    document.getElementById('wb-vh').style.display='block';
+  },2100);
+}
+function wbRollback(){
+  var s=document.getElementById('wb-status');
+  s.textContent='Rolled back to v14 \u2713 \u2014 the previous version is live again. Nothing is ever lost.';
+  s.classList.add('live');
 }
 
 /* ─── Social Media Manager ─── */
@@ -2938,7 +3170,7 @@ function goHome(){
   var hv=document.getElementById('view-home');hv.style.display='block';hv.classList.add('active');
   reanimCards('view-home');
   document.getElementById('back-btn').classList.remove('show');
-  document.getElementById('hdr-title').textContent='Demonstration Command Center';
+  document.getElementById('hdr-title').textContent='Business Hub';
   var ml=document.getElementById('mod-label');if(ml)ml.style.display='none';
   window.scrollTo(0,0);
 }
@@ -2993,18 +3225,53 @@ var cbConvos=[
     {f:'user',s:'James Torres',t:'Thank you.'}
   ]}
 ];
+var cbCurrent=0;
 function selConvo(el,idx){
+  cbCurrent=idx;
   document.querySelectorAll('.ti').forEach(function(t){t.classList.remove('active')});el.classList.add('active');
   var c=cbConvos[idx];
   document.getElementById('cb-ch').innerHTML='<div><div class="cn">'+c.name+'</div><div class="cm">'+c.meta+'</div></div>'+c.badge;
   var m=document.getElementById('cb-msgs');m.innerHTML='';
   c.msgs.forEach(function(msg,i){
     var d=document.createElement('div');d.className='msg '+msg.f;
-    var s=msg.f==='ai'?'<span class="ai-lbl">&#x26A1; AI &middot; Med Spa Demo</span>':(msg.s||'');
+    var s=msg.f==='ai'?'<span class="ai-lbl">&#x26A1; AI &middot; Med Spa Demo</span>':(msg.f==='staff'?'<span style="color:var(--blue)">&#x1F464; You &middot; Staff</span>':(msg.s||''));
     d.innerHTML='<div class="ms">'+s+'</div><div class="mb">'+msg.t+'</div>';
     d.style.animation='fadeIn 0.18s ease '+(i*0.07)+'s both';m.appendChild(d);
   });
   m.scrollTop=m.scrollHeight;
+}
+var cbReplies=[
+  ['Perfect, thank you so much! See you Thursday &#x1F60A;','Great, appreciate the personal touch!','Awesome, thanks for confirming!'],
+  ['Oh perfect! Let&rsquo;s do Friday afternoon then.','Great &mdash; can I book both areas for this weekend?','Thanks! What times do you have Saturday?'],
+  ['Thanks for following up! Looking forward to Saturday.','Perfect, 11am works great for me.','Appreciate it &mdash; see you then!'],
+  ['Thanks! Should I fast before the drip?','Perfect. Anything I need to do to prep?','Great &mdash; see you Saturday morning!'],
+  ['Thank you, I really appreciate someone reaching out personally.','That means a lot &mdash; when can I come in?','Thank you. What should I bring to the appointment?']
+];
+function sendStaffMsg(){
+  var inp=document.getElementById('cb-input');
+  var txt=inp.value.trim();
+  if(!txt)return;
+  inp.value='';
+  var m=document.getElementById('cb-msgs');
+  var esc=txt.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  var d=document.createElement('div');d.className='msg staff';
+  d.innerHTML='<div class="ms"><span style="color:var(--blue)">&#x1F464; You &middot; Staff</span></div><div class="mb">'+esc+'</div>';
+  d.style.animation='fadeIn 0.18s ease both';m.appendChild(d);
+  m.scrollTop=m.scrollHeight;
+  cbConvos[cbCurrent].msgs.push({f:'staff',t:esc});
+  // client typing then reply
+  var typ=document.createElement('div');typ.className='msg user';
+  typ.innerHTML='<div class="ms">'+(cbConvos[cbCurrent].msgs[0].s||cbConvos[cbCurrent].name)+'</div><div class="mb" style="color:var(--text-dim)">typing&hellip;</div>';
+  setTimeout(function(){
+    m.appendChild(typ);m.scrollTop=m.scrollHeight;
+    setTimeout(function(){
+      var pool=cbReplies[cbCurrent]||cbReplies[0];
+      var reply=pool[Math.floor(Math.random()*pool.length)];
+      typ.innerHTML='<div class="ms">'+(cbConvos[cbCurrent].msgs[0].s||cbConvos[cbCurrent].name)+'</div><div class="mb">'+reply+'</div>';
+      cbConvos[cbCurrent].msgs.push({f:'user',s:cbConvos[cbCurrent].msgs[0].s,t:reply});
+      m.scrollTop=m.scrollHeight;
+    },1400);
+  },600);
 }
 var demoPlayed=false;
 var demoMsgs=[
@@ -3054,6 +3321,19 @@ function enterApp(){
   s.classList.add('out');
   setTimeout(function(){s.style.display='none'},500);
 }
+
+/* ── Deep-link support: ?open=<moduleId> auto-opens that module on load.
+     Used by other Good Trouble demo pages (e.g. admin-pro-plus) to pull real,
+     already-built modules into an iframe instead of rebuilding them. ── */
+(function(){
+  var p=new URLSearchParams(window.location.search);
+  var open=p.get('open');
+  if(!open)return;
+  var names={marketing:'Marketing',inventory:'Inventory',competitor:'Competitor Analysis',membership:'Membership',social:'Social Media Manager',frontdesk:'Front Desk AI',reactivation:'Reactivation',consultiq:'ConsultIQ',reviews:'Review Engine',radar:'Trends & Tech',campaign:'Campaign Launcher',postvisit:'Post-Visit',chatbot:'AI Chat Agent',dashboard:'Full Dashboard'};
+  window.addEventListener('DOMContentLoaded',function(){
+    if(typeof openModule==='function') openModule(open,names[open]||'');
+  });
+})();
 </script>
 
 
@@ -3082,7 +3362,7 @@ function enterApp(){
 
 
 <!-- ═══ Claim Free Module — CTA + modal (Good Trouble) ═══ -->
-<form name="claim-free-module" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<form hidden method='POST' name='claim-free-module'><input type='hidden' name='form-name' value='claim-free-module' />
   <input type="text" name="name" />
   <input type="text" name="business" />
   <input type="email" name="email" />
