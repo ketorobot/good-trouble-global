@@ -29,69 +29,64 @@
 <meta name="twitter:image" content="https://goodtroubleglobal.com/og-image.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@600&family=Outfit:wght@300;400;500;600&family=Outfit+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#0A1220">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 :root{
-  --bg:#0A1220;--surface:#101B30;--surface-2:#1E1B25;--surface-3:#2A2533;
-  --border:rgba(212,198,161,0.22);--border-dim:rgba(245,238,240,0.09);
-  --orange:#D4C6A1;--orange-light:#E4D9BC;--orange-glow:rgba(212,198,161,0.28);
+  --bg:#0A1220;--surface:#0E182B;--surface-2:#132039;--surface-3:#1B2B49;
+  --border:rgba(180,154,98,0.24);--border-dim:rgba(140,160,188,0.14);
+  --orange:#D4C6A1;--orange-light:#E6DCC0;--orange-glow:rgba(212,198,161,0.26);
   --pink:#B49A62;--pink-light:#D4C6A1;--pink-glow:rgba(180,154,98,0.22);
-  --gold:#C6AB76;--green:#22D58A;--amber:#C6AB76;--blue:#5BA8FF;--red:#B47862;--purple:#8CA0BC;
-  --text:#FBF7F4;--text-2:#D8CEC8;--text-muted:#9E9088;--text-dim:#5A4E48;
-  --radius:12px;--radius-lg:16px;
-  --font-d:"Playfair Display",Georgia,serif;
-  --font-b:"Outfit",sans-serif;
-  --font-l:"Outfit Condensed",sans-serif;
-  --font-m:"JetBrains Mono",monospace;
+  --gold:#B49A62;--green:#3DBE8B;--amber:#D4C6A1;--blue:#6FA8E8;--red:#D16A5C;--purple:#8CA0BC;
+  --text:#EFF2F7;--text-2:#C9D2E0;--text-muted:#8CA0BC;--text-dim:#5D7090;
+  --radius:10px;--radius-lg:14px;
+  --font-d:"Cormorant Garamond",Georgia,serif;
+  --font-b:"Lato",system-ui,sans-serif;
+  --font-l:"Lato",system-ui,sans-serif;
+  --font-m:"Lato",system-ui,sans-serif;
   --tr:0.22s cubic-bezier(.2,.7,.3,1);
 }
-html{background:var(--bg)}html,body{height:100%;color:var(--text);font-family:var(--font-b);font-size:15px;line-height:1.5;overflow-x:hidden;-webkit-text-size-adjust:100%}
+html{background:var(--bg)}html,body{height:100%;color:var(--text);font-family:var(--font-b);font-variant-numeric:tabular-nums;font-size:15px;line-height:1.5;overflow-x:hidden;-webkit-text-size-adjust:100%}
 body{position:relative;background:transparent}
 body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
-  radial-gradient(ellipse 90% 60% at 85% -10%,rgba(212,198,161,0.10),transparent 60%),
-  radial-gradient(ellipse 70% 55% at 0% 105%,rgba(212,198,161,0.06),transparent 60%),
-  radial-gradient(ellipse 55% 45% at 100% 70%,rgba(122,92,255,0.06),transparent 65%),
-  linear-gradient(160deg,#0D0A11 0%,#0A1220 45%,#0C080A 100%)}
-body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='194' viewBox='0 0 112 194'%3E%3Cg fill='none' stroke='%23FF6B2B' stroke-opacity='0.14' stroke-width='1'%3E%3Cpath d='M56 1 L110 32 L110 96 L56 129 L2 96 L2 32 Z'/%3E%3Cpath d='M0 98 L56 129 L56 193'/%3E%3Cpath d='M112 98 L56 129'/%3E%3C/g%3E%3C/svg%3E"),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='336' height='582' viewBox='0 0 336 582'%3E%3Cg fill='none' stroke-width='1.5'%3E%3Cpath d='M168 3 L330 96 L330 288 L168 387 L6 288 L6 96 Z' stroke='%23FF6B2B' stroke-opacity='0.22'/%3E%3Cpath d='M84 340 L168 387 L168 485' stroke='%237A5CFF' stroke-opacity='0.14'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:112px 194px,336px 582px;
-  background-position:0 0,40px 120px;
-  mask-image:radial-gradient(ellipse 120% 90% at 50% 0%,black 35%,rgba(0,0,0,0.55) 70%,rgba(0,0,0,0.3) 100%);
-  -webkit-mask-image:radial-gradient(ellipse 120% 90% at 50% 0%,black 35%,rgba(0,0,0,0.55) 70%,rgba(0,0,0,0.3) 100%)}
+  radial-gradient(ellipse 80% 50% at 85% -10%,rgba(180,154,98,0.13),transparent 60%),
+  radial-gradient(ellipse 60% 45% at 0% 105%,rgba(140,160,188,0.07),transparent 60%),
+  linear-gradient(170deg,#0C1626 0%,#0A1220 50%,#080E1A 100%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E")}
 button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .view{display:none}
 .view.active{display:block;animation:fadeIn 0.2s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 @keyframes cardIn{to{opacity:1;transform:none}}
-@keyframes pulse-g{0%,100%{box-shadow:0 0 0 0 rgba(29,184,126,0.4)}50%{box-shadow:0 0 0 4px rgba(29,184,126,0)}}
+@keyframes pulse-g{0%,100%{box-shadow:0 0 0 0 rgba(61,190,139,0.4)}50%{box-shadow:0 0 0 4px rgba(61,190,139,0)}}
 @keyframes slideIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:none}}
 @keyframes popIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:none}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
 /* HDR */
-.hdr{position:sticky;top:0;z-index:200;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;padding:env(safe-area-inset-top) 16px 0;height:calc(64px + env(safe-area-inset-top));background:linear-gradient(180deg,#17111C 0%,#120D14 55%,rgba(16,10,12,0.96) 100%);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,198,161,0.22);position:sticky;overflow:hidden;box-shadow:0 10px 34px rgba(0,0,0,0.55),0 1px 0 rgba(255,255,255,0.03) inset}
-.hdr::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 130% at 50% -30%,rgba(212,198,161,0.16),transparent 65%),radial-gradient(ellipse 30% 100% at 8% 110%,rgba(122,92,255,0.10),transparent 70%),radial-gradient(ellipse 30% 100% at 92% 110%,rgba(29,184,126,0.07),transparent 70%)}
-.hdr::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(212,198,161,0.05) 20%,var(--orange) 50%,rgba(212,198,161,0.05) 80%,transparent);background-size:220% 100%;animation:hdr-line 6s ease-in-out infinite;opacity:0.9}
-@keyframes hdr-line{0%{background-position:120% 0}50%{background-position:-20% 0}100%{background-position:120% 0}}
-.hdr-center{position:relative}
-.hdr-center::before,.hdr-center::after{content:"";position:absolute;top:50%;width:34px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,198,161,0.55));transform:translateY(-50%)}
-.hdr-center::before{right:calc(100% + 12px)}
-.hdr-center::after{left:calc(100% + 12px);background:linear-gradient(90deg,rgba(212,198,161,0.55),transparent)}
-.hdr:has(.back-btn.show) .hdr-center::before,.hdr:has(.back-btn.show) .hdr-center::after{display:none}
+.hdr{position:sticky;top:0;z-index:200;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:env(safe-area-inset-top) 16px 0;height:calc(64px + env(safe-area-inset-top));background:rgba(10,18,32,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);box-shadow:0 8px 28px rgba(0,0,0,0.35)}
+.hdr-center{position:relative;display:flex;align-items:center;gap:10px;justify-content:center}
 .hdr-l{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
-.logo-w{width:40px;height:40px;border-radius:8px;background:#fff;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.3)}
+.logo-w{width:40px;height:40px;border-radius:8px;background:var(--surface-2);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.3)}
 .logo-w img{width:36px;height:36px;object-fit:contain}
 .brand{font-family:var(--font-d);font-size:15px;font-weight:600;letter-spacing:0.03em;color:var(--text);line-height:1.1;white-space:nowrap}
 .brand-sub{font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.14em;color:var(--pink);text-transform:uppercase;margin-top:1px}
 .hdiv{width:1px;height:24px;background:var(--border-dim);margin:0 2px;flex-shrink:0}
-.live-p{display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:20px;background:rgba(29,184,126,0.1);border:1px solid rgba(29,184,126,0.2);font-family:var(--font-l);font-size:10px;font-weight:600;letter-spacing:0.1em;color:var(--green);text-transform:uppercase;white-space:nowrap;flex-shrink:0}
+.live-p{display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:20px;background:rgba(61,190,139,0.1);border:1px solid rgba(61,190,139,0.2);font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--green);text-transform:uppercase;white-space:nowrap;flex-shrink:0}
 .ldot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-g 2s ease-in-out infinite}
-.hdr-center{display:flex;align-items:center;gap:10px;justify-content:center}.brand-main{font-family:var(--font-d);font-size:23px;font-weight:900;letter-spacing:0.07em;white-space:nowrap;text-transform:uppercase;-webkit-text-stroke:0.4px rgba(255,255,255,0.35);background:linear-gradient(110deg,var(--text) 0%,var(--text) 45%,rgba(228,217,188,0.85) 50%,var(--text) 55%,var(--text) 100%);background-size:300% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 12px rgba(212,198,161,0.18));animation:title-shimmer 9s ease-in-out infinite}@keyframes title-shimmer{0%,72%{background-position:110% 0}92%,100%{background-position:-40% 0}}.hdr-r{display:flex;align-items:center;gap:10px;justify-content:flex-end}.gt-home{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;white-space:nowrap;padding:.4rem .6rem}.gt-home:hover{color:#fff}
+.brand-main{font-family:var(--font-d);font-size:22px;font-weight:600;letter-spacing:0.12em;white-space:nowrap;text-transform:uppercase;color:var(--text)}
+.hdr-r{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+.gt-home{display:flex;align-items:center;gap:8px;text-decoration:none;white-space:nowrap;padding:.3rem .2rem;color:var(--text)}
+.gt-home svg{width:26px;height:26px;flex-shrink:0}
+.gt-home span{font-family:var(--font-d);font-weight:600;font-size:.95rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text);opacity:.92}
+.gt-home:hover span{color:var(--orange);opacity:1}
+@media(max-width:520px){.gt-home span{display:none}}
 .pn-b{display:flex;align-items:center;gap:5px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;opacity:0.65}
 .pn-txt{white-space:nowrap}
-.pn-dot{width:14px;height:14px;border-radius:3px;background:linear-gradient(135deg,#D4C6A1,#D4C6A1);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#fff;font-family:var(--font-l);flex-shrink:0}
+.pn-dot{width:14px;height:14px;border-radius:3px;background:#D4C6A1;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#0A1220;font-family:var(--font-l);flex-shrink:0}
 .back-btn{display:none;align-items:center;gap:5px;min-height:36px;padding:0 10px;border-radius:8px;border:1px solid var(--border-dim);background:transparent;color:var(--text-muted);cursor:pointer;font-family:var(--font-l);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;transition:all var(--tr);white-space:nowrap;touch-action:manipulation}
 .back-btn:hover{border-color:var(--border);color:var(--text)}
 .back-btn.show{display:flex}
@@ -115,12 +110,12 @@ button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .kpi-c.tappable:hover{border-color:var(--ac,var(--orange));box-shadow:0 10px 26px rgba(0,0,0,0.4),0 0 22px var(--orange-glow);transform:translateY(-3px)}
 .kpi-c.tappable{cursor:pointer}
 .kpi-c:nth-child(1){animation-delay:.05s}.kpi-c:nth-child(2){animation-delay:.1s}.kpi-c:nth-child(3){animation-delay:.15s}.kpi-c:nth-child(4){animation-delay:.2s}
-.kpi-label{font-family:var(--font-l);font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-2);margin-bottom:10px}
+.kpi-label{font-family:var(--font-l);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-2);margin-bottom:10px}
 .kpi-val{font-family:var(--font-m);font-size:40px;font-weight:600;color:var(--text);letter-spacing:-0.03em;line-height:1;margin-bottom:8px}
 .kpi-viz{display:flex;align-items:center;justify-content:center;height:58px;margin-bottom:10px}
 .kpi-val-sm{font-family:var(--font-m);font-size:14px;font-weight:700;letter-spacing:-0.01em;color:var(--text)}
 .kpi-bars{display:flex;align-items:flex-end;gap:5px;height:52px;width:100%;max-width:110px;margin:0 auto}
-.kpi-bars span{flex:1;border-radius:3px 3px 1px 1px;background:rgba(91,168,255,0.28);min-height:4px}
+.kpi-bars span{flex:1;border-radius:3px 3px 1px 1px;background:rgba(111,168,232,0.28);min-height:4px}
 .kpi-roi{flex-direction:column;gap:5px;width:100%;max-width:130px;margin:0 auto}
 .kpi-roi-t{position:relative;width:100%;height:14px;border-radius:7px;background:var(--surface-3);overflow:hidden}
 .kpi-roi-f{position:absolute;left:0;top:0;bottom:0;border-radius:7px;background:linear-gradient(90deg,rgba(180,154,98,0.5),var(--pink));box-shadow:0 0 10px rgba(180,154,98,0.4)}
@@ -129,11 +124,11 @@ button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .loc-bar{margin-top:7px;height:6px;border-radius:3px;background:rgba(255,255,255,0.06);overflow:hidden;max-width:220px}
 .loc-bar div{height:100%;border-radius:3px}
 .cmd-panel .kpi-val{font-size:30px;letter-spacing:-0.04em}
-.kpi-delta{display:inline-flex;align-items:center;gap:3px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.06em;padding:2px 6px;border-radius:4px;background:rgba(29,184,126,0.12);color:var(--green)}
+.kpi-delta{display:inline-flex;align-items:center;gap:3px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.06em;padding:2px 6px;border-radius:4px;background:rgba(61,190,139,0.12);color:var(--green)}
 
 /* SECTION */
 .sec-hd{display:flex;align-items:center;justify-content:center;margin-bottom:14px;gap:8px;flex-wrap:wrap;text-align:center}
-.sec-title{font-family:var(--font-l);font-size:18px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-2)}
+.sec-title{font-family:var(--font-d);font-size:21px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text)}
 
 /* TILES */
 .tiles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:18px}
@@ -160,12 +155,12 @@ button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 
 /* BADGE */
 .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 7px;border-radius:4px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
-.b-green{background:rgba(29,184,126,0.12);color:var(--green);border:1px solid rgba(29,184,126,0.2)}
-.b-amber{background:rgba(245,185,66,0.12);color:var(--amber);border:1px solid rgba(245,185,66,0.2)}
-.b-blue{background:rgba(74,158,255,0.12);color:var(--blue);border:1px solid rgba(74,158,255,0.2)}
+.b-green{background:rgba(61,190,139,0.12);color:var(--green);border:1px solid rgba(61,190,139,0.2)}
+.b-amber{background:rgba(180,154,98,0.12);color:var(--amber);border:1px solid rgba(180,154,98,0.2)}
+.b-blue{background:rgba(111,168,232,0.12);color:var(--blue);border:1px solid rgba(111,168,232,0.2)}
 .b-pink{background:rgba(212,198,161,0.1);color:var(--pink);border:1px solid rgba(212,198,161,0.2)}
-.b-gray{background:rgba(90,74,80,0.3);color:var(--text-muted);border:1px solid rgba(90,74,80,0.5)}
-.b-red{background:rgba(224,62,62,0.12);color:var(--red);border:1px solid rgba(224,62,62,0.2)}
+.b-gray{background:rgba(30,44,72,0.3);color:var(--text-muted);border:1px solid rgba(30,44,72,0.5)}
+.b-red{background:rgba(209,106,92,0.12);color:var(--red);border:1px solid rgba(209,106,92,0.2)}
 
 /* FUNNEL */
 .funnel-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
@@ -258,22 +253,22 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .cf-input{flex:1;background:var(--surface-3);border:1px solid var(--border-dim);border-radius:9px;padding:9px 12px;font-size:12px;color:var(--text);outline:none;font-family:inherit;min-width:0}
 .cf-input:focus{border-color:var(--orange)}
 .cf-input::placeholder{color:var(--text-dim)}
-.cf-send{flex-shrink:0;width:34px;height:34px;border-radius:9px;border:none;background:linear-gradient(135deg,var(--orange),#E4D9BC);color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--tr);box-shadow:0 3px 10px var(--orange-glow)}
+.cf-send{flex-shrink:0;width:34px;height:34px;border-radius:9px;border:none;background:linear-gradient(135deg,var(--orange),#E6DCC0);color:#0A1220;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--tr);box-shadow:0 3px 10px var(--orange-glow)}
 .cf-send:hover{transform:translateY(-1px)}
 .cf-send:active{transform:scale(0.94)}
 .msg.staff{align-self:flex-end;align-items:flex-end}
-.msg.staff .mb{background:rgba(91,168,255,0.14);border:1px solid rgba(91,168,255,0.25);border-radius:11px 11px 3px 11px}
+.msg.staff .mb{background:rgba(111,168,232,0.14);border:1px solid rgba(111,168,232,0.25);border-radius:11px 11px 3px 11px}
 
 /* CHATBOT */
 .cb-lay{display:flex;flex-direction:column;gap:14px}
 .widget-preview{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:16px}
 .wp-label{font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
-.browser-mock{border-radius:10px;overflow:hidden;border:1px solid var(--border-dim);background:#0a0506}
-.bm-bar{background:#1a1014;padding:7px 10px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--border-dim)}
+.browser-mock{border-radius:10px;overflow:hidden;border:1px solid var(--border-dim);background:#0A1220}
+.bm-bar{background:#132039;padding:7px 10px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--border-dim)}
 .bm-dots{display:flex;gap:4px}
 .bm-dot{width:7px;height:7px;border-radius:50%}
 .bm-url{font-family:var(--font-m);font-size:8px;color:var(--text-dim);margin-left:6px;flex:1;background:rgba(255,255,255,0.04);padding:3px 7px;border-radius:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.bm-content{position:relative;height:210px;background:linear-gradient(160deg,#0e0608 0%,#170b10 100%);overflow:hidden}
+.bm-content{position:relative;height:210px;background:linear-gradient(160deg,#0A1220 0%,#0E182B 100%);overflow:hidden}
 .bm-site-text{padding:14px;opacity:0.3}
 .bm-ht{font-family:var(--font-d);font-size:12px;color:var(--text);margin-bottom:5px}
 .bm-hs{font-size:10px;color:var(--text-muted);line-height:1.4}
@@ -301,7 +296,7 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .ctab-bar{display:flex;gap:0;margin-bottom:18px;background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius);overflow:hidden}
 .ctab{flex:1;padding:10px 6px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);border:none;background:none;cursor:pointer;transition:all var(--tr);text-align:center;min-height:40px;touch-action:manipulation;border-right:1px solid var(--border-dim)}
 .ctab:last-child{border-right:none}
-.ctab.active{background:var(--pink);color:#fff}
+.ctab.active{background:var(--pink);color:#0A1220}
 .camp-section{display:none}.camp-section.active{display:block}
 /* MARKETING */
 .platform-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:16px}
@@ -363,17 +358,17 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 #splash.out{opacity:0;pointer-events:none}
 .splash-logo{width:90px;height:90px;border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 60px rgba(212,198,161,0.25);margin-bottom:28px}
 .splash-logo img{width:80px;height:80px;object-fit:contain}
-.splash-brand{font-family:"Playfair Display",Georgia,serif;font-size:28px;font-weight:600;color:#F5EEF0;letter-spacing:0.03em;text-align:center;margin-bottom:8px}
-.splash-sub{font-family:"Outfit Condensed",sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#D4C6A1;text-align:center;margin-bottom:48px}
-.splash-enter{font-family:"Outfit Condensed",sans-serif;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,238,240,0.3);animation:pulse-enter 2s ease-in-out infinite}
+.splash-brand{font-family:"Playfair Display",Georgia,serif;font-size:28px;font-weight:600;color:#EFF2F7;letter-spacing:0.03em;text-align:center;margin-bottom:8px}
+.splash-sub{font-family:var(--font-l);font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#D4C6A1;text-align:center;margin-bottom:48px}
+.splash-enter{font-family:var(--font-l);font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(239,242,247,0.3);animation:pulse-enter 2s ease-in-out infinite}
 @keyframes pulse-enter{0%,100%{opacity:0.3}50%{opacity:0.7}}
-.splash-pn{position:absolute;bottom:28px;display:flex;align-items:center;gap:6px;font-family:"Outfit Condensed",sans-serif;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,238,240,0.25)}
-.splash-pn-dot{width:14px;height:14px;border-radius:3px;background:linear-gradient(135deg,#D4C6A1,#D4C6A1);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#fff;font-family:"Outfit Condensed",sans-serif}
+.splash-pn{position:absolute;bottom:28px;display:flex;align-items:center;gap:6px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(239,242,247,0.25)}
+.splash-pn-dot{width:14px;height:14px;border-radius:3px;background:#D4C6A1;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#0A1220;font-family:var(--font-l)}
 
 /* PN FOOTER BAR */
-.pn-bar{position:fixed;bottom:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:center;gap:7px;padding:8px 16px;background:rgba(12,8,9,0.96);border-top:1px solid rgba(212,198,161,0.1);backdrop-filter:blur(10px)}
-.pn-bar-dot{width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#D4C6A1,#D4C6A1);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;font-family:"Outfit Condensed",sans-serif;flex-shrink:0}
-.pn-bar-txt{font-family:"Outfit Condensed",sans-serif;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,238,240,0.35)}
+.pn-bar{position:fixed;bottom:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:center;gap:7px;padding:8px 16px;background:rgba(10,18,32,0.96);border-top:1px solid rgba(212,198,161,0.1);backdrop-filter:blur(10px)}
+.pn-bar-dot{width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#D4C6A1,#D4C6A1);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#0A1220;font-family:var(--font-l);flex-shrink:0}
+.pn-bar-txt{font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(239,242,247,0.35)}
 
 /* SHELL TILES MINI */
 .shell-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
@@ -396,9 +391,9 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .plat-logo{font-size:22px;margin-bottom:8px}
 .plat-name{font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
 .plat-score{font-family:var(--font-m);font-size:28px;font-weight:500;color:var(--text);line-height:1;margin-bottom:4px}
-.stars{color:#F5B942;font-size:13px;margin-bottom:6px;letter-spacing:1px}
+.stars{color:#B49A62;font-size:13px;margin-bottom:6px;letter-spacing:1px}
 .plat-count{font-size:11px;color:var(--text-muted)}
-.plat-new{display:inline-flex;align-items:center;gap:3px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;border-radius:4px;background:rgba(29,184,126,0.12);color:var(--green);margin-top:6px}
+.plat-new{display:inline-flex;align-items:center;gap:3px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.08em;padding:2px 6px;border-radius:4px;background:rgba(61,190,139,0.12);color:var(--green);margin-top:6px}
 .rep-bar{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:16px 20px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .rep-score{display:flex;align-items:baseline;gap:8px}
 .rep-num{font-family:var(--font-m);font-size:38px;font-weight:500;color:var(--text);line-height:1}
@@ -419,8 +414,8 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .seq-desc{font-size:12px;color:var(--text-2);line-height:1.4;margin-bottom:6px}
 .seq-paths{display:flex;gap:8px;flex-wrap:wrap}
 .seq-path{display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:6px;font-size:11px;font-weight:500}
-.path-yes{background:rgba(29,184,126,0.1);border:1px solid rgba(29,184,126,0.2);color:var(--green)}
-.path-no{background:rgba(224,62,62,0.1);border:1px solid rgba(224,62,62,0.2);color:var(--red)}
+.path-yes{background:rgba(61,190,139,0.1);border:1px solid rgba(61,190,139,0.2);color:var(--green)}
+.path-no{background:rgba(209,106,92,0.1);border:1px solid rgba(209,106,92,0.2);color:var(--red)}
 /* REVIEWS GRID */
 .rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
 @media(max-width:700px){.rev-grid{grid-template-columns:1fr}}
@@ -431,17 +426,17 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .rev-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
 .rev-name{font-size:12px;font-weight:600;color:var(--text)}
 .rev-plat{font-size:10px;color:var(--text-muted);display:flex;align-items:center;gap:4px}
-.rev-stars{color:#F5B942;font-size:11px;margin-bottom:4px;letter-spacing:1px}
+.rev-stars{color:#B49A62;font-size:11px;margin-bottom:4px;letter-spacing:1px}
 .rev-text{font-size:11px;color:var(--text-2);line-height:1.5;margin-bottom:6px}
 .rev-draft{font-size:10px;font-style:italic;color:var(--text-dim);padding:6px 8px;border-radius:6px;background:var(--surface-2);border-left:2px solid var(--pink);line-height:1.5}
 .rev-draft-label{font-family:var(--font-l);font-size:8px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--pink);margin-bottom:3px}
 .rev-time{font-family:var(--font-m);font-size:9px;color:var(--text-dim)}
 /* FLAGGED */
-.flag-card{background:var(--surface);border:1px solid rgba(224,62,62,0.15);border-radius:var(--radius-lg);padding:16px}
+.flag-card{background:var(--surface);border:1px solid rgba(209,106,92,0.15);border-radius:var(--radius-lg);padding:16px}
 .flag-title{font-family:var(--font-l);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .flag-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-dim)}
 .flag-item:last-child{border-bottom:none}
-.flag-stars{color:#E03E3E;font-size:11px;letter-spacing:1px;margin-bottom:2px}
+.flag-stars{color:#D16A5C;font-size:11px;letter-spacing:1px;margin-bottom:2px}
 .flag-name{font-size:12px;font-weight:600;color:var(--text);margin-bottom:1px}
 .flag-comment{font-size:11px;color:var(--text-2);font-style:italic;margin-bottom:5px}
 .flag-status{display:flex;gap:6px;align-items:center}
@@ -459,24 +454,24 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .wf-fork-label{flex:1;display:flex;flex-direction:column;align-items:center;gap:0}
 .wf-fork-label::before{content:"";width:1px;height:12px;background:var(--border-dim);display:block}
 .wf-fork-label-pill{padding:4px 10px;border-radius:20px;font-family:var(--font-l);font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
-.wf-fork-label-pill.happy{background:rgba(29,184,126,0.12);border:1px solid rgba(29,184,126,0.25);color:var(--green)}
-.wf-fork-label-pill.unhappy{background:rgba(224,62,62,0.12);border:1px solid rgba(224,62,62,0.25);color:var(--red)}
+.wf-fork-label-pill.happy{background:rgba(61,190,139,0.12);border:1px solid rgba(61,190,139,0.25);color:var(--green)}
+.wf-fork-label-pill.unhappy{background:rgba(209,106,92,0.12);border:1px solid rgba(209,106,92,0.25);color:var(--red)}
 .wf-cols{display:flex;gap:8px}
 .wf-col{flex:1;display:flex;flex-direction:column;gap:0;border-radius:10px;overflow:hidden;border:1px solid var(--border-dim)}
-.wf-col.happy{border-color:rgba(29,184,126,0.2)}
-.wf-col.unhappy{border-color:rgba(224,62,62,0.2)}
+.wf-col.happy{border-color:rgba(61,190,139,0.2)}
+.wf-col.unhappy{border-color:rgba(209,106,92,0.2)}
 .wf-col-step{padding:11px 10px;position:relative;border-bottom:1px solid var(--border-dim)}
 .wf-col-step:last-child{border-bottom:none}
-.wf-col.happy .wf-col-step{background:rgba(29,184,126,0.03)}
-.wf-col.unhappy .wf-col-step{background:rgba(224,62,62,0.03)}
+.wf-col.happy .wf-col-step{background:rgba(61,190,139,0.03)}
+.wf-col.unhappy .wf-col-step{background:rgba(209,106,92,0.03)}
 .wf-col-time{font-family:var(--font-l);font-size:8px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:3px}
 .wf-col.happy .wf-col-time{color:var(--green)}
 .wf-col.unhappy .wf-col-time{color:var(--red)}
 .wf-col-text{font-size:11px;color:var(--text-2);line-height:1.4}
 .wf-col-text strong{color:var(--text)}
 .wf-arrow{text-align:center;font-size:11px;color:var(--text-dim);padding:3px 0;background:var(--surface-3);border-bottom:1px solid var(--border-dim)}
-.wf-col.happy .wf-arrow{color:rgba(29,184,126,0.4)}
-.wf-col.unhappy .wf-arrow{color:rgba(224,62,62,0.3)}
+.wf-col.happy .wf-arrow{color:rgba(61,190,139,0.4)}
+.wf-col.unhappy .wf-arrow{color:rgba(209,106,92,0.3)}
 
 /* DASHBOARD REDESIGN */
 .period-toggle{display:flex;background:var(--surface-2);border:1px solid var(--border-dim);border-radius:8px;padding:3px;gap:2px;margin-bottom:18px;max-width:200px;margin-left:auto;margin-right:auto}
@@ -489,8 +484,8 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .alerts-title{font-family:var(--font-l);font-size:14px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;text-align:center}
 .alert-item{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border-radius:10px;margin-bottom:8px;border:1px solid transparent;cursor:pointer;transition:all var(--tr)}
 .alert-item:last-child{margin-bottom:0}
-.alert-item.red{background:rgba(224,62,62,0.06);border-color:rgba(224,62,62,0.2)}
-.alert-item.amber{background:rgba(245,185,66,0.06);border-color:rgba(245,185,66,0.15)}
+.alert-item.red{background:rgba(209,106,92,0.06);border-color:rgba(209,106,92,0.2)}
+.alert-item.amber{background:rgba(180,154,98,0.06);border-color:rgba(180,154,98,0.15)}
 .alert-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px}
 .alert-dot.red{background:var(--red)}
 .alert-dot.amber{background:var(--amber)}
@@ -554,9 +549,9 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .inv-bar-cell{width:80px}
 .inv-bar-bg{width:70px;height:5px;background:var(--surface-3);border-radius:3px;display:inline-block;vertical-align:middle}
 .inv-bar-fill{height:100%;border-radius:3px}
-.status-ok{background:rgba(29,184,126,0.12);color:var(--green);border:1px solid rgba(29,184,126,0.2)}
-.status-low{background:rgba(245,185,66,0.12);color:var(--amber);border:1px solid rgba(245,185,66,0.2)}
-.status-critical{background:rgba(224,62,62,0.12);color:var(--red);border:1px solid rgba(224,62,62,0.2)}
+.status-ok{background:rgba(61,190,139,0.12);color:var(--green);border:1px solid rgba(61,190,139,0.2)}
+.status-low{background:rgba(180,154,98,0.12);color:var(--amber);border:1px solid rgba(180,154,98,0.2)}
+.status-critical{background:rgba(209,106,92,0.12);color:var(--red);border:1px solid rgba(209,106,92,0.2)}
 /* MARGIN CARD */
 .margin-card{background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:16px}
 .margin-title{font-family:var(--font-l);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-2);margin-bottom:14px}
@@ -570,7 +565,7 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 
 /* ─── Social Media Manager ─── */
 .sm-tab{background:var(--surface-2);border:1px solid var(--border-dim);color:var(--text-muted);font-family:var(--font-l);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:8px 14px;border-radius:20px;cursor:pointer;transition:all .15s}
-.sm-tab.active{background:var(--pink);border-color:var(--pink);color:#fff}
+.sm-tab.active{background:var(--pink);border-color:var(--pink);color:#0A1220}
 .sm-plat{display:flex;align-items:center;gap:7px;background:var(--surface-2);border:1px solid var(--border-dim);color:var(--text-muted);font-size:12px;font-weight:600;padding:8px 13px;border-radius:24px;cursor:pointer;transition:all .15s;user-select:none}
 .sm-plat.active{background:var(--surface-3);border-color:var(--pink);color:var(--text)}
 .sm-plat.active .sm-pico{box-shadow:0 0 0 2px rgba(212,198,161,0.4)}
@@ -591,7 +586,7 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .sm-prev-actions{display:flex;gap:16px;padding:0 12px 11px;font-size:13px;color:var(--text-muted)}
 .sm-when{background:var(--surface-2);border:1px solid var(--border-dim);color:var(--text-muted);font-size:12px;font-weight:600;padding:8px 12px;border-radius:8px;cursor:pointer;transition:all .15s}
 .sm-when.active{background:var(--surface-3);border-color:var(--pink);color:var(--text)}
-.sm-cta{width:100%;background:var(--pink);border:none;color:#fff;font-family:var(--font-l);font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:14px;border-radius:12px;cursor:pointer;transition:all .15s}
+.sm-cta{width:100%;background:var(--pink);border:none;color:#0A1220;font-family:var(--font-l);font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:14px;border-radius:12px;cursor:pointer;transition:all .15s}
 .sm-cta:active{transform:scale(0.98)}
 .sm-qcard{display:flex;gap:11px;background:var(--surface);border:1px solid var(--border-dim);border-radius:12px;padding:11px 12px;align-items:center}
 .sm-qthumb{width:44px;height:44px;border-radius:9px;background:rgba(212,198,161,0.1);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
@@ -621,7 +616,7 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .dash-loc-s{font-size:11px;color:var(--text-muted)}
 .dash-loc-v{font-family:var(--font-m);font-size:16px;font-weight:600;color:var(--text)}
 /* Dashboard CTA on home */
-.dash-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;background:linear-gradient(135deg,var(--orange),#E4D9BC);border:none;color:#fff;font-family:var(--font-l);font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px;border-radius:12px;cursor:pointer;transition:all var(--tr);box-shadow:0 6px 20px var(--orange-glow)}
+.dash-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;background:linear-gradient(135deg,var(--orange),#E6DCC0);border:none;color:#0A1220;font-family:var(--font-l);font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px;border-radius:12px;cursor:pointer;transition:all var(--tr);box-shadow:0 6px 20px var(--orange-glow)}
 .dash-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--orange-glow)}
 .dash-cta:active{transform:scale(0.98)}
 /* Command panel wrapper for KPI overview */
@@ -634,14 +629,14 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .section-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),transparent)}
 .section-panel .pt-header{margin:0 0 14px}
 .section-panel .tiles-grid,.section-panel .pt-grid,.section-panel .shell-grid{margin-bottom:16px}
-.build-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:2px;background:linear-gradient(135deg,var(--orange),#E4D9BC);border:none;color:#fff;font-family:var(--font-l);font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px;border-radius:12px;cursor:pointer;transition:all var(--tr);box-shadow:0 6px 20px var(--orange-glow)}
+.build-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:2px;background:linear-gradient(135deg,var(--orange),#E6DCC0);border:none;color:#0A1220;font-family:var(--font-l);font-size:15px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px;border-radius:12px;cursor:pointer;transition:all var(--tr);box-shadow:0 6px 20px var(--orange-glow)}
 .build-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--orange-glow)}
 .build-cta:active{transform:scale(0.98)}
 
 
 /* ─── Power Tools (premium animated) ─── */
 .pt-header{display:flex;align-items:center;gap:10px;margin:6px 0 14px}
-.pt-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-l);font-size:20px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);position:relative}
+.pt-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-d);font-size:24px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text);position:relative;line-height:1}
 .pt-badge .pt-spark{font-size:18px;animation:ptSpark 2.4s ease-in-out infinite}
 .pt-line{flex:1;height:1px;background:linear-gradient(90deg,var(--orange),transparent)}
 @keyframes ptSpark{0%,100%{transform:rotate(-8deg) scale(1);filter:drop-shadow(0 0 0 var(--orange))}50%{transform:rotate(8deg) scale(1.18);filter:drop-shadow(0 0 8px var(--orange))}}
@@ -731,7 +726,7 @@ td.dc{font-family:var(--font-m);font-size:12px;font-weight:500}
 .t-new{
   position:absolute;top:10px;right:10px;z-index:2;
   font-size:8px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
-  color:#fff;background:var(--t-ac,var(--orange));
+  color:#0A1220;background:var(--t-ac,var(--orange));
   padding:3px 7px;border-radius:20px;overflow:hidden;
 }
 .t-new::after{
@@ -779,7 +774,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     <div id="hdr-title" class="brand-main">Business Hub</div>
   </div>
   <div class="hdr-r">
-    <a class="gt-home" href="https://goodtroubleglobal.com/">Good Trouble</a>
+    <a class="gt-home" href="https://goodtroubleglobal.com/" aria-label="Good Trouble home"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="46" fill="none" stroke="#D4C6A1" stroke-width="10" stroke-dasharray="255.31 33.72" stroke-dashoffset="-26.01" stroke-linecap="round" transform="rotate(-90 60 60)"/><circle cx="93" cy="33" r="7" fill="#D4C6A1"/></svg><span>Good Trouble</span></a>
   </div>
 </header>
 
@@ -797,12 +792,12 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div class="kpi-grid">
     <div class="kpi-c tappable" style="--ac:var(--green)" onclick="openSheet('revenue')">
       <div class="kpi-label">Revenue</div>
-      <div class="kpi-viz"><svg width="100%" height="54" viewBox="0 0 120 54" preserveAspectRatio="none"><defs><linearGradient id="sgRev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1db87e" stop-opacity="0.45"/><stop offset="1" stop-color="#1db87e" stop-opacity="0"/></linearGradient></defs><path d="M0,44 L20,38 L40,41 L60,26 L80,20 L100,14 L120,6 L120,54 L0,54 Z" fill="url(#sgRev)"/><path d="M0,44 L20,38 L40,41 L60,26 L80,20 L100,14 L120,6" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="120" cy="6" r="3.5" fill="var(--green)"/></svg></div>
+      <div class="kpi-viz"><svg width="100%" height="54" viewBox="0 0 120 54" preserveAspectRatio="none"><defs><linearGradient id="sgRev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3DBE8B" stop-opacity="0.45"/><stop offset="1" stop-color="#3DBE8B" stop-opacity="0"/></linearGradient></defs><path d="M0,44 L20,38 L40,41 L60,26 L80,20 L100,14 L120,6 L120,54 L0,54 Z" fill="url(#sgRev)"/><path d="M0,44 L20,38 L40,41 L60,26 L80,20 L100,14 L120,6" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="120" cy="6" r="3.5" fill="var(--green)"/></svg></div>
       <div class="kpi-val-sm" id="kpi-revenue" style="color:var(--green)">$0</div>
     </div>
     <div class="kpi-c tappable" style="--ac:var(--blue)" onclick="openSheet('appointments')">
       <div class="kpi-label">Appointments</div>
-      <div class="kpi-viz kpi-bars"><span style="height:34%"></span><span style="height:48%"></span><span style="height:42%"></span><span style="height:66%"></span><span style="height:88%;background:linear-gradient(180deg,#7EB8FF,var(--blue))"></span><span style="height:100%;background:linear-gradient(180deg,#7EB8FF,var(--blue))"></span><span style="height:58%"></span></div>
+      <div class="kpi-viz kpi-bars"><span style="height:34%"></span><span style="height:48%"></span><span style="height:42%"></span><span style="height:66%"></span><span style="height:88%;background:linear-gradient(180deg,#8FBCF0,var(--blue))"></span><span style="height:100%;background:linear-gradient(180deg,#8FBCF0,var(--blue))"></span><span style="height:58%"></span></div>
       <div class="kpi-val-sm" id="kpi-appointments" style="color:var(--blue)">0</div>
     </div>
     <div class="kpi-c tappable" style="--ac:var(--gold)" onclick="openModule('reactivation','Reactivation')">
@@ -918,34 +913,34 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v5h-5"/></svg></div>
       <div class="tile-name">Reactivation</div>
     </div>
-    <div class="tile" style="--t-ac:var(--blue);--t-glow:rgba(91,168,255,0.25)" onclick="openModule('chatbot','AI Chat Agent')">
+    <div class="tile" style="--t-ac:var(--blue);--t-glow:rgba(111,168,232,0.25)" onclick="openModule('chatbot','AI Chat Agent')">
       <span class="t-new">New</span>
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="8.5" cy="10" r="0.6" fill="currentColor"/><circle cx="12" cy="10" r="0.6" fill="currentColor"/><circle cx="15.5" cy="10" r="0.6" fill="currentColor"/></svg></div>
       <div class="tile-name">AI Chat Agent</div>
     </div>
-    <div class="tile" style="--t-ac:var(--green);--t-glow:rgba(34,213,138,0.25)" onclick="openModule('marketing','Marketing')">
+    <div class="tile" style="--t-ac:var(--green);--t-glow:rgba(61,190,139,0.25)" onclick="openModule('marketing','Marketing')">
       <span class="t-new">New</span>
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l3-4 3 3 5-7"/></svg></div>
       <div class="tile-name">Marketing</div>
     </div>
-    <div class="tile" style="--t-ac:var(--amber);--t-glow:rgba(198,171,118,0.25)" onclick="openModule('inventory','Inventory')">
+    <div class="tile" style="--t-ac:var(--amber);--t-glow:rgba(180,154,98,0.25)" onclick="openModule('inventory','Inventory')">
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
       <div class="tile-name">Inventory</div>
     </div>
-    <div class="tile" style="--t-ac:var(--gold);--t-glow:rgba(198,171,118,0.25)" onclick="openModule('reviews','Review Engine')">
+    <div class="tile" style="--t-ac:var(--gold);--t-glow:rgba(180,154,98,0.25)" onclick="openModule('reviews','Review Engine')">
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg></div>
       <div class="tile-name">Reviews</div>
     </div>
-    <div class="tile" style="--t-ac:var(--purple);--t-glow:rgba(169,139,255,0.25)" onclick="openModule('consultiq','ConsultIQ')">
+    <div class="tile" style="--t-ac:var(--purple);--t-glow:rgba(140,160,188,0.25)" onclick="openModule('consultiq','ConsultIQ')">
       <span class="t-new">New</span>
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3z"/><path d="M9 20h6"/><path d="M10 23h4"/></svg></div>
       <div class="tile-name">ConsultIQ</div>
     </div>
-    <div class="tile" style="--t-ac:var(--blue);--t-glow:rgba(91,168,255,0.25)" onclick="openModule('radar','Trends &amp; Tech')">
+    <div class="tile" style="--t-ac:var(--blue);--t-glow:rgba(111,168,232,0.25)" onclick="openModule('radar','Trends &amp; Tech')">
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 9h7M8 13h7M8 17h4"/></svg></div>
       <div class="tile-name">Trends &amp; Tech</div>
     </div>
-    <div class="tile" style="--t-ac:var(--red);--t-glow:rgba(180,120,98,0.25)" onclick="openModule('competitor','Competitor Analysis')">
+    <div class="tile" style="--t-ac:var(--red);--t-glow:rgba(209,106,92,0.25)" onclick="openModule('competitor','Competitor Analysis')">
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></div>
       <div class="tile-name">Competitor</div>
     </div>
@@ -968,7 +963,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       </div>
       <div class="pt-arrow">&#x2197;</div>
     </div>
-    <div class="pt-card" style="--pt-ac:var(--blue);--pt-glow:rgba(91,168,255,0.25)" onclick="openModule('social','Social Media Manager')">
+    <div class="pt-card" style="--pt-ac:var(--blue);--pt-glow:rgba(111,168,232,0.25)" onclick="openModule('social','Social Media Manager')">
       <div class="pt-glow-orb"></div>
       <div class="pt-icon">&#x1F4F1;</div>
       <div class="pt-body">
@@ -992,15 +987,15 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div class="section-panel">
   <div class="pt-header"><div class="pt-badge"><span class="pt-spark" style="animation:none">🧩</span> Available Add-ons</div><div class="pt-line"></div></div>
   <div class="shell-grid">
-    <div class="tile" style="--t-ac:var(--purple);--t-glow:rgba(169,139,255,0.25)" onclick="openModule('membership','Membership')">
+    <div class="tile" style="--t-ac:var(--purple);--t-glow:rgba(140,160,188,0.25)" onclick="openModule('membership','Membership')">
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M9 3l3 6 3-6M12 9v12"/></svg></div>
       <div class="tile-name">Membership</div>
     </div>
-    <div class="tile" style="--t-ac:var(--green);--t-glow:rgba(34,213,138,0.25)" onclick="openModule('postvisit','Post-Visit')">
+    <div class="tile" style="--t-ac:var(--green);--t-glow:rgba(61,190,139,0.25)" onclick="openModule('postvisit','Post-Visit')">
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 11l2 2 4-4"/></svg></div>
       <div class="tile-name">Post-Visit</div>
     </div>
-    <div class="tile" style="--t-ac:var(--blue);--t-glow:rgba(91,168,255,0.25)" onclick="openModule('frontdesk','Front Desk AI')">
+    <div class="tile" style="--t-ac:var(--blue);--t-glow:rgba(111,168,232,0.25)" onclick="openModule('frontdesk','Front Desk AI')">
       <div class="t-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0 8 7 15 15 15a2 2 0 0 0 2-2v-2.5a1 1 0 0 0-.8-1l-3-.6a1 1 0 0 0-1 .4l-1 1.3a12 12 0 0 1-5.5-5.5l1.3-1a1 1 0 0 0 .4-1l-.6-3a1 1 0 0 0-1-.8H6a2 2 0 0 0-2 2z"/></svg></div>
       <div class="tile-name">Front Desk AI</div>
     </div>
@@ -1009,7 +1004,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 
   <!-- Collapsed alerts at bottom -->
   <div style="margin-bottom:20px">
-    <div onclick="toggleAlertsPanel(this)" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface);border:1px solid rgba(224,62,62,0.2);border-radius:10px;cursor:pointer;touch-action:manipulation">
+    <div onclick="toggleAlertsPanel(this)" style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--surface);border:1px solid rgba(209,106,92,0.2);border-radius:10px;cursor:pointer;touch-action:manipulation">
       <div style="display:flex;align-items:center;gap:9px">
         <div style="width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse-g 2s ease-in-out infinite"></div>
         <span style="font-family:var(--font-l);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text)">Alerts</span>
@@ -1038,7 +1033,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     <div class="fn-c"><div class="fn-num">1,247</div><div class="fn-label">Dormant</div><div class="fn-sub">90+ days out</div></div>
     <div class="fn-c"><div class="fn-num">891</div><div class="fn-label">AI Active</div><div class="fn-sub">Running sequences</div></div>
     <div class="fn-c"><div class="fn-num">312</div><div class="fn-label">Responded</div><div class="fn-sub">35% rate</div></div>
-    <div class="fn-c" style="border-color:rgba(29,184,126,0.2)"><div class="fn-num" style="color:var(--green)">138</div><div class="fn-label" style="color:var(--green)">Booked</div><div class="fn-sub">$47,240 back</div></div>
+    <div class="fn-c" style="border-color:rgba(61,190,139,0.2)"><div class="fn-num" style="color:var(--green)">138</div><div class="fn-label" style="color:var(--green)">Booked</div><div class="fn-sub">$47,240 back</div></div>
   </div>
   <div class="ov-bot">
     <div class="chart-card">
@@ -1052,34 +1047,34 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       </div>
       <div class="bar-chart-w">
         <svg class="bc-svg" viewBox="0 0 560 150" preserveAspectRatio="none">
-          <line x1="0" y1="20" x2="560" y2="20" stroke="rgba(245,238,240,0.04)" stroke-width="1"/>
-          <line x1="0" y1="60" x2="560" y2="60" stroke="rgba(245,238,240,0.04)" stroke-width="1"/>
-          <line x1="0" y1="100" x2="560" y2="100" stroke="rgba(245,238,240,0.04)" stroke-width="1"/>
+          <line x1="0" y1="20" x2="560" y2="20" stroke="rgba(239,242,247,0.04)" stroke-width="1"/>
+          <line x1="0" y1="60" x2="560" y2="60" stroke="rgba(239,242,247,0.04)" stroke-width="1"/>
+          <line x1="0" y1="100" x2="560" y2="100" stroke="rgba(239,242,247,0.04)" stroke-width="1"/>
           <text x="40" y="143" class="bday">MON</text><text x="120" y="143" class="bday">TUE</text>
           <text x="200" y="143" class="bday">WED</text><text x="280" y="143" class="bday">THU</text>
           <text x="360" y="143" class="bday">FRI</text><text x="440" y="143" class="bday">SAT</text>
           <text x="520" y="143" class="bday">SUN</text>
           <rect x="12" y="97" width="22" height="33" rx="3" fill="rgba(212,198,161,0.65)"/>
-          <rect x="34" y="96" width="10" height="34" rx="2" fill="rgba(74,158,255,0.5)"/>
-          <rect x="44" y="106" width="10" height="24" rx="2" fill="rgba(201,167,107,0.5)"/>
+          <rect x="34" y="96" width="10" height="34" rx="2" fill="rgba(111,168,232,0.5)"/>
+          <rect x="44" y="106" width="10" height="24" rx="2" fill="rgba(180,154,98,0.5)"/>
           <rect x="92" y="81" width="22" height="49" rx="3" fill="rgba(212,198,161,0.7)"/>
-          <rect x="114" y="80" width="10" height="50" rx="2" fill="rgba(74,158,255,0.5)"/>
-          <rect x="124" y="88" width="10" height="42" rx="2" fill="rgba(201,167,107,0.5)"/>
+          <rect x="114" y="80" width="10" height="50" rx="2" fill="rgba(111,168,232,0.5)"/>
+          <rect x="124" y="88" width="10" height="42" rx="2" fill="rgba(180,154,98,0.5)"/>
           <rect x="172" y="100" width="22" height="30" rx="3" fill="rgba(212,198,161,0.65)"/>
-          <rect x="194" y="99" width="10" height="31" rx="2" fill="rgba(74,158,255,0.5)"/>
-          <rect x="204" y="112" width="10" height="18" rx="2" fill="rgba(201,167,107,0.5)"/>
+          <rect x="194" y="99" width="10" height="31" rx="2" fill="rgba(111,168,232,0.5)"/>
+          <rect x="204" y="112" width="10" height="18" rx="2" fill="rgba(180,154,98,0.5)"/>
           <rect x="252" y="77" width="22" height="53" rx="3" fill="rgba(212,198,161,0.72)"/>
-          <rect x="274" y="76" width="10" height="54" rx="2" fill="rgba(74,158,255,0.5)"/>
-          <rect x="284" y="84" width="10" height="46" rx="2" fill="rgba(201,167,107,0.5)"/>
+          <rect x="274" y="76" width="10" height="54" rx="2" fill="rgba(111,168,232,0.5)"/>
+          <rect x="284" y="84" width="10" height="46" rx="2" fill="rgba(180,154,98,0.5)"/>
           <rect x="332" y="47" width="22" height="83" rx="3" fill="rgba(212,198,161,0.82)"/>
-          <rect x="354" y="46" width="10" height="84" rx="2" fill="rgba(74,158,255,0.55)"/>
-          <rect x="364" y="56" width="10" height="74" rx="2" fill="rgba(201,167,107,0.55)"/>
+          <rect x="354" y="46" width="10" height="84" rx="2" fill="rgba(111,168,232,0.55)"/>
+          <rect x="364" y="56" width="10" height="74" rx="2" fill="rgba(180,154,98,0.55)"/>
           <rect x="412" y="30" width="22" height="100" rx="3" fill="var(--pink)"/>
-          <rect x="434" y="28" width="10" height="102" rx="2" fill="rgba(74,158,255,0.65)"/>
-          <rect x="444" y="40" width="10" height="90" rx="2" fill="rgba(201,167,107,0.65)"/>
+          <rect x="434" y="28" width="10" height="102" rx="2" fill="rgba(111,168,232,0.65)"/>
+          <rect x="444" y="40" width="10" height="90" rx="2" fill="rgba(180,154,98,0.65)"/>
           <rect x="492" y="43" width="22" height="87" rx="3" fill="rgba(212,198,161,0.78)"/>
-          <rect x="514" y="42" width="10" height="88" rx="2" fill="rgba(74,158,255,0.55)"/>
-          <rect x="524" y="54" width="10" height="76" rx="2" fill="rgba(201,167,107,0.55)"/>
+          <rect x="514" y="42" width="10" height="88" rx="2" fill="rgba(111,168,232,0.55)"/>
+          <rect x="524" y="54" width="10" height="76" rx="2" fill="rgba(180,154,98,0.55)"/>
           <text x="40" y="90" class="bval">$4.2k</text><text x="120" y="74" class="bval">$5.8k</text>
           <text x="200" y="93" class="bval">$3.9k</text><text x="280" y="70" class="bval">$6.2k</text>
           <text x="360" y="40" class="bval">$8.7k</text>
@@ -1148,9 +1143,9 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="browser-mock">
         <div class="bm-bar">
           <div class="bm-dots">
-            <div class="bm-dot" style="background:#e03e3e"></div>
-            <div class="bm-dot" style="background:#f5b942"></div>
-            <div class="bm-dot" style="background:#1db87e"></div>
+            <div class="bm-dot" style="background:#D16A5C"></div>
+            <div class="bm-dot" style="background:#B49A62"></div>
+            <div class="bm-dot" style="background:#3DBE8B"></div>
           </div>
           <div class="bm-url">pltbeauty.us</div>
         </div>
@@ -1209,7 +1204,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div class="platform-grid">
     <div class="plat-card">
       <div class="plat-hd">
-        <div class="plat-icon" style="background:rgba(74,158,255,0.12)">&#x1F4F1;</div>
+        <div class="plat-icon" style="background:rgba(111,168,232,0.12)">&#x1F4F1;</div>
         <div><div class="plat-name">Meta Ads</div><div class="plat-period">Facebook &amp; Instagram &middot; This month</div></div>
         <span class="badge b-green" style="margin-left:auto">Live</span>
       </div>
@@ -1232,7 +1227,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
     <div class="plat-card">
       <div class="plat-hd">
-        <div class="plat-icon" style="background:rgba(29,184,126,0.12)">&#x1F50D;</div>
+        <div class="plat-icon" style="background:rgba(61,190,139,0.12)">&#x1F50D;</div>
         <div><div class="plat-name">Google Ads</div><div class="plat-period">Search &amp; Display &middot; This month</div></div>
         <span class="badge b-green" style="margin-left:auto">Live</span>
       </div>
@@ -1265,35 +1260,35 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       </div>
       <div style="height:140px">
         <svg width="100%" height="100%" viewBox="0 0 540 140" preserveAspectRatio="none">
-          <line x1="0" y1="20" x2="540" y2="20" stroke="rgba(245,238,240,0.04)" stroke-width="1"/>
-          <line x1="0" y1="70" x2="540" y2="70" stroke="rgba(245,238,240,0.04)" stroke-width="1"/>
-          <line x1="0" y1="110" x2="540" y2="110" stroke="rgba(245,238,240,0.04)" stroke-width="1"/>
-          <rect x="8" y="80" width="11" height="30" rx="2" fill="rgba(74,158,255,0.6)"/>
-          <rect x="20" y="92" width="11" height="18" rx="2" fill="rgba(29,184,126,0.6)"/>
-          <rect x="45" y="65" width="11" height="45" rx="2" fill="rgba(74,158,255,0.6)"/>
-          <rect x="57" y="78" width="11" height="32" rx="2" fill="rgba(29,184,126,0.6)"/>
-          <rect x="82" y="70" width="11" height="40" rx="2" fill="rgba(74,158,255,0.65)"/>
-          <rect x="94" y="84" width="11" height="26" rx="2" fill="rgba(29,184,126,0.65)"/>
-          <rect x="119" y="74" width="11" height="36" rx="2" fill="rgba(74,158,255,0.65)"/>
-          <rect x="131" y="90" width="11" height="20" rx="2" fill="rgba(29,184,126,0.6)"/>
-          <rect x="156" y="55" width="11" height="55" rx="2" fill="rgba(74,158,255,0.72)"/>
-          <rect x="168" y="68" width="11" height="42" rx="2" fill="rgba(29,184,126,0.7)"/>
-          <rect x="193" y="58" width="11" height="52" rx="2" fill="rgba(74,158,255,0.75)"/>
-          <rect x="205" y="72" width="11" height="38" rx="2" fill="rgba(29,184,126,0.7)"/>
-          <rect x="230" y="48" width="11" height="62" rx="2" fill="rgba(74,158,255,0.8)"/>
-          <rect x="242" y="62" width="11" height="48" rx="2" fill="rgba(29,184,126,0.75)"/>
-          <rect x="267" y="42" width="11" height="68" rx="2" fill="rgba(74,158,255,0.85)"/>
-          <rect x="279" y="58" width="11" height="52" rx="2" fill="rgba(29,184,126,0.8)"/>
+          <line x1="0" y1="20" x2="540" y2="20" stroke="rgba(239,242,247,0.04)" stroke-width="1"/>
+          <line x1="0" y1="70" x2="540" y2="70" stroke="rgba(239,242,247,0.04)" stroke-width="1"/>
+          <line x1="0" y1="110" x2="540" y2="110" stroke="rgba(239,242,247,0.04)" stroke-width="1"/>
+          <rect x="8" y="80" width="11" height="30" rx="2" fill="rgba(111,168,232,0.6)"/>
+          <rect x="20" y="92" width="11" height="18" rx="2" fill="rgba(61,190,139,0.6)"/>
+          <rect x="45" y="65" width="11" height="45" rx="2" fill="rgba(111,168,232,0.6)"/>
+          <rect x="57" y="78" width="11" height="32" rx="2" fill="rgba(61,190,139,0.6)"/>
+          <rect x="82" y="70" width="11" height="40" rx="2" fill="rgba(111,168,232,0.65)"/>
+          <rect x="94" y="84" width="11" height="26" rx="2" fill="rgba(61,190,139,0.65)"/>
+          <rect x="119" y="74" width="11" height="36" rx="2" fill="rgba(111,168,232,0.65)"/>
+          <rect x="131" y="90" width="11" height="20" rx="2" fill="rgba(61,190,139,0.6)"/>
+          <rect x="156" y="55" width="11" height="55" rx="2" fill="rgba(111,168,232,0.72)"/>
+          <rect x="168" y="68" width="11" height="42" rx="2" fill="rgba(61,190,139,0.7)"/>
+          <rect x="193" y="58" width="11" height="52" rx="2" fill="rgba(111,168,232,0.75)"/>
+          <rect x="205" y="72" width="11" height="38" rx="2" fill="rgba(61,190,139,0.7)"/>
+          <rect x="230" y="48" width="11" height="62" rx="2" fill="rgba(111,168,232,0.8)"/>
+          <rect x="242" y="62" width="11" height="48" rx="2" fill="rgba(61,190,139,0.75)"/>
+          <rect x="267" y="42" width="11" height="68" rx="2" fill="rgba(111,168,232,0.85)"/>
+          <rect x="279" y="58" width="11" height="52" rx="2" fill="rgba(61,190,139,0.8)"/>
           <rect x="304" y="28" width="11" height="82" rx="2" fill="var(--blue)"/>
           <rect x="316" y="45" width="11" height="65" rx="2" fill="var(--green)"/>
           <rect x="341" y="32" width="11" height="78" rx="2" fill="var(--blue)"/>
           <rect x="353" y="50" width="11" height="60" rx="2" fill="var(--green)"/>
-          <rect x="378" y="35" width="11" height="75" rx="2" fill="rgba(74,158,255,0.9)"/>
-          <rect x="390" y="52" width="11" height="58" rx="2" fill="rgba(29,184,126,0.88)"/>
+          <rect x="378" y="35" width="11" height="75" rx="2" fill="rgba(111,168,232,0.9)"/>
+          <rect x="390" y="52" width="11" height="58" rx="2" fill="rgba(61,190,139,0.88)"/>
           <rect x="415" y="25" width="11" height="85" rx="2" fill="var(--blue)"/>
           <rect x="427" y="42" width="11" height="68" rx="2" fill="var(--green)"/>
-          <rect x="452" y="30" width="11" height="80" rx="2" fill="rgba(74,158,255,0.92)"/>
-          <rect x="464" y="48" width="11" height="62" rx="2" fill="rgba(29,184,126,0.88)"/>
+          <rect x="452" y="30" width="11" height="80" rx="2" fill="rgba(111,168,232,0.92)"/>
+          <rect x="464" y="48" width="11" height="62" rx="2" fill="rgba(61,190,139,0.88)"/>
           <rect x="489" y="28" width="11" height="82" rx="2" fill="var(--blue)"/>
           <rect x="501" y="45" width="11" height="65" rx="2" fill="var(--green)"/>
           <text x="30" y="132" class="bday" style="font-size:8px">W1</text>
@@ -1335,7 +1330,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 <div id="view-reviews" class="view" style="display:none">
 <div class="main">
   <div class="plat-cards">
-    <div class="plat-c" style="border-color:rgba(66,133,244,0.25)">
+    <div class="plat-c" style="border-color:rgba(111,168,232,0.25)">
       <div class="plat-logo">&#x1F535;</div>
       <div class="plat-name">Google</div>
       <div class="plat-score">4.8</div>
@@ -1351,7 +1346,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="plat-count">384 reviews</div>
       <div class="plat-new">&#8593; +8 this month</div>
     </div>
-    <div class="plat-c" style="border-color:rgba(214,92,92,0.3)">
+    <div class="plat-c" style="border-color:rgba(209,106,92,0.3)">
       <div class="plat-logo">&#x2B55;</div>
       <div class="plat-name">Yelp</div>
       <div class="plat-score">4.6</div>
@@ -1365,13 +1360,13 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="rep-label" style="margin-bottom:6px">Combined Reputation Score</div>
       <div style="display:flex;align-items:baseline;gap:10px">
         <div class="rep-num">4.75</div>
-        <div style="color:#F5B942;font-size:20px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div style="color:#B49A62;font-size:20px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       </div>
     </div>
     <div class="rep-breakdown">
-      <div class="rep-item"><div class="rep-dot" style="background:rgba(66,133,244,0.9)"></div>Google&nbsp;<strong style="color:var(--text)">4.8</strong></div>
+      <div class="rep-item"><div class="rep-dot" style="background:rgba(111,168,232,0.9)"></div>Google&nbsp;<strong style="color:var(--text)">4.8</strong></div>
       <div class="rep-item"><div class="rep-dot" style="background:rgba(24,119,242,0.9)"></div>Facebook&nbsp;<strong style="color:var(--text)">4.7</strong></div>
-      <div class="rep-item"><div class="rep-dot" style="background:rgba(214,92,92,0.9)"></div>Yelp&nbsp;<strong style="color:var(--text)">4.6</strong></div>
+      <div class="rep-item"><div class="rep-dot" style="background:rgba(209,106,92,0.9)"></div>Yelp&nbsp;<strong style="color:var(--text)">4.6</strong></div>
       <div class="rep-item"><div class="rep-dot" style="background:var(--green)"></div>35 new reviews this month</div>
     </div>
   </div>
@@ -1424,15 +1419,15 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
   </div>
       <div class="seq-step">
-        <div class="seq-dot" style="border-color:rgba(29,184,126,0.3);color:var(--green)">&#x2713;</div>
+        <div class="seq-dot" style="border-color:rgba(61,190,139,0.3);color:var(--green)">&#x2713;</div>
         <div class="seq-body">
           <div class="seq-time">Only after passing the internal screen &mdash; 24 hours</div>
-          <div class="seq-desc">Now and only now do we ask for a public review. <strong style="color:#4285F4">Google</strong> goes first &mdash; highest SEO value. 3 days later we follow up with <strong style="color:#1877F2">Facebook</strong> or <strong style="color:#B47862">Yelp</strong> as alternatives for clients who didn't post.</div>
+          <div class="seq-desc">Now and only now do we ask for a public review. <strong style="color:#4285F4">Google</strong> goes first &mdash; highest SEO value. 3 days later we follow up with <strong style="color:#1877F2">Facebook</strong> or <strong style="color:#D16A5C">Yelp</strong> as alternatives for clients who didn't post.</div>
           <div class="seq-paths"><div class="seq-path path-yes">&#x1F535; Google review link sent</div></div>
         </div>
       </div>
       <div class="seq-step">
-        <div class="seq-dot" style="border-color:rgba(224,62,62,0.3);color:var(--red)">&#x2717;</div>
+        <div class="seq-dot" style="border-color:rgba(209,106,92,0.3);color:var(--red)">&#x2717;</div>
         <div class="seq-body">
           <div class="seq-time">Unhappy path &mdash; immediate</div>
           <div class="seq-desc">They gave us a low internal score, so they <strong style="color:var(--red)">never see a link to Google, Facebook, or Yelp.</strong> Staff is flagged immediately with the client's feedback to resolve it before it becomes a public problem.</div>
@@ -1516,7 +1511,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="inv-stat-num">24</div>
       <div class="inv-stat-label">Products Tracked</div>
     </div>
-    <div class="inv-stat" style="border-color:rgba(224,62,62,0.2)">
+    <div class="inv-stat" style="border-color:rgba(209,106,92,0.2)">
       <div class="inv-stat-num" style="color:var(--red)">3</div>
       <div class="inv-stat-label">Low / Critical</div>
     </div>
@@ -1524,7 +1519,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="inv-stat-num">$12,480</div>
       <div class="inv-stat-label">Product Cost / Mo</div>
     </div>
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)">
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)">
       <div class="inv-stat-num" style="color:var(--green)">2.4x</div>
       <div class="inv-stat-label">Avg Product Margin</div>
     </div>
@@ -1695,7 +1690,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="inv-stat-num">9</div>
       <div class="inv-stat-label">Consults Today</div>
     </div>
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)">
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)">
       <div class="inv-stat-num" style="color:var(--green)">$342</div>
       <div class="inv-stat-label">Avg Revenue / Consult</div>
     </div>
@@ -1723,12 +1718,12 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:11px 14px;border-bottom:1px solid var(--border-dim)">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Diana M.</div><div style="font-size:11px;color:var(--text-muted)">Body contouring &middot; first visit</div></div>
       <div style="font-size:12px;color:var(--text-2);text-align:center;margin-right:18px">Sarah K.</div>
-      <span class="badge" style="font-size:9px;background:rgba(245,185,66,0.15);color:var(--amber);border-radius:4px;padding:2px 7px">2:30pm</span>
+      <span class="badge" style="font-size:9px;background:rgba(180,154,98,0.15);color:var(--amber);border-radius:4px;padding:2px 7px">2:30pm</span>
     </div>
     <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:11px 14px">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Robert C.</div><div style="font-size:11px;color:var(--text-muted)">Hair restoration &middot; returning</div></div>
       <div style="font-size:12px;color:var(--text-2);text-align:center;margin-right:18px">Marcus R.</div>
-      <span class="badge" style="font-size:9px;background:rgba(245,185,66,0.15);color:var(--amber);border-radius:4px;padding:2px 7px">4:00pm</span>
+      <span class="badge" style="font-size:9px;background:rgba(180,154,98,0.15);color:var(--amber);border-radius:4px;padding:2px 7px">4:00pm</span>
     </div>
   </div>
 
@@ -1751,9 +1746,9 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
         <div style="font-size:12px;color:var(--text);margin-bottom:6px;font-weight:600">Microneedling + Chemical Peel</div>
         <div style="font-size:11px;color:var(--text-muted);line-height:1.5;margin-bottom:10px">Addresses texture and pigmentation with zero downtime. Results visible in 5&ndash;7 days &mdash; timed for her event.</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <span style="background:rgba(29,184,126,0.12);color:var(--green);font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px">Matches her concern</span>
-          <span style="background:rgba(29,184,126,0.12);color:var(--green);font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px">No downtime</span>
-          <span style="background:rgba(29,184,126,0.12);color:var(--green);font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px">Event-ready timing</span>
+          <span style="background:rgba(61,190,139,0.12);color:var(--green);font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px">Matches her concern</span>
+          <span style="background:rgba(61,190,139,0.12);color:var(--green);font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px">No downtime</span>
+          <span style="background:rgba(61,190,139,0.12);color:var(--green);font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px">Event-ready timing</span>
         </div>
       </div>
     </div>
@@ -1791,7 +1786,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
   </div>
 
-  <div style="background:rgba(224,62,62,0.05);border:1px solid rgba(224,62,62,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
+  <div style="background:rgba(209,106,92,0.05);border:1px solid rgba(209,106,92,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
     <div style="font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:6px">Gap Alert</div>
     <div style="font-size:12px;color:var(--text-2);line-height:1.55">Marcus and Taylor are converting at less than half Sarah&rsquo;s rate. Estimated monthly revenue loss from the gap: <span style="color:var(--text);font-weight:600">$4,200+</span></div>
   </div>
@@ -1805,8 +1800,8 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div class="inv-stats">
     <div class="inv-stat"><div class="inv-stat-num">8</div><div class="inv-stat-label">Articles This Week</div></div>
     <div class="inv-stat" style="border-color:rgba(212,198,161,0.2)"><div class="inv-stat-num" style="color:var(--pink)">3</div><div class="inv-stat-label">Hot Right Now</div></div>
-    <div class="inv-stat" style="border-color:rgba(245,185,66,0.2)"><div class="inv-stat-num" style="color:var(--amber)">2</div><div class="inv-stat-label">FDA Updates</div></div>
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)"><div class="inv-stat-num" style="color:var(--green)">1</div><div class="inv-stat-label">Action Required</div></div>
+    <div class="inv-stat" style="border-color:rgba(180,154,98,0.2)"><div class="inv-stat-num" style="color:var(--amber)">2</div><div class="inv-stat-label">FDA Updates</div></div>
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)"><div class="inv-stat-num" style="color:var(--green)">1</div><div class="inv-stat-label">Action Required</div></div>
   </div>
   <div class="filter-row" style="margin-bottom:16px">
     <button class="fbtn active" onclick="filterFeed('all',this)">All</button>
@@ -1819,7 +1814,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     <div class="feed-card" data-cat="regulatory">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
         <div style="display:flex;align-items:center;gap:7px">
-          <span style="background:rgba(29,184,126,0.12);color:var(--green);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">FDA</span>
+          <span style="background:rgba(61,190,139,0.12);color:var(--green);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">FDA</span>
           <span style="background:rgba(212,198,161,0.1);color:var(--pink);font-size:9px;font-weight:700;letter-spacing:0.06em;padding:2px 8px;border-radius:20px">&#x1F525; Hot</span>
         </div>
         <span style="font-size:10px;color:var(--text-muted)">3 days ago</span>
@@ -1835,7 +1830,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     <div class="feed-card" data-cat="treatment">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
         <div style="display:flex;align-items:center;gap:7px">
-          <span style="background:rgba(78,158,255,0.12);color:var(--blue);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Treatment</span>
+          <span style="background:rgba(111,168,232,0.12);color:var(--blue);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Treatment</span>
           <span style="background:rgba(212,198,161,0.1);color:var(--pink);font-size:9px;font-weight:700;letter-spacing:0.06em;padding:2px 8px;border-radius:20px">&#x1F525; Hot</span>
         </div>
         <span style="font-size:10px;color:var(--text-muted)">5 days ago</span>
@@ -1851,7 +1846,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     <div class="feed-card" data-cat="industry">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
         <div style="display:flex;align-items:center;gap:7px">
-          <span style="background:rgba(201,167,107,0.15);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Industry</span>
+          <span style="background:rgba(180,154,98,0.15);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Industry</span>
           <span style="background:rgba(212,198,161,0.1);color:var(--pink);font-size:9px;font-weight:700;letter-spacing:0.06em;padding:2px 8px;border-radius:20px">&#x1F525; Hot</span>
         </div>
         <span style="font-size:10px;color:var(--text-muted)">6 days ago</span>
@@ -1866,7 +1861,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
     <div class="feed-card" data-cat="device">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-        <span style="background:rgba(224,62,62,0.12);color:var(--red);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Device</span>
+        <span style="background:rgba(209,106,92,0.12);color:var(--red);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Device</span>
         <span style="font-size:10px;color:var(--text-muted)">1 week ago</span>
       </div>
       <div style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:5px">InMode Expands Morpheus8 Body Protocols — Full-Body RF Microneedling Now Viable</div>
@@ -1879,7 +1874,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
     <div class="feed-card" data-cat="treatment">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-        <span style="background:rgba(78,158,255,0.12);color:var(--blue);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Treatment</span>
+        <span style="background:rgba(111,168,232,0.12);color:var(--blue);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Treatment</span>
         <span style="font-size:10px;color:var(--text-muted)">1 week ago</span>
       </div>
       <div style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:5px">Profhilo Bioremodelling Enters US Market Through Select Distributors</div>
@@ -1892,7 +1887,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
     <div class="feed-card" data-cat="device">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-        <span style="background:rgba(224,62,62,0.12);color:var(--red);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Device</span>
+        <span style="background:rgba(209,106,92,0.12);color:var(--red);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Device</span>
         <span style="font-size:10px;color:var(--text-muted)">10 days ago</span>
       </div>
       <div style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:5px">AI Skin Analysis Cameras Reporting 34% Higher Package Conversion in Consultations</div>
@@ -1905,7 +1900,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
     <div class="feed-card" data-cat="industry">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-        <span style="background:rgba(201,167,107,0.15);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Industry</span>
+        <span style="background:rgba(180,154,98,0.15);color:var(--gold);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Industry</span>
         <span style="font-size:10px;color:var(--text-muted)">2 weeks ago</span>
       </div>
       <div style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:5px">NAD+ IV Therapy Up 44% YoY as Longevity Medicine Moves Mainstream</div>
@@ -1919,8 +1914,8 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     <div class="feed-card" data-cat="regulatory">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
         <div style="display:flex;align-items:center;gap:7px">
-          <span style="background:rgba(245,185,66,0.15);color:var(--amber);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Regulatory</span>
-          <span style="background:rgba(245,185,66,0.15);color:var(--amber);font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px">&#9888; Action Required</span>
+          <span style="background:rgba(180,154,98,0.15);color:var(--amber);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px">Regulatory</span>
+          <span style="background:rgba(180,154,98,0.15);color:var(--amber);font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px">&#9888; Action Required</span>
         </div>
         <span style="font-size:10px;color:var(--text-muted)">2 weeks ago</span>
       </div>
@@ -1942,9 +1937,9 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 
   <div class="inv-stats">
     <div class="inv-stat"><div class="inv-stat-num">5</div><div class="inv-stat-label">Spas Tracked</div></div>
-    <div class="inv-stat" style="border-color:rgba(224,62,62,0.2)"><div class="inv-stat-num" style="color:var(--red)">3</div><div class="inv-stat-label">Changes This Week</div></div>
+    <div class="inv-stat" style="border-color:rgba(209,106,92,0.2)"><div class="inv-stat-num" style="color:var(--red)">3</div><div class="inv-stat-label">Changes This Week</div></div>
     <div class="inv-stat"><div class="inv-stat-num" style="color:var(--amber)">4.2</div><div class="inv-stat-label">Avg Competitor Rating</div></div>
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)"><div class="inv-stat-num" style="color:var(--green)">4.8</div><div class="inv-stat-label">Your Rating</div></div>
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)"><div class="inv-stat-num" style="color:var(--green)">4.8</div><div class="inv-stat-label">Your Rating</div></div>
   </div>
 
   <div class="sec-hd" style="margin-bottom:10px;margin-top:4px"><div class="sec-title">Nearest Competitors</div></div>
@@ -2069,15 +2064,15 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 
   <div class="sec-hd" style="margin-bottom:10px"><div class="sec-title">Intelligence Summary</div></div>
   <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
-    <div style="background:rgba(29,184,126,0.05);border:1px solid rgba(29,184,126,0.2);border-radius:var(--radius);padding:13px 14px">
+    <div style="background:rgba(61,190,139,0.05);border:1px solid rgba(61,190,139,0.2);border-radius:var(--radius);padding:13px 14px">
       <div style="font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px">&#x2714; Your Edge</div>
       <div style="font-size:12px;color:var(--text-2);line-height:1.55">You lead on rating (4.8 vs market avg 4.2) and review volume. RF Microneedling pricing is competitive and you hold the only membership program against 3 of 5 competitors.</div>
     </div>
-    <div style="background:rgba(224,62,62,0.04);border:1px solid rgba(224,62,62,0.15);border-radius:var(--radius);padding:13px 14px">
+    <div style="background:rgba(209,106,92,0.04);border:1px solid rgba(209,106,92,0.15);border-radius:var(--radius);padding:13px 14px">
       <div style="font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:6px">&#x26A0; Gaps to Close</div>
       <div style="font-size:12px;color:var(--text-2);line-height:1.55">IV Therapy and Men&rsquo;s Services are blind spots &mdash; The Aesthetic Bar is the only competitor offering both, and demand is growing. Exosome therapy is available to you as first mover in this market with zero current competition.</div>
     </div>
-    <div style="background:rgba(245,185,66,0.04);border:1px solid rgba(245,185,66,0.15);border-radius:var(--radius);padding:13px 14px">
+    <div style="background:rgba(180,154,98,0.04);border:1px solid rgba(180,154,98,0.15);border-radius:var(--radius);padding:13px 14px">
       <div style="font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);margin-bottom:6px">&#x26A1; Watch</div>
       <div style="font-size:12px;color:var(--text-2);line-height:1.55">Glow &amp; Go (1.2 mi) has the highest rating in the market at 4.7 and 412 reviews. Their HydraFacial is priced $10 below yours. Monitor for new service additions &mdash; they&rsquo;re the most operationally active competitor in the cluster.</div>
     </div>
@@ -2140,7 +2135,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
         <div style="background:var(--surface-2);border-radius:8px;padding:12px;font-size:11px;color:var(--text-2);line-height:1.6;border-left:3px solid var(--green)">
           <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px">"Your Summer Refresh Starts Here"</div>
           20% off Botox this summer. Limited spots available. Book your free consultation today &mdash; takes 60 seconds.
-          <div style="margin-top:8px"><span style="background:var(--pink);color:#fff;font-size:10px;font-weight:700;padding:5px 14px;border-radius:20px">Book My Appointment</span></div>
+          <div style="margin-top:8px"><span style="background:var(--pink);color:#0A1220;font-size:10px;font-weight:700;padding:5px 14px;border-radius:20px">Book My Appointment</span></div>
         </div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:14px">
@@ -2290,19 +2285,19 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     <div style="font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Backend Setup &mdash; Auto-Configured</div>
     <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:6px">
       <div style="background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius);padding:12px 14px;display:flex;align-items:flex-start;gap:12px">
-        <div style="width:28px;height:28px;border-radius:7px;background:rgba(29,184,126,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">&#x1F4CB;</div>
+        <div style="width:28px;height:28px;border-radius:7px;background:rgba(61,190,139,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">&#x1F4CB;</div>
         <div><div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">Booking SKU Created</div><div style="font-size:11px;color:var(--text-muted);line-height:1.5">"Summer Glow Package" added to Vagaro as a bookable service at 20% discount. Auto-expires July 31st. Linked to campaign landing page.</div></div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius);padding:12px 14px;display:flex;align-items:flex-start;gap:12px">
-        <div style="width:28px;height:28px;border-radius:7px;background:rgba(29,184,126,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">&#x1F3F7;</div>
+        <div style="width:28px;height:28px;border-radius:7px;background:rgba(61,190,139,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">&#x1F3F7;</div>
         <div><div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">Promo Code Generated</div><div style="font-size:11px;color:var(--text-muted);line-height:1.5">Code: SUMMERGLOW24 &mdash; Single-use per patient, 20% off Botox only, expires with campaign. Tracking enabled to attribute bookings back to this campaign.</div></div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius);padding:12px 14px;display:flex;align-items:flex-start;gap:12px">
-        <div style="width:28px;height:28px;border-radius:7px;background:rgba(29,184,126,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">&#x1F4CA;</div>
+        <div style="width:28px;height:28px;border-radius:7px;background:rgba(61,190,139,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">&#x1F4CA;</div>
         <div><div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">Conversion Tracking Active</div><div style="font-size:11px;color:var(--text-muted);line-height:1.5">Google Tag Manager and Facebook Pixel events firing on landing page and booking confirmation. ROI calculated in real-time from booking revenue vs. ad spend.</div></div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius);padding:12px 14px;display:flex;align-items:flex-start;gap:12px">
-        <div style="width:28px;height:28px;border-radius:7px;background:rgba(29,184,126,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">&#x1F4E7;</div>
+        <div style="width:28px;height:28px;border-radius:7px;background:rgba(61,190,139,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">&#x1F4E7;</div>
         <div><div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">Post-Campaign Email Trigger Set</div><div style="font-size:11px;color:var(--text-muted);line-height:1.5">Any patient who booked under this campaign gets a 90-day rebooking reminder and an invitation to leave a Google review. Runs automatically after their appointment.</div></div>
       </div>
     </div>
@@ -2315,7 +2310,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 
   <!-- New Campaign Button -->
   <div style="margin-top:24px;margin-bottom:8px">
-    <button onclick="showNewCampaign()" style="width:100%;background:var(--pink);color:#fff;border:none;border-radius:var(--radius);padding:14px;font-family:var(--font-l);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;touch-action:manipulation">+ Launch New Campaign</button>
+    <button onclick="showNewCampaign()" style="width:100%;background:var(--pink);color:#0A1220;border:none;border-radius:var(--radius);padding:14px;font-family:var(--font-l);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;touch-action:manipulation">+ Launch New Campaign</button>
   </div>
 
 </div>
@@ -2327,7 +2322,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 <div id="view-membership" class="view" style="display:none">
 <div class="main">
   <div class="inv-stats">
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)">
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)">
       <div class="inv-stat-num" style="color:var(--green)">312</div>
       <div class="inv-stat-label">Active Members</div>
     </div>
@@ -2339,7 +2334,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="inv-stat-num" style="color:var(--amber)">14</div>
       <div class="inv-stat-label">At Risk of Churn</div>
     </div>
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)">
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)">
       <div class="inv-stat-num" style="color:var(--green)">91%</div>
       <div class="inv-stat-label">Retention Rate</div>
     </div>
@@ -2369,22 +2364,22 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div style="background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:18px">
     <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:11px 14px;border-bottom:1px solid var(--border-dim)">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Amanda R.</div><div style="font-size:11px;color:var(--text-muted)">Gold &middot; no visit in 71 days</div></div>
-      <span class="badge" style="font-size:9px;background:rgba(245,185,66,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;margin-right:10px">Save sent</span>
+      <span class="badge" style="font-size:9px;background:rgba(180,154,98,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;margin-right:10px">Save sent</span>
       <span class="badge b-green" style="font-size:9px">Rebooked</span>
     </div>
     <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:11px 14px;border-bottom:1px solid var(--border-dim)">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Christine W.</div><div style="font-size:11px;color:var(--text-muted)">Platinum &middot; renewal in 5 days</div></div>
-      <span class="badge" style="font-size:9px;background:rgba(245,185,66,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;margin-right:10px">Reminder sent</span>
+      <span class="badge" style="font-size:9px;background:rgba(180,154,98,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;margin-right:10px">Reminder sent</span>
       <span class="badge" style="font-size:9px;background:var(--surface-3);color:var(--text-muted);border-radius:4px;padding:2px 7px">Pending</span>
     </div>
     <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:11px 14px">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Brian T.</div><div style="font-size:11px;color:var(--text-muted)">Silver &middot; 2 credits expiring</div></div>
-      <span class="badge" style="font-size:9px;background:rgba(245,185,66,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;margin-right:10px">Alert sent</span>
+      <span class="badge" style="font-size:9px;background:rgba(180,154,98,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;margin-right:10px">Alert sent</span>
       <span class="badge b-green" style="font-size:9px">Booked</span>
     </div>
   </div>
 
-  <div style="background:rgba(29,184,126,0.05);border:1px solid rgba(29,184,126,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
+  <div style="background:rgba(61,190,139,0.05);border:1px solid rgba(61,190,139,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
     <div style="font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px">Impact This Month</div>
     <div style="font-size:12px;color:var(--text-2);line-height:1.55">9 members saved from churning, 6 upgraded a tier. Recovered recurring revenue: <span style="color:var(--text);font-weight:600">$3,240/mo</span> &mdash; with zero manual outreach.</div>
   </div>
@@ -2399,11 +2394,11 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="inv-stat-num">184</div>
       <div class="inv-stat-label">Check-ins This Month</div>
     </div>
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)">
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)">
       <div class="inv-stat-num" style="color:var(--green)">41%</div>
       <div class="inv-stat-label">Rebooked From Follow-Up</div>
     </div>
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)">
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)">
       <div class="inv-stat-num" style="color:var(--green)">+38</div>
       <div class="inv-stat-label">Reviews Generated</div>
     </div>
@@ -2435,17 +2430,17 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Lauren P. &middot; Botox</div><div style="font-size:11px;color:var(--text-muted)">24hr check-in &middot; replied &ldquo;feeling great!&rdquo;</div></div>
       <span class="badge b-green" style="font-size:9px">Review left</span>
     </div>
-    <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:11px 14px;border-bottom:1px solid var(--border-dim);background:rgba(224,62,62,0.04)">
+    <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:11px 14px;border-bottom:1px solid var(--border-dim);background:rgba(209,106,92,0.04)">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Megan S. &middot; Filler</div><div style="font-size:11px;color:var(--text-muted)">Reported swelling &mdash; routed to injector</div></div>
       <span class="badge b-red" style="font-size:9px">Staff alerted</span>
     </div>
     <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:11px 14px">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">Olivia D. &middot; HydraFacial</div><div style="font-size:11px;color:var(--text-muted)">90-day rebooking nudge sent</div></div>
-      <span class="badge" style="font-size:9px;background:rgba(245,185,66,0.15);color:var(--amber);border-radius:4px;padding:2px 7px">Rebooked</span>
+      <span class="badge" style="font-size:9px;background:rgba(180,154,98,0.15);color:var(--amber);border-radius:4px;padding:2px 7px">Rebooked</span>
     </div>
   </div>
 
-  <div style="background:rgba(29,184,126,0.05);border:1px solid rgba(29,184,126,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
+  <div style="background:rgba(61,190,139,0.05);border:1px solid rgba(61,190,139,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
     <div style="font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px">Why It Matters</div>
     <div style="font-size:12px;color:var(--text-2);line-height:1.55">Every patient hears from you after they leave &mdash; concerns get caught early, happy patients leave reviews, and the 90-day nudge pulls them back before they drift to a competitor.</div>
   </div>
@@ -2456,7 +2451,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 <div id="view-frontdesk" class="view" style="display:none">
 <div class="main">
   <div class="inv-stats">
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)">
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)">
       <div class="inv-stat-num" style="color:var(--green)">100%</div>
       <div class="inv-stat-label">Calls Answered</div>
     </div>
@@ -2464,7 +2459,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="inv-stat-num">62</div>
       <div class="inv-stat-label">After-Hours Caught</div>
     </div>
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)">
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)">
       <div class="inv-stat-num" style="color:var(--green)">&lt;60s</div>
       <div class="inv-stat-label">Missed-Call Response</div>
     </div>
@@ -2485,7 +2480,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div style="background:var(--surface-3);border-radius:10px 10px 3px 10px;padding:9px 12px;align-self:flex-end;max-width:85%"><div style="font-size:12px;color:var(--text);line-height:1.5">Hey, do you have any Botox openings this week?</div></div>
       <div style="background:var(--surface-2);border-radius:10px 10px 10px 3px;padding:9px 12px;align-self:flex-start;max-width:85%"><div style="font-size:12px;color:var(--text);line-height:1.5">We do! Thursday 2:00 PM or Friday 11:00 AM. Want me to lock one in?</div></div>
       <div style="background:var(--surface-3);border-radius:10px 10px 3px 10px;padding:9px 12px;align-self:flex-end;max-width:85%"><div style="font-size:12px;color:var(--text);line-height:1.5">Friday 11 works</div></div>
-      <div style="background:rgba(29,184,126,0.08);border:1px solid rgba(29,184,126,0.2);border-radius:10px;padding:9px 12px;align-self:flex-start;max-width:90%"><div style="font-size:12px;color:var(--text);line-height:1.5">&#x2705; <strong>Friday 11:00 AM &mdash; Botox</strong> booked. Confirmation texted. See you then!</div></div>
+      <div style="background:rgba(61,190,139,0.08);border:1px solid rgba(61,190,139,0.2);border-radius:10px;padding:9px 12px;align-self:flex-start;max-width:90%"><div style="font-size:12px;color:var(--text);line-height:1.5">&#x2705; <strong>Friday 11:00 AM &mdash; Botox</strong> booked. Confirmation texted. See you then!</div></div>
     </div>
   </div>
 
@@ -2501,11 +2496,11 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
     <div style="display:grid;grid-template-columns:1fr auto;align-items:center;padding:11px 14px">
       <div><div style="font-size:13px;font-weight:600;color:var(--text)">Inbound &mdash; complex medical</div><div style="font-size:11px;color:var(--text-muted)">Triaged &amp; escalated to clinical staff</div></div>
-      <span class="badge" style="font-size:9px;background:rgba(245,185,66,0.15);color:var(--amber);border-radius:4px;padding:2px 7px">Escalated</span>
+      <span class="badge" style="font-size:9px;background:rgba(180,154,98,0.15);color:var(--amber);border-radius:4px;padding:2px 7px">Escalated</span>
     </div>
   </div>
 
-  <div style="background:rgba(29,184,126,0.05);border:1px solid rgba(29,184,126,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
+  <div style="background:rgba(61,190,139,0.05);border:1px solid rgba(61,190,139,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
     <div style="font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px">The Math</div>
     <div style="font-size:12px;color:var(--text-2);line-height:1.55">62 after-hours calls caught this month that would&rsquo;ve gone to voicemail. At an average ticket, that&rsquo;s <span style="color:var(--text);font-weight:600">$11,400</span> in bookings that used to walk to the next spa on Google.</div>
   </div>
@@ -2520,8 +2515,8 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <!-- KPI strip -->
   <div class="inv-stats">
     <div class="inv-stat"><div class="inv-stat-num">48</div><div class="inv-stat-label">Posts This Month</div></div>
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)"><div class="inv-stat-num" style="color:var(--green)">4</div><div class="inv-stat-label">Platforms Synced</div></div>
-    <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)"><div class="inv-stat-num" style="color:var(--green)">132k</div><div class="inv-stat-label">Reach This Month</div></div>
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)"><div class="inv-stat-num" style="color:var(--green)">4</div><div class="inv-stat-label">Platforms Synced</div></div>
+    <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)"><div class="inv-stat-num" style="color:var(--green)">132k</div><div class="inv-stat-label">Reach This Month</div></div>
     <div class="inv-stat"><div class="inv-stat-num">9</div><div class="inv-stat-label">Scheduled Ahead</div></div>
   </div>
 
@@ -2553,7 +2548,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <textarea id="sm-copy" class="sm-textarea" oninput="smRenderPreview()" placeholder="Type your caption, or tap a style above to generate one&hellip;">&#x2728; Glow season is here. Book your Summer Glow facial this month and walk out radiant. Limited spots &mdash; link in bio to reserve. &#x1F496;</textarea>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
         <div style="font-size:10px;color:var(--text-muted)" id="sm-charcount">142 characters</div>
-        <button class="sm-pill" onclick="smHashtags()" style="border-color:rgba(78,158,255,0.3);color:var(--blue)">＃ Add hashtags</button>
+        <button class="sm-pill" onclick="smHashtags()" style="border-color:rgba(111,168,232,0.3);color:var(--blue)">＃ Add hashtags</button>
       </div>
     </div>
 
@@ -2585,7 +2580,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       </div>
     </div>
     <button id="sm-schedule-btn" class="sm-cta" onclick="smSchedule()">&#x1F680; Schedule across <span id="sm-platcount">3</span> platforms</button>
-    <div id="sm-confirm" style="display:none;background:rgba(29,184,126,0.08);border:1px solid rgba(29,184,126,0.25);border-radius:var(--radius);padding:14px;margin-top:12px;text-align:center">
+    <div id="sm-confirm" style="display:none;background:rgba(61,190,139,0.08);border:1px solid rgba(61,190,139,0.25);border-radius:var(--radius);padding:14px;margin-top:12px;text-align:center">
       <div style="font-size:22px;margin-bottom:6px">&#x2705;</div>
       <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">Scheduled &amp; queued</div>
       <div style="font-size:11px;color:var(--text-muted)" id="sm-confirm-detail">Posting Thursday 6:40 PM across Instagram, Facebook, TikTok.</div>
@@ -2603,16 +2598,16 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:5px"><span class="sm-chip">&#x1F4F7; IG</span><span class="sm-chip">&#x1F4D8; FB</span><span class="sm-chip">&#x1F3B5; TT</span></div>
           <div style="font-size:10px;color:var(--text-muted)">Thu 6:40 PM &middot; in 2 days</div>
         </div>
-        <span class="badge" style="font-size:9px;background:rgba(245,185,66,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;align-self:flex-start">Scheduled</span>
+        <span class="badge" style="font-size:9px;background:rgba(180,154,98,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;align-self:flex-start">Scheduled</span>
       </div>
       <div class="sm-qcard">
-        <div class="sm-qthumb" style="background:rgba(78,158,255,0.12)">&#x1F4A7;</div>
+        <div class="sm-qthumb" style="background:rgba(111,168,232,0.12)">&#x1F4A7;</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:12px;color:var(--text);line-height:1.45;margin-bottom:6px">3 signs your skin is dehydrated (and what to do)&hellip;</div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:5px"><span class="sm-chip">&#x1F4F7; IG</span><span class="sm-chip">&#x1F3B5; TT</span></div>
           <div style="font-size:10px;color:var(--text-muted)">Sat 11:00 AM &middot; in 4 days</div>
         </div>
-        <span class="badge" style="font-size:9px;background:rgba(245,185,66,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;align-self:flex-start">Scheduled</span>
+        <span class="badge" style="font-size:9px;background:rgba(180,154,98,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;align-self:flex-start">Scheduled</span>
       </div>
       <div class="sm-qcard">
         <div class="sm-qthumb" style="background:rgba(212,198,161,0.1)">&#x2B50;</div>
@@ -2621,13 +2616,13 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:5px"><span class="sm-chip">&#x1F4F7; IG</span><span class="sm-chip">&#x1F4D8; FB</span><span class="sm-chip">&#x1D54F; X</span></div>
           <div style="font-size:10px;color:var(--text-muted)">Mon 5:30 PM &middot; in 6 days</div>
         </div>
-        <span class="badge" style="font-size:9px;background:rgba(245,185,66,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;align-self:flex-start">Scheduled</span>
+        <span class="badge" style="font-size:9px;background:rgba(180,154,98,0.15);color:var(--amber);border-radius:4px;padding:2px 7px;align-self:flex-start">Scheduled</span>
       </div>
     </div>
     <div class="sec-hd" style="margin-bottom:10px"><div class="sec-title">Recently Posted</div></div>
     <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px">
       <div class="sm-qcard">
-        <div class="sm-qthumb" style="background:rgba(29,184,126,0.1)">&#x1F4AB;</div>
+        <div class="sm-qthumb" style="background:rgba(61,190,139,0.1)">&#x1F4AB;</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:12px;color:var(--text);line-height:1.45;margin-bottom:6px">Before &amp; after: 3 sessions of microneedling&hellip;</div>
           <div style="display:flex;gap:10px;font-size:10px;color:var(--text-muted)"><span>&#x2764;&#xFE0F; 1,204</span><span>&#x1F4AC; 87</span><span>&#x1F501; 42</span></div>
@@ -2635,7 +2630,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
         <span class="badge b-green" style="font-size:9px;align-self:flex-start">Posted</span>
       </div>
       <div class="sm-qcard">
-        <div class="sm-qthumb" style="background:rgba(201,167,107,0.12)">&#x1F31F;</div>
+        <div class="sm-qthumb" style="background:rgba(180,154,98,0.12)">&#x1F31F;</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:12px;color:var(--text);line-height:1.45;margin-bottom:6px">Meet your injector: 60 seconds with Sarah&hellip;</div>
           <div style="display:flex;gap:10px;font-size:10px;color:var(--text-muted)"><span>&#x2764;&#xFE0F; 2,841</span><span>&#x1F4AC; 156</span><span>&#x1F501; 98</span></div>
@@ -2655,17 +2650,17 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <div class="sm-bar-row"><div class="sm-bar-label"><span class="sm-pico" style="background:#000">&#x1D54F;</span> X</div><div class="sm-bar-track"><div class="sm-bar-fill" style="width:11%;background:#555"></div></div><div class="sm-bar-val">6.9k</div></div>
     </div>
     <div class="inv-stats" style="margin-bottom:18px">
-      <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)"><div class="inv-stat-num" style="color:var(--green)">5.8%</div><div class="inv-stat-label">Avg Engagement</div></div>
+      <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)"><div class="inv-stat-num" style="color:var(--green)">5.8%</div><div class="inv-stat-label">Avg Engagement</div></div>
       <div class="inv-stat"><div class="inv-stat-num">217</div><div class="inv-stat-label">New Followers</div></div>
-      <div class="inv-stat" style="border-color:rgba(29,184,126,0.2)"><div class="inv-stat-num" style="color:var(--green)">31</div><div class="inv-stat-label">Bookings From Social</div></div>
+      <div class="inv-stat" style="border-color:rgba(61,190,139,0.2)"><div class="inv-stat-num" style="color:var(--green)">31</div><div class="inv-stat-label">Bookings From Social</div></div>
       <div class="inv-stat"><div class="inv-stat-num">3.5h</div><div class="inv-stat-label">Staff Time Saved/Wk</div></div>
     </div>
     <div class="sec-hd" style="margin-bottom:10px"><div class="sec-title">Top Post This Month</div></div>
     <div style="background:var(--surface);border:1px solid var(--border-dim);border-radius:var(--radius-lg);padding:14px;display:flex;gap:12px;align-items:center;margin-bottom:18px">
-      <div class="sm-qthumb" style="background:rgba(201,167,107,0.12);width:54px;height:54px;font-size:24px">&#x1F31F;</div>
+      <div class="sm-qthumb" style="background:rgba(180,154,98,0.12);width:54px;height:54px;font-size:24px">&#x1F31F;</div>
       <div style="flex:1"><div style="font-size:12px;color:var(--text);margin-bottom:4px">Meet your injector: 60 seconds with Sarah</div><div style="font-size:11px;color:var(--green)">2,841 likes &middot; reached 18.2k &middot; 12 bookings traced</div></div>
     </div>
-    <div style="background:rgba(29,184,126,0.05);border:1px solid rgba(29,184,126,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
+    <div style="background:rgba(61,190,139,0.05);border:1px solid rgba(61,190,139,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
       <div style="font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px">What This Replaces</div>
       <div style="font-size:12px;color:var(--text-2);line-height:1.55">One caption, written once, auto-formatted and posted to all four platforms at the best time for each. No agency retainer, no posting from your phone between clients.</div>
     </div>
@@ -2700,9 +2695,9 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       <defs>
         <linearGradient id="dashArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--orange)" stop-opacity="0.42"/><stop offset="1" stop-color="var(--orange)" stop-opacity="0"/></linearGradient>
       </defs>
-      <line x1="0" y1="20" x2="560" y2="20" stroke="rgba(245,238,240,0.05)"/>
-      <line x1="0" y1="70" x2="560" y2="70" stroke="rgba(245,238,240,0.05)"/>
-      <line x1="0" y1="120" x2="560" y2="120" stroke="rgba(245,238,240,0.05)"/>
+      <line x1="0" y1="20" x2="560" y2="20" stroke="rgba(239,242,247,0.05)"/>
+      <line x1="0" y1="70" x2="560" y2="70" stroke="rgba(239,242,247,0.05)"/>
+      <line x1="0" y1="120" x2="560" y2="120" stroke="rgba(239,242,247,0.05)"/>
       <path d="M0,130 L112,108 L224,116 L336,74 L448,58 L560,30 L560,170 L0,170 Z" fill="url(#dashArea)"/>
       <path d="M0,130 L112,108 L224,116 L336,74 L448,58 L560,30" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="0" cy="130" r="4" fill="var(--orange)"/><circle cx="112" cy="108" r="4" fill="var(--orange)"/><circle cx="224" cy="116" r="4" fill="var(--orange)"/><circle cx="336" cy="74" r="4" fill="var(--orange)"/><circle cx="448" cy="58" r="4" fill="var(--orange)"/><circle cx="560" cy="30" r="5" fill="var(--orange)" stroke="var(--bg)" stroke-width="2"/>
@@ -2712,7 +2707,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 
   <!-- Quick metrics -->
   <div class="kpi-grid" style="margin-bottom:18px">
-    <div class="kpi-c" style="--ac:var(--green)"><div class="kpi-label">New Patients</div><div class="kpi-viz"><svg width="100%" height="54" viewBox="0 0 120 54" preserveAspectRatio="none"><defs><linearGradient id="sgNP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1db87e" stop-opacity="0.4"/><stop offset="1" stop-color="#1db87e" stop-opacity="0"/></linearGradient></defs><path d="M0,46 L24,40 L48,34 L72,30 L96,18 L120,8 L120,54 L0,54 Z" fill="url(#sgNP)"/><path d="M0,46 L24,40 L48,34 L72,30 L96,18 L120,8" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"/><circle cx="120" cy="8" r="3.5" fill="var(--green)"/></svg></div><div class="kpi-val-sm" style="color:var(--green)">94 this month</div></div>
+    <div class="kpi-c" style="--ac:var(--green)"><div class="kpi-label">New Patients</div><div class="kpi-viz"><svg width="100%" height="54" viewBox="0 0 120 54" preserveAspectRatio="none"><defs><linearGradient id="sgNP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3DBE8B" stop-opacity="0.4"/><stop offset="1" stop-color="#3DBE8B" stop-opacity="0"/></linearGradient></defs><path d="M0,46 L24,40 L48,34 L72,30 L96,18 L120,8 L120,54 L0,54 Z" fill="url(#sgNP)"/><path d="M0,46 L24,40 L48,34 L72,30 L96,18 L120,8" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"/><circle cx="120" cy="8" r="3.5" fill="var(--green)"/></svg></div><div class="kpi-val-sm" style="color:var(--green)">94 this month</div></div>
     <div class="kpi-c" style="--ac:var(--orange)"><div class="kpi-label">Avg Ticket</div><div class="kpi-viz kpi-bars"><span style="height:52%;background:rgba(212,198,161,0.28)"></span><span style="height:60%;background:rgba(212,198,161,0.28)"></span><span style="height:56%;background:rgba(212,198,161,0.28)"></span><span style="height:74%;background:rgba(212,198,161,0.28)"></span><span style="height:86%;background:linear-gradient(180deg,var(--orange-light),var(--orange))"></span><span style="height:100%;background:linear-gradient(180deg,var(--orange-light),var(--orange))"></span></div><div class="kpi-val-sm" style="color:var(--orange-light)">$332 &middot; climbing</div></div>
     <div class="kpi-c" style="--ac:var(--blue)"><div class="kpi-label">Rebook Rate</div><div class="kpi-viz"><svg width="54" height="54" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--surface-3)" stroke-width="4.5"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--blue)" stroke-width="4.5" stroke-dasharray="68 100" stroke-dashoffset="25" stroke-linecap="round"/><text x="21" y="25" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)" font-family="inherit">68%</text></svg></div><div class="kpi-val-sm" style="color:var(--text-muted)">Patients returning</div></div>
     <div class="kpi-c" style="--ac:var(--amber)"><div class="kpi-label">No-Show Rate</div><div class="kpi-viz"><svg width="54" height="54" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--surface-3)" stroke-width="4.5"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--amber)" stroke-width="4.5" stroke-dasharray="4.8 100" stroke-dashoffset="25" stroke-linecap="round"/><text x="21" y="25" text-anchor="middle" font-size="10" font-weight="700" fill="var(--text)" font-family="inherit">4.8%</text></svg></div><div class="kpi-val-sm" style="color:var(--text-muted)">Kept low by reminders</div></div>
@@ -2767,10 +2762,10 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <!-- Location comparison -->
   <div class="sec-hd" style="margin-bottom:10px"><div class="sec-title">Location Performance</div></div>
   <div style="background:linear-gradient(165deg,var(--surface-2),var(--surface));border:1.5px solid var(--border-dim);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:18px">
-    <div class="dash-loc"><div style="flex:1;min-width:0"><div class="dash-loc-n">Midtown</div><div class="dash-loc-s">94 appts &middot; 76% capacity</div><div class="loc-bar"><div style="width:100%;background:linear-gradient(90deg,var(--green),#5ee0aa)"></div></div></div><div class="dash-loc-v" style="color:var(--green)">$24.1k</div></div>
-    <div class="dash-loc"><div style="flex:1;min-width:0"><div class="dash-loc-n">Coral Gables</div><div class="dash-loc-s">71 appts &middot; 72% capacity</div><div class="loc-bar"><div style="width:82%;background:linear-gradient(90deg,var(--green),#5ee0aa)"></div></div></div><div class="dash-loc-v" style="color:var(--green)">$19.8k</div></div>
+    <div class="dash-loc"><div style="flex:1;min-width:0"><div class="dash-loc-n">Midtown</div><div class="dash-loc-s">94 appts &middot; 76% capacity</div><div class="loc-bar"><div style="width:100%;background:linear-gradient(90deg,var(--green),#3DBE8B)"></div></div></div><div class="dash-loc-v" style="color:var(--green)">$24.1k</div></div>
+    <div class="dash-loc"><div style="flex:1;min-width:0"><div class="dash-loc-n">Coral Gables</div><div class="dash-loc-s">71 appts &middot; 72% capacity</div><div class="loc-bar"><div style="width:82%;background:linear-gradient(90deg,var(--green),#3DBE8B)"></div></div></div><div class="dash-loc-v" style="color:var(--green)">$19.8k</div></div>
     <div class="dash-loc"><div style="flex:1;min-width:0"><div class="dash-loc-n">Doral</div><div class="dash-loc-s">38 appts &middot; 64% capacity</div><div class="loc-bar"><div style="width:70%;background:linear-gradient(90deg,var(--orange),var(--orange-light))"></div></div></div><div class="dash-loc-v">$16.9k</div></div>
-    <div class="dash-loc" style="border-bottom:none"><div style="flex:1;min-width:0"><div class="dash-loc-n">Kendall</div><div class="dash-loc-s">24 appts &middot; 58% capacity</div><div class="loc-bar"><div style="width:60%;background:linear-gradient(90deg,var(--amber),#E4D9BC)"></div></div></div><div class="dash-loc-v" style="color:var(--amber)">$14.5k</div></div>
+    <div class="dash-loc" style="border-bottom:none"><div style="flex:1;min-width:0"><div class="dash-loc-n">Kendall</div><div class="dash-loc-s">24 appts &middot; 58% capacity</div><div class="loc-bar"><div style="width:60%;background:linear-gradient(90deg,var(--amber),#E6DCC0)"></div></div></div><div class="dash-loc-v" style="color:var(--amber)">$14.5k</div></div>
   </div>
 
 </div>
@@ -2796,9 +2791,9 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 #view-websitebuilder .wb-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 #view-websitebuilder .wb-chip{font-size:11.5px;padding:7px 12px;border-radius:999px;border:1px solid var(--border);color:var(--text-dim);cursor:pointer;background:rgba(255,255,255,0.02);transition:all .18s}
 #view-websitebuilder .wb-chip:hover{border-color:var(--orange);color:var(--text)}
-#view-websitebuilder .wb-chip.active{background:linear-gradient(90deg,var(--orange),var(--pink));color:#fff;border-color:transparent}
+#view-websitebuilder .wb-chip.active{background:linear-gradient(90deg,var(--orange),var(--pink));color:#0A1220;border-color:transparent}
 #view-websitebuilder .wb-ba{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
-#view-websitebuilder .wb-mock{border:1px solid var(--border-dim);border-radius:12px;overflow:hidden;background:#0d0d0f}
+#view-websitebuilder .wb-mock{border:1px solid var(--border-dim);border-radius:12px;overflow:hidden;background:#0A1220}
 #view-websitebuilder .wb-mock-label{font-size:10px;letter-spacing:.6px;text-transform:uppercase;padding:6px 10px;color:var(--text-muted);border-bottom:1px solid var(--border-dim);display:flex;justify-content:space-between}
 #view-websitebuilder .wb-mock-body{padding:10px;min-height:150px}
 #view-websitebuilder .m-nav{height:8px;border-radius:4px;background:rgba(255,255,255,0.08);margin-bottom:8px}
@@ -2811,7 +2806,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 #view-websitebuilder .m-cta-new{height:14px;width:52%;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--pink));margin-top:8px}
 #view-websitebuilder .wb-note{font-size:11px;color:var(--text-muted);margin-top:8px}
 #view-websitebuilder .wb-pubrow{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
-#view-websitebuilder .wb-pub{background:linear-gradient(90deg,var(--orange),var(--pink));border:none;color:#fff;font-family:var(--font-d);font-size:13px;padding:11px 22px;border-radius:12px;cursor:pointer}
+#view-websitebuilder .wb-pub{background:linear-gradient(90deg,var(--orange),var(--pink));border:none;color:#0A1220;font-family:var(--font-d);font-size:13px;padding:11px 22px;border-radius:12px;cursor:pointer}
 #view-websitebuilder .wb-pub[disabled]{opacity:.45;cursor:default}
 #view-websitebuilder .wb-status{font-size:12px;color:var(--text-dim)}
 #view-websitebuilder .wb-status.live{color:var(--green)}
@@ -3356,7 +3351,7 @@ function enterApp(){
 
 
 <style>
-.gt-demo-note{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 14px;padding:7px 11px;border-radius:7px;background:rgba(212,198,161,0.07);border:1px solid rgba(212,198,161,0.18);font-family:Barlow,system-ui,-apple-system,sans-serif;font-size:11px;line-height:1.4;color:rgba(255,255,255,0.55)}
+.gt-demo-note{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 14px;padding:7px 11px;border-radius:7px;background:rgba(212,198,161,0.07);border:1px solid rgba(212,198,161,0.18);font-family:Lato,system-ui,sans-serif;font-size:11px;line-height:1.4;color:rgba(255,255,255,0.55)}
 .gt-demo-note b{color:#D4C6A1;font-weight:700;font-size:10px;letter-spacing:0.09em;text-transform:uppercase;white-space:nowrap}
 @media(max-width:520px){.gt-demo-note{font-size:10px;padding:6px 9px;gap:6px}}
 </style>
@@ -3389,23 +3384,23 @@ function enterApp(){
   <input type="text" name="bot-field" />
 </form>
 <style>
-#gt-cta{position:fixed;bottom:16px;right:16px;z-index:99998;background:#D4C6A1;color:#fff;font-family:Barlow,system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:13px 20px;border:0;border-radius:3px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 0 0 rgba(212,198,161,.5);animation:gtPulse 3.4s ease-out infinite}
+#gt-cta{position:fixed;bottom:16px;right:16px;z-index:99998;background:#D4C6A1;color:#0A1220;font-family:Lato,system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:13px 20px;border:0;border-radius:3px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 0 0 rgba(212,198,161,.5);animation:gtPulse 3.4s ease-out infinite}
 @keyframes gtPulse{0%{box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 0 0 rgba(212,198,161,.45)}60%{box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 0 14px rgba(212,198,161,0)}100%{box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 0 0 rgba(212,198,161,0)}}
 #gt-cta:hover{background:#D4C6A1}
 #gt-ov{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.72);backdrop-filter:blur(5px)}
 #gt-ov.on{display:flex}
-#gt-modal{width:100%;max-width:400px;background:#111214;border:1px solid rgba(212,198,161,.28);border-radius:14px;padding:24px 22px 20px;font-family:Barlow,system-ui,sans-serif;color:#fff;box-shadow:0 24px 70px rgba(0,0,0,.7);position:relative;max-height:92vh;overflow-y:auto}
-#gt-modal h3{margin:0 0 6px;font-family:'Cormorant Garamond',Barlow,sans-serif;font-size:31px;letter-spacing:.06em;line-height:1.05;color:#fff;font-weight:600}
+#gt-modal{width:100%;max-width:400px;background:#0E182B;border:1px solid rgba(212,198,161,.28);border-radius:14px;padding:24px 22px 20px;font-family:Lato,system-ui,sans-serif;color:#fff;box-shadow:0 24px 70px rgba(0,0,0,.7);position:relative;max-height:92vh;overflow-y:auto}
+#gt-modal h3{margin:0 0 6px;font-family:'Cormorant Garamond',Georgia,serif;font-size:31px;letter-spacing:.06em;line-height:1.05;color:#fff;font-weight:600}
 #gt-modal .gt-sub{margin:0 0 18px;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.58)}
 #gt-x{position:absolute;top:11px;right:13px;background:none;border:0;color:rgba(255,255,255,.4);font-size:22px;line-height:1;cursor:pointer;padding:4px}
 #gt-x:hover{color:#fff}
 .gt-f{margin-bottom:11px}
 .gt-f label{display:block;font-size:9.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:5px}
-.gt-f input,.gt-f select{width:100%;box-sizing:border-box;background:#1b1c1f;border:1px solid rgba(255,255,255,.13);border-radius:7px;padding:11px 12px;font-size:14px;font-family:inherit;color:#fff;outline:none;-webkit-appearance:none;appearance:none}
+.gt-f input,.gt-f select{width:100%;box-sizing:border-box;background:#1B2B49;border:1px solid rgba(255,255,255,.13);border-radius:7px;padding:11px 12px;font-size:14px;font-family:inherit;color:#fff;outline:none;-webkit-appearance:none;appearance:none}
 .gt-f select{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath fill='%23FF5500' d='M0 0h11L5.5 7z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
 .gt-f input:focus,.gt-f select:focus{border-color:#D4C6A1}
 .gt-f input::placeholder{color:rgba(255,255,255,.26)}
-#gt-submit{width:100%;margin-top:7px;background:#D4C6A1;color:#fff;border:0;border-radius:7px;padding:14px;font-family:inherit;font-weight:700;font-size:13.5px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer}
+#gt-submit{width:100%;margin-top:7px;background:#D4C6A1;color:#0A1220;border:0;border-radius:7px;padding:14px;font-family:inherit;font-weight:700;font-size:13.5px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer}
 #gt-submit:hover{background:#D4C6A1}
 #gt-submit:disabled{opacity:.55;cursor:default}
 #gt-fine{margin:12px 0 0;font-size:10.5px;line-height:1.45;color:rgba(255,255,255,.32);text-align:center}
