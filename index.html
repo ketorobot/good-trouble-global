@@ -171,6 +171,16 @@ nav.hidden{transform:translateY(-100%)}
   animation:logoFloat 6s ease-in-out infinite alternate;
 }
 @keyframes logoFloat{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+.gt-spin,.gt-flash{transform-box:view-box;transform-origin:60px 60px}
+.gt-spin{animation:gtSpin 1.4s cubic-bezier(.15,.85,.2,1) 1s both}
+.gt-trail{animation:gtTrail 2.3s ease-out 1s both}
+.gt-flash{animation:gtFlash .75s ease-out 2.25s both}
+.gt-shimmer{animation:gtShimmer 1.5s ease-out 2.3s both}
+@keyframes gtSpin{from{transform:rotate(-1080deg)}to{transform:rotate(0deg)}}
+@keyframes gtTrail{0%{opacity:0}8%{opacity:.95}60%{opacity:.85}100%{opacity:0}}
+@keyframes gtFlash{0%{opacity:.95;transform:scale(1)}100%{opacity:0;transform:scale(7)}}
+@keyframes gtShimmer{0%{opacity:0;stroke-width:2}20%{opacity:.6;stroke-width:3}100%{opacity:0;stroke-width:6}}
+@media (prefers-reduced-motion:reduce){.gt-spin,.gt-trail,.gt-flash,.gt-shimmer{animation:none}}
 .hero h1{
   position:relative;z-index:2;
   font-family:var(--font-head);font-weight:600;
@@ -746,7 +756,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 
   <div class="hero-logo-wrap">
     <div class="hero-logo-halo"></div>
-    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="hero-logo-img" role="img" aria-label="Good Trouble"><circle cx="60" cy="60" r="46" fill="none" stroke="#D4C6A1" stroke-width="2" stroke-dasharray="255.31 33.72" stroke-dashoffset="-26.01" stroke-linecap="round" transform="rotate(-90 60 60)"/><circle cx="93" cy="33" r="2.6" fill="#D4C6A1"/><text x="60" y="64" text-anchor="middle" dominant-baseline="middle" font-family="Cormorant Garamond,serif" font-size="44" font-weight="600" fill="#EFF2F7">GT</text></svg>
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="hero-logo-img" role="img" aria-label="Good Trouble"><defs><filter id="gtGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.6"/></filter></defs><circle cx="60" cy="60" r="46" fill="none" stroke="#D4C6A1" stroke-width="2" stroke-dasharray="255.31 33.72" stroke-dashoffset="-26.01" stroke-linecap="round" transform="rotate(-90 60 60)"/><circle class="gt-shimmer" cx="60" cy="60" r="42.6" fill="none" stroke="#F3E9CF" stroke-width="2" opacity="0" filter="url(#gtGlow)"/><g class="gt-spin"><circle class="gt-trail" cx="60" cy="60" r="42.6" fill="none" stroke="#EAD9AE" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="70 197.6" stroke-dashoffset="70" transform="rotate(-39.3 60 60)" opacity="0" filter="url(#gtGlow)"/><circle cx="93" cy="33" r="2.6" fill="#D4C6A1"/></g><circle class="gt-flash" cx="93" cy="33" r="2.6" fill="#FFFFFF" opacity="0"/><text x="60" y="64" text-anchor="middle" dominant-baseline="middle" font-family="Cormorant Garamond,serif" font-size="44" font-weight="600" fill="#EFF2F7">GT</text></svg>
   </div>
 
   <h1>The first app built exclusively for med spas.</h1>
