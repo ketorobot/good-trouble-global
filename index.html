@@ -225,9 +225,10 @@ nav.hidden{transform:translateY(-100%)}
 .btn-ghost:hover{background:var(--orange-dim);border-color:var(--orange-b);transform:translateY(-2px)}
 .btn-xl{font-size:1rem;padding:1.2rem 3.4rem;box-shadow:0 0 40px rgba(212,198,161,0.22)}
 .hero-scroll{
-  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-  z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  position:relative;z-index:2;margin-top:clamp(3rem,8vh,5.5rem);
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
 }
+@media (max-height:640px){.hero-scroll{display:none}}
 .hero-scroll span{
   font-family:var(--font-body);font-size:0.62rem;
   letter-spacing:0.18em;text-transform:uppercase;color:var(--dim2);
