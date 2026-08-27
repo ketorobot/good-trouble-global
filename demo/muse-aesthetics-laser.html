@@ -349,6 +349,23 @@ svg{display:block}
 .gtf .mark{font-family:var(--d);font-weight:700;font-size:12px;letter-spacing:.34em;display:inline-flex;color:var(--t3);opacity:.85}
 .gtf .mark span{display:inline-block}
 .gtf .mark .o{transform:translateY(.2em);color:var(--gold)}
+/* module sheet */
+.sheet{position:fixed;inset:0;z-index:120;background:var(--bg);display:flex;flex-direction:column;
+ transform:translateX(100%);transition:transform .34s var(--ease);visibility:hidden}
+.sheet.on{transform:none;visibility:visible}
+.sh-bar{flex:0 0 auto;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;
+ padding:calc(10px + env(safe-area-inset-top)) 12px 10px;background:var(--ink);border-bottom:1px solid var(--line)}
+.sh-back{display:inline-flex;align-items:center;gap:5px;min-height:40px;padding:0 12px 0 8px;border-radius:999px;
+ font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line2)}
+.sh-back svg{width:15px;height:15px}
+.sh-t{font-family:var(--d);font-weight:700;font-size:17px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sh-sp{width:76px}
+.sh-fr{flex:1 1 auto;width:100%;border:0;background:var(--bg);opacity:0;transition:opacity .3s var(--ease)}
+.sh-fr.ready{opacity:1}
+.sh-load{position:absolute;left:0;right:0;top:0;height:2px;overflow:hidden;pointer-events:none}
+.sh-load span{display:block;height:100%;width:40%;background:var(--gold);animation:ldr 1.1s var(--ease) infinite}
+.sh-load.off{display:none}
+@keyframes ldr{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
 /* tabbar */
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;pointer-events:none}
 .tabs nav{pointer-events:auto;width:100%;max-width:430px;display:grid;grid-template-columns:repeat(5,1fr);background:rgba(10,18,32,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
@@ -624,22 +641,24 @@ svg{display:block}
 
   <!-- MORE -->
   <section class="scr" id="s-more">
-    <div class="h"><h2>Tools</h2><span class="pill">13</span></div>
-    <div class="note"><svg><use href="#i-zap"/></svg><span>Every tool here is an option, not a package. We build, customize, or leave out whatever your spa actually needs.</span></div>
+    <div class="h"><h2>Tools</h2><span class="pill">15</span></div>
+    <div class="note"><svg><use href="#i-zap"/></svg><span><b>Everything here is live in this demo &mdash; tap any tool to explore it.</b> Each one is an option, not a package. We build, customize, or leave out whatever your spa actually needs.</span></div>
     <div class="grid">
-      <button class="g"><div class="ico"><svg><use href="#i-users"/></svg></div>Reactivation<span class="new">NEW</span></button>
-      <button class="g" data-go="chat"><div class="ico"><svg><use href="#i-chat"/></svg></div>Front desk</button>
-      <button class="g" data-go="money"><div class="ico"><svg><use href="#i-dollar"/></svg></div>Revenue &amp; ads</button>
-      <button class="g" data-go="rev"><div class="ico"><svg><use href="#i-star"/></svg></div>Reviews<span class="new">NEW</span></button>
-      <button class="g"><div class="ico"><svg><use href="#i-users"/></svg></div>Client management</button>
-      <button class="g"><div class="ico"><svg><use href="#i-card"/></svg></div>Members</button>
-      <button class="g"><div class="ico"><svg><use href="#i-box"/></svg></div>Inventory</button>
-      <button class="g"><div class="ico"><svg><use href="#i-clip"/></svg></div>ConsultIQ</button>
-      <button class="g"><div class="ico"><svg><use href="#i-zap"/></svg></div>Campaigns<span class="new">NEW</span></button>
-      <button class="g"><div class="ico"><svg><use href="#i-cal"/></svg></div>Post-visit</button>
-      <button class="g lock"><div class="ico"><svg><use href="#i-share"/></svg></div>Social<span class="lk"><svg><use href="#i-lock"/></svg></span></button>
-      <button class="g lock"><div class="ico"><svg><use href="#i-globe"/></svg></div>Website<span class="lk"><svg><use href="#i-lock"/></svg></span></button>
-      <button class="g lock"><div class="ico"><svg><use href="#i-eye"/></svg></div>Competitors<span class="lk"><svg><use href="#i-lock"/></svg></span></button>
+      <button class="g" data-mod="reactivation" data-name="Reactivation"><div class="ico"><svg><use href="#i-users"/></svg></div>Reactivation<span class="new">NEW</span></button>
+      <button class="g" data-mod="frontdesk" data-name="Front Desk AI"><div class="ico"><svg><use href="#i-chat"/></svg></div>Front desk</button>
+      <button class="g" data-mod="marketing" data-name="Revenue &amp; Ads"><div class="ico"><svg><use href="#i-dollar"/></svg></div>Revenue &amp; ads</button>
+      <button class="g" data-mod="reviews" data-name="Review Engine"><div class="ico"><svg><use href="#i-star"/></svg></div>Reviews<span class="new">NEW</span></button>
+      <button class="g" data-mod="chatbot" data-name="AI Chat Agent"><div class="ico"><svg><use href="#i-msg"/></svg></div>Client management</button>
+      <button class="g" data-mod="membership" data-name="Membership"><div class="ico"><svg><use href="#i-card"/></svg></div>Members</button>
+      <button class="g" data-mod="inventory" data-name="Inventory"><div class="ico"><svg><use href="#i-box"/></svg></div>Inventory</button>
+      <button class="g" data-mod="consultiq" data-name="ConsultIQ"><div class="ico"><svg><use href="#i-clip"/></svg></div>ConsultIQ</button>
+      <button class="g" data-mod="campaign" data-name="Campaign Launcher"><div class="ico"><svg><use href="#i-zap"/></svg></div>Campaigns<span class="new">NEW</span></button>
+      <button class="g" data-mod="postvisit" data-name="Post-Visit"><div class="ico"><svg><use href="#i-cal"/></svg></div>Post-visit</button>
+      <button class="g" data-mod="social" data-name="Social Media Manager"><div class="ico"><svg><use href="#i-share"/></svg></div>Social</button>
+      <button class="g" data-mod="websitebuilder" data-name="Website Builder"><div class="ico"><svg><use href="#i-globe"/></svg></div>Website<span class="new">NEW</span></button>
+      <button class="g" data-mod="competitor" data-name="Competitor Analysis"><div class="ico"><svg><use href="#i-eye"/></svg></div>Competitors</button>
+      <button class="g" data-mod="radar" data-name="Trends &amp; Tech"><div class="ico"><svg><use href="#i-trend"/></svg></div>Trends &amp; tech</button>
+      <button class="g" data-mod="dashboard" data-name="Full Dashboard"><div class="ico"><svg><use href="#i-grid"/></svg></div>Full dashboard</button>
     </div>
     <div class="ask">Need something that isn't here? We build it for you.</div>
   </section>
@@ -654,6 +673,15 @@ svg{display:block}
   <button class="tab" data-s="social"><svg><use href="#i-share"/></svg>Social</button>
   <button class="tab" data-s="more"><svg><use href="#i-grid"/></svg>More</button>
 </nav></div>
+<div class="sheet" id="modsheet" aria-hidden="true">
+  <div class="sh-bar">
+    <button class="sh-back" id="modback"><svg><use href="#i-left"/></svg>Back</button>
+    <div class="sh-t" id="modtitle"></div>
+    <div class="sh-sp"></div>
+  </div>
+  <div class="sh-load" id="modload"><span></span></div>
+  <iframe class="sh-fr" id="modframe" title="Module" referrerpolicy="no-referrer"></iframe>
+</div>
 <div class="toast" id="toast"><svg><use href="#i-check"/></svg><span>Done</span></div>
 
 <script>
@@ -685,6 +713,30 @@ function count(el,end,pre='',suf='',dur=900){if(reduce){el.textContent=pre+end.t
 function homeStats(){count($('#rev'),4870,'$');count($('#appt'),14);count($('#cap'),71,'','%');
  setTimeout(()=>$('#capm').style.width='71%',120)}
 homeStats();
+// module sheet -> original module app
+(function(){
+ const sh=$('#modsheet'),fr=$('#modframe'),ttl=$('#modtitle'),ld=$('#modload');
+ let open=false;
+ function openMod(id,name){
+  ttl.textContent=name;ld.classList.remove('off');fr.classList.remove('ready');
+  fr.src='modules.html?embed=1&open='+encodeURIComponent(id);
+  sh.classList.add('on');sh.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';open=true;
+  if(!location.hash)history.pushState({mod:id},'','#'+id);
+ }
+ function closeMod(){
+  sh.classList.remove('on');sh.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';open=false;
+  setTimeout(()=>{if(!open){fr.src='about:blank';fr.classList.remove('ready')}},340);
+  if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+ }
+ fr.addEventListener('load',()=>{if(fr.src!=='about:blank'){ld.classList.add('off');fr.classList.add('ready')}});
+ $('#modback').addEventListener('click',closeMod);
+ window.addEventListener('popstate',()=>{if(open)closeMod()});
+ $$('#s-more .g[data-mod]').forEach(b=>b.addEventListener('click',()=>{
+   const t=document.createElement('div');t.innerHTML=b.dataset.name;
+   openMod(b.dataset.mod,t.textContent)}));
+})();
 // tabs
 let moneyStarted=false;
 function go(s){$$('.tab').forEach(x=>x.classList.toggle('on',x.dataset.s===s));$$('.scr').forEach(x=>x.classList.remove('on'));$('#s-'+s).classList.add('on');window.scrollTo({top:0});
