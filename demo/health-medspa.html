@@ -334,15 +334,20 @@ svg{display:block}
 .g:active{background:var(--s2)}
 .g .ico{width:44px;height:44px;border-radius:12px;background:var(--gold-soft);color:var(--gold);display:grid;place-items:center}
 .g .ico svg{width:22px;height:22px}
-.g.lock{opacity:.5}
-.g .lk{position:absolute;right:10px;top:10px;color:var(--t3)}
 .g .lk svg{width:14px;height:14px}
 .g .new{position:absolute;left:10px;top:10px;font-size:9px;font-weight:900;letter-spacing:.1em;padding:2px 6px;border-radius:999px;background:var(--gold);color:var(--bg)}
+.g .sup{position:absolute;left:9px;top:9px;font-size:8.5px;font-weight:900;letter-spacing:.13em;padding:3px 7px;border-radius:999px;
+ color:var(--bg);background:linear-gradient(100deg,#EFE3C2,#D4C6A1 38%,#B49A62 62%,#EFE3C2);background-size:220% 100%;
+ box-shadow:0 0 0 1px rgba(239,242,247,.14);animation:shim 3.4s linear infinite}
+@keyframes shim{0%{background-position:0% 0}100%{background-position:220% 0}}
+.g:has(.sup){border-color:rgba(212,198,161,.45)}
 
 /* more-tab note */
-.note{display:flex;gap:11px;align-items:flex-start;background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:12px}
-.note svg{width:17px;height:17px;color:var(--gold);flex-shrink:0;margin-top:1px}
-.note span{font-size:12.5px;line-height:1.45;color:var(--t2)}
+.note{display:flex;gap:13px;align-items:flex-start;background:var(--s2);border:1px solid rgba(212,198,161,.34);
+ border-left:3px solid var(--gold);border-radius:14px;padding:16px 16px 16px 15px;margin-bottom:14px}
+.note>svg{width:22px;height:22px;color:var(--gold);flex-shrink:0;margin-top:2px}
+.note .nt{font-size:14px;line-height:1.5;color:var(--t2)}
+.note .nt b{display:block;font-size:16.5px;line-height:1.32;font-weight:900;color:var(--t);margin-bottom:5px;letter-spacing:-.005em}
 .ask{margin-top:14px;text-align:center;font-family:var(--d);font-style:italic;font-size:18px;color:var(--gold);line-height:1.35}
 /* good trouble footer mark */
 .gtf{display:flex;justify-content:center;padding:26px 16px 8px}
@@ -642,7 +647,7 @@ svg{display:block}
   <!-- MORE -->
   <section class="scr" id="s-more">
     <div class="h"><h2>Tools</h2><span class="pill">15</span></div>
-    <div class="note"><svg><use href="#i-zap"/></svg><span><b>Everything here is live in this demo &mdash; tap any tool to explore it.</b> Each one is an option, not a package. We build, customize, or leave out whatever your spa actually needs.</span></div>
+    <div class="note"><svg><use href="#i-zap"/></svg><span class="nt"><b>Every tool here is live in this demo &mdash; tap any one and explore it. ✨</b>None of it is a fixed package. We build, customize, or leave out whatever your spa actually needs.</span></div>
     <div class="grid">
       <button class="g" data-mod="reactivation" data-name="Reactivation"><div class="ico"><svg><use href="#i-users"/></svg></div>Reactivation<span class="new">NEW</span></button>
       <button class="g" data-mod="frontdesk" data-name="Front Desk AI"><div class="ico"><svg><use href="#i-chat"/></svg></div>Front desk</button>
@@ -654,9 +659,9 @@ svg{display:block}
       <button class="g" data-mod="consultiq" data-name="ConsultIQ"><div class="ico"><svg><use href="#i-clip"/></svg></div>ConsultIQ</button>
       <button class="g" data-mod="campaign" data-name="Campaign Launcher"><div class="ico"><svg><use href="#i-zap"/></svg></div>Campaigns<span class="new">NEW</span></button>
       <button class="g" data-mod="postvisit" data-name="Post-Visit"><div class="ico"><svg><use href="#i-cal"/></svg></div>Post-visit</button>
-      <button class="g" data-mod="social" data-name="Social Media Manager"><div class="ico"><svg><use href="#i-share"/></svg></div>Social</button>
-      <button class="g" data-mod="websitebuilder" data-name="Website Builder"><div class="ico"><svg><use href="#i-globe"/></svg></div>Website<span class="new">NEW</span></button>
-      <button class="g" data-mod="competitor" data-name="Competitor Analysis"><div class="ico"><svg><use href="#i-eye"/></svg></div>Competitors</button>
+      <button class="g" data-mod="social" data-name="Social Media Manager"><div class="ico"><svg><use href="#i-share"/></svg></div>Social<span class="sup">SUPER</span></button>
+      <button class="g" data-mod="websitebuilder" data-name="Website Builder"><div class="ico"><svg><use href="#i-globe"/></svg></div>Website<span class="sup">SUPER</span></button>
+      <button class="g" data-mod="competitor" data-name="Competitor Analysis"><div class="ico"><svg><use href="#i-eye"/></svg></div>Competitors<span class="sup">SUPER</span></button>
       <button class="g" data-mod="radar" data-name="Trends &amp; Tech"><div class="ico"><svg><use href="#i-trend"/></svg></div>Trends &amp; tech</button>
       <button class="g" data-mod="dashboard" data-name="Full Dashboard"><div class="ico"><svg><use href="#i-grid"/></svg></div>Full dashboard</button>
     </div>
