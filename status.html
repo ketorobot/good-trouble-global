@@ -88,27 +88,32 @@
   .pulse-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:.45rem;vertical-align:-1px;}
   .pulse-legend .lg-done i{background:var(--green);}
   .pulse-legend .lg-open i{background:transparent;border:2px solid var(--sand);border-radius:50%;width:9px;height:9px;}
-  .pulse-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.5rem;}
-  .pday{position:relative;border:1px solid var(--line);border-radius:var(--rad);background:rgba(10,18,32,.55);padding:.6rem .5rem .55rem;text-align:center;min-height:190px;display:flex;flex-direction:column;transition:border-color .15s;}
-  .pday:hover{border-color:var(--border);}
-  .pday.today{border-color:var(--sand);background:rgba(212,198,161,.06);}
-  .pday.weekend{background:rgba(10,18,32,.35);}
-  .pd-dow{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);font-weight:700;}
-  .pday.today .pd-dow{color:var(--sand);}
-  .pd-date{font-family:var(--font-h);font-weight:600;font-size:1.35rem;line-height:1.1;color:var(--bone);margin-top:.1rem;}
-  .pd-bar-wrap{flex:1;display:flex;align-items:flex-end;justify-content:center;padding:.6rem 0 .35rem;min-height:80px;}
-  .pd-bar{width:42%;max-width:34px;border-radius:3px 3px 0 0;background:linear-gradient(to top,rgba(46,224,110,.55),var(--green));box-shadow:0 0 14px rgba(46,224,110,.25);transform-origin:bottom;animation:barup .55s cubic-bezier(.2,.8,.2,1) both;position:relative;}
-  .pd-bar.zero{background:rgba(239,242,247,.06);box-shadow:none;height:3px!important;}
-  .pd-bar .pd-split{position:absolute;left:0;right:0;bottom:0;background:rgba(10,18,32,.35);border-top:1px dashed rgba(10,18,32,.6);}
+  .pulse-chart{width:100%;height:auto;display:block;overflow:visible;}
+  .pulse-chart text{font-family:var(--font-b);}
+  .pc-grid{stroke:rgba(239,242,247,.07);stroke-width:1;}
+  .pc-axis{fill:var(--dim);font-size:11px;letter-spacing:.06em;}
+  .pc-dow{fill:var(--dim);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;}
+  .pc-dow.today{fill:var(--sand);}
+  .pc-date{fill:var(--bone);font-family:var(--font-h);font-size:17px;font-weight:600;}
+  .pc-bar{fill:rgba(239,242,247,.07);stroke:rgba(239,242,247,.14);stroke-width:1;transform-box:fill-box;transform-origin:bottom;animation:barup .6s cubic-bezier(.2,.8,.2,1) both;}
+  .pc-bar.today{fill:rgba(212,198,161,.10);stroke:rgba(212,198,161,.35);}
+  .pc-barval{fill:var(--dim);font-size:10.5px;font-weight:700;letter-spacing:.04em;}
+  .pc-line{fill:none;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1200;stroke-dashoffset:1200;animation:linedraw 1.1s ease-out .2s forwards;}
+  .pc-line.alex{stroke:var(--sand);filter:drop-shadow(0 0 6px rgba(212,198,161,.45));}
+  .pc-line.augie{stroke:var(--green);filter:drop-shadow(0 0 6px rgba(46,224,110,.45));}
+  .pc-area.alex{fill:rgba(212,198,161,.06);} .pc-area.augie{fill:rgba(46,224,110,.06);}
+  .pc-dot{stroke:var(--bg);stroke-width:2;opacity:0;animation:dotin .3s ease-out forwards;}
+  .pc-dot.alex{fill:var(--sand);} .pc-dot.augie{fill:var(--green);}
+  .pc-val{font-family:var(--font-h);font-size:15px;font-weight:700;opacity:0;animation:dotin .3s ease-out forwards;}
+  .pc-val.alex{fill:var(--sand);} .pc-val.augie{fill:var(--green);}
+  .pc-todayline{stroke:var(--sand);stroke-width:1;stroke-dasharray:3 4;opacity:.5;}
   @keyframes barup{from{transform:scaleY(0)}to{transform:scaleY(1)}}
-  .pd-done{font-family:var(--font-h);font-weight:700;font-size:1.5rem;line-height:1;color:var(--green);}
-  .pd-done.zero{color:var(--dim2);}
-  .pd-done small{display:block;font-family:var(--font-b);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-weight:700;margin-top:.15rem;}
-  .pd-open{margin-top:.45rem;font-size:.72rem;color:var(--sand);font-weight:700;letter-spacing:.04em;border-top:1px solid var(--line);padding-top:.4rem;}
-  .pd-open small{color:var(--dim);font-weight:400;letter-spacing:.1em;text-transform:uppercase;font-size:.56rem;display:block;margin-top:.1rem;}
-  .pd-open.up{color:#ff9d9d;}
-  .pd-open.down{color:#9af0bd;}
-  .pd-who{font-size:.6rem;color:var(--dim);letter-spacing:.06em;margin-top:.2rem;min-height:.9rem;}
+  @keyframes linedraw{to{stroke-dashoffset:0}}
+  @keyframes dotin{to{opacity:1}}
+  .pulse-legend .lg-alex i{background:var(--sand);height:3px;border-radius:2px;vertical-align:2px;}
+  .pulse-legend .lg-augie i{background:var(--green);height:3px;border-radius:2px;vertical-align:2px;}
+  .pulse-legend .lg-open i{background:rgba(239,242,247,.1);border:1px solid rgba(239,242,247,.3);}
+  @media(max-width:760px){.pc-date{font-size:14px;}.pc-val{font-size:13px;}}
   .pulse-line{position:absolute;inset:0;pointer-events:none;overflow:visible;}
   .pulse-foot{display:flex;gap:2rem;flex-wrap:wrap;margin-top:.9rem;padding-top:.75rem;border-top:1px solid var(--line);}
   .pf{font-size:.78rem;color:var(--dim);letter-spacing:.02em;}
@@ -417,43 +422,70 @@ function renderPulse(){
   const rows=days.map(d=>{
     const key=ymd(d);
     const done=TASKS.filter(t=>t.status==='Done'&&parseAnyDate(t.completedAt)===key);
-    // open backlog at end of that day: created on/before, and not completed on/before
     const open=TASKS.filter(t=>{
       const c=parseAnyDate(t.createdAt); if(c&&c>key) return false;
       if(t.status==='Done'){ const f=parseAnyDate(t.completedAt); return f?f>key:false; }
       return true;
     });
-    const alex=done.filter(t=>t.owner==='Alex').length, augie=done.filter(t=>t.owner==='Augie').length, both=done.filter(t=>t.owner==='Both').length;
-    return {d,key,done:done.length,open:open.length,alex,augie,both};
+    // "Both" tasks count toward each person
+    const alex=done.filter(t=>t.owner==='Alex'||t.owner==='Both').length;
+    const augie=done.filter(t=>t.owner==='Augie'||t.owner==='Both').length;
+    return {d,key,done:done.length,open:open.length,alex,augie};
   });
-  const max=Math.max(1,...rows.map(r=>r.done));
   const totalDone=rows.reduce((a,r)=>a+r.done,0);
-  const openNow=rows[6].open, openThen=rows[0].open, delta=openNow-openThen;
+  const openNow=rows[6].open, delta=openNow-rows[0].open;
+  const aTot=rows.reduce((a,r)=>a+r.alex,0), uTot=rows.reduce((a,r)=>a+r.augie,0);
   const best=rows.reduce((a,r)=>r.done>a.done?r:a,rows[0]);
-  let html='<div class="pulse-head"><div class="pulse-title">Last 7 Days<span>Completed vs. Open</span></div>'+
-    '<div class="pulse-legend"><span class="lg-done"><i></i>Completed that day</span><span class="lg-open"><i></i>Open at end of day</span></div></div>';
-  html+='<div class="pulse-grid">';
-  rows.forEach((r,i)=>{
-    const isToday=r.key===today, dow=r.d.getDay(), we=(dow===0||dow===6);
-    const h=r.done?Math.max(14,Math.round(r.done/max*100)):0;
-    const prevOpen=i?rows[i-1].open:r.open;
-    const trend=r.open>prevOpen?'up':r.open<prevOpen?'down':'';
-    const who=[r.alex?'A '+r.alex:'',r.augie?'Au '+r.augie:'',r.both?'Both '+r.both:''].filter(Boolean).join(' · ');
-    html+='<div class="pday'+(isToday?' today':'')+(we?' weekend':'')+'" title="'+r.key+'">'+
-      '<div class="pd-dow">'+(isToday?'Today':r.d.toLocaleDateString('en-US',{weekday:'short'}))+'</div>'+
-      '<div class="pd-date">'+r.d.getDate()+'</div>'+
-      '<div class="pd-bar-wrap"><div class="pd-bar'+(r.done?'':' zero')+'" style="height:'+(r.done?h:3)+'%;animation-delay:'+(i*.06)+'s"></div></div>'+
-      '<div class="pd-done'+(r.done?'':' zero')+'">'+r.done+'<small>done</small></div>'+
-      '<div class="pd-who">'+esc(who)+'</div>'+
-      '<div class="pd-open '+trend+'">'+r.open+' open'+(trend==='up'?' ▲':trend==='down'?' ▼':'')+'<small>end of day</small></div>'+
-      '</div>';
-  });
-  html+='</div>';
+
+  /* --- SVG geometry --- */
+  const W=720,H=250, L=34,R=16,T=34,B=52;
+  const cw=(W-L-R)/7, plotH=H-T-B;
+  const maxLine=Math.max(1,...rows.map(r=>Math.max(r.alex,r.augie)));
+  const maxOpen=Math.max(1,...rows.map(r=>r.open));
+  const yL=v=>T+plotH-(v/maxLine)*plotH;           // left axis: completed
+  const yO=v=>T+plotH-(v/maxOpen)*plotH*.85;       // bars scaled to 85% so lines read on top
+  const cx=i=>L+cw*i+cw/2;
+  const smooth=(pts)=>pts.map((p,i)=>(i?'L':'M')+p[0]+','+p[1]).join(' ');
+  const aPts=rows.map((r,i)=>[cx(i),yL(r.alex)]), uPts=rows.map((r,i)=>[cx(i),yL(r.augie)]);
+  const base=T+plotH;
+  let svg='<svg class="pulse-chart" viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tasks completed per day by Alex and Augie vs open tasks">';
+  // gridlines + left axis ticks
+  const ticks=maxLine<=4?maxLine:4;
+  for(let k=0;k<=ticks;k++){ const v=Math.round(maxLine*k/ticks), y=yL(v);
+    svg+='<line class="pc-grid" x1="'+L+'" x2="'+(W-R)+'" y1="'+y+'" y2="'+y+'"/>';
+    svg+='<text class="pc-axis" x="'+(L-8)+'" y="'+(y+4)+'" text-anchor="end">'+v+'</text>'; }
+  // open bars
+  rows.forEach((r,i)=>{ const x=L+cw*i+cw*.22, w=cw*.56, y=yO(r.open), isT=r.key===today;
+    svg+='<rect class="pc-bar'+(isT?' today':'')+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+(base-y)+'" rx="2" style="animation-delay:'+(i*.05)+'s"/>';
+    svg+='<text class="pc-barval" x="'+cx(i)+'" y="'+(y+15)+'" text-anchor="middle">'+r.open+' open</text>'; });
+  // areas + lines
+  const area=(pts)=>smooth(pts)+' L'+pts[pts.length-1][0]+','+base+' L'+pts[0][0]+','+base+' Z';
+  svg+='<path class="pc-area alex" d="'+area(aPts)+'"/><path class="pc-area augie" d="'+area(uPts)+'"/>';
+  svg+='<path class="pc-line alex" d="'+smooth(aPts)+'"/><path class="pc-line augie" d="'+smooth(uPts)+'"/>';
+  // dots + values (offset so overlapping values don't collide)
+  rows.forEach((r,i)=>{ const x=cx(i), ya=yL(r.alex), yu=yL(r.augie), same=r.alex===r.augie, dl=(.45+i*.11)+'s';
+    svg+='<circle class="pc-dot alex" cx="'+x+'" cy="'+ya+'" r="4.5" style="animation-delay:'+dl+'"/>';
+    svg+='<circle class="pc-dot augie" cx="'+x+'" cy="'+yu+'" r="4.5" style="animation-delay:'+dl+'"/>';
+    const ax=same?x-9:x, ux=same?x+9:x, aAnch=same?'end':'middle', uAnch=same?'start':'middle';
+    const ay=ya-10, uy=(same||Math.abs(ya-yu)<14)?(yu<=ya?yu-10:yu+18):yu-10;
+    svg+='<text class="pc-val alex" x="'+ax+'" y="'+ay+'" text-anchor="'+aAnch+'" style="animation-delay:'+dl+'">'+r.alex+'</text>';
+    svg+='<text class="pc-val augie" x="'+ux+'" y="'+uy+'" text-anchor="'+uAnch+'" style="animation-delay:'+dl+'">'+r.augie+'</text>'; });
+  // x labels
+  rows.forEach((r,i)=>{ const x=cx(i), isT=r.key===today;
+    if(isT) svg+='<line class="pc-todayline" x1="'+x+'" x2="'+x+'" y1="'+T+'" y2="'+base+'"/>';
+    svg+='<text class="pc-dow'+(isT?' today':'')+'" x="'+x+'" y="'+(base+18)+'" text-anchor="middle">'+(isT?'TODAY':r.d.toLocaleDateString('en-US',{weekday:'short'}).toUpperCase())+'</text>';
+    svg+='<text class="pc-date" x="'+x+'" y="'+(base+38)+'" text-anchor="middle">'+r.d.toLocaleDateString('en-US',{month:'short',day:'numeric'})+'</text>'; });
+  svg+='</svg>';
+
+  let html='<div class="pulse-head"><div class="pulse-title">Last 7 Days<span>Completed per day vs. open</span></div>'+
+    '<div class="pulse-legend"><span class="lg-alex"><i></i>Alex done</span><span class="lg-augie"><i></i>Augie done</span><span class="lg-open"><i></i>Open (end of day)</span></div></div>'+
+    '<div style="font-size:.68rem;color:var(--dim2);margin:-.5rem 0 .6rem;letter-spacing:.04em">Tasks owned by Both count for each person.</div>';
+  html+=svg;
   html+='<div class="pulse-foot">'+
     '<span class="pf"><b class="g">'+totalDone+'</b>completed this week</span>'+
+    '<span class="pf"><b class="s">'+aTot+'</b>Alex · <b class="g">'+uTot+'</b>Augie</span>'+
     '<span class="pf"><b class="s">'+openNow+'</b>open right now</span>'+
     '<span class="pf"><b>'+(delta>0?'+':'')+delta+'</b>backlog vs. 7 days ago</span>'+
-    '<span class="pf"><b>'+(totalDone/7).toFixed(1)+'</b>per day</span>'+
     (best.done?'<span class="pf"><b>'+best.d.toLocaleDateString('en-US',{weekday:'long'})+'</b>best day ('+best.done+')</span>':'')+
     '</div>';
   el.innerHTML=html;
