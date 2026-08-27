@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Solana Aesthetics</title>
+<title>Solana Aesthetics · Good Trouble</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
@@ -57,13 +57,18 @@ svg{display:block}
 @keyframes draw{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
 
 /* handwritten lines */
-.hw{display:flex;flex-direction:column;gap:clamp(1px,.55vh,7px)}
-.hw .ln{font-family:var(--c);font-style:italic;font-weight:500;color:var(--t);line-height:1.28;letter-spacing:.008em;
- font-size:clamp(21px,5.9vw,28px);text-wrap:pretty}
+.hw{display:flex;flex-direction:column;gap:clamp(8px,1.9vh,16px)}
+.hw .ln{font-family:var(--c);font-style:italic;font-weight:500;color:var(--t);line-height:1.26;letter-spacing:.008em;
+ font-size:clamp(19px,5.4vw,25px);text-wrap:pretty}
 .hw .ln.lead{color:var(--gold);font-style:italic;font-weight:600;font-size:clamp(18px,5vw,24px);margin-bottom:clamp(3px,.9vh,8px)}
-.hw .ln.more{font-weight:600;font-size:clamp(29px,8vw,37px);color:var(--gold);margin-top:clamp(4px,1.1vh,12px);line-height:1.15}
-.hw .ln.cust{font-size:clamp(17px,4.8vw,22px);color:var(--t2);margin-top:clamp(5px,1.4vh,14px);line-height:1.3}
-.hw i{font-style:inherit;display:inline;opacity:0;filter:blur(3px);animation:ink .28s var(--ease) both}
+.hw .ln.more{font-weight:600;font-size:clamp(27px,7.4vw,34px);color:var(--gold);margin-top:clamp(6px,1.4vh,14px);line-height:1.15}
+.hw .ln.cust{font-size:clamp(16px,4.5vw,20px);color:var(--t2);margin-top:clamp(6px,1.6vh,15px);line-height:1.3}
+.hw i{font-style:inherit;display:inline;opacity:0;filter:blur(3px);animation:ink .34s var(--ease) both}
+.hw .ln.pt{padding-left:26px;text-indent:-26px}
+.hw b.dh{display:inline-block;width:15px;height:1px;background:var(--gold2);vertical-align:middle;
+ margin-right:11px;text-indent:0;opacity:0;transform:scaleX(0);transform-origin:left;
+ animation:dash .3s var(--ease) both}
+@keyframes dash{to{opacity:1;transform:scaleX(1)}}
 @keyframes ink{from{opacity:0;filter:blur(4px)}to{opacity:1;filter:blur(0)}}
 
 .splash .one{font-family:var(--d);font-weight:700;font-size:clamp(26px,7.4vw,34px);line-height:1.06;
@@ -88,7 +93,7 @@ svg{display:block}
 @media (prefers-reduced-motion:reduce){.splash *,.splash::before{animation-duration:.01s!important;animation-delay:0s!important}}
 @media (max-height:760px){.sp-in{padding:calc(13px + env(safe-area-inset-top)) 20px calc(10px + env(safe-area-inset-bottom))}
  .splash .nm{font-size:clamp(26px,7.2vw,32px)}.splash .tag{font-size:12.5px;margin-top:6px}
- .hw .ln{font-size:clamp(19px,5.3vw,23px)}.hw .ln.lead{font-size:17.5px}.hw .ln.more{font-size:28px}.hw .ln.cust{font-size:16.5px}
+ .hw{gap:clamp(6px,1.5vh,11px)}.hw .ln{font-size:clamp(17px,4.8vw,21px)}.hw .ln.lead{font-size:16.5px}.hw .ln.more{font-size:25px}.hw .ln.cust{font-size:15.5px}
  .splash .one{font-size:24px}.splash .go{min-height:52px}.splash .by{margin-top:9px}}
 
 /* top */
@@ -405,14 +410,14 @@ svg{display:block}
   <div class="sp-mid">
     <div class="hw" id="hw">
       <div class="ln lead">Welcome to your personalized assistant:</div>
-      <div class="ln">Automatically respond to all messages across all platforms immediately.</div>
-      <div class="ln">Post across all social media accounts.</div>
-      <div class="ln">Manage daily bookings.</div>
-      <div class="ln">Automatically fill empty appointments.</div>
-      <div class="ln">Reactivate all your old clients.</div>
-      <div class="ln">Launch ad campaigns.</div>
-      <div class="ln">Make landing pages and website edits.</div>
-      <div class="ln">Inventory and stock manager.</div>
+      <div class="ln pt">Automatically respond to all messages across all platforms immediately.</div>
+      <div class="ln pt">Post across all social media accounts.</div>
+      <div class="ln pt">Manage daily bookings.</div>
+      <div class="ln pt">Automatically fill empty appointments.</div>
+      <div class="ln pt">Reactivate all your old clients.</div>
+      <div class="ln pt">Launch ad campaigns.</div>
+      <div class="ln pt">Make landing pages and website edits.</div>
+      <div class="ln pt">Inventory and stock manager.</div>
       <div class="ln more">&hellip;and more.</div>
       <div class="ln cust">Each app customized for your spa.</div>
     </div>
@@ -420,10 +425,8 @@ svg{display:block}
 
   <div class="sp-end" id="spend">
     <div class="one">All in <em>one</em> app.</div>
-    <div class="rule2"></div>
     <div class="kick"><span>Less Chaos. More Money.</span><span>Good Trouble.</span></div>
     <button class="go" id="gointro">Start<svg><use href="#i-left"/></svg></button>
-    <div class="by">Good Trouble &middot; Growth Operating System</div>
   </div>
  </div>
 </div>
@@ -576,7 +579,7 @@ svg{display:block}
     <div class="h"><h2>Scheduled</h2><span class="pill ok" id="fpill">2</span></div>
     <div class="feed" id="feed">
       <div class="fp"><div class="th t2" style="background:linear-gradient(160deg,#B49A62,#6b5a36)"></div><div><div class="cp">Laser Hair Summer Promo</div><div class="pi"><svg><use href="#i-fb"/></svg><svg><use href="#i-ig"/></svg></div></div><span class="st bn gd">Tomorrow 6 PM</span></div>
-      <div class="fp"><div class="th t3" style="background:linear-gradient(160deg,#132039,#3a2f1e)"></div><div><div class="cp">"Best med spa in Miami" — Carlos M.</div><div class="pi"><svg><use href="#i-ig"/></svg><svg><use href="#i-tt"/></svg></div></div><span class="st bn ok">Posted</span></div>
+      <div class="fp"><div class="th t3" style="background:linear-gradient(160deg,#132039,#3a2f1e)"></div><div><div class="cp">"Best med spa around" — Carlos M.</div><div class="pi"><svg><use href="#i-ig"/></svg><svg><use href="#i-tt"/></svg></div></div><span class="st bn ok">Posted</span></div>
     </div>
   </section>
 
@@ -660,15 +663,16 @@ const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 // splash
 const sp=$('#splash');
 // handwriting: reveal char by char
-(function(){const START=0.92,CPS=0.0062,GAP=0.075;let t=START;
+(function(){const START=0.95,CPS=0.019,GAP=0.26;let t=START;
  $$('#hw .ln').forEach(ln=>{const txt=ln.textContent;ln.textContent='';
+  if(ln.classList.contains('pt')){const d=document.createElement('b');d.className='dh';d.style.animationDelay=t.toFixed(3)+'s';ln.appendChild(d);t+=.16}
   for(const ch of txt){if(ch===' '){ln.appendChild(document.createTextNode(' '));t+=CPS;continue}
    const i=document.createElement('i');i.textContent=ch;i.style.animationDelay=t.toFixed(3)+'s';ln.appendChild(i);t+=CPS}
   t+=GAP});
  const e=$('#spend').style;
- e.setProperty('--d1',(t+.18).toFixed(2)+'s');e.setProperty('--d2',(t+.5).toFixed(2)+'s');
- e.setProperty('--d3',(t+.66).toFixed(2)+'s');e.setProperty('--d4',(t+.82).toFixed(2)+'s');
- e.setProperty('--d5',(t+1.0).toFixed(2)+'s');e.setProperty('--d6',(t+1.2).toFixed(2)+'s');
+ e.setProperty('--d1',(t+.35).toFixed(2)+'s');e.setProperty('--d2',(t+.6).toFixed(2)+'s');
+ e.setProperty('--d3',(t+.72).toFixed(2)+'s');e.setProperty('--d4',(t+.9).toFixed(2)+'s');
+ e.setProperty('--d5',(t+1.1).toFixed(2)+'s');e.setProperty('--d6',(t+1.3).toFixed(2)+'s');
  if(!reduce)setTimeout(()=>{if(!sp.classList.contains('off'))$('#gointro').scrollIntoView({block:'nearest',behavior:'smooth'})},(t+1.15)*1000);
 })();
 const dismiss=()=>{sp.classList.add('off');setTimeout(()=>sp.style.display='none',560)};
