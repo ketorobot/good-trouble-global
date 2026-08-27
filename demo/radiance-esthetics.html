@@ -713,29 +713,45 @@ function count(el,end,pre='',suf='',dur=900){if(reduce){el.textContent=pre+end.t
 function homeStats(){count($('#rev'),4870,'$');count($('#appt'),14);count($('#cap'),71,'','%');
  setTimeout(()=>$('#capm').style.width='71%',120)}
 homeStats();
-// module sheet -> original module app
+// module sheet -> original module app (warm iframe, postMessage switching)
 (function(){
  const sh=$('#modsheet'),fr=$('#modframe'),ttl=$('#modtitle'),ld=$('#modload');
- let open=false;
+ let open=false,booted=false,frameReady=false,pending=null,confirmT=null;
+ function show(){ld.classList.add('off');fr.classList.add('ready')}
+ function send(id,name){
+   if(!frameReady){pending={id,name};return}
+   fr.contentWindow.postMessage({gt:'open',id,name},'*');
+   clearTimeout(confirmT);
+   confirmT=setTimeout(()=>{ // hard fallback: full reload with deep-link
+     ld.classList.remove('off');fr.classList.remove('ready');frameReady=false;
+     fr.src='modules.html?embed=1&open='+encodeURIComponent(id);
+   },1400);
+ }
+ window.addEventListener('message',e=>{
+   if(e.source!==fr.contentWindow)return;
+   const d=e.data||{};
+   if(d.gt==='ready'){frameReady=true;if(pending){const q=pending;pending=null;send(q.id,q.name)}else show()}
+   if(d.gt==='opened'&&d.ok){clearTimeout(confirmT);show()}
+ });
  function openMod(id,name){
-  ttl.textContent=name;ld.classList.remove('off');fr.classList.remove('ready');
-  fr.src='modules.html?embed=1&open='+encodeURIComponent(id);
+  ttl.textContent=name;
   sh.classList.add('on');sh.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';open=true;
-  if(!location.hash)history.pushState({mod:id},'','#'+id);
+  if(!booted){booted=true;ld.classList.remove('off');fr.src='modules.html?embed=1&open='+encodeURIComponent(id);pending={id,name};return}
+  send(id,name);
  }
  function closeMod(){
+  clearTimeout(confirmT);
   sh.classList.remove('on');sh.setAttribute('aria-hidden','true');
   document.body.style.overflow='';open=false;
-  setTimeout(()=>{if(!open){fr.src='about:blank';fr.classList.remove('ready')}},340);
-  if(location.hash)history.replaceState(null,'',location.pathname+location.search);
  }
- fr.addEventListener('load',()=>{if(fr.src!=='about:blank'){ld.classList.add('off');fr.classList.add('ready')}});
+ fr.addEventListener('load',()=>{frameReady=true;show();if(pending){const q=pending;pending=null;fr.contentWindow.postMessage({gt:'open',q:1,gtId:q.id,id:q.id,name:q.name},'*')}});
  $('#modback').addEventListener('click',closeMod);
  window.addEventListener('popstate',()=>{if(open)closeMod()});
- $$('#s-more .g[data-mod]').forEach(b=>b.addEventListener('click',()=>{
-   const t=document.createElement('div');t.innerHTML=b.dataset.name;
-   openMod(b.dataset.mod,t.textContent)}));
+ $$('#s-more .g[data-mod]').forEach(b=>{
+   const t=document.createElement('div');t.innerHTML=b.dataset.name;const nm=t.textContent;
+   b.addEventListener('click',()=>openMod(b.dataset.mod,nm));
+ });
 })();
 // tabs
 let moneyStarted=false;

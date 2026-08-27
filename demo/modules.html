@@ -3518,7 +3518,25 @@ html.gt-embed #gt-cta,html.gt-embed #gt-ov{display:none!important}
 html.gt-embed{overscroll-behavior:none}
 </style>
 <script>
-(function(){if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('gt-embed');})();
+(function(){
+  var embed = new URLSearchParams(location.search).get('embed')==='1';
+  if(embed) document.documentElement.classList.add('gt-embed');
+  function go(id,name){
+    if(typeof openModule!=='function') return false;
+    try{ openModule(id,name||''); window.scrollTo(0,0); return true; }catch(e){ return false; }
+  }
+  window.addEventListener('message',function(ev){
+    if(ev.source!==window.parent) return;
+    var d=ev.data;
+    if(!d||d.gt!=='open') return;
+    var ok=go(d.id,d.name);
+    try{ ev.source.postMessage({gt:'opened',id:d.id,ok:ok},'*'); }catch(e){}
+  });
+  function ready(){ try{ if(window.parent!==window) window.parent.postMessage({gt:'ready'},'*'); }catch(e){} }
+  if(document.readyState==='complete'||document.readyState==='interactive') setTimeout(ready,0);
+  else window.addEventListener('DOMContentLoaded',ready);
+  window.addEventListener('load',ready);
+})();
 </script>
 </body>
 </html>
