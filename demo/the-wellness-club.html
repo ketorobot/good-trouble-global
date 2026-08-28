@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Lato:wght@400;700;900&family=Marcellus&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="logos/the-wellness-club.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20180%20180%22%3E%3Crect%20width%3D%22180%22%20height%3D%22180%22%20rx%3D%2238%22%20fill%3D%22%230A1220%22/%3E%3Cg%20transform%3D%22translate%2890%2090%29%20scale%281.8%29%20translate%28-180%20-44%29%22%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%2244%22%20r%3D%2230%22%20fill%3D%22none%22%20stroke%3D%22%23B49A62%22%20stroke-width%3D%221.5%22%20stroke-dasharray%3D%22166.5%2022%22%20stroke-dashoffset%3D%22-17%22%20stroke-linecap%3D%22round%22%20transform%3D%22rotate%28-90%20180%2044%29%22/%3E%3Ccircle%20cx%3D%22201.5%22%20cy%3D%2226.4%22%20r%3D%221.7%22%20fill%3D%22%23B49A62%22/%3E%3Ctext%20x%3D%22180%22%20y%3D%2245.5%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Marcellus%2CGeorgia%2Cserif%22%20font-size%3D%2225%22%20fill%3D%22%23EFF2F7%22%3EGT%3C/text%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20180%20180%22%3E%3Crect%20width%3D%22180%22%20height%3D%22180%22%20rx%3D%2238%22%20fill%3D%22%230A1220%22/%3E%3Cg%20transform%3D%22translate%2890%2090%29%20scale%281.8%29%20translate%28-180%20-44%29%22%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%2244%22%20r%3D%2230%22%20fill%3D%22none%22%20stroke%3D%22%23B49A62%22%20stroke-width%3D%221.5%22%20stroke-dasharray%3D%22166.5%2022%22%20stroke-dashoffset%3D%22-17%22%20stroke-linecap%3D%22round%22%20transform%3D%22rotate%28-90%20180%2044%29%22/%3E%3Ccircle%20cx%3D%22201.5%22%20cy%3D%2226.4%22%20r%3D%221.7%22%20fill%3D%22%23B49A62%22/%3E%3Ctext%20x%3D%22180%22%20y%3D%2245.5%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Marcellus%2CGeorgia%2Cserif%22%20font-size%3D%2225%22%20fill%3D%22%23EFF2F7%22%3EGT%3C/text%3E%3C/g%3E%3C/svg%3E">
 <meta name="apple-mobile-web-app-title" content="The Wellness Club">
@@ -63,11 +64,23 @@ svg{display:block}
 
 /* handwritten lines */
 
+/* prospect logo — splash hero */
+.sp-logo{opacity:0;animation:rise .9s var(--ease) .06s both;margin:0 auto clamp(4px,1.2vh,12px)}
+.sp-logo img{display:block;margin:0 auto;width:auto;height:auto;
+ max-width:min(300px,80%);max-height:clamp(56px,14.5vh,86px);object-fit:contain}
+@media (max-height:760px){.sp-logo img{max-height:clamp(46px,11vh,64px);max-width:min(250px,74%)}}
+
+/* GT mark — moved to the sign-off */
 .sp-gt{display:flex;align-items:center;justify-content:center;gap:10px;
  margin:clamp(8px,1.7vh,15px) auto clamp(2px,.6vh,6px);opacity:0;animation:rise .55s var(--ease) var(--d3,1.6s) both}
 .sp-gt .gt-mark{width:30px;height:30px;flex:0 0 auto}
 .sp-gt span{font-size:8.5px;font-weight:900;letter-spacing:.26em;text-transform:uppercase;color:var(--t3);line-height:1}
 @media (max-height:760px){.sp-gt .gt-mark{width:25px;height:25px}}
+
+/* header lockup */
+.bwrap{display:flex;align-items:center;gap:9px;min-width:0;overflow:hidden}
+.blogo{height:24px;width:auto;max-width:70px;object-fit:contain;flex:0 0 auto;display:block}
+@media (max-width:360px){.blogo{max-width:52px;height:21px}}
 
 .hw{display:flex;flex-direction:column;gap:clamp(8px,1.9vh,16px)}
 .hw .ln{font-family:var(--c);font-style:italic;font-weight:500;color:var(--t);line-height:1.26;letter-spacing:.008em;
@@ -436,7 +449,7 @@ svg{display:block}
 <div class="splash" id="splash">
  <div class="sp-in">
   <div class="sp-top">
-    <div class="nm">The Wellness Club</div>
+    <div class="sp-logo"><img src="logos/the-wellness-club.png" alt="The Wellness Club" width="520" height="220" decoding="async"></div>
     <div class="tag">The App Built Exclusively&nbsp;For Med&nbsp;Spas</div>
     <div class="rule"></div>
   </div>
@@ -468,7 +481,7 @@ svg{display:block}
 
 <div class="app">
   <header class="top">
-    <div class="brand">The Wellness Club</div>
+    <div class="bwrap"><img class="blogo" src="logos/the-wellness-club.png" alt="" aria-hidden="true" decoding="async"><div class="brand">The Wellness Club</div></div>
     <div class="av me">WC</div>
   </header>
 
