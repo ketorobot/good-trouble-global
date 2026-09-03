@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Good Trouble — built by two people with a decade inside the med spa industry. We know the problems because we watched them happen.">
+<meta name="description" content="Good Trouble — built by two brothers with close to a decade inside the med spa industry. We know the problems because we watched them happen.">
 <link rel="canonical" href="https://goodtroubleglobal.com/about">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Good Trouble">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="About — Good Trouble">
-<meta property="og:description" content="Good Trouble — built by two people with a decade inside the med spa industry. We know the problems because we watched them happen.">
+<meta property="og:description" content="Good Trouble — built by two brothers with close to a decade inside the med spa industry. We know the problems because we watched them happen.">
 <meta property="og:url" content="https://goodtroubleglobal.com/about">
 <meta property="og:image" content="https://goodtroubleglobal.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Good Trouble — your entire practice in one connected platform.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About — Good Trouble">
-<meta name="twitter:description" content="Good Trouble — built by two people with a decade inside the med spa industry. We know the problems because we watched them happen.">
+<meta name="twitter:description" content="Good Trouble — built by two brothers with close to a decade inside the med spa industry. We know the problems because we watched them happen.">
 <meta name="twitter:image" content="https://goodtroubleglobal.com/og-image.png">
 
 <title>About — Good Trouble</title>
@@ -64,6 +64,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .team-label{font-family:var(--font-head);font-weight:600;font-size:clamp(1.49rem,2.88vw,2.07rem);letter-spacing:0.03em;color:var(--hi);margin-bottom:1.75rem;}
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;}
 .team-card{background:var(--bg1);padding:2rem 2.25rem;}
+.team-photo{width:104px;height:104px;border-radius:50%;object-fit:cover;display:block;margin-bottom:1.25rem;border:1px solid var(--border);filter:saturate(.85);}
+.story-wrap{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(2rem,5vw,4rem);align-items:start;margin-bottom:clamp(3rem,6vw,5rem);}
+.story-wrap .story{margin-bottom:0}
+.founders-fig{margin:0;position:sticky;top:90px}
+.founders-fig img{width:100%;height:auto;display:block;border-radius:var(--rad);border:1px solid var(--border);filter:saturate(.85);}
+.founders-fig figcaption{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-top:0.75rem;}
+
 .team-card:first-child{border-right:1px solid var(--line);}
 .team-name{font-family:var(--font-head);font-weight:600;font-size:1.61rem;letter-spacing:0.03em;color:var(--hi);margin-bottom:0.2rem;}
 .team-title{font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:0.9rem;}
@@ -88,7 +95,7 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,3.5rem) clamp(1
 .footer-links a{font-size:0.78rem;color:var(--dim2);text-decoration:none;transition:color .2s;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;}
 .footer-links a:hover{color:var(--orange)}
 .footer-copy{font-size:0.74rem;color:var(--dim2);}
-@media(max-width:760px){.nav-links{display:none}.nav-burger{display:flex}.team-grid{grid-template-columns:1fr}.team-card:first-child{border-right:none;border-bottom:1px solid var(--line)}.creds-grid{grid-template-columns:1fr}.cred-item{border-right:none}.cta-block{flex-direction:column;align-items:flex-start}.footer-inner{flex-direction:column;align-items:flex-start;gap:1.25rem}}
+@media(max-width:760px){.nav-links{display:none}.nav-burger{display:flex}.team-grid{grid-template-columns:1fr}.story-wrap{grid-template-columns:1fr}.founders-fig{position:static;max-width:420px}.team-card:first-child{border-right:none;border-bottom:1px solid var(--line)}.creds-grid{grid-template-columns:1fr}.cred-item{border-right:none}.cta-block{flex-direction:column;align-items:flex-start}.footer-inner{flex-direction:column;align-items:flex-start;gap:1.25rem}}
 @media(min-width:761px){.nav-burger{display:none}}
 
 .footer-contact{display:flex;flex-direction:column;gap:.25rem;font-size:.8rem;opacity:.7;text-align:center}
@@ -147,27 +154,35 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div class="page-header">
     <span class="sec-label">About Good Trouble</span>
     <h1 class="page-h1">We know this industry.<br><span>We built from inside it.</span></h1>
-    <p class="lead">This isn't a software agency that pivoted to med spas last year. Alex spent a decade working directly inside the aesthetics industry before any of this existed. That's the difference.</p>
+    <p class="lead">This isn't a software agency that pivoted to med spas last year. Alex spent close to a decade running growth for aesthetics practices before a line of this was written. That's the difference.</p>
   </div>
 
+  <div class="story-wrap">
   <div class="story">
-    <p>After ten years running digital marketing for med spas — paid search, paid social, email, and retention strategy — the pattern was impossible to ignore. Every practice had the same three problems. A front desk that couldn't keep up with volume. A CRM full of lapsed clients nobody was contacting. And no-show rates quietly bleeding 15–25% of scheduled revenue every month.</p>
+    <p>After close to ten years running digital marketing for med spas — paid search, paid social, email, and retention strategy — the pattern was impossible to ignore. Every practice had the same three problems. A front desk that couldn't keep up with volume. A CRM full of lapsed clients nobody was contacting. And no-show rates quietly bleeding 15–25% of scheduled revenue every month.</p>
     <p>The industry wasn't short on tools. It was short on execution. Every practice already had a booking platform, an email system, some version of a CRM — and almost none of it was actually connected, automated, or producing consistent results. The money was already there. It just wasn't being captured.</p>
     <p>Good Trouble exists to close that gap. Not with a tool handoff, not with a 90-page onboarding doc, but with a team that runs the back end for you — the same way you'd want an operations hire to run it, except we're purpose-built for this specific industry and available on a subscription.</p>
+  </div>
+  <figure class="founders-fig">
+    <img src="/img/founders.jpg" alt="Alex and Augie Braddock, co-founders of Good Trouble" width="1200" height="1327" loading="lazy">
+    <figcaption>Alex &amp; Augie &middot; Tampa &amp; Miami</figcaption>
+  </figure>
   </div>
 
   <div class="team-section">
     <div class="team-label">The team</div>
     <div class="team-grid">
       <div class="team-card">
-        <div class="team-name">Alex</div>
-        <span class="team-title">Founder &amp; Lead Architect</span>
-        <p class="team-bio">Ten years in digital marketing for med spas and aesthetics practices. Claude Certified Architect. Builds and implements every system personally — no outsourcing, no offshore handoffs. If something goes live under our name, he built it.</p>
+        <img class="team-photo" src="/img/alex.jpg" alt="Alex Braddock" width="104" height="104" loading="lazy">
+        <div class="team-name">Alex Braddock</div>
+        <span class="team-title">Co-Founder &amp; Lead Architect &middot; Tampa</span>
+        <p class="team-bio">Close to a decade running performance marketing for med spas and aesthetics practices — Google, Meta, email, and retention — for clients in Florida, New York, and California. Before that, software development and SaaS sales, which is why he can read a P&amp;L and a codebase in the same sitting. Certified Claude Architect through Anthropic, the company behind Claude. He designs and builds every Good Trouble system himself and stays on it after launch. No outsourcing, no offshore handoffs. If it runs under our name, he built it.</p>
       </div>
       <div class="team-card">
-        <div class="team-name">Augie</div>
-        <span class="team-title">Co-Founder · Miami</span>
-        <p class="team-bio">Background in business operations and client systems. Handles onboarding, process documentation, and the day-to-day operational side of each engagement. The person keeping implementations running after they launch.</p>
+        <img class="team-photo" src="/img/augie.jpg" alt="Augie Braddock" width="104" height="104" loading="lazy">
+        <div class="team-name">Augie Braddock</div>
+        <span class="team-title">Co-Founder &middot; Miami</span>
+        <p class="team-bio">Runs the operations side: onboarding, process documentation, and the day-to-day of every engagement. He's the one making sure what we built keeps running once it's live, and the one you'll hear from when something changes.</p>
       </div>
     </div>
   </div>
@@ -175,8 +190,9 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <div class="creds-section">
     <div class="creds-label">Background</div>
     <div class="creds-grid">
-      <div class="cred-item">Ten years in digital marketing for med spas and aesthetics — paid search, paid social, email, retention</div>
-      <div class="cred-item">Claude Certified Architect (Anthropic Academy)</div>
+      <div class="cred-item">Close to a decade in performance marketing for med spas and aesthetics — paid search, paid social, email, retention</div>
+      <div class="cred-item">Claude Certified Architect — Anthropic Academy</div>
+      <div class="cred-item">Software development and SaaS sales background</div>
       <div class="cred-item">Chatbot deployments across med spa, aesthetics, and B2B service businesses</div>
       <div class="cred-item">RAG systems, multi-agent workflow architecture, LLM fine-tuning</div>
       <div class="cred-item">Automation stacks: n8n, Make, Zapier, custom API pipelines</div>
