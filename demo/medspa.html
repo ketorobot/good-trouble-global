@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<script>if(/[?&]skip(=|&|$)/.test(location.search)||location.hash==="#app")document.documentElement.classList.add("skip");</script>
 <meta name="theme-color" content="#0A1220">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +37,7 @@ svg{display:block}
 .splash{position:fixed;inset:0;z-index:100;background:var(--bg);overflow-y:auto;overflow-x:hidden;
  -webkit-overflow-scrolling:touch;overscroll-behavior:contain;transition:opacity .5s var(--ease),visibility .5s}
 .splash.off{opacity:0;visibility:hidden;pointer-events:none}
+.skip .splash{display:none!important}
 .splash::before{content:"";position:fixed;left:50%;top:-14%;width:150vmax;height:86vmax;
  transform:translateX(-50%);background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(180,154,98,.2),transparent 62%);
  pointer-events:none;animation:aura 3s var(--ease) .1s both}
@@ -695,6 +697,7 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 // splash
 const sp=$('#splash');
+if(document.documentElement.classList.contains('skip')){sp.classList.add('off');sp.style.display='none'}
 // handwriting: reveal char by char
 (function(){const START=0.95,CPS=0.019,GAP=0.26;let t=START;
  $$('#hw .ln').forEach(ln=>{const txt=ln.textContent;ln.textContent='';
