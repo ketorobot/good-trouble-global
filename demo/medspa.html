@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<script>if(/[?&]skip(=|&|$)/.test(location.search)||location.hash==="#app")document.documentElement.classList.add("skip");</script>
+<script>if(!/\.html$/i.test(location.pathname)||/[?&]skip(=|&|$)/.test(location.search)||location.hash==="#app")document.documentElement.classList.add("skip");</script>
 <meta name="theme-color" content="#0A1220">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
