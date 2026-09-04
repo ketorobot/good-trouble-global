@@ -118,6 +118,7 @@ a{color:inherit;text-decoration:none}img{display:block;width:100%}
 .gtv3-team-grid article { min-height: 510px; padding: 48px 34px 44px; display: flex; flex-direction: column; align-items: center; border-right: 1px solid var(--gt3-line-light); border-bottom: 1px solid var(--gt3-line-light); text-align: center; }
 .gtv3-placeholder { width: 160px; height: 160px; display: grid; place-items: center; margin: 0 auto 20px; border: 1px solid rgba(212,198,161,.34); border-radius: 50%; background: radial-gradient(circle, rgba(140,160,188,.15), transparent 67%); color: rgba(140,160,188,.76); }
 .gtv3-placeholder svg { width: 78px; height: 78px; }
+.gtv3-headshot { width: 160px; height: 160px; margin: 0 auto 20px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1px solid rgba(212,198,161,.34); }
 .gtv3-team-grid article > span { color: rgba(239,242,247,.33); font: 700 9px/1 'Lato', var(--sans); letter-spacing: .16em; }
 .gtv3-team-grid h3 { margin: 46px 0 17px; font: 600 clamp(30px, 2.5vw, 39px)/1 'Cormorant Garamond', var(--serif); letter-spacing: .01em; text-transform: uppercase; }
 .gtv3-team-grid b { max-width: 300px; color: var(--gt3-gold); font: 700 10px/1.45 'Lato', var(--sans); letter-spacing: .15em; text-transform: uppercase; }
@@ -159,7 +160,7 @@ a{color:inherit;text-decoration:none}img{display:block;width:100%}
   .gtv3-founder-image-augie { width: 570px; height: 700px; }
   .gtv3-founder-image-alex { width: 500px; height: 640px; }
   .gtv3-team-grid article { min-height: 460px; padding-left: 20px; padding-right: 20px; }
-  .gtv3-placeholder { width: 130px; height: 130px; }
+  .gtv3-placeholder, .gtv3-headshot { width: 130px; height: 130px; }
   .gtv3-footer { grid-template-columns: 1fr 1fr; }
   .gtv3-footer nav { grid-column: 1 / -1; grid-row: 2; flex-wrap: wrap; }
 }
@@ -256,9 +257,9 @@ a{color:inherit;text-decoration:none}img{display:block;width:100%}
         <section class="gtv3-team" id="team">
           <header><p class="gtv3-kicker">MEET THE TEAM</p><h2>The people behind<br /><em>your growth.</em></h2></header>
           <div class="gtv3-team-grid">
-            <article><div class="gtv3-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></div><span>IMAGE TO COME</span><h3>Erika Fisher</h3><b>Operations Director</b></article>
-            <article><div class="gtv3-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></div><span>IMAGE TO COME</span><h3>Michelle Yang</h3><b>Managing Director, Media &amp; Marketing</b></article>
-            <article><div class="gtv3-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></div><span>IMAGE TO COME</span><h3>Travis Tahery</h3><b>Senior Developer</b></article>
+            <article><img class="gtv3-headshot" src="/assets/team/erika.webp" width="640" height="640" alt="Erika Fisher" loading="lazy"><h3>Erika Fisher</h3><b>Operations Director</b></article>
+            <article><img class="gtv3-headshot" src="/assets/team/michelle.webp" width="640" height="640" alt="Michelle Yang" loading="lazy"><h3>Michelle Yang</h3><b>Managing Director, Media &amp; Marketing</b></article>
+            <article><img class="gtv3-headshot" src="/assets/team/travis.webp" width="640" height="640" alt="Travis Tahery" loading="lazy"><h3>Travis Tahery</h3><b>Senior Developer</b></article>
           </div>
           <p class="gtv3-team-note">A senior bench, deliberately kept small. <strong>Every person here touches client work directly</strong>—there is no layer between the people you meet and the people doing the building.</p>
         </section>
