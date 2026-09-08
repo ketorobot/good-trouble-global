@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Budget — Good Trouble</title>
+<link rel="icon" href="/icons/icon-180.png" sizes="180x180">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0A1220;--ink2:#3A4761;--muted:#8CA0BC;--line:#E4E7EE;--line2:#CBD2E0;--brass:#B49A62;--brass2:#8E7644;--paper:#FFFFFF;--wash:#F7F8FB;--red:#B4463A;--green:#2E8B6A}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--wash);color:var(--ink);font-family:Outfit,system-ui,sans-serif;font-weight:300;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.page{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+.sheet{background:var(--paper);border:1px solid var(--line);padding:44px 48px 40px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding-bottom:22px;border-bottom:1px solid var(--ink)}
+.wm{font-family:Marcellus,serif;font-size:20px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.wm svg{width:22px;height:22px}
+.doc{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+select,.btn{font:inherit;font-weight:400;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line2);padding:8px 12px;cursor:pointer;border-radius:3px}
+select{padding-right:30px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%230A1220' stroke-width='1.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center}
+.btn:hover,select:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.primary:hover{background:#1B2B49}
+.titlebar{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:30px 0 6px}
+h1{font-family:Marcellus,serif;font-weight:400;font-size:34px;margin:0;letter-spacing:.005em}
+.state{font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;border:1px solid var(--line2);color:var(--ink2);border-radius:2px;white-space:nowrap}
+.state.final{border-color:var(--brass);color:var(--brass2);background:#FBF8F1}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:22px 0 28px}
+.summary div{padding:14px 0}
+.summary div+div{border-left:1px solid var(--line);padding-left:20px}
+.summary .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.summary .v{font-family:Marcellus,serif;font-size:28px;margin-top:2px;font-variant-numeric:tabular-nums}
+.summary .v.neg{color:var(--red)}
+.summary .v.pos{color:var(--green)}
+.summary .s{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:0 0 10px;border-bottom:1px solid var(--ink)}
+td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top;font-weight:400}
+th.n,td.n{text-align:right;white-space:nowrap;padding-left:24px}
+td.note,th.note{padding-left:28px}td.note{color:var(--muted);font-weight:300;font-size:13px}
+tr.sub td{background:transparent;color:var(--muted);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:18px 0 6px;border-bottom:1px solid var(--line2)}
+tr.subtotal td{color:var(--ink2);font-size:13px;border-bottom:1px solid var(--line)}
+tfoot td{border-top:1px solid var(--ink);border-bottom:0;padding-top:14px;font-family:Marcellus,serif;font-size:18px}
+tfoot td.n{font-size:20px}
+.foot{display:flex;justify-content:space-between;gap:16px;margin-top:28px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.foot a{color:var(--muted)}
+.notice{border:1px solid var(--brass);background:#FBF8F1;padding:18px 20px;margin-top:28px;font-size:14px;color:var(--ink2);font-weight:400}
+.notice b{color:var(--ink);font-weight:500}
+.notice ol{margin:8px 0 0 18px;padding:0}
+.notice code{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:#fff;border:1px solid var(--line2);padding:1px 5px;border-radius:2px}
+.muted{color:var(--muted)}
+.empty{padding:40px 0;text-align:center;color:var(--muted)}
+@media(max-width:640px){
+  .page{padding:16px 10px 40px}.sheet{padding:26px 20px}
+  header{flex-direction:column}.controls{justify-content:flex-start}
+  h1{font-size:28px}.summary{grid-template-columns:1fr}.summary div+div{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+  td.note{display:none}th.note{display:none}
+}
+@media print{
+  @page{size:letter;margin:.6in}
+  html,body{background:#fff}
+  .page{max-width:none;padding:0}.sheet{border:0;padding:0}
+  .controls,.foot .hide-print,.notice{display:none!important}
+  td.note,th.note{display:table-cell!important}
+  tr{break-inside:avoid}
+  a{text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="page"><div class="sheet">
+<header>
+  <div>
+    <div class="wm"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="46" fill="none" stroke="#B49A62" stroke-width="10" stroke-dasharray="255.31 33.72" stroke-dashoffset="-26.01" stroke-linecap="round" transform="rotate(-90 60 60)"/><circle cx="93" cy="33" r="7" fill="#B49A62"/></svg>Good Trouble</div>
+    <div class="doc">Budget Tracker</div>
+  </div>
+  <div class="controls">
+    <select id="month" aria-label="Month"></select>
+    <a class="btn" id="edit" href="#" target="_blank" rel="noopener">Edit in Sheets</a>
+    <button class="btn primary" id="pdf">Download PDF</button>
+  </div>
+</header>
+
+<div id="app"><div class="empty">Loading…</div></div>
+
+<div class="foot">
+  <span id="updated"></span>
+  <span class="hide-print"><a href="#" id="refresh">Refresh</a> · Source: Google Sheets</span>
+</div>
+</div></div>
+
+<script>
+const SHEET_ID='1-rLu2RYvx7OR2fGc80tnsF1pNiUooby39arnugkvm_0';
+const SHEET_URL=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit`;
+const CSV_URL=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&headers=1`;
+document.getElementById('edit').href=SHEET_URL;
+
+const $=s=>document.querySelector(s);
+const money=n=>(n<0?'−':'')+'$'+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const monthLabel=m=>{const [y,mo]=m.split('-').map(Number);return isNaN(y)||isNaN(mo)?m:new Date(y,mo-1,1).toLocaleDateString('en-US',{month:'long',year:'numeric'});};
+
+function parseCSV(t){
+  const rows=[];let row=[],f='',q=false;
+  for(let i=0;i<t.length;i++){const c=t[i];
+    if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++;}else q=false;}else f+=c;}
+    else if(c==='"')q=true;else if(c===','){row.push(f);f='';}
+    else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;row.push(f);rows.push(row);row=[];f='';}
+    else f+=c;}
+  if(f.length||row.length){row.push(f);rows.push(row);}
+  return rows.filter(r=>r.some(x=>x.trim()!==''));
+}
+function normMonth(v){
+  v=(v||'').trim(); let m=v.match(/^(\d{4})-(\d{1,2})/); if(m)return `${m[1]}-${m[2].padStart(2,'0')}`;
+  m=v.match(/^(\d{1,2})\/(\d{4})$/); if(m)return `${m[2]}-${m[1].padStart(2,'0')}`;
+  const d=new Date(v); if(!isNaN(d))return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+  return v;
+}
+function num(v){const n=parseFloat(String(v).replace(/[^0-9.\-]/g,''));return isNaN(n)?0:n;}
+
+let DATA=null;
+async function load(){
+  $('#app').innerHTML='<div class="empty">Loading…</div>';
+  let text;
+  try{const r=await fetch(CSV_URL+'&_='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(r.status);text=await r.text();if(/<html/i.test(text.slice(0,200)))throw new Error('html');}
+  catch(e){return setupNotice();}
+  const rows=parseCSV(text);const head=rows.shift().map(h=>h.trim().toLowerCase());
+  const ix=k=>head.findIndex(h=>h.startsWith(k));
+  const iM=ix('month'),iI=ix('item'),iC=ix('cat'),iA=ix('amount'),iN=ix('note');
+  const months={};
+  rows.forEach(r=>{
+    const m=normMonth(r[iM]);if(!m)return;
+    const item=(r[iI]||'').trim();if(!item)return;
+    months[m]=months[m]||{budget:null,final:false,items:[]};
+    const key=item.toLowerCase();
+    if(key==='budget'){months[m].budget=num(r[iA]);return;}
+    if(key==='finalized'||key==='final'){months[m].final=true;return;}
+    months[m].items.push({item,cat:(r[iC]||'').trim()||'Other',amt:num(r[iA]),note:(r[iN]||'').trim()});
+  });
+  DATA=months;
+  const keys=Object.keys(months).sort().reverse();
+  const sel=$('#month');const prev=sel.value;
+  sel.innerHTML=keys.map(k=>`<option value="${k}">${esc(monthLabel(k))}</option>`).join('');
+  const now=new Date(),cur=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  sel.value=keys.includes(prev)?prev:(keys.includes(cur)?cur:keys[0]);
+  $('#updated').textContent='Updated '+new Date().toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+  render();
+}
+function render(){
+  const m=$('#month').value;const d=DATA&&DATA[m];
+  if(!d){$('#app').innerHTML='<div class="empty">No rows for this month yet. Add lines in the sheet with Month = '+esc(m||'YYYY-MM')+'.</div>';return;}
+  const spent=d.items.reduce((s,r)=>s+r.amt,0);const budget=d.budget;const left=budget==null?null:budget-spent;
+  const cats={};d.items.forEach(r=>{(cats[r.cat]=cats[r.cat]||[]).push(r);});
+  const catOrder=Object.keys(cats).sort((a,b)=>cats[b].reduce((s,r)=>s+r.amt,0)-cats[a].reduce((s,r)=>s+r.amt,0));
+  document.title=`Budget ${monthLabel(m)} — Good Trouble`;
+  $('#app').innerHTML=`
+  <div class="titlebar"><h1>${esc(monthLabel(m))}</h1><span class="state ${d.final?'final':''}">${d.final?'Finalized':'Open'}</span></div>
+  <div class="summary">
+    <div><div class="k">Budget</div><div class="v">${budget==null?'—':money(budget)}</div><div class="s">${budget==null?'Add a “Budget” row for this month':'Monthly cap'}</div></div>
+    <div><div class="k">Spent</div><div class="v">${money(spent)}</div><div class="s">${d.items.length} line${d.items.length===1?'':'s'} · ${budget?Math.round(spent/budget*100)+'% of budget':''}</div></div>
+    <div><div class="k">Remaining</div><div class="v ${left==null?'':left<0?'neg':'pos'}">${left==null?'—':money(left)}</div><div class="s">${left==null?'':left<0?'Over budget':'Under budget'}</div></div>
+  </div>
+  <table>
+    <thead><tr><th style="width:44%">Item</th><th class="n" style="width:16%">Amount</th><th class="note">Notes</th></tr></thead>
+    <tbody>${catOrder.map(c=>{const rows=cats[c];const sub=rows.reduce((s,r)=>s+r.amt,0);
+      return `<tr class="sub"><td colspan="3">${esc(c)}</td></tr>`+
+        rows.map(r=>`<tr><td>${esc(r.item)}</td><td class="n">${money(r.amt)}</td><td class="note">${esc(r.note)}</td></tr>`).join('')+
+        (rows.length>1?`<tr class="subtotal"><td>${esc(c)} subtotal</td><td class="n">${money(sub)}</td><td></td></tr>`:'');}).join('')}
+    </tbody>
+    <tfoot><tr><td>Total</td><td class="n">${money(spent)}</td><td></td></tr></tfoot>
+  </table>`;
+}
+function setupNotice(){
+  $('#app').innerHTML=`<div class="notice"><b>One-time setup — the sheet isn't readable by this page yet.</b>
+  <ol><li>Open the <a href="${SHEET_URL}" target="_blank" rel="noopener">Budget Tracker sheet</a> → <b>Share</b> → General access → <b>Anyone with the link</b> → <b>Viewer</b>.</li>
+  <li>Come back here and hit Refresh.</li></ol>
+  <div style="margin-top:10px" class="muted">Sheet columns: <code>Month</code> (YYYY-MM) · <code>Item</code> · <code>Category</code> · <code>Amount</code> · <code>Notes</code>. One row per expense. A row with Item <code>Budget</code> sets that month's cap; a row with Item <code>Finalized</code> locks the month.</div></div>`;
+  $('#updated').textContent='';
+}
+$('#month').addEventListener('change',render);
+$('#pdf').addEventListener('click',()=>window.print());
+$('#refresh').addEventListener('click',e=>{e.preventDefault();load();});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&DATA)load();});
+load();
+</script>
+</body>
+</html>
