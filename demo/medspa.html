@@ -466,7 +466,15 @@ svg{display:block}
 
   <!-- HOME -->
   <section class="scr on" id="s-home">
-    <div class="guided" id="first-workflow"><span class="eyebrow">Start here · One workflow in a minute</span><h2>A problem. A proposed action.<br>Your decision.</h2><label for="practice-priority">What matters most today?</label><select id="practice-priority"><option value="capacity">Fill a cancellation</option><option value="consults">Book more consultations</option></select><p><strong>The problem: </strong><span data-problem></span></p><p><strong>The system proposes: </strong><span data-response></span></p><button type="button" data-guide-approve>Review proposed action</button><button type="button" class="secondary" data-explore>Explore all tools</button><button type="button" class="secondary" data-replay>Reset example</button><p role="status" aria-live="polite"></p><p>Change the priority to see a different recommendation. Your staff sets the information, permissions and approval rules before launch.</p></div>
+    <section class="guided" id="first-workflow" aria-labelledby="workflow-title">
+      <div class="guided-top"><span>Suggested next step</span><span class="guided-demo">Demo</span></div>
+      <h2 id="workflow-title">An appointment opened up.</h2>
+      <p class="guided-time" data-time>Thursday · 1:30 PM</p>
+      <p data-problem>Maria G. is on the waitlist for this time. Invite her to take the opening.</p>
+      <button type="button" data-guide-approve>Review invitation</button>
+      <p role="status" aria-live="polite"></p>
+      <button type="button" class="guided-next" data-replay hidden>Try another example →</button>
+    </section>
     <div class="tiles">
       <div class="tile w">
         <div class="n" id="rev">$0</div>

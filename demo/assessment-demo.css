@@ -1,17 +1,22 @@
 .demo-note{padding:9px 16px;background:#101B30;color:#C9D2E0;font:400 12px/1.5 Outfit,sans-serif;text-align:center;border-bottom:1px solid #1E2C48}
-.guided{margin:18px 0 22px;padding:22px;background:#101B30;border:1px solid #B49A62;border-radius:14px;color:#EFF2F7}
-.guided h2{font:400 28px/1.15 Marcellus,Georgia,serif;margin:8px 0 12px}
-.guided p{font-size:14px;line-height:1.65;margin:10px 0;color:#C9D2E0}
-.guided label,.guided .eyebrow{display:block;font-size:11px;letter-spacing:.1em;color:#D4C6A1;margin:12px 0 8px}
-.guided select{width:100%;padding:12px;background:#0A1220;color:#EFF2F7;border:1px solid #8CA0BC;border-radius:4px;font:inherit}
-.guided button,.approval button{padding:12px 16px;border:1px solid #D4C6A1;background:#D4C6A1;color:#0A1220;border-radius:4px;font:500 13px Outfit,sans-serif;cursor:pointer;margin:12px 8px 0 0}
+.guided{margin:14px 0 22px;padding:20px;background:#101B30;border:1px solid #39445A;border-radius:14px;color:#EFF2F7}
+.guided-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#D4C6A1;font:500 12px/1.4 Outfit,sans-serif}
+.guided-demo{padding:3px 8px;border:1px solid #39445A;border-radius:20px;color:#AEBBCF;font-size:11px}
+.guided h2{font:400 24px/1.2 Marcellus,Georgia,serif;margin:14px 0 8px;max-width:24ch}
+.guided p{font:400 14px/1.5 Outfit,sans-serif;margin:8px 0 16px;color:#C9D2E0}
+.guided p.guided-time{font-weight:500;color:#D4C6A1;margin-bottom:8px}
+.guided button,.approval button{min-height:44px;padding:12px 16px;border:1px solid #D4C6A1;background:#D4C6A1;color:#0A1220;border-radius:6px;font:500 14px Outfit,sans-serif;cursor:pointer;margin:8px 8px 0 0}
+.guided [data-guide-approve]{width:100%;margin:0}
 .guided button.secondary,.approval button.secondary{background:transparent;color:#EFF2F7}
-.guided button:disabled{opacity:.6;cursor:default}
-.guided [role=status]{color:#EFF2F7}
+.guided button:disabled{background:#243F38;border-color:#466F60;color:#D7EEE3;cursor:default}
+.guided button.guided-next{background:transparent;border:0;color:#D4C6A1;padding:8px 0;margin:0;text-align:left}
+.guided [hidden]{display:none!important}
+.guided [role=status]{color:#EFF2F7;margin:14px 0 0}
+.guided [role=status]:empty{display:none}
 .approval{background:#0D1626;color:#EFF2F7;border:1px solid #B49A62;border-radius:16px;padding:28px;width:min(510px,calc(100% - 32px));max-height:85vh;overflow:auto;margin:auto;font:400 15px/1.65 Outfit,sans-serif}
 .approval::backdrop{background:#000b}
 .approval h2{font:400 29px/1.2 Marcellus,Georgia,serif;margin:0 0 18px}
 .approval p{margin:12px 0}
 .approval small{display:block;color:#8CA0BC}
 .guided :focus-visible,.approval :focus-visible{outline:2px solid #EFF2F7;outline-offset:4px}
-@media(max-width:480px){.guided{padding:17px}.guided h2{font-size:25px}.approval{padding:22px}}
+@media(max-width:480px){.guided{padding:17px}.guided h2{font-size:23px}.approval{padding:22px}}

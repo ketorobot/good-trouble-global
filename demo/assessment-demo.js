@@ -16,12 +16,15 @@
     resolve(value);
   }
   window.GTDemo = {
-    review(title, why, action) {
+    review(title, why, action, options = {}) {
       if (pending) return Promise.resolve(false);
       previousFocus = document.activeElement;
       dialog.querySelector('h2').textContent = title;
       dialog.querySelector('#approval-why').textContent = why;
       dialog.querySelector('#approval-action').textContent = action;
+      dialog.querySelector('[data-confirm]').textContent = options.confirmLabel || 'Confirm simulation';
+      dialog.querySelector('[data-cancel]').textContent = options.cancelLabel || 'Keep pending';
+      dialog.querySelector('small').textContent = options.note || 'Simulation only. No message, booking, purchase or payment leaves this demo.';
       dialog.showModal();
       dialog.querySelector('[data-cancel]').focus();
       return new Promise(resolve => { pending = resolve; });
@@ -33,42 +36,60 @@
 
   const guide = document.querySelector('#first-workflow');
   if (guide) {
-    const scenarios = {
-      capacity: {
-        title: 'Fill a cancellation',
-        problem: 'Thursday at 1:30 opens up. Maria G. is on the sample waitlist for that service and time.',
-        response: 'Propose an invitation to Maria using approved availability. Hold off on broader outreach while this opening is the priority.',
-        action: 'Simulate sending Maria: “A Thursday 1:30 appointment is available. Would you like it?” An invitation is not a confirmed booking.',
-        result: 'Invitation simulated. The appointment stays open until Maria accepts. Next measure: invitations that become confirmed bookings.'
+    const scenarios = [
+      {
+        title: 'An appointment opened up.',
+        time: 'Thursday · 1:30 PM',
+        problem: 'Maria G. is on the waitlist for this time. Invite her to take the opening.',
+        button: 'Review invitation',
+        recipient: 'Maria G.',
+        message: 'Hi Maria! A Thursday appointment at 1:30 PM just opened up. Would you like it?',
+        confirm: 'Send invitation',
+        sent: 'Invitation sent',
+        result: 'Waiting for Maria to reply. The appointment is still open.'
       },
-      consults: {
-        title: 'Follow up on a consultation inquiry',
-        problem: 'Ana asked about a Friday consultation after hours but has not chosen a time.',
-        response: 'Prioritize an approved consultation follow-up to Ana. Pause the cancellation invitation so the next action matches your current goal.',
-        action: 'Simulate sending Ana: “Would you like help finding a Friday consultation time?” Staff handles clinical questions and exceptions.',
-        result: 'Follow-up simulated. Ana stays an unbooked inquiry until she chooses and confirms a time. Next measure: inquiries that become consultations.'
+      {
+        title: 'A consultation inquiry needs a reply.',
+        time: 'Ana · Asked about Friday',
+        problem: 'Ana wants to book a consultation. Follow up to help her find a time.',
+        button: 'Review follow-up',
+        recipient: 'Ana',
+        message: 'Hi Ana! Would you like help finding a consultation time this Friday?',
+        confirm: 'Send follow-up',
+        sent: 'Follow-up sent',
+        result: 'Waiting for Ana to reply. No consultation is booked yet.'
       }
-    };
-    const select = guide.querySelector('select'), approve = guide.querySelector('[data-guide-approve]');
+    ];
+    let current = 0;
+    const approve = guide.querySelector('[data-guide-approve]');
+    const replay = guide.querySelector('[data-replay]');
     function render() {
-      const scenario = scenarios[select.value];
+      const scenario = scenarios[current];
+      guide.querySelector('h2').textContent = scenario.title;
+      guide.querySelector('[data-time]').textContent = scenario.time;
       guide.querySelector('[data-problem]').textContent = scenario.problem;
-      guide.querySelector('[data-response]').textContent = scenario.response;
       guide.querySelector('[role=status]').textContent = '';
       approve.disabled = false;
-      approve.textContent = 'Review proposed action';
+      approve.textContent = scenario.button;
+      replay.hidden = true;
     }
-    select.addEventListener('change', render);
-    guide.querySelector('[data-replay]').addEventListener('click', render);
-    approve.addEventListener('click', async () => {
-      const scenario = scenarios[select.value];
-      if (!await window.GTDemo.review(scenario.title, scenario.response, scenario.action)) return;
-      guide.querySelector('[role=status]').textContent = scenario.result;
-      approve.textContent = 'Action simulated';
-      approve.disabled = true;
+    replay.addEventListener('click', () => {
+      current = (current + 1) % scenarios.length;
+      render();
+      approve.focus();
     });
-    guide.querySelector('[data-explore]').addEventListener('click', () => {
-      document.querySelector('[data-s="more"]')?.click();
+    approve.addEventListener('click', async () => {
+      const scenario = scenarios[current];
+      if (!await window.GTDemo.review('Review your message', 'To: ' + scenario.recipient + ' · Text message', scenario.message, {
+        confirmLabel: scenario.confirm,
+        cancelLabel: 'Back',
+        note: 'Demo only. No real message will be sent.'
+      })) return;
+      guide.querySelector('[role=status]').textContent = scenario.result;
+      approve.textContent = scenario.sent + ' ✓';
+      approve.disabled = true;
+      replay.hidden = false;
+      replay.focus();
     });
     render();
   }
