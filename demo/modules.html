@@ -761,8 +761,10 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assessment-demo.css">
 </head>
-<body>
+<body><div class="demo-note">Interactive demo · Sample data throughout. Workflow actions are simulated; audit requests reach Good Trouble.</div>
 
 
 <header class="hdr">
@@ -1371,76 +1373,11 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
   </div>
   <div class="workflow-card">
-    <div class="workflow-title">Client Review Workflow</div>
-    <div class="wf-step1">
-      <div class="wf-step1-time">2 hours after visit &mdash; Internal screen</div>
-      <div class="wf-step1-title">&#x1F4AC; "How was your visit today?"</div>
-      <div class="wf-step1-desc">Private SMS only &mdash; never posted publicly. Screens sentiment before we send anyone to a review platform.</div>
-    </div>
-    <div class="wf-fork">
-      <div class="wf-fork-labels">
-        <div class="wf-fork-label"><div class="wf-fork-label-pill happy">&#x2713; 4&ndash;5 Stars</div></div>
-        <div class="wf-fork-label"><div class="wf-fork-label-pill unhappy">&#x2717; 1&ndash;3 Stars</div></div>
-      </div>
-    </div>
-    <div class="wf-cols">
-      <div class="wf-col happy">
-        <div class="wf-col-step">
-          <div class="wf-col-time">24 hours later</div>
-          <div class="wf-col-text"><strong>Google review link sent.</strong> Highest SEO value, always first.</div>
-        </div>
-        <div class="wf-arrow">&#8595;</div>
-        <div class="wf-col-step">
-          <div class="wf-col-time">Day 3 &mdash; if no review yet</div>
-          <div class="wf-col-text">Follow-up offering <strong>Facebook</strong> or <strong>Yelp</strong> as alternatives.</div>
-        </div>
-        <div class="wf-arrow">&#8595;</div>
-        <div class="wf-col-step">
-          <div class="wf-col-time">Day 7 &mdash; final nudge</div>
-          <div class="wf-col-text">One last reminder. Sequence ends after this &mdash; no spam.</div>
-        </div>
-      </div>
-      <div class="wf-col unhappy">
-        <div class="wf-col-step">
-          <div class="wf-col-time">Immediate</div>
-          <div class="wf-col-text"><strong>Never routed to any platform.</strong> Staff flagged instantly with client name and feedback.</div>
-        </div>
-        <div class="wf-arrow">&#8595;</div>
-        <div class="wf-col-step">
-          <div class="wf-col-time">Within 24 hours</div>
-          <div class="wf-col-text">Staff follows up directly to resolve the issue before it becomes a public review.</div>
-        </div>
-        <div class="wf-arrow">&#8595;</div>
-        <div class="wf-col-step">
-          <div class="wf-col-time">Resolution</div>
-          <div class="wf-col-text">Issue handled privately. Client may be re-entered into the happy path if resolved.</div>
-        </div>
-      </div>
-    </div>
+    <div class="workflow-title">Honest Reviews &amp; Service Recovery</div>
+    <div class="wf-step1"><div class="wf-step1-time">The same rules for every eligible client</div><div class="wf-step1-title">Invite honest feedback after the visit.</div><div class="wf-step1-desc">An invitation is based on the agreed timing, contact permissions and opt-out rules. Ratings, sentiment and complaint resolution never determine who receives a public review link.</div></div>
+    <div class="guided"><h2>Try a different rating.</h2><p>The review invitation stays the same. Only the separate service follow-up changes.</p><label for="review-rating">Sample private feedback</label><select id="review-rating"><option value="5">5 stars · Happy with the visit</option><option value="3">3 stars · Experience fell short</option><option value="1">1 star · Needs staff follow-up</option></select><div role="status" aria-live="polite"><p id="review-invitation"></p><p id="review-recovery"></p></div></div>
+    <div class="wf-step1"><div class="wf-step1-title">Two independent actions</div><div class="wf-step1-desc">Offer every eligible client an honest public review invitation. Offer private help with concerns in parallel. Respect opt-outs; do not offer incentives or request a particular rating.</div></div>
   </div>
-      <div class="seq-step">
-        <div class="seq-dot" style="border-color:rgba(61,190,139,0.3);color:var(--green)">&#x2713;</div>
-        <div class="seq-body">
-          <div class="seq-time">Only after passing the internal screen &mdash; 24 hours</div>
-          <div class="seq-desc">Now and only now do we ask for a public review. <strong style="color:#4285F4">Google</strong> goes first &mdash; highest SEO value. 3 days later we follow up with <strong style="color:#1877F2">Facebook</strong> or <strong style="color:#D16A5C">Yelp</strong> as alternatives for clients who didn't post.</div>
-          <div class="seq-paths"><div class="seq-path path-yes">&#x1F535; Google review link sent</div></div>
-        </div>
-      </div>
-      <div class="seq-step">
-        <div class="seq-dot" style="border-color:rgba(209,106,92,0.3);color:var(--red)">&#x2717;</div>
-        <div class="seq-body">
-          <div class="seq-time">Unhappy path &mdash; immediate</div>
-          <div class="seq-desc">They gave us a low internal score, so they <strong style="color:var(--red)">never see a link to Google, Facebook, or Yelp.</strong> Staff is flagged immediately with the client's feedback to resolve it before it becomes a public problem.</div>
-          <div class="seq-paths"><div class="seq-path path-no">&#x1F6A9; Resolved privately &mdash; never goes public</div></div>
-        </div>
-      </div>
-      <div class="seq-step">
-        <div class="seq-dot">&#x23F0;</div>
-        <div class="seq-body">
-          <div class="seq-time">7-day nudge</div>
-          <div class="seq-desc">If no review posted yet &mdash; one final friendly reminder. Sequence stops after that.</div>
-        </div>
-      </div>
   <div class="rev-grid">
     <div class="rev-feed">
       <div class="rev-feed-title">Recent Reviews <span class="badge b-green">35 this month</span></div>
@@ -1474,8 +1411,8 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       </div>
     </div>
     <div class="flag-card">
-      <div class="flag-title">&#x1F6A9; Intercepted &mdash; Unhappy Clients <span style="font-family:var(--font-m);font-size:11px;color:var(--text-muted);font-weight:400">2 this month</span></div>
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:14px;line-height:1.5">These clients gave low internal ratings and were <strong style="color:var(--text)">never sent a public review link.</strong> Staff handles them directly before they post anywhere.</div>
+      <div class="flag-title">&#x1F6A9; Service Concerns &mdash; Staff Follow-Up <span style="font-family:var(--font-m);font-size:11px;color:var(--text-muted);font-weight:400">2 this month</span></div>
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:14px;line-height:1.5">These clients raised concerns and receive <strong style="color:var(--text)">the same public review invitation.</strong> Staff follows up privately to help, without restricting public feedback.</div>
       <div class="flag-item">
         <div style="flex:1">
           <div class="flag-name">James Torres</div>
@@ -1494,7 +1431,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       </div>
       <div style="margin-top:16px;padding:12px;background:var(--surface-2);border-radius:8px;border:1px solid var(--border-dim);display:flex;gap:20px;flex-wrap:wrap">
         <div style="text-align:center"><div style="font-family:var(--font-m);font-size:20px;color:var(--green)">35</div><div style="font-family:var(--font-l);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim)">Generated</div></div>
-        <div style="text-align:center"><div style="font-family:var(--font-m);font-size:20px;color:var(--red)">2</div><div style="font-family:var(--font-l);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim)">Intercepted</div></div>
+        <div style="text-align:center"><div style="font-family:var(--font-m);font-size:20px;color:var(--red)">2</div><div style="font-family:var(--font-l);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim)">Staff follow-ups</div></div>
         <div style="text-align:center"><div style="font-family:var(--font-m);font-size:20px;color:var(--text)">94%</div><div style="font-family:var(--font-l);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim)">Positive rate</div></div>
       </div>
     </div>
@@ -2416,7 +2353,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
     <div style="display:flex;gap:12px;margin-bottom:14px">
       <div style="display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:10px;border-radius:50%;background:var(--green)"></div><div style="width:2px;flex:1;background:var(--border-dim)"></div></div>
-      <div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--text)">3 days after</div><div style="font-size:11px;color:var(--text-muted);line-height:1.5">Aftercare tips + review request to happy patients only.</div></div>
+      <div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--text)">3 days after</div><div style="font-size:11px;color:var(--text-muted);line-height:1.5">Aftercare tips + the same honest review invitation for every eligible patient.</div></div>
     </div>
     <div style="display:flex;gap:12px">
       <div style="display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:10px;border-radius:50%;background:var(--pink)"></div></div>
@@ -2442,7 +2379,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 
   <div style="background:rgba(61,190,139,0.05);border:1px solid rgba(61,190,139,0.15);border-radius:var(--radius);padding:13px 14px;margin-bottom:18px">
     <div style="font-family:var(--font-l);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px">Why It Matters</div>
-    <div style="font-size:12px;color:var(--text-2);line-height:1.55">Every patient hears from you after they leave &mdash; concerns get caught early, happy patients leave reviews, and the 90-day nudge pulls them back before they drift to a competitor.</div>
+    <div style="font-size:12px;color:var(--text-2);line-height:1.55">Every patient hears from you after they leave &mdash; concerns reach staff, every eligible patient can leave an honest review, and the 90-day nudge pulls them back before they drift to a competitor.</div>
   </div>
 </div>
 </div>
@@ -3034,7 +2971,7 @@ function showNewCampaign() {
   alert('Campaign Builder: In the live system, this opens a 4-field form. You fill in what to sell, the deal, the theme, and the duration — and we build everything else automatically.');
 }
 var lockedModules={
-  'locked-reviews':{icon:'&#x2B50;',name:'Review Engine',desc:'Post-visit AI sequences that route happy clients to Google reviews and privately flag unhappy ones before they post publicly. Fully automated across all 4 locations.'},
+  'locked-reviews':{icon:'&#x2B50;',name:'Review Engine',desc:'Post-visit sequences invite honest reviews using consistent eligibility rules. Private service follow-up runs separately and never removes a public review invitation. Sample data across four locations.'},
   'locked-membership':{icon:'&#x1F48E;',name:'Membership Automation',desc:'Upgrade nudges when eligible, renewal reminders 7 days before expiry, rollover credit alerts, and churn prevention for members who stop booking.'},
   'locked-postvisit':{icon:'&#x1F4CB;',name:'Post-Visit Follow-Up',desc:'24-hour check-in after every service, 90-day rebooking trigger, and personalized product recommendations based on what was done.'},
   'locked-frontdesk':{icon:'&#x1F4DE;',name:'Front Desk AI',desc:'Missed call response in 60 seconds, after-hours coverage across all 4 locations, FAQ handling for hours, pricing, and directions — 24/7.'},
@@ -3411,17 +3348,17 @@ function enterApp(){
 #gt-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
 @media(max-width:520px){#gt-cta{left:14px;right:14px;bottom:14px;text-align:center;padding:14px}#gt-modal{padding:22px 18px 18px}#gt-modal h3{font-size:24px}}
 </style>
-<button id="gt-cta" type="button">Claim Your Free Module &rarr;</button>
+<button id="gt-cta" type="button">Get a Free Audit &rarr;</button>
 <div id="gt-ov" role="dialog" aria-modal="true" aria-labelledby="gt-h">
   <div id="gt-modal">
     <button id="gt-x" type="button" aria-label="Close">&times;</button>
     <div id="gt-form-wrap">
-      <h3 id="gt-h">Claim Your Free Module</h3>
-      <p class="gt-sub">Pick the one you want running first. We build it into your spa, live on your real clients, at no cost. No contract, no card.</p>
+      <h3 id="gt-h">Get a Free Audit</h3>
+      <p class="gt-sub">Tell us which workflow you want to improve. We will discuss your current tools and a possible first implementation. Any paid work is scoped and quoted separately.</p>
       <div class="gt-f"><label for="gt-name">Your name</label><input id="gt-name" type="text" autocomplete="name" placeholder="First and last"></div>
       <div class="gt-f"><label for="gt-biz">Med spa name</label><input id="gt-biz" type="text" autocomplete="organization" placeholder="Your practice"></div>
       <div class="gt-f"><label for="gt-email">Email</label><input id="gt-email" type="email" autocomplete="email" placeholder="you@yourspa.com"></div>
-      <div class="gt-f"><label for="gt-mod">Which module do you want free?</label>
+      <div class="gt-f"><label for="gt-mod">Which workflow should we discuss?</label>
         <select id="gt-mod">
           <option value="">Choose one&hellip;</option>
           <option>Front Desk AI</option>
@@ -3442,14 +3379,14 @@ function enterApp(){
         </select>
       </div>
       <input id="gt-hp" type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button id="gt-submit" type="button">Claim It</button>
+      <button id="gt-submit" type="button">Request Audit</button>
       <p id="gt-err"></p>
-      <p id="gt-fine">Takes one reply to set up. We never share your details.</p>
+      <p id="gt-fine">This request goes to Good Trouble. Do not include patient information. Requesting an audit does not start paid work.</p>
     </div>
     <div id="gt-done">
       <div class="gt-check">&#x2705;</div>
-      <h3>You&rsquo;re In</h3>
-      <p class="gt-sub" id="gt-done-msg">We&rsquo;ll email you within one business day to get it live.</p>
+      <h3>Request received</h3>
+      <p class="gt-sub" id="gt-done-msg">We will follow up to discuss your workflow and possible next steps.</p>
       <button id="gt-close2" type="button" style="background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);border-radius:7px;padding:10px 20px;font-family:inherit;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Back to the demo</button>
     </div>
   </div>
@@ -3497,11 +3434,11 @@ function enterApp(){
       try{if(window.gtag)gtag('event','generate_lead',{module:mod,page:location.pathname});
           if(window.fbq)fbq('track','Lead',{content_name:mod});}catch(e){}
       document.getElementById('gt-done-msg').textContent=
-        'We\u2019ll email '+em+' within one business day to get '+mod+' live in '+b+'.';
+        'We will follow up at '+em+' to discuss '+mod+' for '+b+'. No implementation or payment has started.';
       wrap.style.display='none';done.style.display='block';
     })
     .catch(function(){
-      btn.disabled=false;btn.textContent='Claim It';
+      btn.disabled=false;btn.textContent='Request Audit';
       err.innerHTML='Something went wrong. Email <a href="mailto:alex@goodtroubleglobal.com" style="color:#D4C6A1">alex@goodtroubleglobal.com</a> and we\u2019ll sort it.';
       err.style.display='block';
     });
@@ -3538,5 +3475,6 @@ html.gt-embed{overscroll-behavior:none}
   window.addEventListener('load',ready);
 })();
 </script>
+<script src="assessment-demo.js"></script>
 </body>
 </html>

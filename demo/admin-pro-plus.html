@@ -234,7 +234,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 </head>
-<body>
+<body><div style="padding:12px;text-align:center;color:#EFF2F7;background:#0A1220;font-size:13px">Interactive demo · All clients, numbers and outcomes are sample data. Workflow actions are simulated; audit requests reach Good Trouble.</div>
 
 <div class="strip">
   <b>Live demo</b>
@@ -291,7 +291,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
       </div>
       <div class="night-row">
         <div class="night-ic">⭐</div>
-        <div><div class="night-t">Collected 2 five-star reviews</div><div class="night-d">Happy clients routed straight to Google after checkout</div></div>
+        <div><div class="night-t">Collected 2 five-star reviews</div><div class="night-d">Eligible clients received the same honest review invitation</div></div>
       </div>
       <div class="night-row">
         <div class="night-ic">🔁</div>
@@ -352,7 +352,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
   <!-- ============ REVIEWS ============ -->
   <div class="view" id="v-rev">
     <div class="greet" style="font-size:24px">Review Engine</div>
-    <div class="greet-sub">Every client gets asked how their visit went. Happy ones go to Google. Unhappy ones come to you privately — before they post anything.</div>
+    <div class="greet-sub">Every eligible client gets the same honest public review invitation. Private service follow-up is available separately, regardless of rating.</div>
 
     <div class="rev-top">
       <div class="rev-score">
@@ -371,8 +371,8 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
 
     <div class="card">
-      <div class="card-title">⚡ Smart routing — you decide, or let it run on auto</div>
-      <div style="font-size:13.5px;color:var(--text-muted);margin:-6px 0 14px">Two feedback replies just came in from today's checkouts. Route them:</div>
+      <div class="card-title">Honest invitations and separate service follow-up</div>
+      <div style="font-size:13.5px;color:var(--text-muted);margin:-6px 0 14px">Two sample replies came in. Both clients can receive a public invitation; Rachel also needs staff follow-up:</div>
 
       <div class="route-item" id="route-happy">
         <div class="route-hd">
@@ -394,7 +394,7 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
         </div>
         <div class="route-fb">"Waited 35 minutes past my appointment time and nobody said anything. Results were fine but honestly considering going elsewhere."</div>
         <div class="route-btns" id="sad-btns">
-          <button class="rbtn res" onclick="routeSad()">→ Intercept &amp; resolve privately</button>
+          <button class="rbtn res" onclick="routeSad()">→ Send review link &amp; open private follow-up</button>
         </div>
       </div>
       <div style="font-size:12.5px;color:var(--text-dim);margin-top:4px">Rachel never gets a public review link. That 2-star stays off Google — and she gets a reason to come back.</div>
@@ -642,10 +642,10 @@ function playScenario(key,btn){
 
 /* ---------------- review routing ---------------- */
 function routeHappy(){
-  document.getElementById('happy-btns').innerHTML='<div class="sent-line" style="color:var(--green)">✓ Google review link sent to Melissa — 5-star posted 8 min later (avg. conversion: 41%)</div>';
+  document.getElementById('happy-btns').innerHTML='<div class="sent-line" style="color:var(--green)">✓ Simulation: honest review invitation sent to Melissa. No review or rating is assumed.</div>';
 }
 function routeSad(){
-  document.getElementById('sad-btns').innerHTML='<div class="sent-line" style="color:var(--amber)">✓ Private resolution opened — Rachel got a personal apology + priority rebooking with no wait. Nothing hit Google.</div>';
+  document.getElementById('sad-btns').innerHTML='<div class="sent-line" style="color:var(--amber)">✓ Simulation: Rachel received the same honest review invitation. A separate staff task was opened to discuss her wait-time concern. Public feedback remains her choice.</div>';
 }
 
 /* ---------------- CRM win-back ---------------- */
@@ -723,17 +723,17 @@ function runWinback(){
 #gt-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
 @media(max-width:520px){#gt-cta{left:14px;right:14px;bottom:14px;text-align:center;padding:14px}#gt-modal{padding:22px 18px 18px}#gt-modal h3{font-size:24px}}
 </style>
-<button id="gt-cta" type="button">Claim Your Free Module &rarr;</button>
+<button id="gt-cta" type="button">Get a Free Audit &rarr;</button>
 <div id="gt-ov" role="dialog" aria-modal="true" aria-labelledby="gt-h">
   <div id="gt-modal">
     <button id="gt-x" type="button" aria-label="Close">&times;</button>
     <div id="gt-form-wrap">
-      <h3 id="gt-h">Claim Your Free Module</h3>
-      <p class="gt-sub">Pick the one you want running first. We build it into your spa, live on your real clients, at no cost. No contract, no card.</p>
+      <h3 id="gt-h">Get a Free Audit</h3>
+      <p class="gt-sub">Tell us which workflow you want to improve. We will discuss your current tools and a possible first implementation. Any paid work is scoped and quoted separately.</p>
       <div class="gt-f"><label for="gt-name">Your name</label><input id="gt-name" type="text" autocomplete="name" placeholder="First and last"></div>
       <div class="gt-f"><label for="gt-biz">Med spa name</label><input id="gt-biz" type="text" autocomplete="organization" placeholder="Your practice"></div>
       <div class="gt-f"><label for="gt-email">Email</label><input id="gt-email" type="email" autocomplete="email" placeholder="you@yourspa.com"></div>
-      <div class="gt-f"><label for="gt-mod">Which module do you want free?</label>
+      <div class="gt-f"><label for="gt-mod">Which workflow should we discuss?</label>
         <select id="gt-mod">
           <option value="">Choose one&hellip;</option>
           <option>Front Desk AI</option>
@@ -754,14 +754,14 @@ function runWinback(){
         </select>
       </div>
       <input id="gt-hp" type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button id="gt-submit" type="button">Claim It</button>
+      <button id="gt-submit" type="button">Request Audit</button>
       <p id="gt-err"></p>
-      <p id="gt-fine">Takes one reply to set up. We never share your details.</p>
+      <p id="gt-fine">This request goes to Good Trouble. Do not include patient information. Requesting an audit does not start paid work.</p>
     </div>
     <div id="gt-done">
       <div class="gt-check">&#x2705;</div>
-      <h3>You&rsquo;re In</h3>
-      <p class="gt-sub" id="gt-done-msg">We&rsquo;ll email you within one business day to get it live.</p>
+      <h3>Request received</h3>
+      <p class="gt-sub" id="gt-done-msg">We will follow up to discuss your workflow and possible next steps.</p>
       <button id="gt-close2" type="button" style="background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);border-radius:7px;padding:10px 20px;font-family:inherit;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Back to the demo</button>
     </div>
   </div>
@@ -807,11 +807,11 @@ function runWinback(){
       try{if(window.gtag)gtag('event','generate_lead',{module:mod,page:location.pathname});
           if(window.fbq)fbq('track','Lead',{content_name:mod});}catch(e){}
       document.getElementById('gt-done-msg').textContent=
-        'We\u2019ll email '+em+' within one business day to get '+mod+' live in '+b+'.';
+        'We will follow up at '+em+' to discuss '+mod+' for '+b+'. No implementation or payment has started.';
       wrap.style.display='none';done.style.display='block';
     })
     .catch(function(){
-      btn.disabled=false;btn.textContent='Claim It';
+      btn.disabled=false;btn.textContent='Request Audit';
       err.innerHTML='Something went wrong. Email <a href="mailto:alex@goodtroubleglobal.com" style="color:#FF5500">alex@goodtroubleglobal.com</a> and we\u2019ll sort it.';
       err.style.display='block';
     });

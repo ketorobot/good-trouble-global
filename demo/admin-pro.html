@@ -642,17 +642,17 @@ function runMod(){const m=MODS[curMod];const feed=document.getElementById('mb-fe
 #gt-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
 @media(max-width:520px){#gt-cta{left:14px;right:14px;bottom:14px;text-align:center;padding:14px}#gt-modal{padding:22px 18px 18px}#gt-modal h3{font-size:24px}}
 </style>
-<button id="gt-cta" type="button">Claim Your Free Module &rarr;</button>
+<button id="gt-cta" type="button">Get a Free Audit &rarr;</button>
 <div id="gt-ov" role="dialog" aria-modal="true" aria-labelledby="gt-h">
   <div id="gt-modal">
     <button id="gt-x" type="button" aria-label="Close">&times;</button>
     <div id="gt-form-wrap">
-      <h3 id="gt-h">Claim Your Free Module</h3>
-      <p class="gt-sub">Pick the one you want running first. We build it into your spa, live on your real clients, at no cost. No contract, no card.</p>
+      <h3 id="gt-h">Get a Free Audit</h3>
+      <p class="gt-sub">Tell us which workflow you want to improve. We will discuss your current tools and a possible first implementation. Any paid work is scoped and quoted separately.</p>
       <div class="gt-f"><label for="gt-name">Your name</label><input id="gt-name" type="text" autocomplete="name" placeholder="First and last"></div>
       <div class="gt-f"><label for="gt-biz">Med spa name</label><input id="gt-biz" type="text" autocomplete="organization" placeholder="Your practice"></div>
       <div class="gt-f"><label for="gt-email">Email</label><input id="gt-email" type="email" autocomplete="email" placeholder="you@yourspa.com"></div>
-      <div class="gt-f"><label for="gt-mod">Which module do you want free?</label>
+      <div class="gt-f"><label for="gt-mod">Which workflow should we discuss?</label>
         <select id="gt-mod">
           <option value="">Choose one&hellip;</option>
           <option>Front Desk AI</option>
@@ -673,14 +673,14 @@ function runMod(){const m=MODS[curMod];const feed=document.getElementById('mb-fe
         </select>
       </div>
       <input id="gt-hp" type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button id="gt-submit" type="button">Claim It</button>
+      <button id="gt-submit" type="button">Request Audit</button>
       <p id="gt-err"></p>
-      <p id="gt-fine">Takes one reply to set up. We never share your details.</p>
+      <p id="gt-fine">This request goes to Good Trouble. Do not include patient information. Requesting an audit does not start paid work.</p>
     </div>
     <div id="gt-done">
       <div class="gt-check">&#x2705;</div>
-      <h3>You&rsquo;re In</h3>
-      <p class="gt-sub" id="gt-done-msg">We&rsquo;ll email you within one business day to get it live.</p>
+      <h3>Request received</h3>
+      <p class="gt-sub" id="gt-done-msg">We will follow up to discuss your workflow and possible next steps.</p>
       <button id="gt-close2" type="button" style="background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);border-radius:7px;padding:10px 20px;font-family:inherit;font-size:12px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Back to the demo</button>
     </div>
   </div>
@@ -726,11 +726,11 @@ function runMod(){const m=MODS[curMod];const feed=document.getElementById('mb-fe
       try{if(window.gtag)gtag('event','generate_lead',{module:mod,page:location.pathname});
           if(window.fbq)fbq('track','Lead',{content_name:mod});}catch(e){}
       document.getElementById('gt-done-msg').textContent=
-        'We\u2019ll email '+em+' within one business day to get '+mod+' live in '+b+'.';
+        'We will follow up at '+em+' to discuss '+mod+' for '+b+'. No implementation or payment has started.';
       wrap.style.display='none';done.style.display='block';
     })
     .catch(function(){
-      btn.disabled=false;btn.textContent='Claim It';
+      btn.disabled=false;btn.textContent='Request Audit';
       err.innerHTML='Something went wrong. Email <a href="mailto:alex@goodtroubleglobal.com" style="color:#FF5500">alex@goodtroubleglobal.com</a> and we\u2019ll sort it.';
       err.style.display='block';
     });

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<script>if(!/\.html$/i.test(location.pathname)||/[?&]skip(=|&|$)/.test(location.search)||location.hash==="#app")document.documentElement.classList.add("skip");</script>
+<script>if(!new URLSearchParams(location.search).has("intro")||/[?&]skip(=|&|$)/.test(location.search)||location.hash==="#app")document.documentElement.classList.add("skip");</script>
 <meta name="theme-color" content="#0A1220">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -387,6 +387,8 @@ svg{display:block}
 .toast svg{width:16px;height:16px}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assessment-demo.css">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -455,6 +457,7 @@ svg{display:block}
  </div>
 </div>
 
+<div class="demo-note">Interactive demo · All people, numbers and outcomes are illustrative. Actions are simulated.</div>
 <div class="app">
   <header class="top">
     <div class="brand">Demo Spa</div>
@@ -463,6 +466,7 @@ svg{display:block}
 
   <!-- HOME -->
   <section class="scr on" id="s-home">
+    <div class="guided" id="first-workflow"><span class="eyebrow">Start here · One workflow in a minute</span><h2>A problem. A proposed action.<br>Your decision.</h2><label for="practice-priority">What matters most today?</label><select id="practice-priority"><option value="capacity">Fill a cancellation</option><option value="consults">Book more consultations</option></select><p><strong>The problem: </strong><span data-problem></span></p><p><strong>The system proposes: </strong><span data-response></span></p><button type="button" data-guide-approve>Review proposed action</button><button type="button" class="secondary" data-explore>Explore all tools</button><button type="button" class="secondary" data-replay>Reset example</button><p role="status" aria-live="polite"></p><p>Change the priority to see a different recommendation. Your staff sets the information, permissions and approval rules before launch.</p></div>
     <div class="tiles">
       <div class="tile w">
         <div class="n" id="rev">$0</div>
@@ -482,7 +486,7 @@ svg{display:block}
     <div class="h"><h2>Needs you</h2><span class="pill" id="pill">3</span></div>
     <div class="pri" id="pri">
       <div class="pr" data-id="a"><div class="ic"><svg><use href="#i-cal"/></svg></div><div><div class="t">Fill Thursday 1:30</div><div class="s">Botox &middot; <span class="amt">$380</span> &middot; waitlist match</div></div><div class="acts"><button class="ib yes" aria-label="Accept"><svg><use href="#i-check"/></svg></button><button class="ib" aria-label="Dismiss"><svg><use href="#i-x"/></svg></button></div></div>
-      <div class="pr" data-id="b"><div class="ic red"><svg><use href="#i-star"/></svg></div><div><div class="t">Send reply</div><div class="s">2-star caught privately &middot; draft ready</div></div><div class="acts"><button class="ib yes" aria-label="Accept"><svg><use href="#i-check"/></svg></button><button class="ib" aria-label="Dismiss"><svg><use href="#i-x"/></svg></button></div></div>
+      <div class="pr" data-id="b"><div class="ic red"><svg><use href="#i-star"/></svg></div><div><div class="t">Send reply</div><div class="s">Service concern &middot; response draft ready</div></div><div class="acts"><button class="ib yes" aria-label="Accept"><svg><use href="#i-check"/></svg></button><button class="ib" aria-label="Dismiss"><svg><use href="#i-x"/></svg></button></div></div>
       <div class="pr" data-id="c"><div class="ic blue"><svg><use href="#i-box"/></svg></div><div><div class="t">Reorder Juvederm</div><div class="s">3 left &middot; <span class="amt">$2,800</span></div></div><div class="acts"><button class="ib yes" aria-label="Accept"><svg><use href="#i-check"/></svg></button><button class="ib" aria-label="Dismiss"><svg><use href="#i-x"/></svg></button></div></div>
     </div>
     <div class="done" id="done">All clear</div>
@@ -691,6 +695,7 @@ svg{display:block}
 </div>
 <div class="toast" id="toast"><svg><use href="#i-check"/></svg><span>Done</span></div>
 
+<script src="assessment-demo.js"></script>
 <script>
 (function(){
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -785,10 +790,18 @@ syncPost();
 $$('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
 // priority
 let n=3;const pill=$('#pill'),dot=$('#tabdot'),toast=$('#toast');
-$('#pri').addEventListener('click',e=>{const b=e.target.closest('.ib');if(!b)return;const c=b.closest('.pr');if(c.classList.contains('gone'))return;
- c.classList.add('gone');setTimeout(()=>c.style.display='none',350);n--;pill.textContent=n;dot.dataset.n=n;pill.classList.add('bump');setTimeout(()=>pill.classList.remove('bump'),250);
- toast.classList.add('on');setTimeout(()=>toast.classList.remove('on'),1100);
- if(c.dataset.id==='a'&&b.classList.contains('yes'))fillToday130();
+$('#pri').addEventListener('click',async e=>{const b=e.target.closest('.ib');if(!b)return;const c=b.closest('.pr');if(c.classList.contains('gone'))return;
+ const accepted=b.classList.contains('yes');
+ const actions={
+  a:['Confirm the sample booking','Maria G. matches the Thursday 1:30 waitlist opening. This example assumes she has accepted and staff has checked eligibility.','Confirm the sample appointment for Maria G. at 1:30. Illustrative service value: $380. No payment is taken.'],
+  b:['Review the service response','The client reported a poor experience. A private follow-up is separate from their public review invitation.','Simulate sending: “Thank you for telling us. I am sorry the visit fell short. Our team would like to hear more and help.” Their review invitation remains unchanged.'],
+  c:['Review the inventory order','The sample inventory has 3 units left. The proposed restock totals $2,800; staff must verify product, quantity and supplier before a real order.','Simulate approving a $2,800 Juvederm restock for staff processing. No supplier is contacted and no payment is made.']
+ };
+ if(accepted&&!await GTDemo.review(...actions[c.dataset.id]))return;
+ c.classList.add('gone');setTimeout(()=>c.style.display='none',350);n--;pill.textContent=n;dot.dataset.n=n;
+ if(accepted){$('#hpill').textContent=+$('#hpill').textContent+1;const result=document.createElement('p');result.className='demo-note';result.textContent=actions[c.dataset.id][0]+' — simulated';$('#hrow').after(result)}
+ toast.querySelector('span').textContent=accepted?'Action simulated':'Dismissed';toast.classList.add('on');setTimeout(()=>toast.classList.remove('on'),1100);
+ if(c.dataset.id==='a'&&accepted)fillToday130();
  if(n===0){pill.classList.add('ok');setTimeout(()=>$('#done').classList.add('on'),380)}});
 // messages
 const TH={
@@ -837,7 +850,7 @@ $('#mg').addEventListener('click',e=>{const c=e.target.closest('.dc');if(!c||c.c
 function fillSlot(el,who){if(!el||el.classList.contains('filling'))return;const i=+el.dataset.i;const dd=dayData(sel);const w=who||WAIT[(sel+i)%WAIT.length];
  el.classList.add('filling');el.querySelector('.fill').innerHTML='<i class="typing" style="padding:0;background:none"><i></i><i></i><i></i></i>';
  setTimeout(()=>{dd.slots[i]={t:dd.slots[i].t,who:[w[0],w[1],'#3DBE8B'],filled:true};renderDay(sel);toast.classList.add('on');setTimeout(()=>toast.classList.remove('on'),1100)},reduce?0:1000)}
-$('#sched').addEventListener('click',e=>{const f=e.target.closest('.fill');if(!f)return;fillSlot(f.closest('.open'))});
+$('#sched').addEventListener('click',async e=>{const f=e.target.closest('.fill');if(!f)return;const el=f.closest('.open'),i=+el.dataset.i,w=WAIT[(sel+i)%WAIT.length];if(await GTDemo.review('Confirm sample waitlist booking',w[0]+' matches the '+dayData(sel).slots[i].t+' opening for '+w[1]+'. This example assumes client acceptance and a staff eligibility check.','Add this appointment to the sample calendar. No client is contacted and no payment is taken.'))fillSlot(el,w)});
 function fillToday130(){const dd=dayData(TODAY);const i=dd.slots.findIndex(x=>x.t==='1:30'&&x.open);if(i<0)return;dd.slots[i]={t:'1:30',who:['Maria G.','Botox','#3DBE8B'],filled:true};if(sel===TODAY)renderDay(TODAY);else renderMonth()}
 $('#mprev').addEventListener('click',()=>{});$('#mnext').addEventListener('click',()=>{});
 renderDay(TODAY);
