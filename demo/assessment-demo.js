@@ -34,64 +34,98 @@
   dialog.querySelector('[data-cancel]').addEventListener('click', () => finish(false));
   dialog.addEventListener('cancel', e => { e.preventDefault(); finish(false); });
 
-  const guide = document.querySelector('#first-workflow');
-  if (guide) {
-    const scenarios = [
+  const bookingStory = {
+    stages: [
       {
-        title: 'An appointment opened up.',
-        time: 'Thursday · 1:30 PM',
-        problem: 'Maria G. is on the waitlist for this time. Invite her to take the opening.',
-        button: 'Review invitation',
-        recipient: 'Maria G.',
-        message: 'Hi Maria! A Thursday appointment at 1:30 PM just opened up. Would you like it?',
-        confirm: 'Send invitation',
-        sent: 'Invitation sent',
-        result: 'Waiting for Maria to reply. The appointment is still open.'
+        date: 'Thursday, August 27 · 8:14 PM',
+        title: 'Answer the question. Explain the options.',
+        messages: [
+          ['u', 'What’s included in your Signature Facial? My skin feels dry. Is it just a cleanse?'],
+          ['a', 'It’s a 45-minute facial with cleansing, gentle exfoliation and a hydrating mask, for $150. Your esthetician checks your skin and tailors the visit with you.'],
+          ['u', 'Do you have anything extra for hydration? And could I come after work?'],
+          ['a', 'There’s an optional 10-minute Hydrating Finish for $30, making the total $180. The $150 facial is also available on its own. Which days work for you?']
+        ],
+        work: 'Used the spa’s service menu to explain what’s included and offer a relevant, clearly priced upgrade. No discount or pressure.',
+        next: 'See the follow-up →'
       },
       {
-        title: 'A consultation inquiry needs a reply.',
-        time: 'Ana · Asked about Friday',
-        problem: 'Ana wants to book a consultation. Follow up to help her find a time.',
-        button: 'Review follow-up',
-        recipient: 'Ana',
-        message: 'Hi Ana! Would you like help finding a consultation time this Friday?',
-        confirm: 'Send follow-up',
-        sent: 'Follow-up sent',
-        result: 'Waiting for Ana to reply. No consultation is booked yet.'
+        date: 'Thursday evening → Friday afternoon',
+        title: 'Keep the conversation from going cold.',
+        messages: [
+          ['u', 'Monday after 4 would be good. I need to check work first though. Can you message me tomorrow?'],
+          ['a', 'Of course. I’ll check back tomorrow afternoon.'],
+          ['ok', 'Follow-up saved for Friday. Preference: Monday after 4 PM.'],
+          ['ok', 'Friday, August 28 · 4:00 PM'],
+          ['a', 'Hi Maya! Following up as you asked. Monday, August 31 at 4:30 is available for the facial with the Hydrating Finish: 55 minutes, $180 total. Would you like that appointment?']
+        ],
+        work: 'Remembered her availability, scheduled the follow-up she requested, and checked for enough time for both services before replying.',
+        next: 'See what she booked →'
+      },
+      {
+        date: 'Friday, August 28 · 4:08 PM',
+        title: 'Finish the booking and save the details.',
+        messages: [
+          ['u', 'Yes, Monday at 4:30 works. Let’s do the facial and the extra hydration.'],
+          ['a', 'Great. Here’s your booking link for both services, $180 total. Review the details and confirm there.'],
+          ['ok', 'Maya completed the booking form and confirmed her appointment.'],
+          ['a', 'You’re booked for Monday, August 31 at 4:30. Your confirmation includes the appointment details and a link to manage your booking.']
+        ],
+        work: 'Added the confirmed appointment to the calendar and kept the conversation with the booking. The client chose the upgrade; staff didn’t have to chase the inquiry.'
       }
-    ];
-    let current = 0;
-    const approve = guide.querySelector('[data-guide-approve]');
-    const replay = guide.querySelector('[data-replay]');
-    function render() {
-      const scenario = scenarios[current];
-      guide.querySelector('h2').textContent = scenario.title;
-      guide.querySelector('[data-time]').textContent = scenario.time;
-      guide.querySelector('[data-problem]').textContent = scenario.problem;
-      guide.querySelector('[role=status]').textContent = '';
-      approve.disabled = false;
-      approve.textContent = scenario.button;
-      replay.hidden = true;
+    ]
+  };
+  window.GTDemo.bookingStory = bookingStory;
+  const story = document.querySelector('#booking-story');
+  if (story) {
+    let step = 0;
+    const details = story.querySelector('#story-details');
+    const toggle = story.querySelector('.story-open');
+    const next = story.querySelector('[data-story-next]');
+    function renderStep(moveFocus = false) {
+      const stage = bookingStory.stages[step];
+      story.querySelector('#story-stage-title').textContent = stage.title;
+      story.querySelector('#story-date').textContent = stage.date;
+      story.querySelector('#story-work').textContent = stage.work;
+      const messages = story.querySelector('#story-messages');
+      messages.replaceChildren();
+      stage.messages.forEach(([role, text]) => {
+        const bubble = document.createElement('div');
+        bubble.className = 'story-message story-' + role;
+        if (role !== 'ok') {
+          const sender = document.createElement('span');
+          sender.textContent = role === 'u' ? 'Maya' : 'Your assistant';
+          bubble.append(sender);
+        }
+        const copy = document.createElement('p');
+        copy.textContent = text;
+        bubble.append(copy);
+        messages.append(bubble);
+      });
+      story.querySelectorAll('[data-story-step]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.storyStep) === step)));
+      next.hidden = step === 2;
+      next.textContent = stage.next || '';
+      story.querySelector('#story-booking').hidden = step !== 2;
+      story.querySelector('#story-links').hidden = step !== 2;
+      if (moveFocus) story.querySelector('#story-stage-title').focus({preventScroll:true});
     }
-    replay.addEventListener('click', () => {
-      current = (current + 1) % scenarios.length;
-      render();
-      approve.focus();
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(expanded));
+      details.hidden = !expanded;
+      toggle.innerHTML = expanded ? 'Close the story <span aria-hidden="true">↑</span>' : 'See how it happened <span aria-hidden="true">↓</span>';
     });
-    approve.addEventListener('click', async () => {
-      const scenario = scenarios[current];
-      if (!await window.GTDemo.review('Review your message', 'To: ' + scenario.recipient + ' · Text message', scenario.message, {
-        confirmLabel: scenario.confirm,
-        cancelLabel: 'Back',
-        note: 'Demo only. No real message will be sent.'
-      })) return;
-      guide.querySelector('[role=status]').textContent = scenario.result;
-      approve.textContent = scenario.sent + ' ✓';
-      approve.disabled = true;
-      replay.hidden = false;
-      replay.focus();
+    story.querySelectorAll('[data-story-step]').forEach(button => button.addEventListener('click', () => {
+      step = Number(button.dataset.storyStep);
+      renderStep(true);
+    }));
+    next.addEventListener('click', () => {
+      step++;
+      renderStep(true);
+      story.querySelector('.story-steps').scrollIntoView({behavior:'auto',block:'start'});
     });
-    render();
+    story.querySelector('[data-story-messages]').addEventListener('click', () => window.dispatchEvent(new Event('gt-story-messages')));
+    story.querySelector('[data-story-calendar]').addEventListener('click', () => window.dispatchEvent(new Event('gt-story-calendar')));
+    renderStep();
   }
 
   const rating = document.querySelector('#review-rating');

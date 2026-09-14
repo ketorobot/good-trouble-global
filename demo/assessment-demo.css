@@ -1,22 +1,49 @@
 .demo-note{padding:9px 16px;background:#101B30;color:#C9D2E0;font:400 12px/1.5 Outfit,sans-serif;text-align:center;border-bottom:1px solid #1E2C48}
-.guided{margin:14px 0 22px;padding:20px;background:#101B30;border:1px solid #39445A;border-radius:14px;color:#EFF2F7}
-.guided-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#D4C6A1;font:500 12px/1.4 Outfit,sans-serif}
-.guided-demo{padding:3px 8px;border:1px solid #39445A;border-radius:20px;color:#AEBBCF;font-size:11px}
-.guided h2{font:400 24px/1.2 Marcellus,Georgia,serif;margin:14px 0 8px;max-width:24ch}
-.guided p{font:400 14px/1.5 Outfit,sans-serif;margin:8px 0 16px;color:#C9D2E0}
-.guided p.guided-time{font-weight:500;color:#D4C6A1;margin-bottom:8px}
-.guided button,.approval button{min-height:44px;padding:12px 16px;border:1px solid #D4C6A1;background:#D4C6A1;color:#0A1220;border-radius:6px;font:500 14px Outfit,sans-serif;cursor:pointer;margin:8px 8px 0 0}
-.guided [data-guide-approve]{width:100%;margin:0}
-.guided button.secondary,.approval button.secondary{background:transparent;color:#EFF2F7}
-.guided button:disabled{background:#243F38;border-color:#466F60;color:#D7EEE3;cursor:default}
-.guided button.guided-next{background:transparent;border:0;color:#D4C6A1;padding:8px 0;margin:0;text-align:left}
-.guided [hidden]{display:none!important}
-.guided [role=status]{color:#EFF2F7;margin:14px 0 0}
-.guided [role=status]:empty{display:none}
+.approval button{min-height:44px;padding:12px 16px;border:1px solid #D4C6A1;background:#D4C6A1;color:#0A1220;border-radius:6px;font:500 14px Outfit,sans-serif;cursor:pointer;margin:8px 8px 0 0}
+.approval button.secondary{background:transparent;color:#EFF2F7}
+.revenue-story{margin:26px 0 12px;padding:22px;border:1px solid #4A4639;border-radius:16px;background:linear-gradient(145deg,#182339,#101827 70%);color:#EFF2F7;font-family:Outfit,sans-serif}
+.story-kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;color:#D4C6A1}
+.story-kicker span{border:1px solid #4A4C49;border-radius:20px;padding:4px 8px;color:#B6C2D4;font-size:10px}
+.revenue-story h2{font:400 27px/1.2 Marcellus,Georgia,serif;margin:16px 0 12px;text-wrap:balance}
+.story-intro{font-size:14px;line-height:1.6;color:#C9D2E0;margin:0 0 18px}
+.story-outcome{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-block:1px solid #354056;padding:16px 0;margin-bottom:16px}
+.story-outcome strong{display:block;font:400 29px/1.2 Marcellus,Georgia,serif;color:#E3D3AB}
+.story-outcome span{display:block;font-size:12px;color:#B6C2D4;margin-top:5px}
+.revenue-story button{font:500 14px/1.35 Outfit,sans-serif;min-height:44px;cursor:pointer}
+.story-open,.story-next{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:12px 14px;border:1px solid #D4C6A1;background:#D4C6A1;color:#0A1220;border-radius:7px}
+.story-steps{display:flex;gap:4px;padding:6px;border:1px solid #354056;border-radius:9px;margin:20px 0;scroll-margin-top:20px}
+.story-steps button{flex:1;padding:8px 3px;font-size:12px;color:#C9D2E0;background:transparent;border:0;border-radius:5px}
+.story-steps button[aria-pressed=true]{background:#D4C6A1;color:#0A1220}
+.story-date{font-size:11px;line-height:1.5;color:#B6C2D4;margin:0 0 7px}
+.revenue-story h3{font:500 18px/1.35 Outfit,sans-serif;margin:0 0 18px}
+.story-messages{display:grid;gap:12px}
+.story-message{padding:12px 14px;border-radius:13px;max-width:94%;font-size:14px;line-height:1.55}
+.story-message span{display:block;font-size:10px;color:#D4C6A1;margin-bottom:5px}
+.story-message p{margin:0}
+.story-u{justify-self:end;background:#25334B;border-bottom-right-radius:3px}
+.story-a{justify-self:start;background:#0B1322;border:1px solid #354056;border-bottom-left-radius:3px}
+.story-ok{justify-self:center;text-align:center;font-size:11px;color:#B7C9C1;padding:6px 4px}
+.story-work{padding:15px 0;margin:12px 0 16px;border-block:1px solid #354056}
+.story-work span{color:#D4C6A1;font-size:11px}
+.story-work p{font-size:13px;line-height:1.6;margin:7px 0 0;color:#C9D2E0}
+.story-booking{padding:16px;background:#132720;border:1px solid #39584A;border-radius:12px;margin-bottom:16px}
+.story-booked{font-size:11px;color:#B6D9C9}
+.story-booking h4{font-size:19px;margin:10px 0 3px}
+.story-booking p{font-size:13px;margin:0 0 15px}
+.story-booking dl{font-size:12px;margin:0 0 10px}
+.story-booking dl div{display:flex;justify-content:space-between;gap:12px;margin:9px 0}
+.story-booking dd{margin:0;white-space:nowrap}
+.story-total{border-top:1px solid #39584A;padding-top:10px;font-weight:600}
+.story-booking small{font-size:11px;line-height:1.5;display:block;color:#B6C2D4}
+.story-links{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.story-links button{font-size:12px;border:1px solid #D4C6A1;border-radius:6px;background:transparent;color:#E3D3AB;padding:10px 8px}
+.story-disclaimer{font-size:10px;line-height:1.5;color:#A8B5C8;margin:14px 0 0}
+.revenue-story [hidden]{display:none!important}
+.revenue-story :focus-visible,.approval :focus-visible{outline:2px solid #EFF2F7;outline-offset:4px}
+@media(max-width:380px){.revenue-story{padding:16px}.revenue-story h2{font-size:24px}.story-message{max-width:100%;padding:11px}.story-steps button{font-size:11px}}
 .approval{background:#0D1626;color:#EFF2F7;border:1px solid #B49A62;border-radius:16px;padding:28px;width:min(510px,calc(100% - 32px));max-height:85vh;overflow:auto;margin:auto;font:400 15px/1.65 Outfit,sans-serif}
 .approval::backdrop{background:#000b}
 .approval h2{font:400 29px/1.2 Marcellus,Georgia,serif;margin:0 0 18px}
 .approval p{margin:12px 0}
 .approval small{display:block;color:#8CA0BC}
-.guided :focus-visible,.approval :focus-visible{outline:2px solid #EFF2F7;outline-offset:4px}
-@media(max-width:480px){.guided{padding:17px}.guided h2{font-size:23px}.approval{padding:22px}}
+@media(max-width:480px){.approval{padding:22px}}

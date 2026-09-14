@@ -466,15 +466,6 @@ svg{display:block}
 
   <!-- HOME -->
   <section class="scr on" id="s-home">
-    <section class="guided" id="first-workflow" aria-labelledby="workflow-title">
-      <div class="guided-top"><span>Suggested next step</span><span class="guided-demo">Demo</span></div>
-      <h2 id="workflow-title">An appointment opened up.</h2>
-      <p class="guided-time" data-time>Thursday · 1:30 PM</p>
-      <p data-problem>Maria G. is on the waitlist for this time. Invite her to take the opening.</p>
-      <button type="button" data-guide-approve>Review invitation</button>
-      <p role="status" aria-live="polite"></p>
-      <button type="button" class="guided-next" data-replay hidden>Try another example →</button>
-    </section>
     <div class="tiles">
       <div class="tile w">
         <div class="n" id="rev">$0</div>
@@ -493,26 +484,36 @@ svg{display:block}
 
     <div class="h"><h2>Needs you</h2><span class="pill" id="pill">3</span></div>
     <div class="pri" id="pri">
-      <div class="pr" data-id="a"><div class="ic"><svg><use href="#i-cal"/></svg></div><div><div class="t">Fill Thursday 1:30</div><div class="s">Botox &middot; <span class="amt">$380</span> &middot; waitlist match</div></div><div class="acts"><button class="ib yes" aria-label="Accept"><svg><use href="#i-check"/></svg></button><button class="ib" aria-label="Dismiss"><svg><use href="#i-x"/></svg></button></div></div>
+      <div class="pr" data-id="a"><div class="ic"><svg><use href="#i-cal"/></svg></div><div><div class="t">Confirm Maria’s booking</div><div class="s">Thursday 1:30 &middot; client accepted</div></div><div class="acts"><button class="ib yes" aria-label="Accept"><svg><use href="#i-check"/></svg></button><button class="ib" aria-label="Dismiss"><svg><use href="#i-x"/></svg></button></div></div>
       <div class="pr" data-id="b"><div class="ic red"><svg><use href="#i-star"/></svg></div><div><div class="t">Send reply</div><div class="s">Service concern &middot; response draft ready</div></div><div class="acts"><button class="ib yes" aria-label="Accept"><svg><use href="#i-check"/></svg></button><button class="ib" aria-label="Dismiss"><svg><use href="#i-x"/></svg></button></div></div>
       <div class="pr" data-id="c"><div class="ic blue"><svg><use href="#i-box"/></svg></div><div><div class="t">Reorder Juvederm</div><div class="s">3 left &middot; <span class="amt">$2,800</span></div></div><div class="acts"><button class="ib yes" aria-label="Accept"><svg><use href="#i-check"/></svg></button><button class="ib" aria-label="Dismiss"><svg><use href="#i-x"/></svg></button></div></div>
     </div>
     <div class="done" id="done">All clear</div>
 
-    <div class="h"><h2>Handled</h2><span class="pill ok" id="hpill">11</span></div>
-    <div class="row" id="hrow">
-      <div class="hv"><div class="av" style="background:#8CA0BC">MJ</div><span class="b"><svg><use href="#i-check"/></svg></span><small>$380</small></div>
-      <div class="hv"><div class="av" style="background:#6FA8E8">RC</div><span class="b"><svg><use href="#i-check"/></svg></span><small>$295</small></div>
-      <div class="hv"><div class="av" style="background:#B49A62">IR</div><span class="b"><svg><use href="#i-check"/></svg></span><small>Diamond</small></div>
-      <div class="hv"><div class="av" style="background:#3DBE8B">SV</div><span class="b"><svg><use href="#i-check"/></svg></span><small>Back</small></div>
-      <div class="hv"><div class="av" style="background:#D16A5C">CM</div><span class="b"><svg><use href="#i-check"/></svg></span><small>Laser</small></div>
-      <div class="hv"><div class="av gt"><svg width="22" height="22"><use href="#i-mega"/></svg></div><span class="b gold"><svg><use href="#i-check"/></svg></span><small>Ads</small></div>
-      <div class="hv"><div class="av gt"><svg width="22" height="22"><use href="#i-globe"/></svg></div><span class="b gold"><svg><use href="#i-check"/></svg></span><small>Form</small></div>
-      <div class="hv"><div class="av gt"><svg width="22" height="22"><use href="#i-users"/></svg></div><span class="b gold"><svg><use href="#i-check"/></svg></span><small>47 texts</small></div>
-      <div class="hv"><div class="av gt"><svg width="22" height="22"><use href="#i-star"/></svg></div><span class="b gold"><svg><use href="#i-check"/></svg></span><small>3 replies</small></div>
-      <div class="hv"><div class="av gt"><svg width="22" height="22"><use href="#i-chat"/></svg></div><span class="b gold"><svg><use href="#i-check"/></svg></span><small>9 msgs</small></div>
-      <div class="hv"><div class="av gt"><svg width="22" height="22"><use href="#i-card"/></svg></div><span class="b gold"><svg><use href="#i-check"/></svg></span><small>2 saved</small></div>
-    </div>
+    <section class="revenue-story" id="booking-story" aria-labelledby="story-heading">
+      <div class="story-kicker">See it in action <span>Sample story</span></div>
+      <h2 id="story-heading">A $180 booking from an unfinished conversation.</h2>
+      <p class="story-intro">Maya had questions about a facial, then needed time to decide. Your assistant explained the service, offered an optional upgrade and followed up when she asked.</p>
+      <div class="story-outcome"><div><strong>$180</strong><span>Appointment value</span></div><div><strong>+$30</strong><span>Upgrade she chose</span></div></div>
+      <button class="story-open" type="button" aria-expanded="false" aria-controls="story-details">See how it happened <span aria-hidden="true">↓</span></button>
+      <div id="story-details" hidden>
+        <div class="story-steps" role="group" aria-label="Conversation stages">
+          <button type="button" data-story-step="0" aria-pressed="true">1. Explain</button>
+          <button type="button" data-story-step="1" aria-pressed="false">2. Follow up</button>
+          <button type="button" data-story-step="2" aria-pressed="false">3. Book</button>
+        </div>
+        <div class="story-stage" aria-labelledby="story-stage-title">
+          <p class="story-date" id="story-date"></p>
+          <h3 id="story-stage-title" tabindex="-1"></h3>
+          <div class="story-messages" id="story-messages"></div>
+          <div class="story-work"><span>What your assistant took care of</span><p id="story-work"></p></div>
+          <div class="story-booking" id="story-booking" hidden><span class="story-booked">Booked · Sample calendar</span><h4>Maya R.</h4><p>Monday, August 31 · 4:30 PM</p><dl><div><dt>Signature Facial · 45 min</dt><dd>$150</dd></div><div><dt>Hydrating Finish · 10 min</dt><dd>$30</dd></div><div class="story-total"><dt>Appointment value</dt><dd>$180</dd></div></dl><small>Booking confirmed in this example. Payment has not been collected.</small></div>
+          <button class="story-next" type="button" data-story-next></button>
+          <div class="story-links" id="story-links" hidden><button type="button" data-story-messages>Open in Messages</button><button type="button" data-story-calendar>View appointment</button></div>
+        </div>
+      </div>
+      <p class="story-disclaimer">Fictional conversation and sample prices. No real messages or bookings.</p>
+    </section>
   </section>
 
   <!-- MESSAGES -->
@@ -549,8 +550,9 @@ svg{display:block}
           </div>
         </div>
         <div class="grp" data-p="sms">
-          <div class="ph"><svg><use href="#i-sms"/></svg>Text<span class="c">2</span></div>
+          <div class="ph"><svg><use href="#i-sms"/></svg>Text<span class="c">3</span></div>
           <div class="list">
+            <button class="msg" data-th="maya"><div class="av" style="background:#B49A62">MR</div><div><div class="nm">Maya R. <span class="bn ok">Booked</span></div><div class="pv">Facial + Hydrating Finish · $180</div></div><div class="tm">Fri</div></button>
             <button class="msg" data-th="sv"><div class="av" style="background:#B49A62">SV</div><div><div class="nm">Sofia V. <span class="bn ok">Booked</span></div><div class="pv">Yes! Laser at Doral works</div></div><div class="tm">Tue</div></button>
             <button class="msg" data-th="cm"><div class="av" style="background:#1B2B49;color:var(--gold)">CM</div><div><div class="nm">Carlos M.</div><div class="pv">Running 10 min late</div></div><div class="tm">Tue</div></button>
           </div>
@@ -801,18 +803,19 @@ let n=3;const pill=$('#pill'),dot=$('#tabdot'),toast=$('#toast');
 $('#pri').addEventListener('click',async e=>{const b=e.target.closest('.ib');if(!b)return;const c=b.closest('.pr');if(c.classList.contains('gone'))return;
  const accepted=b.classList.contains('yes');
  const actions={
-  a:['Confirm the sample booking','Maria G. matches the Thursday 1:30 waitlist opening. This example assumes she has accepted and staff has checked eligibility.','Confirm the sample appointment for Maria G. at 1:30. Illustrative service value: $380. No payment is taken.'],
+  a:['Confirm the sample booking','Maria asked for a weekday afternoon appointment and accepted Thursday at 1:30. Staff has checked eligibility in this example.','Confirm the sample appointment for Maria G. at 1:30. Illustrative service value: $380. No payment is taken.'],
   b:['Review the service response','The client reported a poor experience. A private follow-up is separate from their public review invitation.','Simulate sending: “Thank you for telling us. I am sorry the visit fell short. Our team would like to hear more and help.” Their review invitation remains unchanged.'],
   c:['Review the inventory order','The sample inventory has 3 units left. The proposed restock totals $2,800; staff must verify product, quantity and supplier before a real order.','Simulate approving a $2,800 Juvederm restock for staff processing. No supplier is contacted and no payment is made.']
  };
  if(accepted&&!await GTDemo.review(...actions[c.dataset.id]))return;
  c.classList.add('gone');setTimeout(()=>c.style.display='none',350);n--;pill.textContent=n;dot.dataset.n=n;
- if(accepted){$('#hpill').textContent=+$('#hpill').textContent+1;const result=document.createElement('p');result.className='demo-note';result.textContent=actions[c.dataset.id][0]+' — simulated';$('#hrow').after(result)}
+ // Completed priority actions are reflected by the pending count and confirmation toast.
  toast.querySelector('span').textContent=accepted?'Action simulated':'Dismissed';toast.classList.add('on');setTimeout(()=>toast.classList.remove('on'),1100);
  if(c.dataset.id==='a'&&accepted)fillToday130();
  if(n===0){pill.classList.add('ok');setTimeout(()=>$('#done').classList.add('on'),380)}});
 // messages
 const TH={
+ maya:{nm:'Maya R.',av:'MR',col:'#B49A62',tm:'Sample · Aug 27–28',seq:GTDemo.bookingStory.stages.flatMap(stage=>[['ok',stage.date],...stage.messages])},
  mj:{nm:'Maria J.',av:'MJ',col:'#8CA0BC',tm:'11:47 PM',seq:[['u','Hi, interested in Botox. Pricing?'],['a','$12/unit · most areas $240–360'],['u','Thursday at Coral Gables?'],['a','10:00 · 1:30 · 3:45'],['u','1:30 please!'],['a','Thu 1:30 confirmed'],['ok','Booked']]},
  rc:{nm:'Robert C.',av:'RC',col:'#6FA8E8',tm:'12:10 AM',seq:[['u','What\'s in the NAD+ drip?'],['a','NAD+ 500mg · saline · B-complex'],['u','Saturday?'],['a','Sat 10:00 · Kendall'],['u','Book it'],['ok','Booked']]},
  df:{nm:'Diana F.',av:'DF',col:'#3DBE8B',tm:'7:10 PM',seq:[['u','Can I do multiple areas?'],['a','Yes · forehead, 11s, crow\'s feet'],['u','Monday?'],['a','Mon 2:00 with Sarah?']]},
@@ -825,10 +828,12 @@ const TH={
 $('#mlist').addEventListener('click',e=>{const m=e.target.closest('.msg');if(!m)return;openThread(TH[m.dataset.th]);m.querySelector('.un')?.remove()});
 $('#chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;$$('.chip').forEach(x=>x.classList.toggle('on',x===c));$$('.grp').forEach(g=>g.classList.toggle('hide',c.dataset.f!=='all'&&g.dataset.p!==c.dataset.f))});
 $('#back').addEventListener('click',()=>{$('#thread').classList.remove('on');$('#inbox').style.display=''});
-function openThread(t){$('#inbox').style.display='none';$('#thread').classList.add('on');const av=$('#th-av');av.textContent=t.av;av.style.background=t.col;av.style.color=t.col==='#1B2B49'?'var(--gold)':'';$('#th-nm').textContent=t.nm;$('#th-tm').textContent=t.tm;
+let threadGeneration=0;
+function openThread(t,instant=false){const generation=++threadGeneration;$('#inbox').style.display='none';$('#thread').classList.add('on');const av=$('#th-av');av.textContent=t.av;av.style.background=t.col;av.style.color=t.col==='#1B2B49'?'var(--gold)':'';$('#th-nm').textContent=t.nm;$('#th-tm').textContent=t.tm;
  const box=$('#msgs');box.innerHTML='';let i=0;
  function add(k,x){const m=document.createElement('div');m.className='m '+k;m.textContent=x;box.appendChild(m)}
- (function next(){if(i>=t.seq.length)return;const [k,x]=t.seq[i++];if(k==='u'){add(k,x);setTimeout(next,450)}else{const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';box.appendChild(ty);setTimeout(()=>{ty.remove();add(k,x);setTimeout(next,450)},reduce?0:600)}})()}
+ if(instant){t.seq.forEach(([k,x])=>add(k,x));return}
+ (function next(){if(generation!==threadGeneration||i>=t.seq.length)return;const [k,x]=t.seq[i++];if(k==='u'){add(k,x);setTimeout(next,450)}else{const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';box.appendChild(ty);setTimeout(()=>{if(generation!==threadGeneration)return;ty.remove();add(k,x);setTimeout(next,450)},reduce?0:600)}})()}
 // calendar
 const TODAY=27, DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const NAMES=[['Lucia T.','Chemical peel','#6FA8E8'],['Jennifer L.','Consult','#8CA0BC'],['Isabella R.','HydroFacial','#B49A62'],['Diana M.','Body contouring','#3DBE8B'],['Robert C.','Hair restoration','#D16A5C'],['Camila H.','Weight loss','#6FA8E8'],['Andrea C.','PDO threads','#B49A62'],['Natalia G.','IV / NAD+','#8CA0BC'],['Paola R.','Laser hair','#3DBE8B'],['Monica V.','Ultherapy','#D16A5C']];
@@ -839,6 +844,7 @@ function dayData(d){if(DAYS[d])return DAYS[d];let seed=d*7919;const r=()=>(seed=
  const dow=(d+5)%7; // Aug 1 2026 = Sat(6) -> (1+5)%7=6
  if(dow===0){DAYS[d]={closed:true,slots:[]};return DAYS[d]}
  const off=Math.floor(r()*NAMES.length);const slots=TIMES.map((t,i)=>{if(d===TODAY)return [2,4,6].includes(i)?{t,open:true}:{t,who:NAMES[i%NAMES.length]};return r()<(dow===2?.45:.28)?{t,open:true}:{t,who:NAMES[(off+i)%NAMES.length]}});
+ if(d===31)slots[7]={t:'4:30',who:['Maya R.','Signature Facial + Hydrating Finish · $180','#B49A62']};
  DAYS[d]={slots};return DAYS[d]}
 const openCount=d=>dayData(d).slots.filter(x=>x.open).length;
 let sel=TODAY;
@@ -862,6 +868,8 @@ $('#sched').addEventListener('click',async e=>{const f=e.target.closest('.fill')
 function fillToday130(){const dd=dayData(TODAY);const i=dd.slots.findIndex(x=>x.t==='1:30'&&x.open);if(i<0)return;dd.slots[i]={t:'1:30',who:['Maria G.','Botox','#3DBE8B'],filled:true};if(sel===TODAY)renderDay(TODAY);else renderMonth()}
 $('#mprev').addEventListener('click',()=>{});$('#mnext').addEventListener('click',()=>{});
 renderDay(TODAY);
+window.addEventListener('gt-story-messages',()=>{go('chat');$('#inbox').style.display='none';openThread(TH.maya,true)});
+window.addEventListener('gt-story-calendar',()=>{go('cal');renderDay(31)});
 })();
 </script>
 </body>
