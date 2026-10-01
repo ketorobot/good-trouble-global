@@ -1,8 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /demo/$
 Disallow: /demo/
 Disallow: /review/
 Disallow: /drafts/
 Disallow: /hype/
+Disallow: /ops/
 
 Sitemap: https://goodtroubleglobal.com/sitemap.xml

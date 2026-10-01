@@ -8,7 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Demo Spa · Good Trouble</title>
+<title>Explore the app — Good Trouble</title><meta name="description" content="Explore the Good Trouble spa app with sample messages, bookings, social posts, and tools."><link rel="canonical" href="https://goodtroubleglobal.com/demo/medspa"><meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
@@ -389,7 +389,7 @@ svg{display:block}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assessment-demo.css">
-</head>
+<link rel="stylesheet" href="/assets/demo-shell.css?v=20261001"><link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{--d:Marcellus,Georgia,serif;--c:Marcellus,Georgia,serif;--b:Outfit,sans-serif}</style></head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12l5 5L20 7"/></symbol>
@@ -457,7 +457,7 @@ svg{display:block}
  </div>
 </div>
 
-<div class="demo-note">Interactive demo · All people, numbers and outcomes are illustrative. Actions are simulated.</div>
+<header class="demo-sales-nav"><a href="/" class="demo-brand">GOOD TROUBLE</a><nav aria-label="Demo navigation"><a href="/demo/">Guided tour</a><a href="/pricing">Pricing</a><a href="/contact?source=full-app">Let’s talk ↗</a></nav></header><div class="demo-note">Explore the app · Sample data and simulated actions.</div><section class="demo-start"><h1>Your spa. One place to run the day.</h1><p>Check what needs you. Read a message. Try a tool.</p><a href="/demo/">First time? Take the short guided tour →</a></section>
 <div class="app">
   <header class="top">
     <div class="brand">Demo Spa</div>
@@ -649,21 +649,21 @@ svg{display:block}
       <div class="tile"><div class="l">Yelp</div><div class="n">4.6</div></div>
     </div>
     <div class="flow">
-      <div class="node"><div class="c q"><svg><use href="#i-msg"/></svg></div>Ask first</div>
+      <div class="node"><div class="c q"><svg><use href="#i-msg"/></svg></div>Honest feedback</div>
       <div class="mid"><svg><use href="#i-trend"/></svg><svg style="transform:scaleY(-1)"><use href="#i-trend"/></svg></div>
       <div style="display:grid;gap:14px"><div class="node"><div class="c g"><svg><use href="#i-star"/></svg></div>Public</div><div class="node"><div class="c r"><svg><use href="#i-eye"/></svg></div>Private</div></div>
     </div>
     <div class="rv">
       <div class="r"><div class="av" style="background:#6FA8E8">MG</div><div><div class="stars">★★★★★</div><q>Absolutely love this place.</q></div><span class="bn ok">Posted</span></div>
       <div class="r"><div class="av" style="background:#B49A62">CM</div><div><div class="stars">★★★★★</div><q>Best med spa in Miami.</q></div><span class="bn ok">Posted</span></div>
-      <div class="r"><div class="av" style="background:#D16A5C">JT</div><div><div class="stars">★★</div><q>Wait too long, felt rushed.</q></div><span class="bn r">Private</span></div>
+      <div class="r"><div class="av" style="background:#D16A5C">JT</div><div><div class="stars">★★</div><q>Wait too long, felt rushed.</q></div><span class="bn r">Follow up</span></div>
     </div>
   </section>
 
   <!-- MORE -->
   <section class="scr" id="s-more">
     <div class="h"><h2>Tools</h2><span class="pill">15</span></div>
-    <div class="note"><svg><use href="#i-zap"/></svg><span class="nt"><b>Every tool here is live in this demo &mdash; tap any one and explore it. ✨</b>None of it is a fixed package. We build, customize, or leave out whatever your spa actually needs.</span></div>
+    <div class="note"><svg><use href="#i-zap"/></svg><span class="nt"><b>Choose a tool to try. Everything here runs with sample data.</b>None of it is a fixed package. We build, customize, or leave out whatever your spa actually needs.</span></div>
     <div class="grid">
       <button class="g" data-mod="reactivation" data-name="Reactivation"><div class="ico"><svg><use href="#i-users"/></svg></div>Reactivation<span class="new">NEW</span></button>
       <button class="g" data-mod="frontdesk" data-name="Front Desk AI"><div class="ico"><svg><use href="#i-chat"/></svg></div>Front desk</button>
@@ -694,7 +694,7 @@ svg{display:block}
   <button class="tab" data-s="social"><svg><use href="#i-share"/></svg>Social</button>
   <button class="tab" data-s="more"><svg><use href="#i-grid"/></svg>More</button>
 </nav></div>
-<div class="sheet" id="modsheet" aria-hidden="true">
+<div class="sheet" id="modsheet" aria-hidden="true" inert>
   <div class="sh-bar">
     <button class="sh-back" id="modback"><svg><use href="#i-left"/></svg>Back</button>
     <div class="sh-t" id="modtitle"></div>
@@ -758,19 +758,19 @@ homeStats();
  });
  function openMod(id,name){
   ttl.textContent=name;
-  sh.classList.add('on');sh.setAttribute('aria-hidden','false');
+  sh.inert=false;sh.classList.add('on');sh.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';open=true;
   if(!booted){booted=true;ld.classList.remove('off');fr.src='modules.html?embed=1&open='+encodeURIComponent(id);pending={id,name};return}
   send(id,name);
  }
  function closeMod(){
   clearTimeout(confirmT);
-  sh.classList.remove('on');sh.setAttribute('aria-hidden','true');
+  sh.classList.remove('on');sh.setAttribute('aria-hidden','true');sh.inert=true;
   document.body.style.overflow='';open=false;
  }
  fr.addEventListener('load',()=>{frameReady=true;show();if(pending){const q=pending;pending=null;fr.contentWindow.postMessage({gt:'open',q:1,gtId:q.id,id:q.id,name:q.name},'*')}});
  $('#modback').addEventListener('click',closeMod);
- window.addEventListener('popstate',()=>{if(open)closeMod()});
+ window.addEventListener('popstate',()=>{if(open)closeMod()});window.addEventListener('keydown',e=>{if(e.key==='Escape'&&open)closeMod()});
  $$('#s-more .g[data-mod]').forEach(b=>{
    const t=document.createElement('div');t.innerHTML=b.dataset.name;const nm=t.textContent;
    b.addEventListener('click',()=>openMod(b.dataset.mod,nm));
@@ -803,7 +803,7 @@ let n=3;const pill=$('#pill'),dot=$('#tabdot'),toast=$('#toast');
 $('#pri').addEventListener('click',async e=>{const b=e.target.closest('.ib');if(!b)return;const c=b.closest('.pr');if(c.classList.contains('gone'))return;
  const accepted=b.classList.contains('yes');
  const actions={
-  a:['Confirm the sample booking','Maria asked for a weekday afternoon appointment and accepted Thursday at 1:30. Staff has checked eligibility in this example.','Confirm the sample appointment for Maria G. at 1:30. Illustrative service value: $380. No payment is taken.'],
+  a:['Confirm the sample booking','Maria asked for a weekday afternoon appointment and accepted Thursday at 1:30. Staff has checked eligibility in this example.','Confirm the sample appointment for Maria J. at 1:30. Illustrative service value: $380. No payment is taken.'],
   b:['Review the service response','The client reported a poor experience. A private follow-up is separate from their public review invitation.','Simulate sending: “Thank you for telling us. I am sorry the visit fell short. Our team would like to hear more and help.” Their review invitation remains unchanged.'],
   c:['Review the inventory order','The sample inventory has 3 units left. The proposed restock totals $2,800; staff must verify product, quantity and supplier before a real order.','Simulate approving a $2,800 Juvederm restock for staff processing. No supplier is contacted and no payment is made.']
  };
@@ -837,7 +837,7 @@ function openThread(t,instant=false){const generation=++threadGeneration;$('#inb
 // calendar
 const TODAY=27, DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const NAMES=[['Lucia T.','Chemical peel','#6FA8E8'],['Jennifer L.','Consult','#8CA0BC'],['Isabella R.','HydroFacial','#B49A62'],['Diana M.','Body contouring','#3DBE8B'],['Robert C.','Hair restoration','#D16A5C'],['Camila H.','Weight loss','#6FA8E8'],['Andrea C.','PDO threads','#B49A62'],['Natalia G.','IV / NAD+','#8CA0BC'],['Paola R.','Laser hair','#3DBE8B'],['Monica V.','Ultherapy','#D16A5C']];
-const WAIT=[['Maria G.','Botox'],['Sofia M.','Laser hair'],['Carlos M.','Botox'],['Valentina P.','Fillers'],['Jessica M.','Botox'],['Daniela L.','NAD+']];
+const WAIT=[['Maria J.','Botox'],['Sofia M.','Laser hair'],['Carlos M.','Botox'],['Valentina P.','Fillers'],['Jessica M.','Botox'],['Daniela L.','NAD+']];
 const TIMES=['9:00','10:00','11:00','12:00','1:30','2:30','3:45','4:30'];
 const DAYS={};
 function dayData(d){if(DAYS[d])return DAYS[d];let seed=d*7919;const r=()=>(seed=(seed*9301+49297)%233280)/233280;
@@ -865,7 +865,7 @@ function fillSlot(el,who){if(!el||el.classList.contains('filling'))return;const 
  el.classList.add('filling');el.querySelector('.fill').innerHTML='<i class="typing" style="padding:0;background:none"><i></i><i></i><i></i></i>';
  setTimeout(()=>{dd.slots[i]={t:dd.slots[i].t,who:[w[0],w[1],'#3DBE8B'],filled:true};renderDay(sel);toast.classList.add('on');setTimeout(()=>toast.classList.remove('on'),1100)},reduce?0:1000)}
 $('#sched').addEventListener('click',async e=>{const f=e.target.closest('.fill');if(!f)return;const el=f.closest('.open'),i=+el.dataset.i,w=WAIT[(sel+i)%WAIT.length];if(await GTDemo.review('Confirm sample waitlist booking',w[0]+' matches the '+dayData(sel).slots[i].t+' opening for '+w[1]+'. This example assumes client acceptance and a staff eligibility check.','Add this appointment to the sample calendar. No client is contacted and no payment is taken.'))fillSlot(el,w)});
-function fillToday130(){const dd=dayData(TODAY);const i=dd.slots.findIndex(x=>x.t==='1:30'&&x.open);if(i<0)return;dd.slots[i]={t:'1:30',who:['Maria G.','Botox','#3DBE8B'],filled:true};if(sel===TODAY)renderDay(TODAY);else renderMonth()}
+function fillToday130(){const dd=dayData(TODAY);const i=dd.slots.findIndex(x=>x.t==='1:30'&&x.open);if(i<0)return;dd.slots[i]={t:'1:30',who:['Maria J.','Botox','#3DBE8B'],filled:true};if(sel===TODAY)renderDay(TODAY);else renderMonth()}
 $('#mprev').addEventListener('click',()=>{});$('#mnext').addEventListener('click',()=>{});
 renderDay(TODAY);
 window.addEventListener('gt-story-messages',()=>{go('chat');$('#inbox').style.display='none';openThread(TH.maya,true)});

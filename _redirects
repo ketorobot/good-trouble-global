@@ -3,3 +3,10 @@ http://law.goodtroubleglobal.com/  /law/index.html  200!
 /demo/plt-beauty.html  /demo/medspa.html  301
 /case-studies/*  /  301
 /team  /about  301
+
+# Canonical sales paths; preserve old links.
+/demo  /demo/  301
+/why-ai  /services  301!
+/why-ai.html  /services  301!
+/about-story  /about  301!
+/about-story.html  /about  301!
