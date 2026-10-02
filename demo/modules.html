@@ -2245,9 +2245,9 @@ src="https://www.facebook.com/tr?id=1502254564924001&ev=PageView&noscript=1"
     </div>
   </div>
 
-  <!-- New Campaign Button -->
+  <!-- Continue from the sample campaign to a real conversation -->
   <div style="margin-top:24px;margin-bottom:8px">
-    <button onclick="showNewCampaign()" style="width:100%;background:var(--pink);color:#0A1220;border:none;border-radius:var(--radius);padding:14px;font-family:var(--font-l);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;touch-action:manipulation">+ Launch New Campaign</button>
+    <a href="/contact?intent=proposal&amp;source=campaign-demo&amp;interest=a%20campaign%20for%20my%20spa" target="_top" style="display:block;text-align:center;text-decoration:none;width:100%;box-sizing:border-box;background:var(--pink);color:#0A1220;border:none;border-radius:var(--radius);padding:14px;font-family:var(--font-l);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;touch-action:manipulation">Plan a campaign for my spa &rarr;</a>
   </div>
 
 </div>
@@ -2966,9 +2966,6 @@ function showCamp(tab, btn) {
   btn.classList.add('active');
   document.querySelectorAll('.camp-section').forEach(function(s){s.classList.remove('active')});
   document.getElementById('camp-'+tab).classList.add('active');
-}
-function showNewCampaign() {
-  alert('Campaign Builder: In the live system, this opens a 4-field form. You fill in what to sell, the deal, the theme, and the duration — and we build everything else automatically.');
 }
 var lockedModules={
   'locked-reviews':{icon:'&#x2B50;',name:'Review Engine',desc:'Post-visit sequences invite honest reviews using consistent eligibility rules. Private service follow-up runs separately and never removes a public review invitation. Sample data across four locations.'},
