@@ -1,0 +1,68 @@
+.law-site .eyebrow{font-size:.875rem;letter-spacing:.11em}
+.law-site .fine,.law-site .sample{font-size:.875rem}
+.law-site .nav nav,.law-site label{font-size:1rem}
+.law-site .hero-grid{grid-template-columns:1.12fr 1fr;gap:60px}
+.law-site .hero{padding:80px 0 86px}
+.law-site .hero h1{font-size:clamp(3rem,5.5vw,4.75rem)}
+.law-site .hero-detail{font-size:1.125rem}
+.law-site .hero .fine{max-width:420px}
+.firm-preview{border:1px solid #555143;border-radius:12px;padding:30px;background:linear-gradient(135deg,#17253a,#101b2b);box-shadow:0 26px 85px #0004;transform:rotate(1deg)}
+.preview-header{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--sand);font-size:.875rem}
+.preview-title{font:400 2rem/1.25 Marcellus,Georgia,serif;color:var(--bone);margin:30px 0 15px}
+.preview-item{display:flex;align-items:flex-start;gap:15px;padding:23px 0;border-bottom:1px solid #334052}
+.preview-item h2{font:500 1.0625rem/1.4 Outfit,sans-serif;letter-spacing:0;text-wrap:initial;margin:0 0 7px}
+.preview-item p{font-size:1rem;line-height:1.55;margin:0}
+.task-icon{border:1px solid #635c49;border-radius:4px;padding:8px;color:var(--sand);flex-shrink:0}
+.task-icon svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.preview-footer{margin:22px 0 0;font-size:.875rem;color:var(--sand)}
+.law-site .trust-strip .wrap{font-size:.9375rem}
+.law-site .benefit-grid{margin-bottom:0;gap:38px}
+.law-site .benefit-grid .eyebrow{font-size:.875rem;letter-spacing:.06em;margin-bottom:18px}
+.law-site .benefit-grid h3{font-size:1.875rem}
+.law-site .benefit-grid p:last-child{margin-bottom:0}
+.example-layout{align-items:start;gap:65px}
+.law-site .conversation-preview{padding:28px;gap:18px;background:#fff8}
+.law-site .conversation-preview .eyebrow{font-size:.875rem;margin:0}
+.example-messages{display:flex;flex-direction:column;gap:16px;min-height:360px}
+.law-site .example-messages p{margin:0;font-size:1rem;line-height:1.55}
+.law-site .example-messages .assistant{color:var(--bone)}
+.law-site .example-messages .client{color:#27303b}
+.example-note{border-top:1px solid #c4bdae;padding-top:18px;font-size:.9375rem;line-height:1.6;color:#485362}
+.example-controls{display:flex;flex-wrap:wrap;gap:9px;margin:28px 0 24px}
+.example-controls[hidden]{display:none}
+.example-controls button{padding:11px 15px;border:1px solid #9c9482;border-radius:3px;background:transparent;color:var(--bg);font-size:.9375rem;min-height:44px;text-align:left}
+.example-controls button[aria-pressed=true]{background:var(--bg);border-color:var(--bg);color:var(--bone)}
+.example-controls button:hover{border-color:var(--bg);box-shadow:0 0 0 1px var(--bg)}
+.example-takeaway{border-left:2px solid #8d754a;padding-left:18px;min-height:84px}
+.law-site .steps article{border-top:1px solid var(--line);padding-top:27px}
+.law-site .steps{margin-bottom:0}
+.law-site .steps p{font-size:1.0625rem;margin-bottom:0}
+.law-site .founder-pair{align-self:center}
+.law-site .founder-pair figure{margin:0;min-width:0}
+.law-site .founder-pair img{height:300px}
+.law-site figcaption{text-align:center;padding:18px 5px;font-size:1rem;color:var(--sand)}
+.questions-layout{align-items:start}
+.law-site .faq details:first-child{padding-top:0}
+.law-site .faq summary{font-size:1.125rem;min-height:44px}
+.law-site .faq details p{font-size:1.0625rem;margin-right:0}
+.law-contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.law-site .closing h2{font-size:clamp(2.4rem,4.2vw,3.6rem)}
+.direct-email{overflow-wrap:anywhere;font-size:1.0625rem;margin-top:8px}
+.law-form{padding:30px;background:#101c2d;border:1px solid #455065;border-radius:6px}
+.law-site .law-form input,.law-site .law-form textarea{font-size:1rem}
+.law-site .law-form label small{font-size:.875rem}
+.law-form .fine{margin:0 0 23px;max-width:none}
+.law-form .button{width:100%;font-size:1rem}
+.law-form .form-status{font-size:1rem;line-height:1.5;margin:18px 0 0;color:var(--sand)}
+.law-form .form-status:empty{display:none}
+.form-status a{text-decoration:underline;overflow-wrap:anywhere}
+.law-site .footer-bottom{font-size:.875rem}
+.law-site .footer-bottom nav{gap:12px 20px}
+.law-site .footer-top>div span{font-size:.875rem}
+.law-site .receipt{padding-block:80px;min-height:70vh;max-width:760px}
+.law-site .receipt h1{font-size:clamp(2.6rem,5vw,4rem)}
+.law-site .receipt p{font-size:1.125rem}
+.law-site .receipt p a{color:var(--sand);text-decoration:underline;overflow-wrap:anywhere}
+@media(max-width:1050px){.law-site .hero-grid{gap:30px}.firm-preview{padding:24px}.law-site .nav nav{gap:18px}.law-contact-layout{gap:40px}.example-layout{gap:40px}}
+@media(max-width:800px){.law-site .hero-grid,.law-contact-layout{grid-template-columns:1fr}.law-site .hero{padding:54px 0 60px}.law-site .hero-grid{gap:42px}.firm-preview{width:100%;max-width:560px;transform:none;margin:auto}.law-site .hero h1{font-size:clamp(2.8rem,8vw,4rem)}.law-site .hero .fine{max-width:none}.law-site .benefit-grid{gap:26px}.law-contact-layout{gap:36px}.law-form{max-width:650px}.example-messages{min-height:0}.example-takeaway{min-height:0}.law-site .founder-pair img{height:280px}.law-site .nav nav>a{font-size:1rem}.law-site .nav nav .button{margin-bottom:3px}}
+@media(max-width:560px){.law-site .hero h1{font-size:2.875rem}.law-site .eyebrow{font-size:.8125rem}.law-site .hero .lead{font-size:1.375rem}.law-site .hero-detail{font-size:1.0625rem}.firm-preview{padding:22px}.preview-header{font-size:.8125rem;align-items:flex-start}.law-site .sample{font-size:.8125rem}.preview-title{font-size:1.75rem}.preview-item{gap:12px}.task-icon{padding:6px}.task-icon svg{width:19px;height:19px}.preview-item h2{font-size:1rem}.preview-item p{font-size:.9375rem}.law-site .trust-strip .wrap{font-size:.875rem;flex-direction:column;gap:12px}.law-site .benefit-grid h3{font-size:1.75rem}.law-site .conversation-preview{padding:22px}.example-controls{gap:8px}.example-controls button{font-size:.875rem;padding:11px 12px}.law-site .founder-pair img{height:220px}.law-site figcaption{font-size:.875rem;padding:14px 3px}.law-form{padding:22px}.law-site .faq summary{font-size:1.0625rem}.law-site .footer-bottom nav{gap:10px 18px}.law-site .receipt{padding-block:55px}}

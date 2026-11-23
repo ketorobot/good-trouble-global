@@ -1,5 +1,16 @@
 https://law.goodtroubleglobal.com/  /law/index.html  200!
 http://law.goodtroubleglobal.com/  /law/index.html  200!
+https://law.goodtroubleglobal.com/pricing  /  301!
+https://law.goodtroubleglobal.com/pricing/  /  301!
+https://law.goodtroubleglobal.com/pricing.html  /  301!
+https://law.goodtroubleglobal.com/services  /#services  301!
+https://law.goodtroubleglobal.com/services.html  /#services  301!
+https://law.goodtroubleglobal.com/about  /#about  301!
+https://law.goodtroubleglobal.com/about.html  /#about  301!
+https://law.goodtroubleglobal.com/contact  /#contact  301!
+https://law.goodtroubleglobal.com/contact.html  /#contact  301!
+https://law.goodtroubleglobal.com/demo  /#example  301!
+https://law.goodtroubleglobal.com/demo/*  /#example  301!
 /demo/plt-beauty.html  /demo/medspa.html  301
 /case-studies/*  /  301
 /team  /about  301
