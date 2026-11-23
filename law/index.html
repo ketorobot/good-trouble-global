@@ -2,99 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Callback handoffs for personal injury firms | Good Trouble</title>
-  <meta name="description" content="A focused pilot for personal injury firms. Give after-hours and overflow callback requests a named owner and a record of the first human attempt.">
-  <meta name="theme-color" content="#10272c">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>After-hours callbacks for personal injury firms | Good Trouble</title>
+  <meta name="description" content="Try one after-hours or overflow line. Your injury intake team can see who asked for a callback, who owns it, and when someone tried.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Who owns the next callback? | Good Trouble">
-  <meta property="og:description" content="A callback handoff pilot for personal injury firms. Explore a fictional request and see how the pilot works.">
+  <meta property="og:title" content="After-hours callbacks for personal injury firms | Good Trouble">
+  <meta property="og:description" content="One line. A named intake owner. A record of whether someone tried to call back.">
   <meta property="og:url" content="https://goodtroubleglobal.com/law/">
   <link rel="canonical" href="https://goodtroubleglobal.com/law/">
   <link rel="icon" href="/icons/icon-180.png">
-  <link rel="stylesheet" href="/law/pilot.css">
-  <script src="/law/handoff.js" defer></script>
+  <link rel="stylesheet" href="/law/intake.css">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="mast">
     <div class="wrap mast-inner">
-      <a class="brand" href="https://goodtroubleglobal.com/" aria-label="Good Trouble home"><span class="monogram" aria-hidden="true">GT</span><span>Good Trouble</span></a>
-      <nav aria-label="Page navigation"><a href="#handoff">Sample</a><a href="#pilot">Pilot</a><a class="nav-contact" href="#contact">Talk to Alex</a></nav>
+      <a class="brand" href="https://goodtroubleglobal.com/" aria-label="Good Trouble home"><span class="mark" aria-hidden="true">GT</span>Good Trouble</a>
+      <span class="mast-note">Tampa Bay, Florida</span>
     </div>
   </header>
+
   <main id="main">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="introduction">
-          <p class="eyebrow accent">Personal injury firms · Tampa Bay</p>
-          <h1>Who owns the <br>next <em>callback?</em></h1>
-          <p class="hero-deck">Give after-hours and overflow callers a clear way to request a return call. We set up the handoff in your existing intake process so staff can see who owns each request and when someone tried to call back.</p>
-          <div class="actions"><a class="button" href="#contact">Talk about your intake</a><a class="line-link" href="#pilot">See the pilot</a></div>
-        </div>
-        <div class="sample-wrap" id="handoff">
-          <article class="ticket" aria-labelledby="ticket-title">
-            <div class="ticket-heading"><p class="eyebrow">Fictional example</p><span class="paper-mark" aria-hidden="true">GT</span></div>
-            <h2 id="ticket-title">Callback handoff</h2>
-            <div class="scenario-switch" role="group" aria-label="Choose a fictional scenario" hidden>
-              <button type="button" data-scenario="after-hours" aria-pressed="true">After hours</button>
-              <button type="button" data-scenario="overflow" aria-pressed="false">Overflow</button>
-              <button type="button" data-scenario="delivery-issue" aria-pressed="false">Delivery issue</button>
-            </div>
-            <div class="sample-result" aria-live="polite" aria-atomic="true">
-              <dl class="ticket-fields">
-                <div><dt>Request</dt><dd data-field="request">Thursday, 6:42 p.m.</dd></div>
-                <div><dt>Preference</dt><dd data-field="preference">Friday morning</dd></div>
-                <div><dt>Assigned to</dt><dd data-field="owner">Maya, opening intake shift</dd></div>
-                <div><dt>First attempt</dt><dd data-field="attempt">Friday, 9:08 a.m.</dd></div>
-              </dl>
-              <p class="outcome" data-field="outcome">Maya left a voicemail and logged the attempt.</p>
-            </div>
-            <p class="sample-foot">Sample records only. This demonstration runs in your browser.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-    <section class="workflow" aria-labelledby="workflow-title">
+    <section class="hero" aria-labelledby="headline">
       <div class="wrap">
-        <p class="eyebrow green">The handoff</p>
-        <h2 id="workflow-title">From a request to a return call.</h2>
-        <div class="workflow-grid">
-          <article><h3>Choose one route</h3><p>Start with one after-hours window or overflow line. We map the phone service and intake queue you already use, then check what those tools can handle.</p></article>
-          <article><h3>Give it an owner</h3><p>A firm-approved script collects the callback request. Your firm picks the destination, the person on duty and a backup for failed delivery.</p></article>
-          <article><h3>Record the attempt</h3><p>Staff mark when they first tried the caller and what happened. Reviewers can distinguish delivered requests, attempted calls and requests still waiting.</p></article>
-        </div>
+        <p class="kicker"><span aria-hidden="true"></span> After-hours intake for personal injury firms</p>
+        <h1 id="headline">“I thought somebody called them back.”</h1>
+        <p class="lede">We set up one line in your existing phone system so your intake team can see who asked for a callback, who’s handling it, and whether anyone tried.</p>
+        <a class="button" href="#contact">Talk through one missed call <span aria-hidden="true">↘</span></a>
       </div>
     </section>
-    <section class="pilot" id="pilot" aria-labelledby="pilot-title">
-      <div class="wrap pilot-grid">
-        <div><p class="eyebrow green">The pilot</p><h2 id="pilot-title">Start with one <br>intake shift.</h2>
-          <p class="section-lead">We map the current process, configure one handoff and test it with fictional callers. Your team approves the route before any real calls reach it.</p>
-          <p>The first month compares the selected window with the baseline. Together we review how many requests arrived, how many received a human attempt by your deadline and which ones still need attention.</p>
+
+    <section class="example wrap" aria-labelledby="example-title">
+      <div class="log">
+        <div class="log-head">
+          <h2 id="example-title">One missed call</h2>
+          <span>Fictional example</span>
         </div>
-        <aside class="price-card" aria-labelledby="price-title">
-          <h3 class="eyebrow" id="price-title">Proposed pilot pricing</h3>
-          <dl class="prices"><div><dt>One-time setup</dt><dd>$1,500</dd></div><div><dt>Monthly management</dt><dd>$500</dd></div></dl>
-          <p>Setup covers one route, a staff handover and acceptance testing. Monthly management begins at accepted launch. Your firm approves and pays third-party usage separately.</p>
-        </aside>
+        <ol class="log-steps">
+          <li><span class="log-time">THU · 6:42 PM</span><strong>Caller asks for a callback</strong><p>Friday morning works best.</p></li>
+          <li><span class="log-time">FRI · OPENING SHIFT</span><strong>Maya in intake gets the request</strong><p>The rest of the team can see she has it.</p></li>
+          <li><span class="log-time">FRI · 9:08 AM</span><strong>Maya tries to reach the caller</strong><p>She leaves a voicemail and logs it.</p></li>
+        </ol>
       </div>
     </section>
-    <section class="questions" aria-labelledby="questions-title">
-      <div class="wrap question-grid">
-        <div><p class="eyebrow green">Before you start</p><h2 id="questions-title">Common questions</h2></div>
-        <div class="answers">
-          <details><summary>We already use an answering service. Is this useful?</summary><p>Possibly. Show us one handoff from your service to intake. If your tools already assign an owner, flag exceptions and record the return call, we’ll say so. A small configuration change may be all you need.</p></details>
-          <details><summary>What does the caller hear?</summary><p>Your firm approves the exact opening, the AI disclosure and the way a caller can reach a person. The pilot collects only the details needed for a return call. Your legal team handles advice, case evaluation and decisions about representation.</p></details>
-          <details><summary>What if a request fails to reach the team?</summary><p>We agree on a backup route and test a deliberate delivery failure before launch. An unresolved request stays visible. Staff can switch forwarding back to the original route.</p></details>
-          <details><summary>What do we need for the first conversation?</summary><p>Your intake lead and a description of one recent handoff are enough. Bring the roles and steps. Leave caller names, medical details and case information out.</p></details>
-        </div>
+
+    <section class="section wrap pilot" id="pilot" aria-labelledby="pilot-title">
+      <div class="offer">
+        <p class="section-tag">The pilot</p>
+        <h2 id="pilot-title">Try it on one shift.</h2>
+        <p>Pick an after-hours or overflow window. We test with fictional callers before you forward any real calls. Your staff still makes every return call.</p>
+        <p>At the end of the first month, we compare how many callers your team tried to reach by your deadline with the same shift before the pilot.</p>
+      </div>
+      <aside class="pricing" aria-labelledby="pricing-title">
+        <h3 id="pricing-title">Proposed pricing</h3>
+        <dl><div><dt>One-time setup</dt><dd>$1,500</dd></div><div><dt>Monthly management</dt><dd>$500</dd></div></dl>
+        <p>Monthly billing starts once you approve launch. You approve and pay any third-party usage separately.</p>
+      </aside>
+    </section>
+
+    <section class="section wrap questions" aria-labelledby="questions-title">
+      <div><p class="section-tag">Good to know</p><h2 id="questions-title">Before you start.</h2></div>
+      <div class="answers">
+        <details><summary>Already use an answering service?</summary><p>If it already gives each request an owner, flags delivery failures and shows who tried to call back, you may not need this.</p></details>
+        <details><summary>What does the caller hear?</summary><p>Your firm approves the script, including the upfront AI disclosure and how to reach a person. We only take callback details. Your firm handles advice and case decisions.</p></details>
+        <details><summary>What if a request doesn’t reach intake?</summary><p>We test a backup route before launch and agree on who handles failed deliveries. Your staff can switch back to your current routing.</p></details>
       </div>
     </section>
+
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="wrap contact-grid">
-        <div><p class="eyebrow accent">Talk to Good Trouble</p><h2 id="contact-title">Walk me through <br>one callback.</h2>
-          <p class="contact-intro">I’m Alex Braddock. In 15 minutes, we can trace one request from your phone line to the person who returns it and see whether a pilot is worth your time.</p>
-          <address><a aria-label="Email Alex about the pilot" href="mailto:alex@goodtroubleglobal.com?subject=Personal%20injury%20callback%20pilot">alex@goodtroubleglobal.com</a></address>
+        <div class="contact-intro">
+          <p class="section-tag">Talk to Alex</p>
+          <h2 id="contact-title">Bring one example.</h2>
+          <p>Tell me what happened the last time a call came in and no one could answer. In 15 minutes, we can see whether there’s anything worth fixing.</p>
+          <a class="email" href="mailto:alex@goodtroubleglobal.com?subject=Personal%20injury%20callback%20pilot">alex@goodtroubleglobal.com</a>
         </div>
         <form class="inquiry-form" name="law-contact" method="post" action="/law/received/" data-netlify="true" netlify-honeypot="bot-field" aria-label="Request a business conversation">
           <input type="hidden" name="form-name" value="law-contact">
@@ -107,12 +88,18 @@
           <label>Which calls would you like to discuss?
             <select name="intake_window"><option>After hours</option><option>Overflow during business hours</option><option>Both or unsure</option></select>
           </label>
-          <p class="contact-note">Business inquiries only. Please leave client and case information out.</p>
-          <button class="button" type="submit">Request a conversation</button>
+          <p class="contact-note">Business inquiries only. Please leave caller names and case details out.</p>
+          <button class="button" type="submit">Request a conversation <span aria-hidden="true">↗</span></button>
         </form>
       </div>
     </section>
   </main>
-  <footer><div class="wrap footer-inner"><a class="brand footer-brand" href="https://goodtroubleglobal.com/"><span class="monogram" aria-hidden="true">GT</span><span>Good Trouble</span></a><div class="footer-links"><a href="https://goodtroubleglobal.com/privacy">Privacy</a><a href="https://goodtroubleglobal.com/terms">Terms</a></div></div></footer>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="https://goodtroubleglobal.com/" aria-label="Good Trouble home"><span class="mark" aria-hidden="true">GT</span>Good Trouble</a>
+      <nav aria-label="Footer"><a href="https://goodtroubleglobal.com/privacy">Privacy</a><a href="https://goodtroubleglobal.com/terms">Terms</a></nav>
+    </div>
+  </footer>
 </body>
 </html>
